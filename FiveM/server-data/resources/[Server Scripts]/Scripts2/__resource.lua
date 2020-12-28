@@ -23,6 +23,7 @@ client_scripts{
   "cl_tackle.lua",
   "cl_idsabovehead.lua",
   "cl_pointfinger.lua",
+  "antinpc.lua",
   "cl_takehostage.lua",
   "dv.lua",
   "vehiclecontrol.lua",
