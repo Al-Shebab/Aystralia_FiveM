@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" id="{9BDE5E7F-2618-4250-9CA9-4EE71D2C00B4}" target="Five">
+<metadata>
+<name>Project London Remastered(WIP)(OIV)</name>
+<version>
+<major>0</major>
+<minor>3</minor>
+<tag>Stable</tag>
+</version>
+<author>
+<displayName>Notch</displayName>
+</author>
+<description><![CDATA[Project London Remastered is a project that was created a month ago. With the suggestions of other people, me and our dev team have managed to create real-life London stores and a collection of vehicles in GTA V. A list is provided below.
+Currently included:
+London Underground S8 Stock Metropolitan Line(WIP),
+Wimbledon South Western Railway Depot(WIP), 
+Harrow Bus Station(WIP),
+TheWorks.co.uk Store, 
+Shell Gas Station x2, 
+Pizza Hut Take-out,
+RAF Northolt(WIP), 
+Costco Wholesale,
+Boots Pharmacist,
+Lloyds Pharmacy,
+Rush Hair Salon,
+BP Gas Station,
+Police Stations,
+Krispy Kremes, 
+Cash For Gold,
+Rymans Store, 
+Pret A Manger, 
+Brick Housing, 
+Costa Coffee, 
+Lloyds bank, 
+My Dentist, 
+Billboards, 
+Timpsons, 
+Subway, 
+Kwik Fit, 
+A&E,
+TUI 
+Dev Team:
+Script Developers: Steve Arton and Kyle
+Vehicle Textures: Notch Apple and Mega Mac
+Building Textures: Crys, Steve Arton, Kyle, Nobody!, ViscidPrince2, Lightning8012 and Notch Apple
+Server Manager: Tramter
+FiveM Converter: Crys
+Building Modelers: ViscidPrince2, Lightning8012
+Join the discord to receive the vehicle pack.
+Vehicle credits:
+Double Doppler,
+BritishGamer88,
+StateZeroMods,
+SteelyDan,
+Xenon
+Modification information:
+Modification should not be used in gta online.
+Modifications should not be edited without the my permission
+I'm not responsible for:
+Blocked accounts through this modification.
+Damage caused by modifications.
+Please put any bugs and more suggestions in the comments.
+Please make sure to rate and leave feedback.
+Change Log:
+0.2-More building textures added
+0.3-More building textures and London Underground S8 Stock Metropolitan Line]]></description>
+</metadata>
+<colors>
+<headerBackground useBlackTextColor="False">$FF23366A</headerBackground>
+<iconBackground>$FF3B5998</iconBackground>
+</colors>
+<content>
+<archive path="common.rpf" createIfNotExist="True" type="RPF7">
+<add source="187e172a-16ba-4f55-a2f6-ac5facda4898\trains.xml">\data\levels\gta5\trains.xml</add>
+</archive>
+<archive path="update\update.rpf" createIfNotExist="True" type="RPF7">
+<add source="3b8edf01-a26f-49f7-8bb6-bd3083bd7e94\carvariations.ymt">\x64\data\carvariations.ymt</add>
+</archive>
+<archive path="x64e.rpf" createIfNotExist="True" type="RPF7">
+<archive path="\levels\gta5\vehicles.rpf" createIfNotExist="True" type="RPF7">
+<add source="127fc13a-91f2-44c7-a5b7-2d6c760304d1\freightcont2.yft">\freightcont2.yft</add>
+<add source="32cbb089-13ba-4c00-807f-4db7b3a4bc17\freightcont2.ytd">\freightcont2.ytd</add>
+<add source="372952c0-19c9-4903-afb9-7adcb4aa4a00\freightcont2_hi.yft">\freightcont2_hi.yft</add>
+<add source="50589bbd-86b2-415a-8ac1-15fa4a781ea7\freightgrain.yft">\freightgrain.yft</add>
+<add source="56f9c82b-6343-477c-8846-666a0d3d3489\freightgrain.ytd">\freightgrain.ytd</add>
+<add source="4997e0b1-e86e-43c8-b0d5-11cffb9471f8\freightgrain_hi.yft">\freightgrain_hi.yft</add>
+<add source="0fa3d821-36b2-49b1-9b0a-abaa7c93b664\metrotrain.yft">\metrotrain.yft</add>
+<add source="5e52c3f0-9f95-46be-a2c2-c56894aeb201\metrotrain.ytd">\metrotrain.ytd</add>
+<add source="bd21b6d1-65c0-40d7-aba3-24e64a9982ea\metrotrain_hi.yft">\metrotrain_hi.yft</add>
+</archive>
+</archive>
+<archive path="x64i.rpf" createIfNotExist="True" type="RPF7">
+<archive path="\levels\gta5\_citye\downtown_01\fw1_01.rpf" createIfNotExist="True" type="RPF7">
+<add source="d279432a-5456-4d5b-9a94-664967822b5e\fwy_01_olimp.ydr">\fwy_01_olimp.ydr</add>
+<add source="6b852ac4-581d-4cff-893c-24a49161893a\fwy_01_olimpsign.ytd">\fwy_01_olimpsign.ytd</add>
+<add source="9c8a435a-b82e-4c46-a3d7-db83cdfc03fb\fwy_01_olimpsign+hi.ytd">\fwy_01_olimpsign+hi.ytd</add>
+</archive>
+</archive>
+<archive path="x64m.rpf" createIfNotExist="True" type="RPF7">
+<archive path="\levels\gta5\_cityw\sanpedro_01\sanpedro.rpf" createIfNotExist="True" type="RPF7">
+<add source="d50a210c-e3b9-4d8d-8077-3dc633ac5f23\sp1_10_slod1_children.ydd">\sp1_10_slod1_children.ydd</add>
+<add source="6c410934-8070-4c07-96ac-8e1d659ad325\sp1_lod_10_11_children.ydd">\sp1_lod_10_11_children.ydd</add>
+</archive>
+<archive path="\levels\gta5\_cityw\sanpedro_01\sp1_10.rpf" createIfNotExist="True" type="RPF7">
+<add source="e6267a2b-9910-47ae-9b6b-580e7ab0f338\sp1_10.ytd">\sp1_10.ytd</add>
+<add source="c76ecc9d-58a5-401f-bb9b-344cd4824dd6\sp1_10_brand_01_wip_dontdelq.ydr">\sp1_10_brand_01_wip_dontdelq.ydr</add>
+<add source="94519997-cca9-4bed-b771-5b8d72c6fcd2\sp1_10_brand_01_wip_dontdelq+hidr.ytd">\sp1_10_brand_01_wip_dontdelq+hidr.ytd</add>
+<add source="b44e8ec5-01c6-4c29-9b48-37de7ee44077\sp1_10_branding_shadow.ydr">\sp1_10_branding_shadow.ydr</add>
+<add source="d81a47f2-56e7-4b24-9917-2053706f041b\sp1_10_ground_1.ydr">\sp1_10_ground_1.ydr</add>
+<add source="6cc1a49e-184a-420d-bf59-f7c0c0f8ee75\sp1_10_ground_2.ydr">\sp1_10_ground_2.ydr</add>
+<add source="227f2e22-4b46-4c25-98cf-465b8f9c8094\sp1_10_int_slod.ytd">\sp1_10_int_slod.ytd</add>
+<add source="6da57b3c-4612-44d9-a195-6fb3fb5a3fa9\sp1_10_lod.ytd">\sp1_10_lod.ytd</add>
+<add source="e5c17a5f-1812-4a88-9037-aec2f608c655\sp1_10_mainwall_1.ydr">\sp1_10_mainwall_1.ydr</add>
+<add source="73ae1700-0e0e-4c12-bb90-d6e9d4795e5c\sp1_10_mainwall_sign.ydr">\sp1_10_mainwall_sign.ydr</add>
+<add source="41d4f3d2-25d7-44fd-8cc8-1813f2373fc2\sp1_10_props_int.ytd">\sp1_10_props_int.ytd</add>
+<add source="90d061ac-08ae-484d-8cf7-c60141c2b61b\sp1_10_props_interior_slod.ydr">\sp1_10_props_interior_slod.ydr</add>
+<add source="5b3f7f47-ac32-4a0c-99f5-ab2e3527904b\sp1_10_sign_bars_hd.ydr">\sp1_10_sign_bars_hd.ydr</add>
+<add source="734d9b1d-355b-4d09-bcc4-eaa5e4c857a8\sp1_10_stadium.ytd">\sp1_10_stadium.ytd</add>
+<add source="66fa5cb1-3e85-43b3-9b77-b1a202962dc5\sp1_10_stadium+hi.ytd">\sp1_10_stadium+hi.ytd</add>
+<add source="2ebd87cb-ad62-413b-bd1b-f73d2f880ef2\sp1_10+hi.ytd">\sp1_10+hi.ytd</add>
+</archive>
+</archive>
+<archive path="x64s.rpf" createIfNotExist="True" type="RPF7">
+<archive path="\levels\gta5\_hills\country_03\cs3_07.rpf" createIfNotExist="True" type="RPF7">
+<add source="3e427890-5ffa-479b-9553-9ce3de920097\cs3_07_build01.ytd">\cs3_07_build01.ytd</add>
+<add source="54e5d962-7b55-4d5f-ad7b-4797e80d8d3d\cs3_07_build01+hi.ytd">\cs3_07_build01+hi.ytd</add>
+<add source="8bf46c46-4660-4abe-8015-cf3ef8d9ac49\cs3_07_build02.ytd">\cs3_07_build02.ytd</add>
+<add source="eab358c5-322b-4591-8484-702cd538d447\cs3_07_build02+hi.ytd">\cs3_07_build02+hi.ytd</add>
+<add source="69e54042-4592-4811-8775-63e6cd248363\cs3_07_fizzy.ytd">\cs3_07_fizzy.ytd</add>
+<add source="592141ef-1e1d-4990-94a4-2f3216cd99da\cs3_07_ground.ytd">\cs3_07_ground.ytd</add>
+<add source="74a4b130-52ae-4625-b937-9b3fbc5dfeb6\cs3_07_hangera_03_o.ydr">\cs3_07_hangera_03_o.ydr</add>
+<add source="487ccebb-0c47-449e-a31d-91b88f198d83\cs3_07_lod.ytd">\cs3_07_lod.ytd</add>
+<add source="97ad352f-f591-4ab3-9d58-be9d9afc69e9\cs3_07_mil_decals07.ydr">\cs3_07_mil_decals07.ydr</add>
+<add source="7bc57365-45e7-4e00-aa5b-08ea266aa68b\cs3_07_secutiry01.ydr">\cs3_07_secutiry01.ydr</add>
+<add source="3b3ab2ed-ae45-4e75-8919-d88cd57daec7\cs3_07_secutiry02.ydr">\cs3_07_secutiry02.ydr</add>
+<add source="f4f29c46-a197-41db-8e6e-e34b8e105b20\cs3_07_tankpark01.ydr">\cs3_07_tankpark01.ydr</add>
+<add source="4539c58b-c6ae-4d69-a129-c2ed921b0af9\cs3_07_tankpark01+hidr.ytd">\cs3_07_tankpark01+hidr.ytd</add>
+<add source="30748c13-d1e6-49ea-99bb-48aeac92fc63\cs3_07_tg.ytd">\cs3_07_tg.ytd</add>
+</archive>
+</archive>
+</content>
+</package>

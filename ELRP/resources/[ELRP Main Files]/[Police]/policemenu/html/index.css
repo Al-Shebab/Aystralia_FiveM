@@ -1,0 +1,33 @@
+body {
+    background: none !important;
+
+}
+
+#container {
+    font-size: 20px;
+    padding: 25px;
+    color:  rgb(172, 172, 172);
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(55, 0, 255, 0.959);
+    background-image: url("https://media.discordapp.net/attachments/759082511513944098/763011799230185492/290e92-Met_Police_1.png?width=749&height=421");
+    height: 300;
+    width: 700px;
+    border-radius: 3px;
+}
+
+
+
+button {
+    background-color: rgb(172, 172, 172);
+    padding: 12px;
+}
+
+input {
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+}
