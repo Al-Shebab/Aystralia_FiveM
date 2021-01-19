@@ -31,7 +31,6 @@ client_scripts{
   "pointfinger-client.lua",
   "handsup-client.lua",
   "stopwanted-client.lua", 
-  "gameui-client.lua",
   "weathersync-client.lua",
   "missiontext-client.lua",
   "Nopeds/client.lua",

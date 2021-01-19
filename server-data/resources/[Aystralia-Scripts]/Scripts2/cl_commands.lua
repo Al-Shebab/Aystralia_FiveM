@@ -3,7 +3,7 @@ function AddTextEntry(key, value)
 end
 
 Citizen.CreateThread(function()
-  AddTextEntry('FE_THDR_GTAO', 'ELRP British - https://discord.gg/dxBYUcz')
+  AddTextEntry('FE_THDR_GTAO', '~u~Aystralia Network')
 end)
 
 -- RegisterCommand("poodle",function()

@@ -10,10 +10,10 @@ Citizen.CreateThread(function()
 			if currentPos == prevPos and currentHeading == previousHeading then
 				if time > 0 then
 					if kickWarning and time == math.ceil(secondsUntilKick - 1500) then
-						TriggerEvent("chatMessage", "^7^*You're getting kicked in 5 minutes for being ^8^*AFK!")
+						TriggerEvent("chatMessage", "^2You're getting kicked in 5 minutes for being AFK!")
 					end
 					if kickWarning and time == math.ceil(secondsUntilKick - 1740) then
-						TriggerEvent("chatMessage", "^7^*You're getting kicked in 1 minute for being ^8^*AFK!")
+						TriggerEvent("chatMessage", "^2You're getting kicked in 1 minute for being AFK!")
 					end
 					time = time - 1
 				else
