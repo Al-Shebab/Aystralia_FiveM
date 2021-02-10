@@ -1,2 +1,2 @@
-cd /d C:\Users\kazza\Desktop\Aystralia\FiveM\server-data
-C:\Users\kazza\Desktop\Aystralia\FiveM\server\FXServer.exe +exec server.cfg
+cd /d C:\Users\admin\Desktop\FTP\FiveM\server-data
+C:\Users\admin\Desktop\FTP\FiveM\server\FXServer.exe +exec server.cfg +set svgui_disable true
