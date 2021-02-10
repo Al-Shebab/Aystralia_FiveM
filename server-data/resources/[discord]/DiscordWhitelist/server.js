@@ -5,13 +5,11 @@
 /// Config Area ///
 
 var whitelistRoles = [ // Roles by ID that are whitelisted.
-    "749796821840298034", //Founder
-    "750208239005859840", //Testing Team
-    "752348563752616017" //Developer
+    "787616789437087774" //Owner
 ]
 
 var blacklistRoles = [ // Roles by Id that are blacklisted.
-    "7523484571335394487" //Muted
+    "808571219435323393" //Random
 ]
 
 var notWhitelistedMessage = "You're Not Whitelisted. This sever is whitelisted and requires access to join."

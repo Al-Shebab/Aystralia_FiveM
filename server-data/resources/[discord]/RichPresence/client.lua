@@ -2,9 +2,9 @@ Citizen.CreateThread(function()
 	while true do
 		SetDiscordAppId(755792927891914812)
 		SetDiscordRichPresenceAsset('background')
-        SetDiscordRichPresenceAssetText('Elite RP')
+        SetDiscordRichPresenceAssetText('Aystralia RP')
         SetDiscordRichPresenceAssetSmall('logo_name')
-        SetDiscordRichPresenceAssetSmallText('Elite RP')
+        SetDiscordRichPresenceAssetSmallText('Aystralia RP')
 		Citizen.Wait(3000)
 	end
 end)
