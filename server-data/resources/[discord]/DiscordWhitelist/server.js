@@ -5,14 +5,15 @@
 /// Config Area ///
 
 var whitelistRoles = [ // Roles by ID that are whitelisted.
-    "787616789437087774" // Founder
+    "787616789437087774", // Owner
+    "791545821858234439" // Beta Tester
 ]
 
 var blacklistRoles = [ // Roles by Id that are blacklisted.
     "788665118967857182" // Robot - Didn't want to leave it empty
 ]
 
-var notWhitelistedMessage = "You're Not Whitelisted. This sever is whitelisted and requires access to join."
+var notWhitelistedMessage = "You're Not Whitelisted. This server is whitelisted and requires access to join."
 var noGuildMessage = "Guild Not Detected. It seems you're not in the guild for this community."
 var blacklistMessage = "You're blacklisted from this server."
 var debugMode = false

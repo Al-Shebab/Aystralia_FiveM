@@ -1,7 +1,7 @@
 Config = {
 	Guild_ID = '775399964204990495',
 	Bot_Token = 'NzU1NzkyOTI3ODkxOTE0ODEy.X2IdAw.STHAvVoEejnCD7e-sxdXX9uScsA',
-	RoleList = {"Founder"},
+	RoleList = {"Owner", "Beta Tester"},
 }
 
 Config.Splash = {

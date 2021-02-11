@@ -164,7 +164,7 @@ function IsDiscordEmailVerified(user)
                 --print("---")
             end
         else 
-        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return isVerified;
@@ -192,7 +192,7 @@ function GetDiscordEmail(user)
                 --print("---")
             end
         else 
-        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return emailData;
@@ -220,7 +220,7 @@ function GetDiscordName(user)
                 --print("---")
             end
         else 
-        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return nameData;
@@ -238,7 +238,7 @@ function GetGuildIcon()
 			return 'https://cdn.discordapp.com/icons/' .. Config.Guild_ID .. "/" .. data.icon .. ".png";
 		end 
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -250,7 +250,7 @@ function GetGuildSplash()
 		-- Image 
 		return 'https://cdn.discordapp.com/splashes/' .. Config.Guild_ID .. "/" .. data.icon .. ".png";
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end 
@@ -262,7 +262,7 @@ function GetGuildName()
 		-- Image 
 		return data.name;
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -274,7 +274,7 @@ function GetGuildDescription()
 		-- Image 
 		return data.description;
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -286,7 +286,7 @@ function GetGuildMemberCount()
 		-- Image 
 		return data.approximate_member_count;
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -297,7 +297,7 @@ function GetGuildOnlineMemberCount()
 		local data = json.decode(guild.data)
 		return data.approximate_presence_count;
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -331,14 +331,14 @@ function GetDiscordAvatar(user)
 					--print("---")
 				end
 			else 
-				print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+				print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
 			end
 			Caches.Avatars[discordId] = imgURL;
 		else 
 			imgURL = Caches.Avatars[discordId];
 		end 
 	else 
-		print("[Badger_Perms] ERROR: Discord ID was not found...")
+		print("[Discord Permissions] ERROR: Discord ID was not found...")
 	end
     return imgURL;
 end
@@ -363,7 +363,7 @@ function GetGuildRoleList()
 			end
 			Caches.RoleList = roleList;
 		else
-			print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+			print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 			Caches.RoleList = nil;
 		end
 	end
@@ -388,11 +388,11 @@ function GetDiscordRoles(user)
 			local found = true
 			return roles
 		else
-			print("[Badger_Perms] ERROR: Code 200 was not reached... Returning false. [Member Data NOT FOUND]")
+			print("[Discord Permissions] ERROR: Code 200 was not reached... Returning false. [Member Data NOT FOUND]")
 			return false
 		end
 	else
-		print("[Badger_Perms] ERROR: Discord was not connected to user's Fivem account...")
+		print("[Discord Permissions] ERROR: Discord was not connected to user's Fivem account...")
 		return false
 	end
 	return false
@@ -415,11 +415,11 @@ function GetDiscordNickname(user)
 			local nickname = data.nick
 			return nickname;
 		else
-			print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: "..member.data)
+			print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: "..member.data)
 			return nil;
 		end
 	else
-		print("[Badger_Perms] ERROR: Discord was not connected to user's Fivem account...")
+		print("[Discord Permissions] ERROR: Discord was not connected to user's Fivem account...")
 		return nil;
 	end
 	return nil;
@@ -429,8 +429,8 @@ Citizen.CreateThread(function()
 	local guild = DiscordRequest("GET", "guilds/"..Config.Guild_ID, {})
 	if guild.code == 200 then
 		local data = json.decode(guild.data)
-		print("[Badger_Perms] Permission system guild set to: "..data.name.." ("..data.id..")")
+		print("[Discord Permissions] Permission system guild set to: "..data.name.." ("..data.id..")")
 	else
-		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 end)
