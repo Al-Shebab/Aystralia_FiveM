@@ -18,9 +18,7 @@ AddEventHandler('Badger_Discord_API:PlayerLoaded', function()
 	end
 	local license = ExtractIdentifiers(source).license;
 	if (tracked[license] == nil) then 
-		tracked[license] = true;
-		TriggerClientEvent('chatMessage', source, 
-		'^1[^5Badger_Discord_API^1] ^3The Discord API script was created by Badger. You may join his Discord at: ^6discord.gg/WjB5VFz')
+		tracked[license] = true,
 	end
 end)
 
