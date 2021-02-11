@@ -5,7 +5,7 @@ Config = {
 }
 
 Config.Splash = {
-	Header_IMG = 'https://cdn.discordapp.com/attachments/791543288620384286/791547368587264000/ay.png',
+	Header_IMG = 'https://cdn.discordapp.com/attachments/791132531353059349/809343446258548746/GIF.gif',
 	Enabled = true,
 	Wait = 10, -- How many seconds should splash page be shown for? (Max is 12)
 	Heading1 = "Welcome to Aystralia Network",

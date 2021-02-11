@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Users\admin\Desktop\FTP\FiveM\server\FXServer.exe C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[system]\[builders]\yarn\yarn_cli.js install --ignore-scripts --cache-folder C:\Users\admin\Desktop\FTP\FiveM\server-data\cache\yarn-cache --mutex file:C:\Users\admin\Desktop\FTP\FiveM\server-data\cache\yarn-mutex
+  C:\Users\admin\Desktop\FTP\FiveM\server\FXServer.exe C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[default]\[system]\[builders]\yarn\yarn_cli.js install --ignore-scripts --cache-folder C:\Users\admin\Desktop\FTP\FiveM\server-data\cache\yarn-cache --mutex file:C:\Users\admin\Desktop\FTP\FiveM\server-data\cache\yarn-mutex
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\AppData\Local\GitHubDesktop\bin;C:\Users\admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\admin\AppData\Roaming\Composer\vendor\bin
@@ -16,10 +16,10 @@ Platform:
 Trace: 
   SyntaxError: C:\Users\admin\Desktop\FTP\FiveM\server-data\cache\yarn-cache\v6\npm-@webassemblyjs-wasm-gen-1.9.0-50bc70ec68ded8e2763b01a1418bf43491a7a49c-integrity\node_modules\@webassemblyjs\wasm-gen\.yarn-metadata.json: Unexpected end of JSON input
       at JSON.parse (<anonymous>)
-      at C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[system]\[builders]\yarn\yarn_cli.js:1098:57
+      at C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[default]\[system]\[builders]\yarn\yarn_cli.js:1098:57
       at Generator.next (<anonymous>)
-      at step (C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[system]\[builders]\yarn\yarn_cli.js:310:30)
-      at C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[system]\[builders]\yarn\yarn_cli.js:321:13
+      at step (C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[default]\[system]\[builders]\yarn\yarn_cli.js:310:30)
+      at C:\Users\admin\Desktop\FTP\FiveM\server-data\resources\[default]\[system]\[builders]\yarn\yarn_cli.js:321:13
 
 npm manifest: 
   {
