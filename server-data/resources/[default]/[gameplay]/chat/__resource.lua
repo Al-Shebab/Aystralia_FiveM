@@ -10,7 +10,10 @@ files {
     'html/index.css',
     'html/config.default.js',
     'html/config.js',
-    'html/App.js',
+    'html/ooc.png',
+    'html/twt.png',
+    'html/alert.png',
+	'html/App.js',
     'html/Message.js',
     'html/Suggestions.js',
     'html/vendor/vue.2.3.3.min.js',
@@ -24,7 +27,3 @@ files {
     'html/vendor/fonts/LatoBold.woff2',
     'html/vendor/fonts/LatoBold2.woff2',
   }
-
-fx_version 'adamant'
-games { 'rdr3', 'gta5' }
-rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'

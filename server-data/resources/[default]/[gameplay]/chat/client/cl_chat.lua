@@ -1,4 +1,3 @@
-local hideChat = false
 local chatInputActive = false
 local chatInputActivating = false
 local chatHidden = true
@@ -10,7 +9,7 @@ RegisterNetEvent('chat:addMessage')
 RegisterNetEvent('chat:addSuggestion')
 RegisterNetEvent('chat:addSuggestions')
 RegisterNetEvent('chat:removeSuggestion')
-RegisterNetEvent('chat:clear')
+RegisterNetEvent('chat:client:ClearChat')
 
 -- internal events
 RegisterNetEvent('__cfx_internal:serverPrint')
@@ -18,7 +17,7 @@ RegisterNetEvent('__cfx_internal:serverPrint')
 RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
-AddEventHandler('chatMessage', function(author, color, text, msgType)
+AddEventHandler('chatMessage', function(author, color, text)
   local args = { text }
   if author ~= "" then
     table.insert(args, 1, author)
@@ -26,9 +25,7 @@ AddEventHandler('chatMessage', function(author, color, text, msgType)
   SendNUIMessage({
     type = 'ON_MESSAGE',
     message = {
-	  msgType = msgType,
       color = color,
-      multiline = true,
       args = args
     }
   })
@@ -41,19 +38,16 @@ AddEventHandler('__cfx_internal:serverPrint', function(msg)
     type = 'ON_MESSAGE',
     message = {
       templateId = 'print',
-      multiline = true,
       args = { msg }
     }
   })
 end)
 
 AddEventHandler('chat:addMessage', function(message)
-  if not hideChat then
-    SendNUIMessage({
-      type = 'ON_MESSAGE',
-      message = message
-    })
-  end 
+  SendNUIMessage({
+    type = 'ON_MESSAGE',
+    message = message
+  })
 end)
 
 AddEventHandler('chat:addSuggestion', function(name, help, params)
@@ -83,6 +77,13 @@ AddEventHandler('chat:removeSuggestion', function(name)
   })
 end)
 
+RegisterNetEvent('chat:resetSuggestions')
+AddEventHandler('chat:resetSuggestions', function()
+  SendNUIMessage({
+    type = 'ON_COMMANDS_RESET'
+  })
+end)
+
 AddEventHandler('chat:addTemplate', function(id, html)
   SendNUIMessage({
     type = 'ON_TEMPLATE_ADD',
@@ -93,7 +94,7 @@ AddEventHandler('chat:addTemplate', function(id, html)
   })
 end)
 
-AddEventHandler('chat:clear', function(name)
+AddEventHandler('chat:client:ClearChat', function(name)
   SendNUIMessage({
     type = 'ON_CLEAR'
   })
@@ -233,9 +234,4 @@ Citizen.CreateThread(function()
       end
     end
   end
-end)
-
-RegisterNetEvent("ELRP:showHUD")
-AddEventHandler("ELRP:showHUD",function(flag)
-  hideChat = flag
 end)
