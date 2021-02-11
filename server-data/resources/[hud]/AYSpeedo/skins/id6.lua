@@ -188,9 +188,9 @@ Citizen.CreateThread(function()
 				local speed = GetEntitySpeed(veh)
 
 				if useKPH then
-					speed = GetEntitySpeed(veh)*2.236936
+					speed = GetEntitySpeed(veh)*3.6
 				else
-					speed = GetEntitySpeed(veh)*2.236936
+					speed = GetEntitySpeed(veh)*3.6
 				end
 
 				if useKPH then

@@ -313,7 +313,7 @@ Citizen.CreateThread(function()
 					if cst.useKPH == true or cst.useKPH == nil then
 						speed = speed* 3.6
 					else
-						speed = speed*2.236936
+						speed = speed*3.6
 					end
 					speed = tonumber(string.format("%." .. (0) .. "f", speed))
 					speed = tostring(speed)

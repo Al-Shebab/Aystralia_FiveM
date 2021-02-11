@@ -50,15 +50,15 @@ Citizen.CreateThread(function()
 					SetRichPresence("[ID "..pId.."] Going for a ride")
 				end
 			elseif GetVehiclePedIsUsing(PlayerPedId()) ~= nil and not IsPedInAnyHeli(PlayerPedId()) and not IsPedInAnyPlane(PlayerPedId()) and not IsPedOnFoot(PlayerPedId()) and not IsPedInAnySub(PlayerPedId()) and not IsPedInAnyBoat(PlayerPedId()) then
-				local MPH = math.ceil(GetEntitySpeed(GetVehiclePedIsUsing(PlayerPedId())) * 2.236936)
+				local MPH = math.ceil(GetEntitySpeed(GetVehiclePedIsUsing(PlayerPedId())) * 3.6)
 				if MPH > 220 then
-					SetRichPresence("[ID "..pId.."] Bolting at "..MPH.."mph")
+					SetRichPresence("[ID "..pId.."] Bolting at "..MPH.."kph")
 				elseif MPH <= 220 and MPH > 150 then
-					SetRichPresence("[ID "..pId.."] Racing at "..MPH.."mph")
+					SetRichPresence("[ID "..pId.."] Racing at "..MPH.."kph")
 				elseif MPH <= 150 and MPH > 70 then
-					SetRichPresence("[ID "..pId.."] Driving at "..MPH.."mph")
+					SetRichPresence("[ID "..pId.."] Driving at "..MPH.."kph")
 				elseif MPH <= 70 and MPH > 0 then
-					SetRichPresence("[ID "..pId.."] Cruising at "..MPH.."mph")
+					SetRichPresence("[ID "..pId.."] Cruising at "..MPH.."kph")
 				elseif MPH == 0 then
 					SetRichPresence("[ID "..pId.."] Inside "..VehName)
 				elseif PedJumpingOutOfVehicle(PlayerPedId()) or IsPedGettingIntoAVehicle(PlayerPedId()) then
@@ -76,7 +76,7 @@ Citizen.CreateThread(function()
 			elseif IsPedSwimming(PlayerPedId()) and IsPedSwimmingUnderWater(PlayerPedId()) then
 				SetRichPresence("[ID "..pId.."] Diving")
 			elseif IsPedInAnyBoat(PlayerPedId()) and IsEntityInWater(GetVehiclePedIsUsing(PlayerPedId())) then
-				SetRichPresence("[ID "..pId.."] Sailing at "..MPH.."mph")
+				SetRichPresence("[ID "..pId.."] Sailing at "..MPH.."kph")
 			elseif IsPedInAnySub(PlayerPedId()) and IsEntityInWater(GetVehiclePedIsUsing(PlayerPedId())) then
 				SetRichPresence("[ID "..pId.."] In a Submarine")
 			end
