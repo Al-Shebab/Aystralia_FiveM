@@ -1,16 +1,12 @@
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+fx_version "adamant"
+
+games {"gta5"}
 
 client_scripts {
 	"client.lua",
 
-	-- add skins here
-	"skins/initiald.lua",
-	"skins/default.lua",
-	"skins/default_middle.lua",
-	"skins/id4.lua",
-	"skins/id5.lua",
-	"skins/id6.lua",
-	"skins/id7.lua",
+	-- DONT ADD SKINS HERE, *.lua MEANS ALL .LUA FILES!!!
+	"skins/*.lua",
 
 
 }
@@ -29,6 +25,7 @@ exports {
 
 ui_page('skins/initiald.html')
 files({
+	'skins/id6.lua',
     'skins/initiald.html',
     'skins/initiald.ogg'
 })
