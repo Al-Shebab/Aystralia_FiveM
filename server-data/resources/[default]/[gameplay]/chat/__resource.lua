@@ -1,8 +1,20 @@
 description 'chat management stuff'
 
+dependency "vrp"
+
+server_scripts{ 
+  "@vrp/lib/utils.lua",
+  "server.lua"
+}
+
+client_scripts{ 
+  "client.lua"
+}
+
 ui_page 'html/index.html'
 
 client_script 'cl_chat.lua'
+
 server_script 'sv_chat.lua'
 
 files {
@@ -10,10 +22,7 @@ files {
     'html/index.css',
     'html/config.default.js',
     'html/config.js',
-    'html/ooc.png',
-    'html/twt.png',
-    'html/alert.png',
-	'html/App.js',
+    'html/App.js',
     'html/Message.js',
     'html/Suggestions.js',
     'html/vendor/vue.2.3.3.min.js',
