@@ -8,57 +8,24 @@ local cfg = {}
 --- onjoin (optional): function(player) (called when the player join the group)
 --- onleave (optional): function(player) (called when the player leave the group)
 --- (you have direct access to vRP and vRPclient, the tunnel to client, in the config callbacks)
-    --_config = {onspawn = function(player) vRPclient.notify(player,{"You are superadmin."}) end},
 
 cfg.groups = {
   ["superadmin"] = {
-    "owner.chattitle",
-	"management.paycheck",
+    _config = {onspawn = function(player) vRPclient.notify(player,{"You are superadmin."}) end},
     "player.group.add",
     "player.group.add.superadmin",
-    "player.group.add.admin",
+    "player.group.add.admin",  --- this is just a example which can be added to admin/mod group if being made
     "player.group.remove",
     "player.givemoney",
     "player.giveitem"
   },
-  ["developer"] = {
-    "developer.chattitle",
-	"management.paycheck",
-    "player.group.add",
-    "player.group.add.superadmin",
-    "player.group.add.admin",
-    "player.group.remove",
-    "player.givemoney",
-    "player.giveitem"
-  },
-  ["community-manager"] = {
-    "community-manager.chattitle",
-	"management.paycheck",
-    "player.group.add",
-    "player.group.add.superadmin",
-    "player.group.add.admin",
-    "player.group.remove",
-    "player.givemoney",
-    "player.giveitem"
-  },
-  ["staff-manager"] = {
-    "staff-manager.chattitle",
-	"management.paycheck",
-    "player.group.add",
-    "player.group.add.superadmin",
-    "player.group.add.admin",
-    "player.group.remove",
-    "player.givemoney",
-    "player.giveitem"
-  },
-  ["senior-admin"] = {
-    "senior-admin.chattitle",
-	"staff.paycheck",
+  ["admin"] = {
     "admin.tickets",
     "admin.announce",
 	"admin.menu",
 	"admin.easy_unjail",
 	"admin.spikes",
+	-- "admin.godmode",
 	"admin.spawnveh",
 	"admin.deleteveh",
 	"player.blips",
@@ -79,37 +46,15 @@ cfg.groups = {
 	"emergency.shop",
     "player.tpto"
   },
-  ["administrator"] = {
-    "administrator.chattitle",
-	"staff.paycheck",
-    "admin.tickets",
-    "admin.announce",
-	"admin.menu",
-	"admin.easy_unjail",
-	"admin.spikes",
-	"admin.spawnveh",
-	"admin.deleteveh",
-	"player.blips",
-	"player.tptowaypoint",
+     -- ["god"] = {
+    -- "admin.god" -- reset survivals/health periodically
+  -- },
+  ["recruiter"] = {
     "player.list",
-    "player.whitelist",
-    "player.unwhitelist",
-    "player.kick",
-    "player.ban",
-    "player.unban",
-    "player.noclip",
-    "player.custom_emote",
-    "player.custom_sound",
-    "player.display_custom",
-    "player.coords",
-    "player.tptome",
-	"emergency.revive",
-	"emergency.shop",
-    "player.tpto"
-  },
-  ["senior-moderator"] = {
-    "senior-moderator.chattitle",
-	"staff.paycheck",
+	"player.group.add",
+    "player.group.remove"
+    },
+  ["mod"] = {
 	"admin.tickets",
     "admin.announce",
     "player.list",
@@ -120,123 +65,13 @@ cfg.groups = {
 	"emergency.shop",
     "player.tpto"
   },
-  ["moderator"] = {
-    "moderator.chattitle",
-	"staff.paycheck",
-	"admin.tickets",
-    "admin.announce",
-    "player.list",
-    "player.kick",
-    "player.coords",
-    "player.tptome",
-	"emergency.revive",
-	"emergency.shop",
-    "player.tpto"
-  },
-  ["trial-moderator"] = {
-    "trial-moderator.chattitle",
-	"staff.paycheck",
-	"admin.tickets",
-    "admin.announce",
-    "player.list",
-    "player.kick",
-    "player.coords",
-    "player.tptome",
-	"emergency.revive",
-	"emergency.shop",
-    "player.tpto"
-  },
-  ["ayssie"] = {
-    "ayssie.chattitle",
-    "player.phone",
-    "player.calladmin",
-	"player.fix_haircut",
-	"player.check",
-    "police.askid",
-    "police.store_weapons",
-	"player.skip_coma",
-	"player.store_money",
-	"player.check",
-	"player.loot",
-	"player.player_menu",
-	"player.userlist",
-    "police.seizable",
-	"user.paycheck"
-  },
-  ["sydney"] = {
-    "sydney.chattitle",
-    "player.phone",
-    "player.calladmin",
-	"player.fix_haircut",
-	"player.check",
-    "police.askid",
-    "police.store_weapons",
-	"player.skip_coma",
-	"player.store_money",
-	"player.check",
-	"player.loot",
-	"player.player_menu",
-	"player.userlist",
-    "police.seizable",
-	"user.paycheck"
-  },
-  ["melbourne"] = {
-    "melbourne.chattitle",
-    "player.phone",
-    "player.calladmin",
-	"player.fix_haircut",
-	"player.check",
-    "police.askid",
-    "police.store_weapons",
-	"player.skip_coma",
-	"player.store_money",
-	"player.check",
-	"player.loot",
-	"player.player_menu",
-	"player.userlist",
-    "police.seizable",
-	"user.paycheck"
-  },
-  ["brisbane"] = {
-    "brisbane.chattitle",
-    "player.phone",
-    "player.calladmin",
-	"player.fix_haircut",
-	"player.check",
-    "police.askid",
-    "police.store_weapons",
-	"player.skip_coma",
-	"player.store_money",
-	"player.check",
-	"player.loot",
-	"player.player_menu",
-	"player.userlist",
-    "police.seizable",
-	"user.paycheck"
-  },
-  ["perth"] = {
-    "perth.chattitle",
-    "player.phone",
-    "player.calladmin",
-	"player.fix_haircut",
-	"player.check",
-    "police.askid",
-    "police.store_weapons",
-	"player.skip_coma",
-	"player.store_money",
-	"player.check",
-	"player.loot",
-	"player.player_menu",
-	"player.userlist",
-    "police.seizable",
-	"user.paycheck"
-  },
+  -- the group user is auto added to all logged players
   ["user"] = {
-    "user.chattitle",
     "player.phone",
     "player.calladmin",
 	"player.fix_haircut",
 	"player.check",
+	--"mugger.mug",
     "police.askid",
     "police.store_weapons",
 	"player.skip_coma",
@@ -245,7 +80,7 @@ cfg.groups = {
 	"player.loot",
 	"player.player_menu",
 	"player.userlist",
-    "police.seizable",
+    "police.seizable",	-- can be seized
 	"user.paycheck"
   },
   ["Fisher"] = {
