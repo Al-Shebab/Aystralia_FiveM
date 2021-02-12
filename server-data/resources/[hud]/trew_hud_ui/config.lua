@@ -2,7 +2,7 @@ local Config = {}
 
 Config.Locale = 'en'
 
-Config.serverLogo = 'https://i.imgur.com/AcgDL9f.png'
+Config.serverLogo = 'https://i.imgur.com/RCYdZo8.png'
 
 Config.font = {
 	name 	= 'Montserrat',
@@ -43,7 +43,7 @@ Config.vehicle = {
 }
 
 Config.ui = {
-	showServerLogo		= false,
+	showServerLogo		= true,
 
 	showJob		 		= false,
 
