@@ -34,7 +34,7 @@ client_scripts{
   -- "gameui-client.lua",
   "weathersync-client.lua",
   -- "missiontext-client.lua",
-  -- "Nopeds/client.lua",
+  "Nopeds/client.lua",
   -- "noweapondrops-client.lua"
  }
  

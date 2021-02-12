@@ -27,7 +27,6 @@ Tunnel.bindInterface("vrp_voice_display",vRPvd)
 
 function vRPvd.setVoiceDisplay(player,volume)
 	if not player then player = source end
-	vRPclient.setDiv(player,{"voice_text",cfg[volume].css,cfg[volume].text})
     vRPclient.setDiv(player,{"voice_icon",cfg[volume].css,cfg[volume].text})
 	VDclient.setTalkerProxity(player,{cfg[volume].distance})
 end
