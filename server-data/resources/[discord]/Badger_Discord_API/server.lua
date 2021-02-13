@@ -18,12 +18,12 @@ AddEventHandler('Badger_Discord_API:PlayerLoaded', function()
 	end
 	local license = ExtractIdentifiers(source).license;
 	if (tracked[license] == nil) then 
-		tracked[license] = true,
+		tracked[license] = true;
 	end
 end)
 
 --card = '{"type":"AdaptiveCard","$schema":"http://adaptivecards.io/schemas/adaptive-card.json","version":"1.2","body":[{"type":"Container","items":[{"type":"TextBlock","text":"Badger_Discord_API","wrap":true,"fontType":"Default","size":"ExtraLarge","weight":"Bolder","color":"Light","horizontalAlignment":"Center"},{"type":"TextBlock","text":"' .. Config.Splash.Heading1 .. '","wrap":true,"size":"Large","weight":"Bolder","color":"Light"},{"type":"TextBlock","text":"' .. Config.Splash.Heading2 .. '","wrap":true,"color":"Light","size":"Medium"},{"type":"ColumnSet","height":"stretch","minHeight":"100px","bleed":true,"horizontalAlignment":"Center","columns":[{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Discord","url":"' .. Config.Splash.Discord_Link .. '","style":"positive"}]}],"height":"stretch"},{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Website","style":"positive","url":"' .. Config.Splash.Website_Link .. '"}]}]}]},{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Click to join Badger\'s Discord","style":"destructive","iconUrl":"https://i.gyazo.com/c629f37bb1aeed2c1bc1768fdc93bc1a.gif","url":"https://discord.com/invite/WjB5VFz"}]}],"style":"default","bleed":true,"height":"stretch","isVisible":true}]}'
-card = '{"type":"AdaptiveCard","$schema":"http://adaptivecards.io/schemas/adaptive-card.json","version":"1.2","body":[{"type":"Image","url":"' .. Config.Splash.Header_IMG .. '","horizontalAlignment":"Center"},{"type":"Container","items":[{"type":"TextBlock","text":"Badger_Discord_API","wrap":true,"fontType":"Default","size":"ExtraLarge","weight":"Bolder","color":"Light","horizontalAlignment":"Center"},{"type":"TextBlock","text":"' .. Config.Splash.Heading1 .. '","wrap":true,"size":"Large","weight":"Bolder","color":"Light", "horizontalAlignment":"Center"},{"type":"TextBlock","text":"' .. Config.Splash.Heading2 .. '","wrap":true,"color":"Light","size":"Medium","horizontalAlignment":"Center"},{"type":"ColumnSet","height":"stretch","minHeight":"100px","bleed":true,"horizontalAlignment":"Center","columns":[{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Discord","url":"' .. Config.Splash.Discord_Link .. '","style":"positive"}]}],"height":"stretch"},{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Website","style":"positive","url":"' .. Config.Splash.Website_Link .. '"}]}]}]},{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Click to join Badger\'s Discord","style":"destructive","iconUrl":"https://i.gyazo.com/c629f37bb1aeed2c1bc1768fdc93bc1a.gif","url":"https://discord.com/invite/WjB5VFz"}]}],"style":"default","bleed":true,"height":"stretch","isVisible":false}]}'
+card = '{"type":"AdaptiveCard","$schema":"http://adaptivecards.io/schemas/adaptive-card.json","version":"1.2","body":[{"type":"Image","url":"' .. Config.Splash.Header_IMG .. '","horizontalAlignment":"Center"},{"type":"Container","items":[{"type":"TextBlock","text":"Badger_Discord_API","wrap":true,"fontType":"Default","size":"ExtraLarge","weight":"Bolder","color":"Light","horizontalAlignment":"Center"},{"type":"TextBlock","text":"' .. Config.Splash.Heading1 .. '","wrap":true,"size":"Large","weight":"Bolder","color":"Light", "horizontalAlignment":"Center"},{"type":"TextBlock","text":"' .. Config.Splash.Heading2 .. '","wrap":true,"color":"Light","size":"Medium","horizontalAlignment":"Center"},{"type":"ColumnSet","height":"stretch","minHeight":"100px","bleed":true,"horizontalAlignment":"Center","columns":[{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Discord","url":"' .. Config.Splash.Discord_Link .. '","style":"positive"}]}],"height":"stretch"},{"type":"Column","width":"stretch","items":[{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Website","style":"positive","url":"' .. Config.Splash.Website_Link .. '"}]}]}]},{"type":"ActionSet","actions":[{"type":"Action.OpenUrl","title":"Click to join Badger\'s Discord","style":"destructive","iconUrl":"https://i.gyazo.com/c629f37bb1aeed2c1bc1768fdc93bc1a.gif","url":"https://discord.com/invite/WjB5VFz"}]}],"style":"default","bleed":true,"height":"stretch","isVisible":true}]}'
 if Config.Splash.Enabled then 
 	AddEventHandler('playerConnecting', function(name, setKickReason, deferrals) 
 		-- Player is connecting
@@ -162,7 +162,7 @@ function IsDiscordEmailVerified(user)
                 --print("---")
             end
         else 
-        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return isVerified;
@@ -190,7 +190,7 @@ function GetDiscordEmail(user)
                 --print("---")
             end
         else 
-        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return emailData;
@@ -218,7 +218,7 @@ function GetDiscordName(user)
                 --print("---")
             end
         else 
-        	print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+        	print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
         end
     end
     return nameData;
@@ -236,7 +236,7 @@ function GetGuildIcon()
 			return 'https://cdn.discordapp.com/icons/' .. Config.Guild_ID .. "/" .. data.icon .. ".png";
 		end 
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -248,7 +248,7 @@ function GetGuildSplash()
 		-- Image 
 		return 'https://cdn.discordapp.com/splashes/' .. Config.Guild_ID .. "/" .. data.icon .. ".png";
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end 
@@ -260,7 +260,7 @@ function GetGuildName()
 		-- Image 
 		return data.name;
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -272,7 +272,7 @@ function GetGuildDescription()
 		-- Image 
 		return data.description;
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -284,7 +284,7 @@ function GetGuildMemberCount()
 		-- Image 
 		return data.approximate_member_count;
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -295,7 +295,7 @@ function GetGuildOnlineMemberCount()
 		local data = json.decode(guild.data)
 		return data.approximate_presence_count;
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 	return nil;
 end
@@ -329,14 +329,14 @@ function GetDiscordAvatar(user)
 					--print("---")
 				end
 			else 
-				print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: " .. member.data)
+				print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: " .. member.data)
 			end
 			Caches.Avatars[discordId] = imgURL;
 		else 
 			imgURL = Caches.Avatars[discordId];
 		end 
 	else 
-		print("[Discord Permissions] ERROR: Discord ID was not found...")
+		print("[Badger_Perms] ERROR: Discord ID was not found...")
 	end
     return imgURL;
 end
@@ -361,7 +361,7 @@ function GetGuildRoleList()
 			end
 			Caches.RoleList = roleList;
 		else
-			print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+			print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 			Caches.RoleList = nil;
 		end
 	end
@@ -386,11 +386,11 @@ function GetDiscordRoles(user)
 			local found = true
 			return roles
 		else
-			print("[Discord Permissions] ERROR: Code 200 was not reached... Returning false. [Member Data NOT FOUND]")
+			print("[Badger_Perms] ERROR: Code 200 was not reached... Returning false. [Member Data NOT FOUND]")
 			return false
 		end
 	else
-		print("[Discord Permissions] ERROR: Discord was not connected to user's Fivem account...")
+		print("[Badger_Perms] ERROR: Discord was not connected to user's Fivem account...")
 		return false
 	end
 	return false
@@ -413,11 +413,11 @@ function GetDiscordNickname(user)
 			local nickname = data.nick
 			return nickname;
 		else
-			print("[Discord Permissions] ERROR: Code 200 was not reached. Error provided: "..member.data)
+			print("[Badger_Perms] ERROR: Code 200 was not reached. Error provided: "..member.data)
 			return nil;
 		end
 	else
-		print("[Discord Permissions] ERROR: Discord was not connected to user's Fivem account...")
+		print("[Badger_Perms] ERROR: Discord was not connected to user's Fivem account...")
 		return nil;
 	end
 	return nil;
@@ -427,8 +427,8 @@ Citizen.CreateThread(function()
 	local guild = DiscordRequest("GET", "guilds/"..Config.Guild_ID, {})
 	if guild.code == 200 then
 		local data = json.decode(guild.data)
-		print("[Discord Permissions] Permission system guild set to: "..data.name.." ("..data.id..")")
+		print("[Badger_Perms] Permission system guild set to: "..data.name.." ("..data.id..")")
 	else
-		print("[Discord Permissions] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
+		print("[Badger_Perms] An error occured, please check your config and ensure everything is correct. Error: "..(guild.data or guild.code)) 
 	end
 end)
