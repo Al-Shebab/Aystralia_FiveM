@@ -5,7 +5,6 @@ Citizen.CreateThread(function()
 		--StopResource(GetCurrentResourceName());
 		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named Badger_Discord_API for it to work properly with other scripts...");
 	end
-	print("[Badger_Discord_API] For support, make sure to join Badger's official Discord server: discord.gg/WjB5VFz");
 end)
 
 tracked = {}

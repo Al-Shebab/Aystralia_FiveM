@@ -53,7 +53,7 @@ Config.ui = {
 
 	showDate 			= false,
 	showLocation 		= false,
-	showVoice	 		= true,
+	showVoice	 		= false,
 
 	showHealth			= false,
 	showArmor	 		= false,
