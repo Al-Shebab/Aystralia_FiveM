@@ -204,6 +204,219 @@ window.onload = function () {
 				}
 			},
 
+
+
+
+
+
+			updateVehicle: function(data) {
+
+				var vehicleInfo = document.querySelector('.info.vehicle');
+				var vehicleSeatbelt = document.querySelector('#seatbelt');
+				var vehicleLights = document.querySelector('#lights');
+				var vehicleSignals = document.querySelector('#signals');
+				var vehicleFuel = document.querySelector('#fuel');
+				var vehicleCruiser = document.querySelector('#vehicle-speed strong');
+				var vehiclesCars = [0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20];
+
+				if (data.status == true) {
+					if (vehicleInfo.classList.contains('inactive')) {
+
+						vehicleSeatbelt.style.display = 'none';
+						vehicleLights.style.display = 'none';
+						vehicleSignals.style.display = 'none';
+						vehicleFuel.style.display = 'none';
+
+						if (vehiclesCars.indexOf(data.type) > -1) {
+							document.querySelector('#vehicle-others').style.display = 'none';
+							document.querySelector('#vehicle-gear').style.display = 'block';
+
+							vehicleSeatbelt.style.display = 'block';
+							vehicleLights.style.display = 'block';
+							vehicleSignals.style.display = 'block';
+							vehicleFuel.style.display = 'block';
+							
+							document.querySelector('#vehicle-gear').style.display = 'block';
+						}
+
+						else {
+							document.querySelector('#vehicle-others').style.display = 'block';
+							document.querySelector('#vehicle-gear').style.display = 'none';
+							document.querySelector('#vehicle-others i').classList.remove('fa-biking', 'fa-helicopter', 'fa-ship');
+
+							if (data.type == 13) { document.querySelector('#vehicle-others i').classList.add('fa-biking'); } 
+							else if (data.type == 14) { document.querySelector('#vehicle-others i').classList.add('fa-ship'); } 
+							else if (data.type == 15) { document.querySelector('#vehicle-others i').classList.add('fa-helicopter'); }
+							else if (data.type == 16) { document.querySelector('#vehicle-others i').classList.add('fa-plane'); } 
+							else if (data.type == 21) { document.querySelector('#vehicle-others i').classList.add('fa-train'); } 
+						}
+
+						vehicleInfo.classList.remove('inactive');
+						vehicleInfo.classList.add('active', 'fadeIn');
+					}
+
+					if (vehicleInfo.classList.contains('updated') == false) {
+
+						var vehicleSpeedUnit = data.config.speedUnit.slice(0,2)+'/'+data.config.speedUnit.slice(-1);
+						var vehicleAverageSpeed = Math.ceil(data.config.maxSpeed / 6);
+
+						vehicleInfo.classList.add('updated');
+						saferInnerHTML(vehicleCruiser,vehicleSpeedUnit);
+
+					}
+
+
+
+
+					var previousGear = document.querySelector('#vehicle-gear span').innerHTML;
+					var currentGear = data.gear;
+					if (previousGear != currentGear) { document.querySelector('#vehicle-gear').classList.add('pulse') }
+					saferInnerHTML(document.querySelector('#vehicle-gear span'), data.gear);
+
+
+
+
+
+
+					var speedometerCircle = document.querySelector('#progress-speed svg circle.speed');
+					var speedPercentage = Math.floor(Math.floor(data.speed*100)/data.config.maxSpeed);
+					
+					speedometerCircle.classList.remove('zero');
+					speedometerCircle.classList.remove('twentyfive');
+					speedometerCircle.classList.remove('fifty');
+					speedometerCircle.classList.remove('seventyfive');
+
+					if (speedPercentage >= 0 && speedPercentage <= 25) { speedometerCircle.classList.add('zero'); }
+					else if (speedPercentage > 25 && speedPercentage <= 50) { speedometerCircle.classList.add('twentyfive'); }
+					else if (speedPercentage > 50 && speedPercentage <= 75) { speedometerCircle.classList.add('fifty'); }
+					else if (speedPercentage > 75) { speedometerCircle.classList.add('seventyfive'); }
+
+					document.querySelector('#progress-speed svg circle.speed').style.strokeDashoffset = data.nail;
+					saferInnerHTML(document.querySelector('#vehicle-speed span'), data.speed);
+
+
+
+
+
+
+
+
+					if ( (data.seatbelt.status == true) && (vehicleSeatbelt.classList.contains('on') == false) ) {
+						vehicleSeatbelt.classList.remove('off');
+						vehicleSeatbelt.classList.add('on');
+
+						eventCallback.sound('sounds/seatbelt-buckle.ogg', { volume: '0.50' });
+					}
+					else if ( (data.seatbelt.status == false) && (vehicleSeatbelt.classList.contains('off') == false) ) {
+						vehicleSeatbelt.classList.remove('on');
+						vehicleSeatbelt.classList.add('off');
+
+						eventCallback.sound('sounds/seatbelt-unbuckle.ogg', { volume: '0.50' });
+					}
+
+
+
+
+
+
+
+
+
+
+					if (vehicleCruiser.classList.contains(data.cruiser) == false) {
+						vehicleCruiser.classList.remove('on','off');
+						vehicleCruiser.classList.add(data.cruiser);
+					}
+
+
+
+
+					if (data.siren == true) { document.querySelector('#vehicle-gear').classList.add('pulsing'); }
+					else { document.querySelector('#vehicle-gear').classList.remove('pulsing'); }
+
+
+
+
+
+
+					if (vehicleLights.classList.contains(data.lights) == false) {
+						vehicleLights.classList.remove('normal','high','off');
+						vehicleLights.classList.add(data.lights);
+
+						if (data.lights == 'high') { vehicleLights.querySelector('i img').src = 'img/vehicle-lights-high.png'; }
+						else { vehicleLights.querySelector('i img').src = 'img/vehicle-lights.png'; }
+					}
+
+
+
+
+
+
+
+
+
+
+					if (vehicleSignals.classList.contains(data.signals) == false) {
+
+						vehicleSignals.querySelector('i').className = 'fa fa-arrows-alt-h';
+						vehicleSignals.classList.remove('left','right','both','off');
+
+						if ( (data.signals == 'left') || (data.signals == 'right') || (data.signals == 'both') ) {
+
+							var classSignal = 'fa-long-arrow-alt-'+data.signals;
+							if (data.signals == 'both') { classSignal = 'fa-arrows-alt-h'; }
+
+							vehicleSignals.querySelector('i').classList.add('fas',classSignal);
+							vehicleSignals.classList.add(data.signals, 'dying');
+
+							eventCallback.sound('sounds/car-indicators.ogg', { loop: 'loop' });
+						}
+
+						else if (data.signals == 'off') {
+							vehicleSignals.querySelector('i').classList.add('fas','fa-arrows-alt-h');
+							vehicleSignals.classList.remove('dying');
+							vehicleSignals.classList.add(data.signals);
+
+							eventCallback.sound();
+						}
+
+
+					}
+					
+					
+
+
+
+
+
+
+
+
+
+
+					vehicleFuel.querySelector('span').style.height = data.fuel+'%';
+
+					if (data.fuel <= 35) {
+						if (vehicleFuel.classList.contains('dying') == false) { vehicleFuel.classList.add('dying');	}
+					}
+					else { vehicleFuel.classList.remove('dying'); }
+
+				}
+				else {
+					if (vehicleInfo.classList.contains('active')) {
+						vehicleSeatbelt.classList.remove('on');
+						vehicleCruiser.classList.remove('on');
+
+						vehicleInfo.classList.remove('active');
+						vehicleInfo.classList.add('inactive', 'fadeOut');
+
+						eventCallback.sound();
+					}
+
+				}
+				
+			},
+			
 			toggleUi: function(data) {
 				var uiID = document.querySelector('#ui');
 				if (data.value == true) {
@@ -241,8 +454,40 @@ window.onload = function () {
 
 
 			},
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
 		};
+
+		document.querySelectorAll('.icon i').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () { this.parentElement.classList.remove('pulse'); this.parentElement.classList.remove('shooting'); });
+
+		document.querySelectorAll('.info.vehicle').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+			this.classList.remove('fadeOut', 'fadeIn');
+		});
+
+
 
 		window.addEventListener('message', function(event) {
 			eventCallback[event.data.action](event.data);

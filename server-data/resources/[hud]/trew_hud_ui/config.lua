@@ -2,7 +2,7 @@ local Config = {}
 
 Config.Locale = 'en'
 
-Config.serverLogo = 'https://i.imgur.com/AcgDL9f.png'
+Config.serverLogo = 'https://i.imgur.com/RCYdZo8.png'
 
 Config.font = {
 	name 	= 'Montserrat',
@@ -11,27 +11,27 @@ Config.font = {
 
 Config.date = {
 	format	 	= 'default',
-	AmPm		= true
+	AmPm		= false
 }
 
 Config.voice = {
 
 	levels = {
-		default = 7.0,
-		shout = 15.0,
-		whisper = 2.0,
+		default = 5.0,
+		shout = 12.0,
+		whisper = 1.0,
 		current = 0
 	},
 	
 	keys = {
-		distance 	= 'PAGEUP',
+		distance 	= 'HOME',
 	}
 }
 
 
 Config.vehicle = {
-	speedUnit = 'MPH',
-	maxSpeed = 1000,
+	speedUnit = 'KMH',
+	maxSpeed = 240,
 
 	keys = {
 		seatbelt 	= 'K',
@@ -43,7 +43,7 @@ Config.vehicle = {
 }
 
 Config.ui = {
-	showServerLogo		= false,
+	showServerLogo		= true,
 
 	showJob		 		= false,
 

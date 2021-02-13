@@ -16,7 +16,9 @@ AddEventHandler('trew_hud_ui:getServerInfo', function()
 	local player = vRP.getUserSource({playerID})
 
 	local info = {
+
 		job = vRP.getUserGroupByType({playerID, 'job'}),
+
 		money = vRP.getMoney({playerID}),
 		bankMoney = vRP.getBankMoney({playerID}),
 		blackMoney = vRP.getInventoryItemAmount({playerID, Config.vRP.items.blackMoney})

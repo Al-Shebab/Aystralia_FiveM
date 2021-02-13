@@ -13,6 +13,284 @@ function _U(entry)
 	return Locales[ Config.Locale ][entry] 
 end
 
+local vehiclesCars = {0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20};
+
+-- Hides TREW UI when it's on Pause Menu
+Citizen.CreateThread(function()
+
+    local isPauseMenu = false
+
+	while true do
+		Citizen.Wait(0)
+
+		if IsPauseMenuActive() then -- ESC Key
+			if not isPauseMenu then
+				isPauseMenu = not isPauseMenu
+				SendNUIMessage({ action = 'toggleUi', value = false })
+		else
+			if isPauseMenu then
+				isPauseMenu = not isPauseMenu
+				SendNUIMessage({ action = 'toggleUi', value = true })
+			end
+
+			HideHudComponentThisFrame(1)  -- Wanted Stars
+			HideHudComponentThisFrame(2)  -- Weapon Icon
+			HideHudComponentThisFrame(3)  -- Cash
+			HideHudComponentThisFrame(4)  -- MP Cash
+			HideHudComponentThisFrame(6)  -- Vehicle Name
+			HideHudComponentThisFrame(7)  -- Area Name
+			HideHudComponentThisFrame(8)  -- Vehicle Class
+			HideHudComponentThisFrame(9)  -- Street Name
+			HideHudComponentThisFrame(13) -- Cash Change
+			HideHudComponentThisFrame(17) -- Save Game
+			HideHudComponentThisFrame(20) -- Weapon Stats
+		end
+
+
+	end
+end)
+
+
+
+
+
+
+-- Date and time update
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1000)
+		if Config.ui.showDate == true then
+			SendNUIMessage({ action = 'setText', id = 'date', value = trewDate() })
+		end
+	end
+end)
+
+
+
+
+
+-- Location update
+Citizen.CreateThread(function()
+
+	while true do
+		Citizen.Wait(100)
+
+		local player = GetPlayerPed(-1)
+
+		local position = GetEntityCoords(player)
+
+		if Config.ui.showLocation == true then
+			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
+			local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
+
+			local locationMessage = nil
+
+			if zoneNameFull then 
+				locationMessage = streetName .. ', ' .. zoneNameFull
+			else
+				locationMessage = streetName
+			end
+
+			locationMessage = string.format(
+				Locales[Config.Locale]['you_are_on_location'],
+				locationMessage
+			)
+
+			SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
+		end
+	end
+end)
+
+
+
+
+
+-- Vehicle Info
+local vehicleCruiser
+local vehicleSignalIndicator = 'off'
+local seatbeltEjectSpeed = 45.0 
+local seatbeltEjectAccel = 100.0
+local seatbeltIsOn = false
+local currSpeed = 0.0
+local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
+
+Citizen.CreateThread(function()
+	
+	while true do
+
+		Citizen.Wait(100)
+
+		local player = GetPlayerPed(-1)
+		local vehicle = GetVehiclePedIsIn(player, false)
+		local position = GetEntityCoords(player)
+		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
+		local vehicleInfo
+
+		if IsPedInAnyVehicle(player, false) and vehicleIsOn then
+
+
+			local vehicleClass = GetVehicleClass(vehicle)
+
+
+			if Config.ui.showMinimap == false then
+				DisplayRadar(true)
+			end
+
+			-- Vehicle Speed
+			local vehicleSpeedSource = GetEntitySpeed(vehicle)
+			local vehicleSpeed
+			if Config.vehicle.speedUnit == 'MPH' then
+				vehicleSpeed = math.ceil(vehicleSpeedSource * 2.237)
+			else
+				vehicleSpeed = math.ceil(vehicleSpeedSource * 3.6)
+			end
+
+			-- Vehicle Gradient Speed
+			local vehicleNailSpeed
+
+			if vehicleSpeed > Config.vehicle.maxSpeed then
+				vehicleNailSpeed = math.ceil(  280 - math.ceil( math.ceil(Config.vehicle.maxSpeed * 205) / Config.vehicle.maxSpeed) )
+			else
+				vehicleNailSpeed = math.ceil(  280 - math.ceil( math.ceil(vehicleSpeed * 205) / Config.vehicle.maxSpeed) )
+			end
+
+
+			
+			-- Vehicle Fuel and Gear
+			local vehicleFuel
+			vehicleFuel = GetVehicleFuelLevel(vehicle)
+
+			local vehicleGear = GetVehicleCurrentGear(vehicle)
+
+			if (vehicleSpeed == 0 and vehicleGear == 0) or (vehicleSpeed == 0 and vehicleGear == 1) then
+				vehicleGear = 'N'
+			elseif vehicleSpeed > 0 and vehicleGear == 0 then
+				vehicleGear = 'R'
+			end
+
+			-- Vehicle Lights
+			local vehicleVal,vehicleLights,vehicleHighlights  = GetVehicleLightsState(vehicle)
+			local vehicleIsLightsOn
+			if vehicleLights == 1 and vehicleHighlights == 0 then
+				vehicleIsLightsOn = 'normal'
+			elseif (vehicleLights == 1 and vehicleHighlights == 1) or (vehicleLights == 0 and vehicleHighlights == 1) then
+				vehicleIsLightsOn = 'high'
+			else
+				vehicleIsLightsOn = 'off'
+			end
+
+
+
+
+
+
+			-- Vehicle Siren
+			local vehicleSiren
+
+			if IsVehicleSirenOn(vehicle) then
+				vehicleSiren = true
+			else
+				vehicleSiren = false
+			end
+
+
+
+
+
+
+			-- Vehicle Seatbelt
+			if has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8 then
+
+				local prevSpeed = currSpeed
+                currSpeed = vehicleSpeedSource
+
+                SetPedConfigFlag(PlayerPedId(), 32, true)
+
+                if not seatbeltIsOn then
+                	local vehIsMovingFwd = GetEntitySpeedVector(vehicle, true).y > 1.0
+                    local vehAcc = (prevSpeed - currSpeed) / GetFrameTime()
+                    if (vehIsMovingFwd and (prevSpeed > (seatbeltEjectSpeed/2.237)) and (vehAcc > (seatbeltEjectAccel*9.81))) then
+
+                        SetEntityCoords(player, position.x, position.y, position.z - 0.47, true, true, true)
+                        SetEntityVelocity(player, prevVelocity.x, prevVelocity.y, prevVelocity.z)
+                        SetPedToRagdoll(player, 1000, 1000, 0, 0, 0, 0)
+                    else
+                        -- Update previous velocity for ejecting player
+                        prevVelocity = GetEntityVelocity(vehicle)
+                    end
+
+                else
+
+                	DisableControlAction(0, 75)
+
+                end
+
+
+
+			end
+
+			
+
+			vehicleInfo = {
+				action = 'updateVehicle',
+
+				status = true,
+				speed = vehicleSpeed,
+				nail = vehicleNailSpeed,
+				gear = vehicleGear,
+				fuel = vehicleFuel,
+				lights = vehicleIsLightsOn,
+				signals = vehicleSignalIndicator,
+				cruiser = vehicleCruiser,
+				type = vehicleClass,
+				siren = vehicleSiren,
+				seatbelt = {},
+
+				config = {
+					speedUnit = Config.vehicle.speedUnit,
+					maxSpeed = Config.vehicle.maxSpeed
+				}
+			}
+
+			vehicleInfo['seatbelt']['status'] = seatbeltIsOn
+		else
+
+			
+			vehicleCruiser = false
+			vehicleNailSpeed = 0
+			vehicleSignalIndicator = 'off'
+
+            seatbeltIsOn = false
+
+			vehicleInfo = {
+				action = 'updateVehicle',
+
+				status = false,
+				nail = vehicleNailSpeed,
+				seatbelt = { status = seatbeltIsOn },
+				cruiser = vehicleCruiser,
+				signals = vehicleSignalIndicator,
+				type = 0,
+			}
+
+			if Config.ui.showMinimap == false then
+				DisplayRadar(false)
+			end
+
+		end
+
+		SendNUIMessage(vehicleInfo)
+
+
+
+
+
+	end
+end)
+
+
+
+
 -- Player status
 Citizen.CreateThread(function()
 
@@ -256,6 +534,96 @@ Citizen.CreateThread(function()
 	end
 end)
 
+
+
+
+
+
+
+
+
+
+
+-- Everything that neededs to be at WAIT 0
+Citizen.CreateThread(function()
+
+	while true do
+		Citizen.Wait(0)
+
+		local player = GetPlayerPed(-1)
+		local vehicle = GetVehiclePedIsIn(player, false)
+		local vehicleClass = GetVehicleClass(vehicle)
+
+		-- Vehicle Seatbelt
+		if IsPedInAnyVehicle(player, false) and GetIsVehicleEngineRunning(vehicle) then
+			if IsControlJustReleased(0, Keys[Config.vehicle.keys.seatbelt]) and (has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8) then
+				seatbeltIsOn = not seatbeltIsOn
+			end
+		end
+
+		-- Vehicle Cruiser
+		if IsControlJustPressed(1, Keys[Config.vehicle.keys.cruiser]) and GetPedInVehicleSeat(vehicle, -1) == player and (has_value(vehiclesCars, vehicleClass) == true) then
+			
+			local vehicleSpeedSource = GetEntitySpeed(vehicle)
+
+			if vehicleCruiser == 'on' then
+				vehicleCruiser = 'off'
+				SetEntityMaxSpeed(vehicle, GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
+				
+			else
+				vehicleCruiser = 'on'
+				SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
+			end
+		end
+
+
+
+
+
+		-- Vehicle Signal Lights
+		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalLeft]) and (has_value(vehiclesCars, vehicleClass) == true) then
+			if vehicleSignalIndicator == 'off' then
+				vehicleSignalIndicator = 'left'
+			else
+				vehicleSignalIndicator = 'off'
+			end
+
+			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+		end
+
+		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalRight]) and (has_value(vehiclesCars, vehicleClass) == true) then
+			if vehicleSignalIndicator == 'off' then
+				vehicleSignalIndicator = 'right'
+			else
+				vehicleSignalIndicator = 'off'
+			end
+
+			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+		end
+
+		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalBoth]) and (has_value(vehiclesCars, vehicleClass) == true) then
+			if vehicleSignalIndicator == 'off' then
+				vehicleSignalIndicator = 'both'
+			else
+				vehicleSignalIndicator = 'off'
+			end
+
+			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+		end
+
+
+	end
+end)
+
+
+
+
+
+
+
+
+
+
 AddEventHandler('onClientMapStart', function()
 
 	SendNUIMessage({ action = 'ui', config = Config.ui })
@@ -286,6 +654,99 @@ AddEventHandler('playerSpawned', function()
 	HideHudComponentThisFrame(4) -- MP Cash
 	HideHudComponentThisFrame(13) -- Cash changes!
 end)
+
+
+
+
+
+
+
+
+
+AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
+	local driver = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
+	local leftLight
+	local rightLight
+
+	if status == 'left' then
+		leftLight = false
+		rightLight = true
+		if hasTrailer then driver = vehicleTrailer end
+
+	elseif status == 'right' then
+		leftLight = true
+		rightLight = false
+		if hasTrailer then driver = vehicleTrailer end
+
+	elseif status == 'both' then
+		leftLight = true
+		rightLight = true
+		if hasTrailer then driver = vehicleTrailer end
+
+	else
+		leftLight = false
+		rightLight = false
+		if hasTrailer then driver = vehicleTrailer end
+
+	end
+
+	TriggerServerEvent('trew_hud_ui:syncCarLights', status)
+
+	SetVehicleIndicatorLights(driver, 0, leftLight)
+	SetVehicleIndicatorLights(driver, 1, rightLight)
+end)
+
+
+
+RegisterNetEvent('trew_hud_ui:syncCarLights')
+AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
+
+	if GetPlayerFromServerId(driver) ~= PlayerId() then
+		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
+
+		if status == 'left' then
+			leftLight = false
+			rightLight = true
+
+		elseif status == 'right' then
+			leftLight = true
+			rightLight = false
+
+		elseif status == 'both' then
+			leftLight = true
+			rightLight = true
+
+		else
+			leftLight = false
+			rightLight = false
+		end
+
+		SetVehicleIndicatorLights(driver, 0, leftLight)
+		SetVehicleIndicatorLights(driver, 1, rightLight)
+
+	end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function trewDate()
 	local timeString = nil
