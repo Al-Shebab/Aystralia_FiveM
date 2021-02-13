@@ -27,6 +27,7 @@ Citizen.CreateThread(function()
 			if not isPauseMenu then
 				isPauseMenu = not isPauseMenu
 				SendNUIMessage({ action = 'toggleUi', value = false })
+			end
 		else
 			if isPauseMenu then
 				isPauseMenu = not isPauseMenu
