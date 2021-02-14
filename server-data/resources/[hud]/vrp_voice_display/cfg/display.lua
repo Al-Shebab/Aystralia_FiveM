@@ -28,8 +28,8 @@ cfg = {
         content: url(https://i.imgur.com/FgzmFcw.png);
         height: 50px;
         width: 50px;
-	    bottom: 100px;
-        left: 304px;
+	    top: 80px;
+        right: 9px;
       }
     ]]
   },
@@ -42,8 +42,8 @@ cfg = {
         content: url(https://i.imgur.com/W8EMhpF.png);
         height: 50px;
         width: 50px;
-	    bottom: 100px;
-        left: 304px;
+	    top: 80px;
+        right: 9px;
       }
     ]]
   },
@@ -56,8 +56,8 @@ cfg = {
         content: url(https://i.imgur.com/HJQmUe1.png);
         height: 50px;
         width: 50px;
-	    bottom: 100px;
-        left: 304px;
+	    top: 80px;
+        right: 9px;
       }
     ]]
   }

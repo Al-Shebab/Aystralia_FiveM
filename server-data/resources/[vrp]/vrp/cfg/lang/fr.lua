@@ -2,29 +2,239 @@
 
 local lang = {
   common = {
-    welcome = "Bienvenue. Appuyez sur K pour les menus.",
+    welcome = "Bienvenue. Utilise les touches du téléphone pour les menus.~n~dernière connexion: {1}",
     no_player_near = "~r~Pas de joueur à proximité.",
     invalid_value = "~r~Valeur incorrecte.",
     invalid_name = "~r~Nom incorrect.",
     not_found = "~r~Non trouvé.",
-    request_refused = "~r~Requête refusée."
+    request_refused = "~r~Requête refusée.",
+    wearing_uniform = "~r~Attention, vous portez un uniforme.",
+    not_allowed = "~r~Non autorisé.",
+    must_wait = "~r~Vous devez attendre {1} secondes avant de pouvoir effectuer cette action.",
+    menu = {
+      title = "Menu"
+    }
   },
+  login = {
+    info = {
+      title = "Login info",
+      description = "<em>Whitelisté: </em>{1}<br /><em>Bannis: </em>{2}<br /><em>Raison du ban: </em>{3}<br /><br />(valider pour mettre à jour)"
+    },
+    ban = {
+      title = "Ban",
+      prompt_duration = "Durée (-1: \"pour toujours\", X: secondes, Xm: minutes, Xh: heures, Xd: jours):",
+      prompt_reason = "Raison: "
+    },
+    unban = {
+      title = "Unban"
+    },
+    whitelist = {
+      title = "Whitelist user"
+    },
+    unwhitelist = {
+      title = "Un-whitelist user"
+    }
+  },
+  characters = {
+    title = "[Personnages]",
+    character = {
+      title = "#{1}: {2} {3}",
+      error = "~r~Personnage invalide."
+    },
+    create = {
+      title = "Créer",
+      error = "~r~Impossible de créer un nouveau personnage."
+    },
+    delete = {
+      title = "Supprimer",
+      prompt = "Id du personnage à supprimer ?",
+      error = "~r~Impossible de supprimer le personnage #{1}."
+    }
+  },
+  admin = {
+    title = "Admin",
+    call_admin = {
+      title = "Appeler un admin",
+      prompt = "Décrivez votre problème: ",
+      notify_taken = "Un admin a pris votre ticket.",
+      notify_already_taken = "Ticket déjà pris.",
+      request = "Ticket admin (user_id = {1}) prendre/TP ?: {2}"
+    },
+    tptocoords = {
+      title = "TpToCoords",
+      prompt = "Coords x,y,z: "
+    },
+    tptomarker = {
+      title = "TpToMarker"
+    },
+    noclip = {
+      title = "Noclip"
+    },
+    coords = {
+      title = "Coords",
+      hint = "Copie des coordonnées avec Ctrl-A Ctrl-C"
+    },
+    custom_upper_emote = {
+      title = "Custom upper emote",
+      prompt = "Animation sequence ('dict anim optional_loops' per line): "
+    },
+    custom_full_emote = {
+      title = "Custom full emote"
+    },
+    custom_emote_task = {
+      title = "Custom emote task",
+      prompt = "Task name: "
+    },
+    custom_sound = {
+      title = "Custom sound",
+      prompt = "Sound 'dict name': "
+    },
+    custom_model = {
+      title = "Custom model",
+      prompt = "Model hash or name: "
+    },
+    custom_audiosource = {
+      title = "Custom AudioSource",
+      prompt = "Audio source: name=url, omit url to delete the named source."
+    },
+    users = {
+      title = "Users",
+      by_id = {
+        title = "> Par id",
+        prompt = "User id: "
+      },
+      user = {
+        title = "#{1}: {2}",
+        info = {
+          title = "Info",
+          description = "<em>Endpoint: </em>{1}<br /><em>Source: </em>{2}<br /><em>Dernière connexion: </em>{3}<br /><em>Id personnage: </em>{4}<br /><br />(valider pour mettre à jour)"
+        },
+        kick = {
+          title = "Kick",
+          prompt = "Raison: "
+        },
+        tptome = {
+          title = "TpToMe"
+        },
+        tpto = {
+          title = "TpTo"
+        },
+        groups = {
+          title = "Groupes",
+          description = "{1}<br /><br />(valider pour mettre à jour)"
+        },
+        group_add = {
+          title = "Ajouter groupe",
+          prompt = "Groupe à ajouter: "
+        },
+        group_remove = {
+          title = "Retirer groupe",
+          prompt = "Groupe à retiré: "
+        },
+        give_money = {
+          title = "Donner de l'argent",
+          prompt = "Quantité: "
+        },
+        give_item = {
+          title = "Donner des objets",
+          prompt = "Full id: ",
+          prompt_amount = "Quantité: ",
+          notify_failed = "Objet invalide ou inventaire plein."
+        }
+      }
+    }
+  },
+  weapon = {
+    -- weapon translation by GTA 5 weapon name (lower case)
+    pistol = "Pistolet"
+  },
+  item = {
+    medkit = {
+      name = "Trousse de secours",
+      description = "Utilisé pour réanimer des personnes inconscientes."
+    },
+    repairkit = {
+      name = "Kit de réparation",
+      description = "Utilisé pour réparer des véhicules."
+    },
+    dirty_money = {
+      name = "Argent sale",
+      description = "Argent obtenu illégalement."
+    },
+    money = {
+      name = "Argent",
+      description = "Paquet d'argent.",
+      unpack = {
+        title = "Défaire",
+        prompt = "Montant à défaire ? (max {1})"
+      }
+    },
+    money_binder = {
+      name = "Paqueteur de billets",
+      description = "Utilisé pour créer des paquets de 1000.",
+      bind = {
+        title = "Faire un paquet"
+      }
+    },
+    wbody = {
+      name = "Corps de {1}",
+      description = "Corps d'arme de {1}.",
+      equip = {
+        title = "Equiper"
+      }
+    },
+    wammo = {
+      name = "Munitions de {1}",
+      name_box = "Munitions de {1} x{2}",
+      description = "Munitions d'arme pour {1}.",
+      load = {
+        title = "Charger",
+        prompt = "Montant à charger ? (max {1})"
+      },
+      open = {
+        title = "Ouvrir"
+      }
+    },
+    bulletproof_vest = {
+      name = "Gilet pare-balles",
+      description = "Une protection utile.",
+      wear = {
+        title = "Mettre"
+      }
+    }
+  },
+  edible = {
+    liquid = {
+      action = "Boire",
+      notify = "~b~Boit {1}."
+    },
+    solid = {
+      action = "Manger",
+      notify = "~o~Mange {1}."
+    },
+    drug = {
+      action = "Prendre",
+      notify = "~g~Prend {1}."
+    }
+  },
+
   survival = {
     starving = "Affamé",
-    thirsty = "Assoiffé"
+    thirsty = "Assoiffé",
+    coma_display = [[Vous êtes dans le coma, vous pouvez abandonner et mourir <span class="key">[SAUTER]</span> ou attendre de l'aide (min <span class="countdown" data-duration="{1}"></span>).<br /> <span class="countdown" data-duration="{2}"></span> restante(s).]]
   },
   money = {
-    display = "<span class=\"symbol\">€</span> {1}",
-    bdisplay = "<span class=\"symbol\">€</span> {1}",
-    given = "Vous avez donné ~r~{1}€.",
-    received = "Vous avez reçu ~g~{1}€.",
+    display = "{1} <span class=\"symbol\">$</span>",
+    given = "Vous avez donné ~r~{1}$.",
+    received = "Vous avez reçu ~g~{1}$.",
     not_enough = "~r~Pas assez d'argent.",
-    paid = "Payé ~r~{1}€.",
+    paid = "Payé ~r~{1}$.",
     give = {
       title = "Donner de l'argent",
       description = "Donner de l'argent au joueur le plus proche.",
       prompt = "Montant à donner:"
-    }
+    },
+    transformer_recipe = "{1} $<br />"
   },
   inventory = {
     title = "Inventaire",
@@ -58,81 +268,89 @@ local lang = {
         title = "Mettre",
         prompt = "Quantité à mettre (max {1}):"
       }
-    }
+    },
+    transformer_recipe = "{2} {1}<br />"
   },
   atm = {
     title = "Distributeur de billets",
     info = {
       title = "Info",
-      bank = "Banque: {1} €"
+      bank = "Banque: {1} $"
     },
     deposit = {
       title = "Dépot",
       description = "Déposez de l'argent sur votre compte",
       prompt = "Entrez le montant à déposer:",
-      deposited = "Vous avez déposé ~r~{1}€~s~."
+      deposited = "Vous avez déposé ~r~{1}$~s~."
     },
     withdraw = {
       title = "Retirer",
       description = "Retirez de l'argent de votre compte",
       prompt = "Entrez le montant à retirer:",
-      withdrawn = "Vous avez retiré ~g~{1}€ ~s~.",
+      withdrawn = "Vous avez retiré ~g~{1}$ ~s~.",
       not_enough = "~r~Vous n'avez pas assez d'argent sur votre compte."
     }
   },
   business = {
     title = "Chambre de commerce",
+    identity = {
+      title = "Entreprise",
+      info = "<em>Nom: </em>{1}<br /><em>Capital: </em>{2} $"
+    },
     directory = {
       title = "Annuaire",
       description = "Annuaire des entreprises",
       dprev = "> Précédent",
       dnext = "> Suivant",
-      info = "<em>Capital: </em>{1} €<br /><em>Propriétaire: </em>{2} {3}<br /><em>Immatriculation: </em>{4}<br /><em>Téléphone: </em>{5}"
+      info = "<em>Capital: </em>{1} $<br /><em>Propriétaire: </em>{2} {3}<br /><em>Immatriculation: </em>{4}<br /><em>Téléphone: </em>{5}"
     },
     info = {
       title = "Information sur l'entreprise",
-      info = "<em>Nom: </em>{1}<br /><em>Capital: </em>{2} €<br /><em>Capital de transfert: </em>{3} €<br /><br/>Le capital de transfert représente la quantité d'argent transférée pour une période. Le maximum ne peut pas dépasser le capital de l'entreprise."
+      info = "<em>Nom: </em>{1}<br /><em>Capital: </em>{2} $<br /><em>Capital de transfert: </em>{3} $<br /><br/>Le capital de transfert représente la quantité d'argent transférée pour une période. Le maximum ne peut pas dépasser le capital de l'entreprise."
     },
     addcapital = {
       title = "Ajout de capital",
       description = "Augmentez le capital de votre entreprise.",
       prompt = "Montant à ajouter à votre capital:",
-      added = "~r~{1}€ ~s~ ajoutés au capital de votre entreprise."
+      added = "~r~{1}$ ~s~ ajoutés au capital de votre entreprise."
     },
     launder = {
       title = "Blanchiment d'argent",
       description = "Utilisez votre entreprise pour blanchir de l'argent.",
-      prompt = "Montant d'argent sale à blanchir (max {1} €): ",
-      laundered = "~g~{1}€ ~s~ blanchis.",
+      prompt = "Montant d'argent sale à blanchir (max {1} $): ",
+      laundered = "~g~{1}$ ~s~ blanchis.",
       not_enough = "~r~Pas assez d'argent sale."
     },
     open = {
       title = "Ouvrir une entreprise",
-      description = "Ouvrez votre entreprise, le capital minimum est de {1} €.",
+      description = "Ouvrez votre entreprise, le capital minimum est de {1} $.",
       prompt_name = "Nom de l'entreprise (ne peut pas être modifié ultérieurement, maximum {1} chars):",
       prompt_capital = "Capital initial (min {1})",
       created = "~g~Entreprise créée."
       
     }
   },
-  cityhall = {
-    title = "Hôtel de ville",
-    identity = {
-      title = "Nouvelle identité",
-      description = "Creez une nouvelle identité, frais de création = {1} €.",
-      prompt_firstname = "Entrez votre prénom:",
-      prompt_name = "Entrez votre nom de famille:",
-      prompt_age = "Entrez votre âge:"
+  identity = {
+    title = "Identité",
+    citizenship = {
+      title = "Citoyenneté",
+      info = "<em>Nom: </em>{1}<br /><em>Prénom: </em>{2}<br /><em>Age: </em>{3}<br /><em>N° d'immatriculation: </em>{4}<br /><em>Téléphone: </em>{5}",
     },
-    menu = {
-      title = "Identité",
-      info = "<em>Nom: </em>{1}<br /><em>Prénom: </em>{2}<br /><em>Age: </em>{3}<br /><em>N° d'immatriculation: </em>{4}<br /><em>Téléphone: </em>{5}<br /><em>Adresse: </em>{7}, {6}"
+    cityhall = {
+      title = "Hôtel de ville",
+      new_identity = {
+        title = "Nouvelle identité",
+        description = "Creez une nouvelle identité, frais de création = {1} $.",
+        prompt_firstname = "Entrez votre prénom:",
+        prompt_name = "Entrez votre nom de famille:",
+        prompt_age = "Entrez votre âge:"
+      },
     }
   },
   police = {
     title = "Police",
     wanted = "Recherché rang {1}",
-    not_handcuffed = "~r~n'est pas menotter",
+    not_handcuffed = "~r~Pas menotté.",
     cloakroom = {
       title = "Vestiaire",
       uniform = {
@@ -161,16 +379,17 @@ local lang = {
         tracking = "~b~Localisation commencée.",
         track_failed = "~b~Recherche de {1}~s~ ({2}) ~n~~r~Echouée.",
         tracked = "{1} ({2}) localisé."
-		},
+      },
       records = {
-        show = {
-          title = "Voir Dossier",
-          description = "Montre le dossier de police par l'immatriculation."
+        title = "Casier judiciaire",
+        description = "Gérer casier judiciaire par immatriculation.",
+        add = {
+          title = "Ajouter",
+          prompt = "Nouvel enregistrement:"
         },
         delete = {
-          title = "Néttoyez Dossier",
-          description = "Néttoie le dossier de police par l'immatriculation.",
-          deleted = "~b~Dossier Néttoyez, plus aucune trâce du dossier."
+          title = "Supprimer",
+          prompt = "Id d'enregistrement à supprimer ?"
         }
       }
     },
@@ -179,13 +398,17 @@ local lang = {
         title = "Menotter",
         description = "Menotter/démenotter le joueur le plus proche."
       },
+      drag = {
+        title = "Traîner",
+        description = "Traîner/arrêter de traîner le joueur le plus proche."
+      },
       putinveh = {
         title = "Mettre dans le véhicule",
-        description = "Mettre le joueur le plus proche dans le véhicule le plus proche."
+        description = "Mettre le joueur menotté le plus proche dans le véhicule le plus proche vous appartenant."
       },
-	  getoutveh = {
+      getoutveh = {
         title = "Sortir du véhicule",
-        description = "Fait sortir le joueur de votre vehicule."
+        description = "Sortir du véhicule le joueur menotté le plus proche."
       },
       askid = {
         title = "Demander les papiers",
@@ -196,47 +419,38 @@ local lang = {
       },
       check = {
         title = "Fouiller le joueur",
-        description = "Fouiller l'argent, les objets et les armes du joueur le plus proche.",
-        request_hide = "Fermer le rapport de fouille.",
-        info = "<em>Argent: </em>{1} €<br /><br /><em>Inventaire: </em>{2}<br /><br /><em>Armes: </em>{3}",
-        checked = "Vous avez été fouillé."
-		},
-      seize = {
-        seized = "Saisie {2} ~r~{1}",
-        weapons = {
-          title = "Saisir Armes",
-          description = "Saisie les armes du joueur le plus proche",
-          seized = "~b~Vos arme ont été saisie."
-        },
-        items = {
-          title = "Saisir Illegals",
-          description = "Saisir les substences illegals",
-          seized = "~b~vos substences illegal ont été saisie."
+        description = "Fouiller le portefeuille, les objets et les armes du joueur le plus proche.",
+        checked = "~b~Vous avez été fouillé.",
+        info = {
+          title = "Info",
+          description = "<em>Portefeuille: </em>{1} $"
         }
       },
+      seize = {
+        seized = "~b~Vos armes et objets illégaux ont été saisis.",
+        title = "Saisir armes/illégaux",
+        description = "Saisir les armes et objets illégaux du joueur à proximité."
+      },
       jail = {
-        title = "Emprisonner",
-        description = "Emprisone/Libère le joueur le plus proche.",
-        not_found = "~r~Aucune prison trouvez.",
-        jailed = "~b~emprisonez.",
-        unjailed = "~b~libèré.",
-        notify_jailed = "~b~Vous avez été emprisonnez.",
-        notify_unjailed = "~b~Vous avez été libèré."
+        title = "Prison",
+        description = "Mettre en prison/libérer le joueur le plus proche dans la prison la plus proche.",
+        not_found = "~r~Pas de prison trouvée.",
+        jailed = "~b~Emprisonné.",
+        unjailed = "~b~Libéré.",
+        notify_jailed = "~b~Vous avez été emprisonné.",
+        notify_unjailed = "~b~Vous avez été libéré."
       },
       fine = {
         title = "Amende",
-        description = "Donne un amende au joueur le plus prêt.",
-        fined = "~b~amende ~s~{2} $ pour ~b~{1}.",
-        notify_fined = "~b~Vous avez recu un amende de ~s~ {2} $ pour ~b~{1}.",
-        record = "[Amende] {2} $ de {1}"
+        description = "Mettre une amende au joueur le plus proche.",
+        fined = "~b~Vous avez mis une amende de ~s~{2} $ pour ~b~{1}.",
+        notify_fined = "~b~Vous avez été condamné à une amende de~s~ {2} $ pour~b~ {1}.",
+        record = "[Amende] {2} $ pour {1}"
       },
       store_weapons = {
-        title = "Rangez Armes",
-        description = "Range les armes dans votre inventaire. (Peux causez un inventaire plein)"
+        title = "Ranger ses armes",
+        description = "Ranger ses armes dans son inventaire."
       }
-    },
-    identity = {
-      info = "<em>Nom: </em>{1}<br /><em>Prénom: </em>{2}<br /><em>Age: </em>{3}<br /><em>N° d'immatriculation: </em>{4}<br /><em>Téléphone: </em>{5}<br /><em>Entreprise: </em>{6}<br /><em>Capital de l'entreprise: </em>{7} €<br /><em>Adresse: </em>{9}, {8}"
     }
   },
   emergency = {
@@ -270,6 +484,10 @@ local lang = {
       },
       remove = {
         title = "Supprimer"
+      },
+      call = {
+        title = "Appeler",
+        not_reached = "~r~ n°{1} indisponible."
       }
     },
     sms = {
@@ -287,12 +505,22 @@ local lang = {
       prompt = "Si besoin, entrez un message pour le service:",
       ask_call = "Reception d'un appel ({1}), voulez vous le prendre ? <em>{2}</em>",
       taken = "~r~Cet appel est déjà pris."
-	  },
+    },
     announce = {
-      title = "Publicité",
-      description = "Envoie un annonce a tous les joueurs.",
+      title = "Annonce",
+      description = "Envoyer une annonce visible à tous pendant quelques secondes.",
       item_desc = "{1} $<br /><br/>{2}",
-      prompt = "Contenu de l'annonce (10-1000 chars): "
+      prompt = "Contenu de l'annonce (10-1000 caractères): "
+    },
+    call = {
+      ask = "Accepter l'appel depuis {1} ?",
+      notify_to = "Appel~b~ {1}...",
+      notify_from = "Appel reçu de ~b~ {1}...",
+      notify_refused = "Appel vers ~b~ {1}... ~r~ refusé."
+    },
+    hangup = {
+      title = "Raccrocher",
+      description = "Raccrocher le téléphone (terminer l'appel en cours)."
     }
   },
   emotes = {
@@ -303,16 +531,20 @@ local lang = {
     }
   },
   home = {
+    address = {
+      title = "Adresse",
+      info = "{1}, {2}"
+    },
     buy = {
       title = "Acheter",
-      description = "Acheter un logement ici, le prix est {1} €.",
+      description = "Acheter un logement ici, le prix est {1} $.",
       bought = "~g~Acheté.",
       full = "~r~Plus de place.",
       have_home = "~r~Vous avez déjà un logement."
     },
     sell = {
       title = "Vendre",
-      description = "Vendre son logement pour {1} €",
+      description = "Vendre son logement pour {1} $",
       sold = "~g~vendu.",
       no_home = "~r~Vous n'avez pas de logement ici."
     },
@@ -334,33 +566,63 @@ local lang = {
         title = "Expulser",
         description = "Expulse tous les visiteurs, même vous, et ferme le logement."
       }
+    },
+    wardrobe = {
+      title = "Garde-robe",
+      save = {
+        title = "> Sauvegarder",
+        prompt = "Nom de la sauvegarde:"
+      }
+    },
+    gametable = {
+      title = "Table de jeux",
+      bet = {
+        title = "Commencer un pari",
+        description = "Commencer un pari avec les joueurs à proximité, le gagnant sera choisis aléatoirement.",
+        prompt = "Mise du pari:",
+        request = "[PARI] Voulez vous parier {1} $ ?",
+        started = "~g~Pari commencé."
+      }
+    },
+    radio = {
+      title = "Radio",
+      off = {
+        title = "> éteindre"
+      }
     }
   },
   garage = {
     title = "Garage ({1})",
     owned = {
-      title = "Mes Vehicules",
-      description = "Les vehicule m'appartenant."
+      title = "Mes véhicules",
+      description = "Véhicules m'appartenant",
+      already_out = "Véhicule déjà sorti.",
+      force_out = {
+        request = "Véhicule déjà sorti, voulez vous payer {1} $ de frais pour le récupérer ?"
+      }
     },
     buy = {
       title = "Acheter",
-      description = "Achetez un vehicule.",
+      description = "Acheter des véhicules.",
       info = "{1} $<br /><br />{2}"
     },
     sell = {
       title = "Vendre",
-      description = "Vendre le vehicule."
+      description = "Vendre des véhicules."
     },
     rent = {
-      title = "Louer",
-      description = "Louer le vehicule jusqu'a la fin de la connections."
+      title = "Location",
+      description = "Louer un véhicule pour la session (jusqu'à déconnexion)."
     },
     store = {
-      title = "Ranger Vehicule",
-      description = "Ranger le vehicule dans le garage."
+      title = "Rentrer au garage",
+      description = "Rentrez votre véhicule au garage.",
+      too_far = "Le véhicule est trop loin.",
+      wrong_garage = "Le véhicule ne peut pas être rangé dans ce garage.",
+      stored = "Véhicule rentré."
     }
   },
-vehicle = {
+  vehicle = {
     title = "Véhicule",
     no_owned_near = "~r~Pas de véhicule vous appartenant à proximité.",
     trunk = {
@@ -370,85 +632,107 @@ vehicle = {
     detach_trailer = {
       title = "Détacher remorque",
       description = "Détacher la remorque."
-	  },
+    },
     detach_towtruck = {
-      title = "Detacher le vehicule",
-      description = "Detache le vehicule."
+      title = "Détacher dépanneuse",
+      description = "Détacher le lien de la dépanneuse."
     },
     detach_cargobob = {
-      title = "Detacher le cargo",
-      description = "Detach le cargo."
+      title = "Détacher cargobob",
+      description = "Détacher le lien de l'hélico de transport."
     },
     lock = {
-      title = "Vérouille/Déverouille",
-      description = "Vérouille ou Déverouille votre vehicule."
+      title = "Fermer/ouvrir",
+      description = "Fermer ou ouvrir le véhicule.",
+      locked = "Véhicule vérrouillé.",
+      unlocked = "Véhicule dévérrouillé."
     },
     engine = {
-      title = "Moteur On/Off",
-      description = "Démarre ou arrête votre moteur."
+      title = "Moteur on/off",
+      description = "Démarrer ou arrêter le moteur."
     },
     asktrunk = {
-      title = "Demandez d'ouvrir le coffre",
+      title = "Demander ouvrir coffre",
       asked = "~g~Demande...",
-      request = "Voulez-vous ouvrir le coffre ?"
+      request = "Voulez vous ouvrir le coffre ?"
     },
     replace = {
-      title = "Déplacé vehicule(Usage de manière RP)",
-      description = "Replace le vehicule au sol."
+      title = "Replacer véhicule",
+      description = "Replacer sur le sol le véhicule le plus proche."
     },
     repair = {
-      title = "Réparé vehicule",
-      description = "Répare le vehicule"
+      title = "Réparer véhicule",
+      description = "Réparer le véhicule le plus proche."
     }
   },
-  gunshop = {
-    title = "Magasin d'armes ({1})",
-    prompt_ammo = "Quantité de munition à acheter pour {1}:",
-    info = "<em>Arme: </em> {1} €<br /><em>Munition: </em> {2} €/u<br /><br />{3}"
-  },
-  market = {
-    title = "Supérette ({1})",
+  shop = {
+    title = "Magasin ({1})",
     prompt = "Quantité de {1} à acheter:",
-    info = "{1} €<br /><br />{2}"
+    info = "{1} $<br /><br />{2}"
   },
   skinshop = {
-    title = "Magasin de vêtements"
+    title = "Magasin d'apparence",
+    info = {
+      title = "Info",
+      description = "Selectionner une partie de l'apparence ci-dessous.<br /><br /><em>Prix actuel: </em>{1} $"
+    },
+    model = "Modèle",
+    texture = "Texture",
+    palette = "Palette",
+    color_primary = "Couleur première",
+    color_secondary = "Couleur secondaire",
+    opacity = "Opacité",
+    select_description = "{1}/{2} (gauche/droite pour selectionner)"
   },
-  itemtr = {
+  cloakroom = {
+    title = "Vestiaire ({1})",
+    undress = {
+      title = "> Enlever"
+    }
+  },
+  transformer = {
+    recipe_description = [[{1}<br /><br />{2}<div style="color: rgb(0,255,125)">=></div>{3}]],
+    empty_bar = "vide"
+  },
+  hidden_transformer = {
     informer = {
       title = "Informateur illégal",
-      description = "{1} €",
+      description = "{1} $",
       bought = "~g~Position envoyée au GPS."
     }
   },
-  items = {
-    dirty_money = {
-      title = "Argent sale",
-      description = "Argent obtenu illégalement."
-    },
-    medkit = {
-      title = "Kit Médical",
-      description = "Utilisé pour réanimer des personnes inconscientes."
-	  }
-  },
-    mission = {
-    blip = "Mission ({1}) {2}/{3}",
+  mission = {
+    title = "Mission ({1}) {2}/{3}",
     display = "<span class=\"name\">{1}</span> <span class=\"step\">{2}/{3}</span><br /><br />{4}",
     cancel = {
-      title = "Arrêté la mission"
+      title = "Abandonner la mission"
     }
   },
-    aptitude = {
-    title = "Aptitudes",
-    description = "Montre les aptitude joueur.",
-    lose_exp = "Aptitude ~b~{1}/{2} ~r~-{3} ~s~exp.",
-    earn_exp = "Aptitude ~b~{1}/{2} ~g~+{3} ~s~exp.",
-    level_down = "Aptitude ~b~{1}/{2} ~r~perte de level ({3}).",
-    level_up = "Aptitude ~b~{1}/{2} ~g~le level monte ({3}).",
+  aptitude = {
+    title = "Compétences",
+    description = "Afficher les compétences.",
+    lose_exp = "Compétence ~b~{1}/{2} ~r~-{3} ~s~exp.",
+    earn_exp = "Compétence ~b~{1}/{2} ~g~+{3} ~s~exp.",
+    level_down = "Compétence ~b~{1}/{2} ~r~descend en niveau ({3}).",
+    level_up = "Compétence ~b~{1}/{2} ~g~monte en niveau ({3}).",
     display = {
-    group = "{1}: ",
-    aptitude = "--- {1} | exp {2} | lvl {3} | progression {4}%"
-    }
+      group = "{1}",
+      aptitude = "{1} NIV {3} EXP {2}"
+    },
+    transformer_recipe = "[EXP] {3} {1}/{2}<br />"
+  },
+  radio = {
+    title = "Radio ON/OFF",
+    description = "Permet de parler avec [CHAT TEXTUEL EQUIPE] et diffuse un signal GPS quand elle est allumée."
+  },
+  profiler = {
+    title_server = "[Profiler:serveur]",
+    title_client = "[Profiler:client]",
+    prompt_resources = "Noms des ressources à profiler (séparées par des lignes/espaces; vide pour toutes) ?",
+    prompt_duration = "Durée (secondes) ?",
+    prompt_stack_depth = "Pronfondeur du stack dump ? Une plus grande valeur peut aider à localiser plus précisément les hotspots.",
+    prompt_aggregate = "Agréger les profils (yes/no) ? Si utilisé, les profils seront agrégés en un seul profil au lieu d'un par ressource.",
+    prompt_report = "Rapport de profilage (copier avec Ctrl-A Ctrl-C)."
   }
 }
 

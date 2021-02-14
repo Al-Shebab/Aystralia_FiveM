@@ -16,6 +16,8 @@ AddEventHandler('trew_hud_ui:getServerInfo', function()
 	local player = vRP.getUserSource({playerID})
 
 	local info = {
+		hunger = vRP.getUserId(source),
+		thirst = vRP.getUserId(source),
 
 		job = vRP.getUserGroupByType({playerID, 'job'}),
 

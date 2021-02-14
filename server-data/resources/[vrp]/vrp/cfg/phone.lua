@@ -10,43 +10,75 @@ cfg.sms_size = 500
 -- duration of a sms position marker (in seconds)
 cfg.smspos_duration = 300
 
+-- {ent,cfg} will fill cfg.title, cfg.pos
+cfg.smspos_map_entity = {"PoI", {blip_id = 162, blip_color = 37}}
+
+cfg.clear_phone_on_death = true
+
+-- phone sounds (playAudioSource)
+cfg.dialing_sound = "sounds/phone_dialing.ogg" -- loop
+cfg.ringing_sound = "sounds/phone_ringing.ogg" -- loop
+cfg.sms_sound = "sounds/phone_sms.ogg"
+
+-- phone voice config (see Audio:registerVoiceChannel)
+cfg.phone_voice = {
+}
+
+cfg.phone_call_css = [[
+.div_phone_call{
+  position: absolute;
+  right: 0;
+  top: 35%;
+  margin: 6px;
+  width: 200px;
+  overflow: hidden;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 5px;
+  color: #3facff;
+  background-color: rgb(0,0,0,0.75);
+}
+
+.div_phone_call:before{
+  content: "\260E";
+  color: white;
+  padding-right: 5px;
+}
+]]
+
 -- define phone services
--- blipid, blipcolor (customize alert blip)
+-- map_entity: {ent,cfg} will fill cfg.title, cfg.pos
 -- alert_time (alert blip display duration in seconds)
 -- alert_permission (permission required to receive the alert)
 -- alert_notify (notification received when an alert is sent)
 -- notify (notification when sending an alert)
 cfg.services = {
   ["police"] = {
-    blipid = 304,
-    blipcolor = 38,
-    alert_time = 30, -- 5 minutes
+    map_entity = {"PoI", {blip_id = 304, blip_color = 38}},
+    alert_time = 300, -- 5 minutes
     alert_permission = "police.service",
     alert_notify = "~r~Police alert:~n~~s~",
     notify = "~b~You called the police.",
     answer_notify = "~b~The police is coming."
   },
   ["emergency"] = {
-    blipid = 153,
-    blipcolor = 1,
-    alert_time = 30, -- 5 minutes
+    map_entity = {"PoI", {blip_id = 153, blip_color = 1}},
+    alert_time = 300, -- 5 minutes
     alert_permission = "emergency.service",
     alert_notify = "~r~Emergency alert:~n~~s~",
     notify = "~b~You called the emergencies.",
     answer_notify = "~b~The emergencies are coming."
   },
-  ["uber"] = {
-    blipid = 198,
-    blipcolor = 5,
+  ["taxi"] = {
+    map_entity = {"PoI", {blip_id = 198, blip_color = 5}},
     alert_time = 300,
-    alert_permission = "uber.service",
-    alert_notify = "~y~uber alert:~n~~s~",
-    notify = "~y~You called a uber.",
-    answer_notify = "~y~A uber is coming."
+    alert_permission = "taxi.service",
+    alert_notify = "~y~Taxi alert:~n~~s~",
+    notify = "~y~You called a taxi.",
+    answer_notify = "~y~A taxi is coming."
   },
   ["repair"] = {
-    blipid = 446,
-    blipcolor = 5,
+    map_entity = {"PoI", {blip_id = 446, blip_color = 5}},
     alert_time = 300,
     alert_permission = "repair.service",
     alert_notify = "~y~Repair alert:~n~~s~",
@@ -90,3 +122,4 @@ cfg.announces = {
 }
 
 return cfg
+

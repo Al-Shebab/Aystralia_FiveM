@@ -331,7 +331,7 @@ Citizen.CreateThread(function()
 
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'stamina',
-				value = 100 - GetPlayerSprintStaminaRemaining(PlayerId()),
+				value = 9999999 - GetPlayerSprintStaminaRemaining(PlayerId()),
 			}
 		end
 

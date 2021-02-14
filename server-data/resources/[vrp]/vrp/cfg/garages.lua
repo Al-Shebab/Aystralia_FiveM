@@ -3,620 +3,338 @@ local cfg = {}
 -- define garage types with their associated vehicles
 -- (vehicle list: https://wiki.fivem.net/wiki/Vehicles)
 
--- each garage type is an associated list of veh_name/veh_definition 
--- they need a _config property to define the blip and the vehicle type for the garage (each vtype allow one vehicle to be spawned at a time, the default vtype is "default")
--- this is used to let the player spawn a boat AND a car at the same time for example, and only despawn it in the correct garage
--- _config: vtype, blipid, blipcolor, permissions (optional, only users with the permission will have access to the shop)
-
 cfg.rent_factor = 0.1 -- 10% of the original price if a rent
 cfg.sell_factor = 0.75 -- sell for 75% of the original price
---this is the limit amount that you can put when you are trying to sell your personall vehicle to another player
-cfg.limit = 100000000
 
+cfg.force_out_fee = 1000 -- amount of money (fee) to force re-spawn an already out vehicle
 
+-- default chest weight for vehicle trunks
+cfg.default_vehicle_chest_weight = 50
+
+cfg.vehicle_update_interval = 15 -- seconds
+cfg.vehicle_check_interval = 15 -- seconds, re-own/respawn task
+cfg.vehicle_respawn_radius = 150 -- radius for the out vehicle respawn feature
+
+-- define vehicle chest weight by model in lower case
+cfg.vehicle_chest_weights = {
+  ["benson"] = 120,
+  ["trailersmall"] = 100,
+  ["trailers"] = 500,
+  ["tanker"] = 5000
+}
+
+-- each garage type is a map of veh_name => {title, price, description}
+-- _config: map_entity, permissions (optional, only users with the permissions will have access to the shop)
+--- map_entity: {ent,cfg} will fill cfg.title, cfg.pos
 cfg.garage_types = {
-  ["Fisher's Boat"] = {
-    _config = {vtype="boat",blipid=427,blipcolor=28,permissions={"fisher.vehicle"}},
-    ["suntrap"] = {"Fisher's boat",0, "Your favorite boat!"}
+  ["compacts"]  = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["blista"] = {"Blista", 15000, ""},
+    ["brioso"] = {"Brioso R/A", 155000, ""},
+    ["dilettante"] = {"Dilettante", 25000, ""},
+    ["issi2"] = {"Issi", 18000, ""},
+    ["panto"] = {"Panto", 85000, ""},
+    ["prairie"] = {"Prairie", 30000, ""},
+    ["rhapsody"] = {"Rhapsody", 120000, ""}
   },
-  
-  ["High End"]  = {  -- 150k price cap
-    _config = {vtype="car",blipid=50,blipcolor=4},
+
+  ["coupe"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["cogcabrio"] = {"Cognoscenti Cabrio",180000, ""},
+    ["exemplar"] = {"Exemplar", 200000, ""},
+    ["F620"] = {"F620", 80000, ""},
+    ["felon"] = {"Felon", 90000, ""},
+    ["felon2"] = {"Felon GT", 95000, ""},
+    ["jackal"] = {"Jackal", 60000, ""},
+    ["oracle"] = {"Oracle", 80000, ""},
+    ["oracle2"] = {"Oracle XS",82000, ""},
+    ["sentinel"] = {"sentinel", 90000, ""},
+    ["sentinel2"] = {"Sentinel XS", 60000, ""},
+    ["windsor"] = {"Windsor",800000, ""},
+    ["windsor2"] = {"Windsor Drop",850000, ""},
+    ["zion"] = {"Zion", 60000, ""},
+    ["zion2"] = {"Zion Cabrio", 65000, ""}
+  },
+
+  ["sports"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
     ["ninef"] = {"9F",120000, ""},
     ["ninef2"] = {"9F Cabrio",130000, ""},
     ["alpha"] = {"Alpha",150000, ""},
     ["banshee"] = {"Banshee",105000, ""},
-    ["banshee2"] = {"Banshee 900R",120000, ""},
-    ["carbonizzare"] = {"Carbonizzare",110000, ""},
-	["chantom"] = {"Chantom Semi",110000, ""},
-    ["cognoscenti2"] = {"Cognoscenti(Armored)",80000, ""},
-    ["cogcabrio"] = {"Cognoscenti Cabrio",77000, ""},
-    ["comet2"] = {"Comet",100000, ""},
-    ["coquette"] = {"Coquette",138000, ""},
-    ["coquette3"] = {"Coquette BlackFin",130000, ""},
-    ["tampa2"] = {"Drift Tampa",95000, ""},
-    ["feltzer2"] = {"Feltzer",130000, ""},
-    ["furoregt"] = {"Furore GT",108000, ""},
-	["gtr"] = {"GTR Nismo",90000, ""},
-    ["jester"] = {"Jester",140000, ""},
-    ["jester2"] = {"Jester (Racecar)",150000, ""},
-    ["f620"] = {"Lexus RC350", 80000, ""},
-    ["pigalle"] = {"Pigalle",90000, ""},
-    ["surano"] = {"Surano",95000, ""}
-  },
-
-  ["Mid Range"] = { -- 75k price cap
-    _config = {vtype="car",blipid=50,blipcolor=4},
-    ["rs6"] = {"Audi RS6",70000, ""},
-    ["sentinel"] = {"Audi S5", 45000, ""},
-    ["baller"] = {"Baller",40000, ""},
-    ["bestiagts"] = {"Bestia GTS",60000, ""},
+    ["bestiagts"] = {"Bestia GTS",610000, ""},
     ["blista"] = {"Blista Compact",42000, ""},
     ["buffalo"] = {"Buffalo",35000, ""},
-    ["buffalo2"] = {"Buffalo S",45000, ""},
-    ["dominator"] = {"Dominator",35000, ""},
-    ["exemplar"] = {"Exemplar", 50000, ""},
+    ["buffalo2"] = {"Buffalo S",96000, ""},
+    ["carbonizzare"] = {"Carbonizzare",195000, ""},
+    ["comet2"] = {"Comet",100000, ""},
+    ["coquette"] = {"Coquette",138000, ""},
+    ["tampa2"] = {"Drift Tampa",995000, ""},
+    ["feltzer2"] = {"Feltzer",130000, ""},
+    ["furoregt"] = {"Furore GT",448000, ""},
     ["fusilade"] = {"Fusilade",36000, ""},
-    ["gburrito"] = {"Gang Burrito",65000, ""},
-    ["gauntlet"] = {"Gauntlet",35000, ""},
-    ["granger"] = {"Grabger",40000, ""},
-    ["huntley"] = {"Huntley",45000, ""},
-	["kuruma"] = {"Lancer Evo",35000, ""},
-    ["nightshade"] = {"Nightshade",72000, ""},
-    ["rapidgt"] = {"Rapid GT",40000, ""},
-    ["rapidgt2"] = {"Rapid GT Convertible",50000, ""},
-    ["rocoto"] = {"Rocoto",50000, ""},
-    ["sabregt"] = {"Sabre Turbo",72000, ""},
-    ["schafter2"] = {"Schafter",35000, ""},
-    ["sentinel2"] = {"Sentinel XS", 35000, ""},
-	["elegy"] = {"Skyline GTR",75000, ""},
-    ["superd"] = {"Super Diamond",40000, ""},
-    ["tampa"] = {"Tampa",72000, ""},
-    ["verlierer2"] = {"Verkierer",69500,""},
-    ["vigero"] = {"Vigero",72000, ""},
-    ["virgo"] = {"Virgo",65000, ""},
-    ["xls"] = {"XLS",45000, ""}
-  },
-
-  ["Exotic Cars"] = {
-    _config = {vtype="car",blipid=50,blipcolor=5},
-    ["adder"] = {"Adder",1000000, ""},
-    ["r8ppi"] = {"Audi R8",180000, ""},
-    ["bullet"] = {"Bullet",155000, ""},
-    ["cheetah"] = {"Cheetah",200000, ""},
-    ["entityxf"] = {"Entity XF",250000, ""},
-    ["fmj"] = {"FMJ",1750000, "10 - (less numner better car"},
-    ["infernus"] = {"Infernus",220000, ""},
-    ["lynx"] = {"Lynx",173000, ""},
-    ["massacro"] = {"Massacro",175000, ""},
-    ["massacro2"] = {"Massacro (Racecar)",185000, ""},
-    ["osiris"] = {"Osiris",950000, "8 - (less numner better car"},
-    ["reaper"] = {"Reaper",1595000, ""},
-    ["le7b"] = {"RE-7B",2075000, "1 - (less numner better car"},
-    ["sheava"] = {"ETR1",199500, "4 - (less numner better car"},
-    ["schafter3"] = {"Schafter V12",700000, ""},
-    ["ySbrImpS11"] = {"Subaru Impreza",200000, ""},
-    ["sultanrs"] = {"Sultan RS",180000, ""},
-    ["t20"] = {"T20",1600000,"7 - (less numner better car"},
-    ["tropos"] = {"Tropos",180000, ""},
-    ["turismor"] = {"Turismo R",1500000, "9 - (less numner better car"},
-    ["tyrus"] = {"Tyrus",550000, "5 - (less numner better car"},
-    ["vacca"] = {"Vacca",340000, ""},
-    ["voltic"] = {"Voltic",150000, ""},
-    ["prototipo"] = {"X80 Proto",27000000, "6 - (less numner better car"},
-    ["zentorno"] = {"Zentorno",925000,"3 - (less numner better car"}
+    ["jester"] = {"Jester",240000, ""},
+    ["jester2"] = {"Jester (Racecar)",350000, ""},
+    ["kuruma"] = {"Kuruma",95000, ""},
+    ["lynx"] = {"Lynx",1735000, ""},
+    ["massacro"] = {"Massacro",275000, ""},
+    ["massacro2"] = {"Massacro (Racecar)",385000, ""},
+    ["omnis"] = {"Omnis",701000, ""},
+    ["penumbra"] = {"Penumbra",24000, ""},
+    ["rapidgt"] = {"Rapid GT",140000, ""},
+    ["rapidgt2"] = {"Rapid GT Convertible",150000, ""},
+    ["schafter3"] = {"Schafter V12",140000, ""},
+    ["sultan"] = {"Sultan",12000, ""},
+    ["surano"] = {"Surano",110000, ""},
+    ["tropos"] = {"Tropos",816000, ""},
+    ["verlierer2"] = {"Verkierer",695000,""}
   },
 
   ["sportsclassics"] = {
-    _config = {vtype="car",blipid=50,blipcolor=5},
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 5, marker_id = 1}}},
     ["casco"] = {"Casco",680000, ""},
-	["c10custom"] = {"C10 Custom",500000, ""},
     ["coquette2"] = {"Coquette Classic",665000, ""},
-    ["jb700"] = {"JB 700",450000, ""},
-    ["pigalle"] = {"Pigalle",90000, ""},
-	["firebird"] = {"Pontiac Firebird 1970",350000, ""},
-    ["stinger"] = {"Stinger",550000, ""},
-    ["stingergt"] = {"Stinger GT",575000, ""},
-    ["feltzer3"] = {"Stirling",330000, ""},
+    ["jb700"] = {"JB 700",350000, ""},
+    ["pigalle"] = {"Pigalle",400000, ""},
+    ["stinger"] = {"Stinger",850000, ""},
+    ["stingergt"] = {"Stinger GT",875000, ""},
+    ["feltzer3"] = {"Stirling",975000, ""},
     ["ztype"] = {"Z-Type",950000,""}
   },
 
-  ["new additions"] = {
-    _config = {vtype="car",blipid=50,blipcolor=5}
+  ["supercars"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 5, marker_id = 1}}},
+    ["adder"] = {"Adder",1000000, ""},
+    ["banshee2"] = {"Banshee 900R",565000, ""},
+    ["bullet"] = {"Bullet",155000, ""},
+    ["cheetah"] = {"Cheetah",650000, ""},
+    ["entityxf"] = {"Entity XF",795000, ""},
+    ["sheava"] = {"ETR1",199500, "4 - (less numner better car"},
+    ["fmj"] = {"FMJ",1750000, "10 - (less numner better car"},
+    ["infernus"] = {"Infernus",440000, ""},
+    ["osiris"] = {"Osiris",1950000, "8 - (less numner better car"},
+    ["le7b"] = {"RE-7B",5075000, "1 - (less numner better car"},
+    ["reaper"] = {"Reaper",1595000, ""},
+    ["sultanrs"] = {"Sultan RS",795000, ""},
+    ["t20"] = {"T20",2200000,"7 - (less numner better car"},
+    ["turismor"] = {"Turismo R",500000, "9 - (less numner better car"},
+    ["tyrus"] = {"Tyrus",2550000, "5 - (less numner better car"},
+    ["vacca"] = {"Vacca",240000, ""},
+    ["voltic"] = {"Voltic",150000, ""},
+    ["prototipo"] = {"X80 Proto",2700000, "6 - (less numner better car"},
+    ["zentorno"] = {"Zentorno",725000,"3 - (less numner better car"}
   },
 
-  ["Starter Vehicles"] = {  -- 15k price cap
-    _config = {vtype="car",blipid=50,blipcolor=4},
-    ["asea"] = {"Asea",10000, ""},
-    ["asterope"] = {"Asterope",10000, ""},
-    ["blista"] = {"Blista", 5000, ""},
-    ["brioso"] = {"Brioso R/A", 500, ""},
-    ["dilettante"] = {"Dilettante", 5000, ""},
-    ["glendale"] = {"Glendale",8000, ""},
-    ["journey"] = {"Journey",5000, ""},
-    ["ingot"] = {"Ingot",9000, ""},
-    ["issi2"] = {"Issi", 7000, ""},
-    ["intruder"] = {"Intruder",12000, ""},
-    ["panto"] = {"Panto", 2000, ""},
-    ["penumbra"] = {"Penumbra", 10000, ""},
-    ["picador"] = {"Picador",12000, ""},
-    ["prairie"] = {"Prairie", 12000, ""},
-    ["premier"] = {"Premier",10000, ""},
-    ["primo"] = {"Primo",9000, ""},
-    ["primo2"] = {"Primo Custom",9500, ""},
-    ["regina"] = {"Regina",8000, ""},
-    ["rhapsody"] = {"Rhapsody", 5000, ""},
-    ["rumpo"] = {"Rumpo",13000, ""},
-    ["stanier"] = {"Stanier",10000, ""},
-    ["stratum"] = {"Stratum",7000, ""},
-    ["surge"] = {"Surge",9000, ""},
-    ["warrener"] = {"Warrener",7000, ""},
-    ["washington"] = {"Washington",15000, ""},
-    ["windsor"] = {"Windsor",45000, ""}
-  },
-
-  ["Off Road"] = {
-    _config = {vtype="car",blipid=50,blipcolor=4},
-    ["brawler"] = {"Brawler",60000, ""},
-    ["dubsta3"] = {"Bubsta 6x6",130000, ""},
-    ["rebel2"] = {"Rebel",15000, ""},
-	["fordh"] = {"Ford H",500000, ""},
-    ["sandking"] = {"Sandking",40000, ""},
-	["sandkinghd"] = {"Sandking Monster Truck",550000, ""},
-    ["trophytruck"] = {"The Liberator",75000, ""},
-	["monster"] = {"The Liberator Monster",350000, ""},
-    ["bifta"] = {"Bifta",10000, ""}, -- atvs start here
-    ["blazer"] = {"Blazer",1200, ""},
-    ["dune"] = {"Dune Buggy",8000, ""}
-  },
-
-  ["Low End"]  = {  -- 30k price cap
-    _config = {vtype="car",blipid=50,blipcolor=4},
-    ["bison"] = {"Bison",30000, ""},
-    ["blade"] = {"Blade",16000, ""},
-    ["bobcatxl"] = {"Bobcat XL",23000, ""},
+  ["musclecars"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["blade"] = {"Blade",160000, ""},
     ["buccaneer"] = {"Buccaneer",29000, ""},
-    ["cavalcade"] = {"Cavalcade",30000, ""},
-    ["Chino"] = {"Chino",18000, ""},
-    ["cognoscenti"] = {"Cognoscenti",25000, ""},
-    ["dukes"] = {"Dukes",20000, ""},
-    ["faction"] = {"Faction",23000, ""},
-    ["felon"] = {"Felon", 18000, ""},
-    ["felon2"] = {"Felon GT", 23000, ""},
-    ["fugitive"] = {"Fugitive",18000, ""},
-    ["hotknife"] = {"Hotknife",23000, ""},
-    ["jackal"] = {"Jackal", 18000, ""},
-    ["landstalker"] = {"Landstalker",30000, ""},
-    ["minivan"] = {"Minivan",30000, ""},
-    ["omnis"] = {"Omnis",18000, ""},
-    ["oracle"] = {"Oracle", 20000, ""},
-    ["oracle2"] = {"Oracle XS",22000, ""},
-    ["paradise"] = {"Paradise",17000, ""},
-    ["radi"] = {"Radius",30000, ""},
+    ["Chino"] = {"Chino",225000, ""},
+    ["coquette3"] = {"Coquette BlackFin",695000, ""},
+    ["dominator"] = {"Dominator",35000, ""},
+    ["dukes"] = {"Dukes",62000, ""},
+    ["gauntlet"] = {"Gauntlet",32000, ""},
+    ["hotknife"] = {"Hotknife",90000, ""},
+    ["faction"] = {"Faction",36000, ""},
+    ["nightshade"] = {"Nightshade",585000, ""},
+    ["picador"] = {"Picador",9000, ""},
+    ["sabregt"] = {"Sabre Turbo",15000, ""},
+    ["tampa"] = {"Tampa",375000, ""},
+    ["virgo"] = {"Virgo",195000, ""},
+    ["vigero"] = {"Vigero",21000, ""}
+  },
+
+  ["off-road"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["bifta"] = {"Bifta",75000, ""},
+    ["blazer"] = {"Blazer",8000, ""},
+    ["brawler"] = {"Brawler",715000, ""},
+    ["dubsta3"] = {"Bubsta 6x6",249000, ""},
+    ["dune"] = {"Dune Buggy",20000, ""},
+    ["rebel2"] = {"Rebel",22000, ""},
+    ["sandking"] = {"Sandking",38000, ""},
+    ["monster"] = {"The Liberator",550000, ""},
+    ["trophytruck"] = {"The Liberator",550000, ""}
+  },
+
+  ["suvs"]  = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["baller"] = {"Baller",90000, ""},
+    ["cavalcade"] = {"Cavalcade",60000, ""},
+    ["granger"] = {"Grabger",35000, ""},
+    ["huntley"] = {"Huntley",195000, ""},
+    ["landstalker"] = {"Landstalker",58000, ""},
+    ["radi"] = {"Radius",32000, ""},
+    ["rocoto"] = {"Rocoto",85000, ""},
     ["seminole"] = {"Seminole",30000, ""},
-    ["stretch"] = {"Stretch",30000, ""},
-    ["sultan"] = {"Sultan",24000, ""},
-    ["surfer"] = {"Surfer",20000, ""},
-    ["tailgater"] = {"Tailgater",17000, ""},
-    ["windsor2"] = {"Windsor Drop",23000, ""},
-    ["youga"] = {"Youga",16000, ""},
-    ["zion"] = {"Zion", 18000, ""},
-    ["zion2"] = {"Zion Cabrio", 20000, ""}
+    ["xls"] = {"XLS",253000, ""}
   },
 
   ["vans"] = {
-    _config = {vtype="car",blipid=50,blipcolor=4}
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["bison"] = {"Bison",30000, ""},
+    ["bobcatxl"] = {"Bobcat XL",23000, ""},
+    ["gburrito"] = {"Gang Burrito",65000, ""},
+    ["journey"] = {"Journey",15000, ""},
+    ["minivan"] = {"Minivan",30000, ""},
+    ["paradise"] = {"Paradise",25000, ""},
+    ["rumpo"] = {"Rumpo",13000, ""},
+    ["surfer"] = {"Surfer",11000, ""},
+    ["youga"] = {"Youga",16000, ""}
   },
 
   ["sedans"] = {
-    _config = {vtype="car",blipid=50,blipcolor=4}
-  },
-
-  ["Motorcycles"] = {
-    _config = {vtype="bike",blipid=226,blipcolor=4},
-	["f4rr"] = {"Agusta F4 RR",35000, ""},
-    ["AKUMA"] = {"Akuma",9000, ""},
-    ["bagger"] = {"Bagger",7000, ""},
-    ["bati"] = {"Bati 801",10000, ""},
-    ["bati2"] = {"Bati 801RR",10000, ""},
-    ["bf400"] = {"BF400",6000, ""},
-	["lectro"] = {"BMW R75 Bobber",10000, ""},
-    ["carbonrs"] = {"Carbon RS",11000, ""},
-    ["cliffhanger"] = {"Cliffhanger",13000, ""},
-	["f131"] = {"Confederate F131 Hellcat",45000, ""},
-    ["double"] = {"Double T",9000, ""},
-    ["enduro"] = {"Enduro",6000, ""},
-    ["faggio2"] = {"Faggio",1000, ""},
-    ["gargoyle"] = {"Gargoyle",10000, ""},
-    ["hakuchou"] = {"Hakuchou",20000, ""},
-	["daemon"] = {"Harley Knucklehead",20000, ""},
-    ["hexer"] = {"Hexer",15000, ""},
-    ["innovation"] = {"Innovation",20000, ""},
-    ["nemesis"] = {"Nemesis",12000, ""},
-    ["pcj"] = {"PCJ-600",7000, ""},
-    ["ruffian"] = {"Ruffian",7000, ""},
-    ["sanchez"] = {"Sanchez",3000, ""},
-    ["sovereign"] = {"Sovereign",1000, ""}, -- looking for replacement
-    ["thrust"] = {"Thrust",12000, ""},
-    ["vader"] = {"Vader",7000, ""},
-    ["vindicator"] = {"Vindicator",12000,""}
-  },
- ----------   
-  ["House Garage"] = {
-    _config = {vtype="car",blipid=357,blipcolor=69},
-	["f4rr"] = {"Agusta F4 RR",35000, ""},
-    ["AKUMA"] = {"Akuma",9000, ""},
-    ["bagger"] = {"Bagger",7000, ""},
-    ["bati"] = {"Bati 801",10000, ""},
-    ["bati2"] = {"Bati 801RR",10000, ""},
-    ["bf400"] = {"BF400",6000, ""},
-	["lectro"] = {"BMW R75 Bobber",10000, ""},
-    ["carbonrs"] = {"Carbon RS",11000, ""},
-    ["cliffhanger"] = {"Cliffhanger",13000, ""},
-	["f131"] = {"Confederate F131 Hellcat",45000, ""},
-    ["double"] = {"Double T",9000, ""},
-    ["enduro"] = {"Enduro",6000, ""},
-    ["faggio2"] = {"Faggio",1000, ""},
-    ["gargoyle"] = {"Gargoyle",10000, ""},
-    ["hakuchou"] = {"Hakuchou",20000, ""},
-	["daemon"] = {"Harley Knucklehead",20000, ""},
-    ["hexer"] = {"Hexer",15000, ""},
-    ["innovation"] = {"Innovation",20000, ""},
-    ["nemesis"] = {"Nemesis",12000, ""},
-    ["pcj"] = {"PCJ-600",7000, ""},
-    ["ruffian"] = {"Ruffian",7000, ""},
-    ["sanchez"] = {"Sanchez",3000, ""},
-    ["sovereign"] = {"Sovereign",1000, ""}, -- looking for replacement
-    ["thrust"] = {"Thrust",12000, ""},
-    ["vader"] = {"Vader",7000, ""},
-    ["vindicator"] = {"Vindicator",12000,""},
-	["bison"] = {"Bison",30000, ""},
-    ["blade"] = {"Blade",16000, ""},
-    ["bobcatxl"] = {"Bobcat XL",23000, ""},
-    ["buccaneer"] = {"Buccaneer",29000, ""},
-    ["cavalcade"] = {"Cavalcade",30000, ""},
-    ["Chino"] = {"Chino",18000, ""},
-    ["cognoscenti"] = {"Cognoscenti",25000, ""},
-    ["dukes"] = {"Dukes",20000, ""},
-    ["faction"] = {"Faction",23000, ""},
-    ["felon"] = {"Felon", 18000, ""},
-    ["felon2"] = {"Felon GT", 23000, ""},
-    ["fugitive"] = {"Fugitive",18000, ""},
-    ["hotknife"] = {"Hotknife",23000, ""},
-    ["jackal"] = {"Jackal", 18000, ""},
-    ["landstalker"] = {"Landstalker",30000, ""},
-    ["minivan"] = {"Minivan",30000, ""},
-    ["omnis"] = {"Omnis",18000, ""},
-    ["oracle"] = {"Oracle", 20000, ""},
-    ["oracle2"] = {"Oracle XS",22000, ""},
-    ["paradise"] = {"Paradise",17000, ""},
-    ["radi"] = {"Radius",30000, ""},
-    ["seminole"] = {"Seminole",30000, ""},
-    ["stretch"] = {"Stretch",30000, ""},
-    ["sultan"] = {"Sultan",24000, ""},
-    ["surfer"] = {"Surfer",20000, ""},
-    ["tailgater"] = {"Tailgater",17000, ""},
-    ["windsor2"] = {"Windsor Drop",23000, ""},
-    ["youga"] = {"Youga",16000, ""},
-    ["zion"] = {"Zion", 18000, ""},
-    ["zion2"] = {"Zion Cabrio", 20000, ""},
-	["brawler"] = {"Brawler",60000, ""},
-    ["dubsta3"] = {"Bubsta 6x6",130000, ""},
-    ["rebel2"] = {"Rebel",15000, ""},
-	["fordh"] = {"Ford H",500000, ""},
-    ["sandking"] = {"Sandking",40000, ""},
-	["sandkinghd"] = {"Sandking Monster Truck",550000, ""},
-    ["trophytruck"] = {"The Liberator",75000, ""},
-	["monster"] = {"The Liberator Monster",350000, ""},
-    ["bifta"] = {"Bifta",10000, ""}, -- atvs start here
-    ["blazer"] = {"Blazer",1200, ""},
-    ["dune"] = {"Dune Buggy",8000, ""},
-	["asea"] = {"Asea",10000, ""},
-    ["asterope"] = {"Asterope",10000, ""},
-    ["blista"] = {"Blista", 5000, ""},
-    ["brioso"] = {"Brioso R/A", 500, ""},
-    ["dilettante"] = {"Dilettante", 5000, ""},
-    ["glendale"] = {"Glendale",8000, ""},
-    ["journey"] = {"Journey",5000, ""},
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["asea"] = {"Asea",1000000, ""},
+    ["asterope"] = {"Asterope",1000000, ""},
+    ["cognoscenti"] = {"Cognoscenti",1000000, ""},
+    ["cognoscenti2"] = {"Cognoscenti(Armored)",1000000, ""},
+    ["cognoscenti3"] = {"Cognoscenti 55",1000000, ""},
+    ["zentorno"] = {"Cognoscenti 55(Armored)",1500000, ""},
+    ["fugitive"] = {"Fugitive",24000, ""},
+    ["glendale"] = {"Glendale",200000, ""},
     ["ingot"] = {"Ingot",9000, ""},
-    ["issi2"] = {"Issi", 7000, ""},
-    ["intruder"] = {"Intruder",12000, ""},
-    ["panto"] = {"Panto", 2000, ""},
-    ["penumbra"] = {"Penumbra", 10000, ""},
-    ["picador"] = {"Picador",12000, ""},
-    ["prairie"] = {"Prairie", 12000, ""},
+    ["intruder"] = {"Intruder",16000, ""},
     ["premier"] = {"Premier",10000, ""},
     ["primo"] = {"Primo",9000, ""},
     ["primo2"] = {"Primo Custom",9500, ""},
     ["regina"] = {"Regina",8000, ""},
-    ["rhapsody"] = {"Rhapsody", 5000, ""},
-    ["rumpo"] = {"Rumpo",13000, ""},
+    ["schafter2"] = {"Schafter",65000, ""},
     ["stanier"] = {"Stanier",10000, ""},
-    ["stratum"] = {"Stratum",7000, ""},
-    ["surge"] = {"Surge",9000, ""},
-    ["warrener"] = {"Warrener",7000, ""},
-    ["washington"] = {"Washington",15000, ""},
-    ["windsor"] = {"Windsor",45000, ""},
-	["casco"] = {"Casco",680000, ""},
-	["c10custom"] = {"C10 Custom",500000, ""},
-    ["coquette2"] = {"Coquette Classic",665000, ""},
-    ["jb700"] = {"JB 700",450000, ""},
-    ["pigalle"] = {"Pigalle",90000, ""},
-	["firebird"] = {"Pontiac Firebird 1970",350000, ""},
-    ["stinger"] = {"Stinger",550000, ""},
-    ["stingergt"] = {"Stinger GT",575000, ""},
-    ["feltzer3"] = {"Stirling",330000, ""},
-    ["ztype"] = {"Z-Type",950000,""},
-	["adder"] = {"Adder",1000000, ""},
-    ["r8ppi"] = {"Audi R8",180000, ""},
-    ["bullet"] = {"Bullet",155000, ""},
-    ["cheetah"] = {"Cheetah",200000, ""},
-    ["entityxf"] = {"Entity XF",250000, ""},
-    ["fmj"] = {"FMJ",1750000, "10 - (less numner better car"},
-    ["infernus"] = {"Infernus",220000, ""},
-    ["lynx"] = {"Lynx",173000, ""},
-    ["massacro"] = {"Massacro",175000, ""},
-    ["massacro2"] = {"Massacro (Racecar)",185000, ""},
-    ["osiris"] = {"Osiris",950000, "8 - (less numner better car"},
-    ["reaper"] = {"Reaper",1595000, ""},
-    ["le7b"] = {"RE-7B",2075000, "1 - (less numner better car"},
-    ["sheava"] = {"ETR1",199500, "4 - (less numner better car"},
-    ["schafter3"] = {"Schafter V12",700000, ""},
-    ["ySbrImpS11"] = {"Subaru Impreza",200000, ""},
-    ["sultanrs"] = {"Sultan RS",180000, ""},
-    ["t20"] = {"T20",1600000,"7 - (less numner better car"},
-    ["tropos"] = {"Tropos",180000, ""},
-    ["turismor"] = {"Turismo R",1500000, "9 - (less numner better car"},
-    ["tyrus"] = {"Tyrus",550000, "5 - (less numner better car"},
-    ["vacca"] = {"Vacca",340000, ""},
-    ["voltic"] = {"Voltic",150000, ""},
-    ["prototipo"] = {"X80 Proto",27000000, "6 - (less numner better car"},
-    ["zentorno"] = {"Zentorno",925000,"3 - (less numner better car"},
-	["rs6"] = {"Audi RS6",70000, ""},
-    ["sentinel"] = {"Audi S5", 45000, ""},
-    ["baller"] = {"Baller",40000, ""},
-    ["bestiagts"] = {"Bestia GTS",60000, ""},
-    ["blista"] = {"Blista Compact",42000, ""},
-    ["buffalo"] = {"Buffalo",35000, ""},
-    ["buffalo2"] = {"Buffalo S",45000, ""},
-    ["dominator"] = {"Dominator",35000, ""},
-    ["exemplar"] = {"Exemplar", 50000, ""},
-    ["fusilade"] = {"Fusilade",36000, ""},
-    ["gburrito"] = {"Gang Burrito",65000, ""},
-    ["gauntlet"] = {"Gauntlet",35000, ""},
-    ["granger"] = {"Grabger",40000, ""},
-    ["huntley"] = {"Huntley",45000, ""},
-	["kuruma"] = {"Lancer Evo",35000, ""},
-    ["nightshade"] = {"Nightshade",72000, ""},
-    ["rapidgt"] = {"Rapid GT",40000, ""},
-    ["rapidgt2"] = {"Rapid GT Convertible",50000, ""},
-    ["rocoto"] = {"Rocoto",50000, ""},
-    ["sabregt"] = {"Sabre Turbo",72000, ""},
-    ["schafter2"] = {"Schafter",35000, ""},
-    ["sentinel2"] = {"Sentinel XS", 35000, ""},
-	["elegy"] = {"Skyline GTR",75000, ""},
-    ["superd"] = {"Super Diamond",40000, ""},
-    ["tampa"] = {"Tampa",72000, ""},
-    ["verlierer2"] = {"Verkierer",69500,""},
-    ["vigero"] = {"Vigero",72000, ""},
-    ["virgo"] = {"Virgo",65000, ""},
-    ["xls"] = {"XLS",45000, ""},
-	["ninef"] = {"9F",120000, ""},
-    ["ninef2"] = {"9F Cabrio",130000, ""},
-    ["alpha"] = {"Alpha",150000, ""},
-    ["banshee"] = {"Banshee",105000, ""},
-    ["banshee2"] = {"Banshee 900R",120000, ""},
-    ["carbonizzare"] = {"Carbonizzare",110000, ""},
-	["chantom"] = {"Chantom Semi",110000, ""},
-    ["cognoscenti2"] = {"Cognoscenti(Armored)",80000, ""},
-    ["cogcabrio"] = {"Cognoscenti Cabrio",77000, ""},
-    ["comet2"] = {"Comet",100000, ""},
-    ["coquette"] = {"Coquette",138000, ""},
-    ["coquette3"] = {"Coquette BlackFin",130000, ""},
-    ["tampa2"] = {"Drift Tampa",95000, ""},
-    ["feltzer2"] = {"Feltzer",130000, ""},
-    ["furoregt"] = {"Furore GT",108000, ""},
-	["gtr"] = {"GTR Nismo",90000, ""},
-    ["jester"] = {"Jester",140000, ""},
-    ["jester2"] = {"Jester (Racecar)",150000, ""},
-    ["f620"] = {"Lexus RC350", 80000, ""},
-    ["pigalle"] = {"Pigalle",90000, ""},
-    ["surano"] = {"Surano",95000, ""}
+    ["stratum"] = {"Stratum",10000, ""},
+    ["stretch"] = {"Stretch",30000, ""},
+    ["superd"] = {"Super Diamond",250000, ""},
+    ["surge"] = {"Surge",38000, ""},
+    ["tailgater"] = {"Tailgater",55000, ""},
+    ["warrener"] = {"Warrener",120000, ""},
+    ["washington"] = {"Washington",15000, ""}
   },
-  
+
+  ["motorcycles"] = {
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 4, marker_id = 1}}},
+    ["AKUMA"] = {"Akuma",9000, ""},
+    ["bagger"] = {"Bagger",5000, ""},
+    ["bati"] = {"Bati 801",15000, ""},
+    ["bati2"] = {"Bati 801RR",15000, ""},
+    ["bf400"] = {"BF400",95000, ""},
+    ["carbonrs"] = {"Carbon RS",40000, ""},
+    ["cliffhanger"] = {"Cliffhanger",225000, ""},
+    ["daemon"] = {"Daemon",5000, ""},
+    ["double"] = {"Double T",12000, ""},
+    ["enduro"] = {"Enduro",48000, ""},
+    ["faggio2"] = {"Faggio",4000, ""},
+    ["gargoyle"] = {"Gargoyle",120000, ""},
+    ["hakuchou"] = {"Hakuchou",82000, ""},
+    ["hexer"] = {"Hexer",15000, ""},
+    ["innovation"] = {"Innovation",90000, ""},
+    ["lectro"] = {"Lectro",700000, ""},
+    ["nemesis"] = {"Nemesis",12000, ""},
+    ["pcj"] = {"PCJ-600",9000, ""},
+    ["ruffian"] = {"Ruffian",9000, ""},
+    ["sanchez"] = {"Sanchez",7000, ""},
+    ["sovereign"] = {"Sovereign",90000, ""},
+    ["thrust"] = {"Thrust",75000, ""},
+    ["vader"] = {"Vader",9000, ""},
+    ["vindicator"] = {"Vindicator",600000,""}
+  },
+  ["taxi"] = {
+    _config = {map_entity = {"PoI", {blip_id = 56, blip_color = 5, marker_id = 1}}, permissions = {"taxi.vehicle"} },
+    ["taxi"] = {"Taxi",100,""}
+  },
   ["police"] = {
-    _config = {vtype="car",blipid=56,blipcolor=38,permissions={"police.vehicle"}},
-    ["police"] = {"Police Cruiser",0, "police"},
-    ["police2"] = {"Dodge Sheriff",0, "police"},
-    ["police3"] = {"Police3",0, "police"},
-    ["police4"] = {"police4",0, "police"},
-    ["police5"] = {"Police SUV",0, "police"},
-    ["police6"] = {"Police K9",0, "police"},
-    ["police7"] = {"Police7",0, "police"},
-	["police8"] = {"Police8",0, "police"},
-    ["policet"] = {"policet",0, "police"},
-    ["sheriff3"] = {"Sheriff",0, "police"},
-    ["sheriff2"] = {"Sheriff SUV",0, "police"},
-    ["sheriff"] = {"2015 Sheriff",0, "police"},
-    ["riot"] = {"SWAT",0, "police"},
-	["fbi"] = {"Unmarked",0, "police"},
-	["hwaycar2"] = {"State Trooper",0, "police"},
-	["hwaycar3"] = {"Trooper SUV",0, "police"},
-	["hwaycar5"] = {"hwaycar5",0, "police"},
-	["hwaycar6"] = {"hwaycar6",0, "police"},
-	["hwaycar7"] = {"hwaycar7",0, "police"},
-	["hwaycar8"] = {"hwaycar8",0, "police"},
-	["hwaycar9"] = {"hwaycar9",0, "police"},
-	["hwaycar10"] = {"hwaycar10",0, "police"},
-	["hwaycar"] = {"hwaycar",0, "police"},
-    ["polf430"] = {"Police Ferarri",0, "police"},
-	["policeb"] = {"policeb",0, "police"}
-  },
-  ["Cadet"] = {
-    _config = {vtype="car",blipid=56,blipcolor=38,permissions={"Cadet.vehicle"}},
-    ["police7"] = {"police",0, "police"}
-  },
-  ["Bounty"] = {
-    _config = {vtype="car",blipid=56,blipcolor=38,permissions={"Bounty.vehicle"}},
-    ["fbi"] = {"Unmarked",0, "police"}
+    _config = {map_entity = {"PoI", {blip_id = 50, blip_color = 38, marker_id = 1}}, permissions = {"police.vehicle"} },
+    ["police"] = {"Basic",100,"Basic model."},
+    ["police3"] = {"Classic",25000,"Sport model."},
+    ["police2"] = {"Furtive",50000,"Furtive model."}
   },
   ["emergency"] = {
-    _config = {vtype="car",blipid=50,blipcolor=3,permissions={"emergency.vehicle"}},
-    ["Ambulance"] = {"Ambulance",0, "emergency"},
-	["hwaycar4"] = {"Tahoe",0, "emergency"},
-	["firetruk"] = {"firetruk",0, "emergency"}
+    _config = {map_entity = {"PoI", {blip_id = 61, blip_color = 3, marker_id = 1}}, permissions = {"emergency.vehicle"} },
+    ["ambulance"] = {"Basic",100,""}
   },
-  ["Police Helicopters"] = {
-    _config = {vtype="car",blipid=43,blipcolor=38,radius=5.1,permissions={"police.vehicle"}},
-    ["polmav"] = {"Maverick",0, "emergency"}
+  ["bicycles"] = {
+    _config = {map_entity = {"PoI", {blip_id = 376, blip_color = 4, marker_id = 1}}},
+    ["tribike"] = {"Tribike", 250, ""},
+    ["BMX"] = {"BMX", 450, ""}
   },
-   ["EMS Helicopters"] = {
-    _config = {vtype="car",blipid=43,blipcolor=1,radius=5.1,permissions={"emergency.vehicle"}},
-    ["supervolito2"] = {"EMS",0, "emergency"}
+  ["boats"] = {
+    _config = {map_entity = {"PoI", {blip_id = 427, blip_color = 4, marker_id = 1}}},
+    ["dinghy"] = {"Dinghy", 50000, "A zodiac."},
+    ["dinghy2"] = {"Dinghy II", 50000, "A zodiac."},
+    ["dinghy3"] = {"Dinghy III", 50000, "A zodiac."},
+    ["dinghy4"] = {"Dinghy IV", 50000, "A zodiac."},
+    ["marquis"] = {"Marquis", 250000, "A yacht."},
+    ["seashark"] = {"Seashark", 9000, "A jet ski."},
+    ["seashark2"] = {"Seashark II", 9000, "A jet ski."},
+    ["seashark3"] = {"Seashark III", 9000, "A jet ski."},
+    ["speeder"] = {"Speeder", 600000, "A fast boat."},
+    ["speeder2"] = {"Speeder II", 600000, "A fast boat."},
+    ["squalo"] = {"Squalo", 600000, "A fast boat."},
+    ["jetmax"] = {"JetMax", 600000, "A fast boat."},
+    ["toro"] = {"Toro", 600000, "A fast boat."},
+    ["toro2"] = {"Toro II", 600000, "A fast boat."},
+    ["tropic"] = {"Tropic", 600000, "A fast boat."},
+    ["tropic2"] = {"Tropic II", 600000, "A fast boat."},
+    ["predator"] = {"Predator", 600000, "A fast boat."},
+    ["suntrap"] = {"Suntrap", 250000, "Pleasure boat."}
   },
-   ["Mafia Garage"] = {
-    _config = {vtype="car",blipid=50,blipcolor=3,permissions={"mafia.vehicle"}},
-	["infernus"] = {"Infernus", 0, ""}, -- THIS IS JUST AN EXAMPLE , ADD MORE IF YOU WANT.
+  ["planes"] = {
+    _config = {map_entity = {"PoI", {blip_id = 307, blip_color = 4, marker_id = 1}}},
+    ["velum"] = {"Velum", 500000, "Propeller plane."},
+    ["velum2"] = {"Velum II", 500000, "Propeller plane."},
+    ["stunt"] = {"Stunt", 250000, "Small propeller plane."},
+    ["mammatus"] = {"Mammatus", 250000, "Small propeller plane."},
+    ["dodo"] = {"Dodo", 250000, "Small propeller plane."},
+    ["duster"] = {"Duster", 105000, "Old propeller plane."},
+    ["cuban800"] = {"Cuban 800", 250000, "Small propeller plane."},
+    ["luxor"] = {"Luxor", 3500000, "Private jet."},
+    ["luxor2"] = {"Luxor II", 3500000, "Private jet."}
   },
-  ["Pilotla"] = {
-    _config = {vtype="plane",blipid=16,blipcolor=30,permissions={"pilot.vehicle"}},
-    ["jet"] = {"Boeing 747",0, "jet"}
+  ["helicopters"] = {
+    _config = {map_entity = {"PoI", {blip_id = 43, blip_color = 4, marker_id = 1}}},
+    ["maverick"] = {"Maverick", 150000, "Basic chopper."},
+    ["swift"] = {"Swift", 550000, "Fast chopper."},
+    ["swift2"] = {"Swift II", 550000, "Fast chopper."},
+    ["supervolito"] = {"Super Volito", 850000, "Fast chopper."},
+    ["supervolito2"] = {"Super Volito II", 850000, "Fast chopper."},
+    ["volatus"] = {"Volatus", 3500000, "Top of the line chopper."}
   },
-  ["Pilotsa"] = {
-    _config = {vtype="plane",blipid=16,blipcolor=30,permissions={"pilot.vehicle"}},
-     ["mammatus"] = {"Small Cargo",0, "mammatus"}
+  ["transport"] = {
+    _config = {map_entity = {"PoI", {blip_id = 318, blip_color = 4, marker_id = 1}}},
+    ["packer"] = {"Packer", 15000, "Basic tug."},
+    ["benson"] = {"Benson", 8000, "Basic truck."},
+    ["bison"] = {"Bison", 12000, "Basic pickup truck."}
   },
-  ["airP"] = {
-    _config = {vtype="plane",blipid=16,blipcolor=30,permissions={"air.vehicle"}},
-    ["vestra"] = {"Plane",0, "vestra"}
-  },
-  ["airH"] = {
-    _config = {vtype="plane",blipid=43,blipcolor=30,permissions={"air.vehicle"}},
-     ["volatus"] = {"Helicopter",0, "volatus"}
-  }, 
-  ["uber"] = {
-    _config = {vtype="car",blipid=50,blipcolor=81,permissions={"uber.vehicle"}},
-    ["surge"] = {"Surge",0, "surge"}
-  },
-  ["UPS"] = {
-    _config = {vtype="car",blipid=85,blipcolor=81,permissions={"ups.vehicle"}},
-    ["boxville4"] = {"Delivery",0, "boxville4"}
-  },
-  ["Lawyer"] = {
-    _config = {vtype="car",blipid=50,blipcolor=7,permissions={"Lawyer.vehicle"}},
-    ["panto"] = {"Panto", 0, "panto"}
-  },
-  ["delivery"] = {
-    _config = {vtype="bike",blipid=85,blipcolor=31,permissions={"delivery.vehicle"}},
-    ["faggio3"] = {"faggio3",0, "faggio3"}
-  },
-  -- ["santa"] = {
-    -- _config = {vtype="bike",blipid=85,blipcolor=31,permissions={"santa.vehicle"}},
-    -- ["hydra"] = {"Santa's Sled",0, "hydra"}
-  -- },  
-  ["repair"] = {
-    _config = {vtype="car",blipid=50,blipcolor=31,permissions={"repair.vehicle"}},
-    ["towtruck2"] = {"towtruck2",0, "towtruck2"},
-	["utillitruck3"] = {"Utility Truck",0, "utillitruck3"}
-  },
-  ["bankdriver"] = {
-    _config = {vtype="car",blipid=67,blipcolor=4,permissions={"bankdriver.vehicle"}},
-    ["stockade"] = {"stockade",0, "stockade"}
-  },
-  ["Trash Collector"] = {
-    _config = {vtype="car",blipid=67,blipcolor=4,permissions={"trash.vehicle"}},
-    ["trash"] = {"Truck",0, "trash"}
-  },
-  ["Medical Driver"] = {
-    _config = {vtype="car",blipid=67,blipcolor=4,permissions={"medical.vehicle"}},
-    ["pony2"] = {"Medical Weed Van",0, "pony2"}
+  ["containers"] = {
+    _config = {map_entity = {"PoI", {blip_id = 318, blip_color = 17, marker_id = 1}}},
+    ["trailersmall"] = {"Petit", 3000, "Small container for pickup."},
+    ["trailers"] = {"Basic", 30000, "Medium container."},
+    ["tanker"] = {"Tanker", 300000, "Big container."}
   }
-  
-  
 }
 
 -- {garage_type,x,y,z}
 cfg.garages = {
-  {"Starter Vehicles",141.66270446777,-1081.8083496094,29.192489624023},
-  --{"new additions",853.93768310547,-2093.705078125,30.243104934692},
-  {"Low End",1208.6527099609,-1262.5780029297,35.226768493652},
-  {"Off Road",1777.6678466797,3335.7856445313,41.171855926514},
-  {"High End",-361.62393188477,-132.71321105957,38.680068969727},
-  {"Mid Range",717.70239257813,-1088.8958740234,22.360628128052},
-  {"Exotic Cars",-42.400775909424,-1098.3619384766,26.422369003296},
-  {"Mid Range",1181.6231689453,2650.830078125,37.821151733398},
-  {"sportsclassics",112.275, 6619.83, 31.8154},
-  {"Motorcycles",-205.789, -1308.02, 31.2916},
-  {"police",451.2121887207,-1018.2822875977,28.495378494263},	-- jobs garage
-  {"Cadet",451.2121887207,-1018.2822875977,28.495378494263}, --- cadet garage
-  {"police",477.99038696289,-1020.9154663086,28.011201858521},
-  {"Bounty",512.07818603516,-3052.1579589844,6.0687308311462},  
-  {"police",1868.5435791016,3696.0295410156,33.5693359375},  -- sandy shores
-  {"police",-476.92425537109,6026.9951171875,31.340547561646},  -- paleto
-  {"emergency",358.91650390625, -607.78515625, 28.6820983886719}, -- main
-  {"emergency",1833.3223876953,3661.3088378906,33.875843048096}, -- sandy shores
-  {"emergency",-255.98040771484,6346.1127929688,32.426189422607}, -- paleto
-  {"uber",907.38049316406,-175.86546325684,74.130157470703}, -- jobs garage
-  {"Lawyer",-1900.7344970703,-560.89245605469,11.802397727966},-- jobs garage
-  {"delivery",964.514770507813,-1020.13879394531,40.8475074768066},   -- jobs garage
-  {"repair",401.42602539063,-1631.7053222656,29.291942596436},   -- jobs garage
-  {"bankdriver",222.68756103516,222.95631408691,105.41331481934},   -- jobs garage
-  {"House Garage",-638.08142089844,56.500617980957,43.794803619385},  -- house garage
-  {"House Garage",-1457.4909667969,-500.61614990234,32.202766418457},
-  {"House Garage",-25.273494720459,-1434.4365234375,30.653142929077},
-  {"House Garage",-1155.2669677734,-1520.244140625,4.3475861549377},
-  {"House Garage",-872.43200683594,-370.17984008789,38.360645294189},
-  {"House Garage",-354.92651367188,6222.3588867188,31.488939285278},
-  {"House Garage",-819.40551757813,183.72904968262,72.136161804199},
-  {"House Garage",15.016004562378,547.76171875,176.14279174805},
-  {"UPS",69.852645874023,117.0472946167,79.126907348633},
-  {"House Garage",1977.1169433594,3827.2368164063,32.373237609863},
-  {"House Garage",2480.5893554688,4953.958984375,45.026481628418},
-  {"House Garage",15.016004562378,547.76171875,176.14279174805},
-  {"House Garage",-1415.1351318359,-956.41815185547,7.2369647026062},
-  {"House Garage",497.44073486328,-1702.4410400391,29.400140762329},
-  {"House Garage",684.44097900391,-719.58734130859,25.884830474854},
-  {"House Garage",1230.9146728516,-2678.0639648438,2.7148849964142},
-  {"House Garage",-796.00256347656,304.55578613281,85.700416564941},
-  {"House Garage",-259.08013916016,-680.39465332031,32.830478668213},
-  {"House Garage",-72.769035339355,495.79925537109,144.10296630859},
-  {"House Garage",-121.71002960205,509.85540771484,142.5652923584},
-  {"House Garage",-188.32077026367,502.87573242188,134.23774719238},
-  {"House Garage",131.78851318359,568.10815429688,183.4107208252},
-  {"House Garage",1366.5837402344,1147.4722900391,113.41327667236 },
-  {"House Garage",-36.333103179932,-674.09722900391,32.33805847168},
-  {"Mafia Garage",1409.9451904297,3620.3876953125,34.894344329834},
-  {"House Garage",1274.7135009766,-1732.7083740234,52.04536819458},
-  {"House Garage",34.516819000244,6604.0004882813,32.449085235596},
-  {"House Garage",-555.20428466797,664.56500244141,145.16401672363},
-  {"Police Helicopters",449.30340576172,-981.24963378906,43.69165802002}, -- Main PD
-  {"Police Helicopters",1770.2171630859,3239.5561523438,42.13171005249}, -- Sandy Shores
-  {"Police Helicopters",-475.24264526367,5988.7353515625,31.336685180664}, -- Paleto Bay
-  {"EMS Helicopters",449.30340576172,-981.24963378906,43.69165802002}, -- Main PD
-  {"EMS Helicopters",1770.2171630859,3239.5561523438,42.13171005249}, -- Sandy Shores
-  {"EMS Helicopters",-475.24264526367,5988.7353515625,31.336685180664}, -- Paleto Bay  
-  {"Fisher's Boat",1508.8854980469,3908.5732421875,30.031631469727},
-  {"Medical Driver",-319.82263183594,-942.8408203125,31.080617904663},
-  {"Pilotsa",-901.70129394531,-3293.984375,13.944430351257},
-  {"Pilotsa",2128.9069824219,4806.134765625,41.168750762939},
-  {"Pilotsa",1734.9053955078,3297.9689941406,41.223503112793},
-  {"airP",2128.9069824219,4806.134765625,41.168750762939},
-  {"airH",-745.14343261719,-1468.5361328125,5.0005240440369},
-  {"airP",1734.9053955078,3297.9689941406,41.223503112793},
-  -- {"Santa",-1345.333984375,-2692.7885742188,13.944937705994}  
-  {"Trash Collector",768.86297607422,-1410.4896240234,26.502605438232}
- 
-  
-  
-
-  
-  --{"planes",1640, 3236, 40.4},
-  --{"planes",2123, 4805, 41.19},
-  --{"planes",-1348, -2230, 13.9},
-  --{"helicopters",-1233, -2269, 13.9},
-  --{"helicopters",-745, -1468, 5},
-  --{"boats",-849.5, -1368.64, 1.6},
-  --{"boats",1538, 3902, 30.35}
+  {"compacts",-356.146, -134.69, 39.0097},
+  {"coupe",723.013, -1088.92, 22.1829},
+  {"sports",-1145.67, -1991.17, 13.162},
+  {"sportsclassics",1174.76, 2645.46, 37.7545},
+  {"supercars",112.275, 6619.83, 31.8154},
+  {"motorcycles",-205.789, -1308.02, 31.2916},
+  {"taxi",-286.870056152344,-917.948181152344,31.080623626709},
+  {"police",454.4,-1017.6,28.4},
+  {"emergency",-492.08544921875,-336.749206542969,34.3731842041016},
+  {"bicycles",-352.038482666016,-109.240043640137,38.6970825195313},
+  {"boats",-849.501281738281,-1367.69567871094,1.60516905784607},
+  {"boats",1299.11730957031,4215.66162109375,33.9086799621582},
+  {"boats",3867.17578125,4464.54248046875,2.72485375404358},
+  {"planes",1640.0, 3236.0, 40.4},
+  {"planes",2123.0, 4805.0, 41.19},
+  {"planes",-1348.0, -2230.0, 13.9},
+  {"helicopters",1750.0, 3260.0, 41.37},
+  {"helicopters",-1233.0, -2269.0, 13.9},
+  {"helicopters",-745.0, -1468.0, 5.0},
+  {"containers",-978.674682617188,-2994.29028320313,13.945068359375},
+  {"transport",-962.553039550781,-2965.82470703125,13.9450702667236}
 }
 
 return cfg
