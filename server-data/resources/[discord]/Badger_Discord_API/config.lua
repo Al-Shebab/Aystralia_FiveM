@@ -9,7 +9,7 @@ Config.Splash = {
 	Enabled = true,
 	Wait = 10, -- How many seconds should splash page be shown for? (Max is 12)
 	Heading1 = "Welcome to Aystralia Network",
-	Heading2 = "Make sure to join our Discord!",
-	Discord_Link = 'https://discord.gg/hWN7zXtbQP',
+	Heading2 = "",
+	Discord_Link = 'http://steamcommunity.com/groups/Aystralia',
 	Website_Link = 'https://forums.aystralia.com.au/',
 }
