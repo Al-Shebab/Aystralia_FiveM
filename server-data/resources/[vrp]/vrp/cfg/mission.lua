@@ -1,18 +1,17 @@
 
 local cfg = {}
 
-cfg.default_display = true
-
 -- mission display css
 cfg.display_css = [[
 .div_mission{
   position: absolute;
-  top: 150px;
+  top: 125px;
   right: 5px;
   color: white;
   background-color: rgba(0,0,0,0.75);
   padding: 8px;
   max-width: 300px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .div_mission .name{

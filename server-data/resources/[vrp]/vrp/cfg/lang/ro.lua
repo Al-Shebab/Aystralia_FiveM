@@ -3,8 +3,8 @@
 
 local lang = {
   common = {
-    welcome = "Bun venit. Foloseste tastele telefonului sa navighezi meniul.~n~ultima logare: {1}",
-    no_player_near = "~r~Niciun jucator in preajma.",
+    welcome = "Bun venit. Apasa K pentru a folosi meniul.",
+    no_player_near = "~r~Niciun jucator in jurul tau.",
     invalid_value = "~r~Valoare invalida.",
     invalid_name = "~r~Numa invalid.",
     not_found = "~r~Nu a fost gasit.",
@@ -20,14 +20,15 @@ local lang = {
     thirsty = "insetat"
   },
   money = {
-    display = "{1} <span class=\"symbol\">$</span>",
+    display = "<span class=\"symbol\">$</span> {1}",	
+	bdisplay = "<span class=\"symbol\">$</span> {1}",
     given = "Ai dat ~r~{1}$.",
     received = "Ai primit ~g~{1}$.",
-    not_enough = "~r~Nu ai destui bani.",
+    not_enough = "~r~Nu ai suficienti bani.",
     paid = "Ai platit ~r~{1}$.",
     give = {
       title = "Ofera bani",
-      description = "Da bani celui mai apropiat jucator.",
+      description = "Ofera bani celui mai apropiat jucator.",
       prompt = "Suma oferita:"
     }
   },
@@ -38,9 +39,9 @@ local lang = {
     info_weight = "greutate {1}/{2} kg",
     give = {
       title = "Ofera",
-      description = "Da obiecte celui mai apropiat jucator.",
+      description = "Ofera obiecte celui mai apropiat jucator.",
       prompt = "Numar oferit (max {1}):",
-      given = "Ai dat ~r~{1} ~s~{2}.",
+      given = "Ai oferit ~r~{1} ~s~{2}.",
       received = "Ai primit ~g~{1} ~s~{2}.",
     },
     trash = {
@@ -416,12 +417,16 @@ local lang = {
     },
     replace = {
       title = "Repune vehiculul",
-      description = "Repunde cel mai apropiat vehicul pe pamant."
+      description = "Repune cel mai apropiat vehicul pe pamant."
     },
     repair = {
       title = "Repara vehicul",
       description = "Repara cel mai apropiat vehicul."
-    }
+    },
+    sellTP = {
+	title = "Vine masina unui jucator",
+	description = "Vinde cea mai apropiata masina a ta catre un jucator."
+    }    
   },
   gunshop = {
     title = "Magazin de arme ({1})",
@@ -465,7 +470,7 @@ local lang = {
     level_up = "Abilitatea ~b~{1}/{2} ~g~nivel crescut ({3}).",
     display = {
       group = "{1}: ",
-      aptitude = "{1} LVL {3} EXP {2}"
+      aptitude = "--- {1} | EXP {2} | LVL {3} | progress {4}%"
     }
   }
 }
