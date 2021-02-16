@@ -1,8 +1,10 @@
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+fx_version 'adamant'
+
+game "gta5"
 
 dependency "vrp"
 
-description "DiamondBlackjack created by Robbster. vRP Edit by DocWeird"
+description "DiamondBlackjack created by Robbster. vRP Edit by Arthur"
 
 client_scripts{
 	"lib/Tunnel.lua",
@@ -19,12 +21,14 @@ client_scripts{
 	"src/menu/windows/*.lua",
 	"cl_blackjack.lua",
 	"cl_casinoteleporter.lua",
+	"cl_buychips.lua"
 }
 
-server_script "@vrp/lib/utils.lua"
-
-server_script "sv_blackjack.lua"
-
+server_scripts{
+	"@vrp/lib/utils.lua",
+	"sv_blackjack.lua",
+	"sv_buychips.lua"
+}
 
 files{
 	"peds.meta",

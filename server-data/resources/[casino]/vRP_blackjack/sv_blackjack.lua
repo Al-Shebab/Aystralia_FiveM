@@ -123,6 +123,7 @@ AddEventHandler("Blackjack:setBlackjackBet",function(gameId,betAmount,chairId)
                 betAmount = tonumber(betAmount)
                 if betAmount > 0 then
                     if tryTakeChips(source,betAmount) then
+                        TriggerClientEvent('buychips:updatehud-',source, betAmount)
                         --print("Taken",betAmount,"chips from id",source)
                         if blackjackGameData[gameId][source] == nil then
                             blackjackGameData[gameId][source] = {}
@@ -396,6 +397,7 @@ for i=0,3,1 do
                                                 if dealerHand > 21 then
                                                     --print("source: " .. tostring(source) .. " wins!")
                                                     giveChips(source,potentialWinAmount)
+                                                    TriggerClientEvent('buychips:updatehud+', source, potentialWinAmount)
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
@@ -409,6 +411,7 @@ for i=0,3,1 do
                                                 elseif currentHand > dealerHand and currentHand <= 21 then
                                                     --print("source: " .. tostring(source) .. " wins!")
                                                     giveChips(source,potentialWinAmount)
+                                                    TriggerClientEvent('buychips:updatehud+', source, potentialWinAmount)
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
