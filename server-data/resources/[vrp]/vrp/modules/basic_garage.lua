@@ -521,3 +521,7 @@ vRP.registerMenuBuilder("main", function(add, data)
     add(choices)
   end
 end)
+
+function vRP.getCfgInventoryHud()
+  return cfg_inventory
+end

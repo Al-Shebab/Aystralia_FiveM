@@ -16,6 +16,7 @@ client_scripts{
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
+  -- "teleporter.lua",
   -- "cl_afk.lua",
   -- "cl_antivdm.lua",
   -- "cl_carry.lua",

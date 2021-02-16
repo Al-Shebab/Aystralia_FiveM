@@ -568,3 +568,98 @@ function vRP.openChest(source, name, max_weight, cb_close, cb_in, cb_out)
     end
   end
 end
+
+function vRP.getItemChoiceHud(idname)
+  local args = vRP.parseItem(idname)
+  local item = vRP.items[args[1]]
+  local choices = {}
+  if item ~= nil then
+    -- compute choices
+    local cchoices = vRP.computeItemChoices(item,args)
+    if cchoices then -- copy computed choices
+      for k,v in pairs(cchoices) do
+        choices[k] = v
+      end
+    end
+  end
+
+  return choices
+end
+
+function vRP.trash(user_id, idname, amount)
+  local player = vRP.getUserSource(user_id)
+  if user_id ~= nil then
+    local amount = parseInt(amount)
+    local trigger = 0
+
+    for v,k in pairs(cfgItem.seizable_items) do
+      if (idname == k) then
+        trigger = 1
+        
+      end
+    end
+  
+    if trigger == 0 then
+      if (vRP.tryGetInventoryItem(user_id,idname,amount,false)) then
+        vRPclient.playAnim(player,{true,{{"pickup_object","pickup_low",1}},false})
+      end
+    else
+      if (vRP.hasPermission(user_id, "police.announce")) then
+        if vRP.tryGetInventoryItem(user_id,idname,amount,false) then
+          vRPclient.playAnim(player,{true,{{"pickup_object","pickup_low",1}},false})
+        end
+      else
+        vRPclient.notify(player,{"~r~You cannot throw away illegal items!"})
+      end
+    end
+  end
+end
+
+function vRP.giveItemHud(player, idname, amount)
+  local user_id = vRP.getUserId(player)
+  if user_id ~= nil then
+    -- get nearest player
+    vRPclient.getNearestPlayer(player,{10},function(nplayer)
+      if nplayer ~= nil then
+        local nuser_id = vRP.getUserId(nplayer)
+        if nuser_id ~= nil then
+            -- weight check
+            local new_weight = vRP.getInventoryWeight(nuser_id)+vRP.getItemWeight(idname)*amount
+            if new_weight <= vRP.getInventoryMaxWeight(nuser_id) then
+              if vRP.tryGetInventoryItem(user_id,idname,amount,true) then
+                vRP.giveInventoryItem(nuser_id,idname,amount,true)
+
+                vRPclient.playAnim(player,{true,{{"mp_common","givetake1_a",1}},false})
+                vRPclient.playAnim(nplayer,{true,{{"mp_common","givetake2_a",1}},false})
+              else
+                vRPclient.notify(player,{lang.common.invalid_value()})
+              end
+            else
+              vRPclient.notify(player,{lang.inventory.full()})
+            end
+        else
+          vRPclient.notify(player,{lang.common.no_player_near()})
+        end
+      else
+        vRPclient.notify(player,{lang.common.no_player_near()})
+      end
+    end)
+  end
+end
+
+function vRP.getItemChoiceHud(idname)
+  local args = vRP.parseItem(idname)
+  local item = vRP.items[args[1]]
+  local choices = {}
+  if item ~= nil then
+    -- compute choices
+    local cchoices = vRP.computeItemChoices(item,args)
+    if cchoices then -- copy computed choices
+      for k,v in pairs(cchoices) do
+        choices[k] = v
+      end
+    end
+  end
+
+  return choices
+end

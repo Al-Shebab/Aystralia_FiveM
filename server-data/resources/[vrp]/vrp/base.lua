@@ -794,3 +794,5 @@ AddEventHandler("vRPcli:playerSpawned", function()
 end)
 
 RegisterServerEvent("vRP:playerDied")
+
+vRPin = Proxy.getInterface("vrp_hud_inventory")
