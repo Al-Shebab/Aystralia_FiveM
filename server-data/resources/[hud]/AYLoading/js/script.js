@@ -323,9 +323,9 @@ Particle.prototype = (function(o) {
 
     // Configs
 
-    var PARTICLE_RADIUS       = 2,
-        G_POINT_RADIUS        = 10,
-        G_POINT_RADIUS_LIMITS = 65;
+    var PARTICLE_RADIUS       = 1,
+        G_POINT_RADIUS        = 1,
+        G_POINT_RADIUS_LIMITS = 1;
 
 
     // Vars
@@ -350,8 +350,8 @@ Particle.prototype = (function(o) {
         context   = canvas.getContext('2d');
         bufferCtx = bufferCvs.getContext('2d');
 
-        var cx = canvas.width * 0.5,
-            cy = canvas.height * 0.5;
+        var cx = canvas.width * 1,
+            cy = canvas.height * 1;
 
         grad = context.createRadialGradient(cx, cy, 0, cx, cy, Math.sqrt(cx * cx + cy * cy));
         grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
@@ -431,7 +431,7 @@ Particle.prototype = (function(o) {
     // GUI Control
 
     control = {
-        particleNum: 100
+        particleNum: 300
     };
 
 
@@ -443,7 +443,7 @@ Particle.prototype = (function(o) {
     window.addEventListener('resize', resize, false);
     resize(null);
 
-    addParticle(150);
+    addParticle(350);
 
     canvas.addEventListener('mousemove', mouseMove, false);
     canvas.addEventListener('mousedown', mouseDown, false);

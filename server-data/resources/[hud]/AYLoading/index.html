@@ -1,32 +1,51 @@
-<!DOCTYPE html>
-<!--
-Audiovisualization using the html canvas element.
-©2017, Dominik Hofacker
-https://www.behance.net/dominikhofacker
-Please consider supporting this project on behance:
-https://www.behance.net/gallery/49260123/Web-Audio-Visualization
--->
-    <head>
-        <meta charset="utf-8">
-        <meta content='IE=8' http-equiv='X-UA-Compatible'>
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="css/style.css">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css' />
-        
-    </head>
-    <body>
-        <div class="background"></div>
-       	<span id="loading"></span>
-        <div id="song_info_wrapper">
-			<div id="title"><img src="" width="300"></div>
-        </div>
-		<canvas id="c"></canvas>
-        <canvas id="freq" width="1024" height="525"></canvas>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="js/bufferloader.js"></script>
-        <script src="js/id3-minimized.js"></script>
-        <script src="js/audiovisualisierung.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FiveM | Loadingscreen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="keks.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
+</head>
+<body>
+    
+    <h1 class="enable_music">Use the <strong>spacebar</strong> to toggle the music</h1>
+
+    <h1 class="servername"><strong>Aystralia</strong> Network</h1>
+    <h1 class="undertext">Connecting to the server.</h1>
+    <canvas id="c"></canvas>
+    <canvas id="freq" width="1920" height="1080"></canvas>
+    <div class="progress"></div>
+
+    <audio id="leson" src="music/music.ogg" autoplay="true" hidden="true" loop="true">
+    <script>
+
+    var play = false;
+    var myAudio = document.getElementById("leson");
+    
+    myAudio.volume = 0.05;
+
+    function onKeyDown(event) {
+            switch (event.keyCode) {
+                case 32: //SpaceBar                    
+                    if (play) {
+                        myAudio.pause();
+                        play = false;
+                    } else {
+                        myAudio.play();
+                        play = true;
+                    }
+                    break;
+            }
+      return false;
+    }
+
+    window.addEventListener("keydown", onKeyDown, false);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
 </html>
