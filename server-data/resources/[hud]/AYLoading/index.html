@@ -16,26 +16,22 @@
     <h1 class="servername"><strong>Aystralia</strong> Network</h1>
     <h1 class="undertext">Connecting to the server.</h1>
     <canvas id="c"></canvas>
-    <canvas id="freq" width="1920" height="1080"></canvas>
+    <canvas id="freq"></canvas>
     <div class="progress"></div>
-
     <audio id="leson" src="music/music.ogg" autoplay="true" hidden="true" loop="true">
     <script>
-
     var play = false;
     var myAudio = document.getElementById("leson");
-    
     myAudio.volume = 0.05;
-
     function onKeyDown(event) {
             switch (event.keyCode) {
                 case 32: //SpaceBar                    
                     if (play) {
-                        myAudio.pause();
-                        play = false;
-                    } else {
                         myAudio.play();
                         play = true;
+                    } else {
+                        myAudio.pause();
+                        play = false;
                     }
                     break;
             }
