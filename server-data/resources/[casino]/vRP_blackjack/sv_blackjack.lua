@@ -27,6 +27,10 @@ local blackjackTables = {
     [15] = false,
 }
 
+for i=0,127,1 do
+    blackjackTables[i] = false
+end
+
 local blackjackGameInProgress = {}
 local blackjackGameData = {}
 
@@ -51,21 +55,6 @@ AddEventHandler('playerDropped', function (reason)
             blackjackTables[k] = false
         end
     end
-end)
-
-RegisterCommand("debugtableserver",function()
-    print("blackjackTables")
-    print("===============")
-    print(dump(blackjackTables))
-    print("blackjackGameData")
-    print("===============")
-    print(dump(blackjackGameData))
-end)
-
-RegisterCommand("debugcarddata",function()
-    print("carddata")
-    print("===============")
-    print(dump(blackjackGameData[1024]))
 end)
 
 RegisterNetEvent("Blackjack:requestBlackjackTableData")
@@ -156,7 +145,7 @@ AddEventHandler("Blackjack:standBlackjack",function(gameId,nextCardCount)
     blackjackGameData[gameId][source][2][nextCardCount] = false
 end)
 
-for i=0,3,1 do
+for i=0,31,1 do
     Citizen.CreateThread(function()
         math.randomseed(os.clock()*100000000000)
         while true do  --blackjack game management thread
@@ -170,7 +159,7 @@ for i=0,3,1 do
             local chairIdFinal = (i*4)+3
             for chairID=chairIdInitial,chairIdFinal do
                 --print("checking chairID[" .. tostring(chairID) .. "] = " .. tostring(blackjackTables[chairID])) 
-                if blackjackTables[chairID] ~= false then   
+                if blackjackTables[chairID] ~= false then
                     table.insert(players_ready,blackjackTables[chairID])
                     game_ready = true
                 end
@@ -260,13 +249,13 @@ for i=0,3,1 do
                                         blackjackGameData[gameId][source][2] = {}
                                         --print("initialize card count = 1")
                                         while nextCardCount >= 1 do
-                                            print("while card count >= 1 waiting for a response... cardCount is: " .. tostring(nextCardCount))
+                                            --print("while card count >= 1 waiting for a response... cardCount is: " .. tostring(nextCardCount))
                                             secondsWaited = 0
-                                            print("error debug #1")
-                                            print("gameId",gameId)
-                                            print(dump(blackjackGameData[gameId]))
-                                            print("=======")
-                                            while blackjackGameData[gameId][source][2][nextCardCount] == nil and secondsWaited < 10 do 
+                                            --print("error debug #1")
+                                            --print("gameId",gameId)
+                                            --print(dump(blackjackGameData[gameId]))
+                                            --print("=======")
+                                            while blackjackGameData[gameId][source][2][nextCardCount] == nil and secondsWaited < 20 do 
                                                 Wait(100)
                                                 secondsWaited = secondsWaited + 0.1
                                                 ----print("response to stand or hit is still false")
@@ -356,24 +345,22 @@ for i=0,3,1 do
                                         --print("playerHand",playerHand)
                                         --print("highestPlayerHand",highestPlayerHand)
                                         --print("================")
-                                        if playerHand > highestPlayerHand and playerHand <= 21 then
-                                            highestPlayerHand = playerHand
-                                            --print("highestPlayerHand",highestPlayerHand,"= playerHand",playerHand)
+                                        if playerHand ~= nil then
+                                            if playerHand > highestPlayerHand and playerHand <= 21 then
+                                                highestPlayerHand = playerHand
+                                                --print("highestPlayerHand",highestPlayerHand,"= playerHand",playerHand)
+                                            end
                                         end
                                     end
                                 end
-                                if highestPlayerHand < dealerHand then
-                                    --print("ending game early, dealer has higher than all players")
-                                else
-                                    while dealerHand < 17 do 
-                                        local randomCard = math.random(1,52)
-                                        --print("randomDealerCard: " .. tostring(randomCard))
-                                        table.insert(blackjackGameData[gameId]["dealer"]["cardData"], randomCard)
-                                        TriggerClientEvent("Blackjack:singleDealerCard",-1,gameId,randomCard,nextCardCount,getCurrentHand(gameId,"dealer"),tableId)
-                                        Wait(2800)
-                                        nextCardCount = nextCardCount + 1
-                                        dealerHand = getCurrentHand(gameId,"dealer")
-                                    end
+                                while dealerHand < 17 do 
+                                    local randomCard = math.random(1,52)
+                                    --print("randomDealerCard: " .. tostring(randomCard))
+                                    table.insert(blackjackGameData[gameId]["dealer"]["cardData"], randomCard)
+                                    TriggerClientEvent("Blackjack:singleDealerCard",-1,gameId,randomCard,nextCardCount,getCurrentHand(gameId,"dealer"),tableId)
+                                    Wait(2800)
+                                    nextCardCount = nextCardCount + 1
+                                    dealerHand = getCurrentHand(gameId,"dealer")
                                 end
                             end
                         end
@@ -659,3 +646,18 @@ function dump(o)
        return tostring(o)
     end
  end
+
+-- RegisterCommand("debugtableserver",function()
+--     print("blackjackTables")
+--     print("===============")
+--     print(dump(blackjackTables))
+--     print("blackjackGameData")
+--     print("===============")
+--     print(dump(blackjackGameData))
+-- end)
+
+-- RegisterCommand("debugcarddata",function()
+--     print("carddata")
+--     print("===============")
+--     print(dump(blackjackGameData[1024]))
+-- end)

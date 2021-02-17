@@ -2691,7 +2691,7 @@ function setupBlackjackMidBetScaleform(scaleform)
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(1)
-    Button(GetControlInstructionalButton(2, 194, true)) -- The button to display
+    Button(GetControlInstructionalButton(2, 191, true)) -- The button to display
     ButtonMessage("Stand") --BACKSPACE
     PopScaleformMovieFunctionVoid()
 

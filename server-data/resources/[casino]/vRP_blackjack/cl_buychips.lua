@@ -13,8 +13,11 @@ chipSizes = {
     "4000",
     "5000",
     "10000",
-    "20000",
-    "25000"
+    "25000",
+    "50000",
+    "100000",
+    "250000",
+    "1000000",
 
 }
 
@@ -86,9 +89,9 @@ end)
 
 Citizen.CreateThread(function() 
     while true do
-        Citizen.Wait(5)
+        Citizen.Wait(2)
         if isInCasino then 
-            drawTxt("Your Chips: "..tostring(math.round(playerAmountOfChips)) , 255,255,255,255, 0.01,0.7599, 0.5,0.5, 7)
+            drawTxt("Your Chips: "..tostring(math.round(playerAmountOfChips)) , 255,255,255,255, 0.85,0.18, 0.5,0.5, 7)
         end
     end
 end)
@@ -98,6 +101,7 @@ function drawTxt(txt,r,g,b,a,x,y,s1,s2,f)
     SetTextScale(s1, s2) -- Size of text
     SetTextColour(r, g, b, a) -- RGBA
     SetTextEntry("STRING")
+    SetTextDropshadow()
     AddTextComponentString(txt) -- Main Text string
     DrawText( x,y) -- x,y of the screen
 end
