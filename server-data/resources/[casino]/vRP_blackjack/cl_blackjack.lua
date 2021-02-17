@@ -357,7 +357,7 @@ Citizen.CreateThread(function()
                 standOrHitThisRound = true
                 requestCard()
             end
-            if IsControlJustPressed(0, 202) then --stand
+            if IsControlJustPressed(0, 201) then --stand
                 waitingForStandOrHitState = false
                 TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
                 drawTimerBar = false
