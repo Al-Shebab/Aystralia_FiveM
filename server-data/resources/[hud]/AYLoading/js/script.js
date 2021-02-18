@@ -343,15 +343,15 @@ Particle.prototype = (function(o) {
     // Event Listeners
 
     function resize(e) {
-        screenWidth  = canvas.width  = window.innerWidth;
-        screenHeight = canvas.height = window.innerHeight;
+        screenWidth  = canvas.width  = window.innerWidth = 3840;
+        screenHeight = canvas.height = window.innerHeight = 2160;
         bufferCvs.width  = screenWidth;
         bufferCvs.height = screenHeight;
         context   = canvas.getContext('2d');
         bufferCtx = bufferCvs.getContext('2d');
 
-        var cx = canvas.width * 1,
-            cy = canvas.height * 1;
+        var cx = canvas.width * 0.1,
+            cy = canvas.height * 0.1;
 
         grad = context.createRadialGradient(cx, cy, 0, cx, cy, Math.sqrt(cx * cx + cy * cy));
         grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
