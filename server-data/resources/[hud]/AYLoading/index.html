@@ -17,12 +17,13 @@
     <h1 class="undertext">Connecting to the server.</h1>
     <canvas id="c"></canvas>
     <div class="progress"></div>
-
-    <audio id="leson" src="music/music.mp3" type="audio/mpeg" autoplay="true" hidden="true" loop="true">
+    <audio id="loading" autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
     <script>
 
     var play = false;
-    var myAudio = document.getElementById("leson");
+    var myAudio = document.getElementById("loading");
     
     myAudio.volume = 0.05;
 
