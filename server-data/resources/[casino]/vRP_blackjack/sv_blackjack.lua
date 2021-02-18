@@ -411,6 +411,7 @@ for i=0,31,1 do
                                                 elseif currentHand == dealerHand then
                                                     --print("source: " .. tostring(source) .. " pushes!")
                                                     giveChips(source,potentialPushAmount)
+                                                    TriggerClientEvent('buychips:updatehud+', source, potentialPushAmount)
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackPush",source,tableId)

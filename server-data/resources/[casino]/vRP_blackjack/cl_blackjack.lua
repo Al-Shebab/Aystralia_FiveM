@@ -2997,8 +2997,8 @@ end
 
 function getGenericTextInput(type)
 	if type == nil then type = "" end
-	AddTextEntry('FMMC_MPM_NA', "Enter " .. tostring(type))
-	DisplayOnscreenKeyboard(1, "FMMC_MPM_NA", "Enter " .. tostring(type) .. " message", "", "", "", "", 30)
+    AddTextEntry('FMMC_MPM_NA', "Enter a number")
+    DisplayOnscreenKeyboard(1, "FMMC_MPM_NA", "", "", "", "", "", 30)
     while (UpdateOnscreenKeyboard() == 0) do
         DisableAllControlActions(0);
         Wait(0);

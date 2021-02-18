@@ -73,7 +73,7 @@ RageUI.CreateWhile(1.0, true, function()
     if RageUI.Visible(RMenu:Get('vRPClothing', 'clothingsubmenu')) then
         DrawAdvancedText(0.870, 0.850, 0.005, 0.0028, 0.4, 'Press SPACE to input an ID',  255, 255, 255, 255, 6, 0)
         if IsControlJustPressed(0, 203) then 
-                AddTextEntry('FMMC_MPM_NA', "Enter Clothing ID")
+                AddTextEntry('FMMC_MPM_NA', "Enter a number")
                 DisplayOnscreenKeyboard(1, "FMMC_MPM_NA", "", "", "", "", "", 30)
                 while (UpdateOnscreenKeyboard() == 0) do
                     DisableAllControlActions(0);
