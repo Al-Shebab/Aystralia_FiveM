@@ -10,42 +10,22 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
 </head>
 <body>
-    
-    <h1 class="enable_music">Use the <strong>spacebar</strong> to toggle the music</h1>
-
-    <h1 class="servername"><strong>Aystralia</strong> Network</h1>
-    <h1 class="undertext">Connecting to the server.</h1>
+	<div id='player'></div>
+        <div id='intro'>
+            <div id='currentSong'></div>
+            <div id='pressspacebar'>
+            <script src='js/synn.js'></script>
+            <script src='js/config.js'></script>
+            <script src='js/music-handler.js'></script>
+        </div>
+    </div>
+    <h1 class="enable_music">Connecting to the server.</h1>
     <canvas id="c"></canvas>
     <div class="progress"></div>
-    <audio id="loading" autoplay loop>
-        <source src="music/music.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-
-    var play = false;
-    var myAudio = document.getElementById("loading");
-    
-    myAudio.volume = 0.05;
-
-    function onKeyDown(event) {
-            switch (event.keyCode) {
-                case 32: //SpaceBar                    
-                    if (play) {
-                        myAudio.pause();
-                        play = false;
-                    } else {
-                        myAudio.play();
-                        play = true;
-                    }
-                    break;
-            }
-      return false;
-    }
-
-    window.addEventListener("keydown", onKeyDown, false);
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
-
+    <script src='js/synn.js'></script>
+    <script src='js/config.js'></script>
+    <script src='js/music-handler.js'></script>
 </body>
 </html>
