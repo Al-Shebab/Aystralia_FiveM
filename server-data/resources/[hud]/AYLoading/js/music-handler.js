@@ -19,6 +19,7 @@ function onYouTubeIframeAPIReady() {
         height: '',
         playerVars: {
             'autoplay': 0,
+            'controls': 0,
             'disablekb': 1,
             'enablejsapi': 1,
         },
