@@ -43,20 +43,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-
-function disableVehicleRoll(player, veh)
-	local roll = GetEntityRoll(vehicle)
-
-	if not IsThisModelBlacklisted(vehicle) then
-		if GetPedInVehicleSeat(vehicle, -1) == player then
-			if (roll > 75.0 or roll < -75.0) then
-				DisableControlAction(2,59,true)
-				DisableControlAction(2,60,true)
-				if not IsEntityInAir(vehicle) and GetEntitySpeed(vehicle) < 1 then
-					destroyPedsVehicle(player)
-				end
-			end
-		end
-	end
-end
