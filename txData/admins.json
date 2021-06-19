@@ -1,0 +1,21 @@
+[
+  {
+    "name": "AlShebab",
+    "master": true,
+    "password_hash": "$2a$11$MPSjZXk2jB/vV5L56EqAreOdXeUs5y/QNowv.d2GKpBTdGMD2YDcW",
+    "providers": {
+      "citizenfx": {
+        "id": "AlShebab",
+        "identifier": "fivem:1022354",
+        "data": {
+          "sub": "0552e1f5e2eb894875cd9e18db067b85",
+          "nameid": "https://forum.cfx.re/internal/user/1022354",
+          "name": "AlShebab",
+          "picture": "https://forum.cfx.re/user_avatar/forum.cfx.re/alshebab/256/938392_2.png",
+          "profile": "https://forum.cfx.re/u/AlShebab"
+        }
+      }
+    },
+    "permissions": []
+  }
+]

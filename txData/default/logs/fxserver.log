@@ -1,0 +1,327 @@
+
+================================================================
+======== FXServer starting - 20/06/2021, 8:57:40 am
+================================================================
+[38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
+[38;5;73m[ citizen-server-impl] Scanning resources.
+[38;5;73m[ citizen-server-impl] Found 90 resources.
+[38;5;161m[    c-scripting-core] Creating script environments for sessionmanager
+[38;5;73m[ citizen-server-impl] Started resource sessionmanager
+[38;5;161m[    c-scripting-core] Creating script environments for monitor
+[38;5;84m[      script:monitor] [txAdminClient] Version 3.7.0 starting...
+[38;5;73m[ citizen-server-impl] Started resource monitor
+[38;5;161m[    c-scripting-core] Creating script environments for mapmanager
+[38;5;73m[ citizen-server-impl] Started resource mapmanager
+[38;5;161m[    c-scripting-core] Creating script environments for yarn
+[38;5;73m[ citizen-server-impl] Started resource yarn
+[38;5;161m[    c-scripting-core] Creating script environments for webpack
+[38;5;73m[ citizen-server-impl] Started resource webpack
+[38;5;161m[    c-scripting-core] Creating script environments for chat
+[38;5;73m[ citizen-server-impl] Started resource chat
+[38;5;73m[ citizen-server-impl] Started resource spawnmanager
+[38;5;161m[    c-scripting-core] Creating script environments for hardcap
+[38;5;73m[ citizen-server-impl] Started resource hardcap
+[38;5;154m[   script:mapmanager] Started gametype Freeroam
+[38;5;73m[ citizen-server-impl] Started resource basic-gamemode
+[38;5;154m[   script:mapmanager] Started map default_spawnpoint
+[38;5;73m[ citizen-server-impl] Started resource default_spawnpoint
+[38;5;161m[    c-scripting-core] Creating script environments for mysql-async
+[38;5;73m[ citizen-server-impl] Started resource mysql-async
+[38;5;161m[    c-scripting-core] Creating script environments for cron
+[38;5;73m[ citizen-server-impl] Started resource cron
+[38;5;161m[    c-scripting-core] Creating script environments for instance
+[38;5;73m[ citizen-server-impl] Started resource instance
+[38;5;73m[ citizen-server-impl] Started resource skinchanger
+[38;5;161m[    c-scripting-core] Creating script environments for async
+[38;5;73m[ citizen-server-impl] Started resource async
+[38;5;161m[    c-scripting-core] Creating script environments for es_extended
+[38;5;73m[ citizen-server-impl] Started resource es_extended
+[38;5;73m[ citizen-server-impl] Started resource esx_menu_default
+[38;5;73m[ citizen-server-impl] Started resource esx_menu_dialog
+[38;5;73m[ citizen-server-impl] Started resource esx_menu_list
+[38;5;161m[    c-scripting-core] Creating script environments for esx_datastore
+[38;5;73m[ citizen-server-impl] Started resource esx_datastore
+[38;5;161m[    c-scripting-core] Creating script environments for esx_identity
+[38;5;73m[ citizen-server-impl] Started resource esx_identity
+[38;5;161m[    c-scripting-core] Creating script environments for esx_skin
+[38;5;73m[ citizen-server-impl] Started resource esx_skin
+[38;5;161m[    c-scripting-core] Creating script environments for esx_status
+[38;5;73m[ citizen-server-impl] Started resource esx_status
+[38;5;73m[ citizen-server-impl] Couldn't find resource esx_basicneeds.
+[38;5;161m[    c-scripting-core] Creating script environments for esx_billing
+[38;5;73m[ citizen-server-impl] Started resource esx_billing
+[38;5;161m[    c-scripting-core] Creating script environments for esx_addoninventory
+[38;5;73m[ citizen-server-impl] Started resource esx_addoninventory
+[38;5;161m[    c-scripting-core] Creating script environments for esx_addonaccount
+[38;5;73m[ citizen-server-impl] Started resource esx_addonaccount
+[38;5;161m[    c-scripting-core] Creating script environments for esx_society
+[38;5;73m[ citizen-server-impl] Started resource esx_society
+[38;5;161m[    c-scripting-core] Creating script environments for esx_license
+[38;5;73m[ citizen-server-impl] Started resource esx_license
+[38;5;161m[    c-scripting-core] Creating script environments for esx_service
+[38;5;73m[ citizen-server-impl] Started resource esx_service
+[38;5;161m[    c-scripting-core] Creating script environments for esx_garage
+[38;5;73m[ citizen-server-impl] Started resource esx_garage
+[38;5;161m[    c-scripting-core] Creating script environments for esx_vehicleshop
+[38;5;73m[ citizen-server-impl] Started resource esx_vehicleshop
+[38;5;161m[    c-scripting-core] Creating script environments for esx_jobs
+[38;5;73m[ citizen-server-impl] Started resource esx_jobs
+[38;5;161m[    c-scripting-core] Creating script environments for esx_joblisting
+[38;5;73m[ citizen-server-impl] Started resource esx_joblisting
+[38;5;161m[    c-scripting-core] Creating script environments for esx_policejob
+[38;5;73m[ citizen-server-impl] Started resource esx_policejob
+[38;5;161m[    c-scripting-core] Creating script environments for esx_ambulancejob
+[38;5;73m[ citizen-server-impl] Started resource esx_ambulancejob
+[38;5;161m[    c-scripting-core] Creating script environments for esx_mechanicjob
+[38;5;73m[ citizen-server-impl] Started resource esx_mechanicjob
+[38;5;161m[    c-scripting-core] Creating script environments for esx_taxijob
+[38;5;73m[ citizen-server-impl] Started resource esx_taxijob
+[38;5;161m[    c-scripting-core] Creating script environments for esx_lscustom
+[38;5;73m[ citizen-server-impl] Started resource esx_lscustom
+[38;5;161m[    c-scripting-core] Creating script environments for esx_atm
+[38;5;73m[ citizen-server-impl] Started resource esx_atm
+[38;5;161m[    c-scripting-core] Creating script environments for esx_shops
+[38;5;73m[ citizen-server-impl] Started resource esx_shops
+[38;5;161m[    c-scripting-core] Creating script environments for esx_weaponshop
+[38;5;73m[ citizen-server-impl] Started resource esx_weaponshop
+[38;5;161m[    c-scripting-core] Creating script environments for esx_clotheshop
+[38;5;73m[ citizen-server-impl] Started resource esx_clotheshop
+[38;5;161m[    c-scripting-core] Creating script environments for esx_barbershop
+[38;5;73m[ citizen-server-impl] Started resource esx_barbershop
+[38;5;161m[    c-scripting-core] Creating script environments for esx_drugs
+[38;5;73m[ citizen-server-impl] Started resource esx_drugs
+[38;5;161m[    c-scripting-core] Creating script environments for esx_holdup
+[38;5;73m[ citizen-server-impl] Started resource esx_holdup
+[38;5;161m[    c-scripting-core] Creating script environments for esx_adminplus
+[38;5;73m[ citizen-server-impl] Started resource esx_adminplus
+[38;5;161m[    c-scripting-core] Creating script environments for AYPhone
+[38;5;73m[ citizen-server-impl] Started resource AYPhone
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/130gs.ytd uses 20.2 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/16challenger.ytd uses 185.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/19gt500.ytd uses 40.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/19tundra.yft uses 22.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/19tundra.ytd uses 46.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/19tundra_hi.yft uses 22.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/370z16.ytd uses 92.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/66fastback.ytd uses 34.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/760li04.yft uses 17.9 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/760li04.ytd uses 35.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/MustangGT.ytd uses 20.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/aaq4.yft uses 16.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/aaq4.ytd uses 28.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/aaq4_hi.yft uses 16.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/acr_hi.yft uses 30.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ast.ytd uses 62.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/bbentayga.yft uses 23.6 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/bbentayga.ytd uses 38.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/bbentayga_hi.yft uses 23.6 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/bugattichiron.ytd uses 110.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/c63w205.ytd uses 98.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/c7.ytd uses 22.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/canam.yft uses 17.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/canam.ytd uses 82.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/canam_hi.yft uses 17.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cateyedually.yft uses 31.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cateyedually.ytd uses 22.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cateyedually_hi.yft uses 31.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cayenne.yft uses 29.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cayenne.ytd uses 72.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cayenne_hi.yft uses 29.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ccrv69.ytd uses 25.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/celicagt4.ytd uses 54.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/centenario.ytd uses 110.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/chrxfire.ytd uses 44.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/chrxfire_hi.yft uses 17.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cyrus.yft uses 18.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cyrus.ytd uses 44.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/cyrus_hi.yft uses 18.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/dawnonyx.ytd uses 73.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/devcar.yft uses 24.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/devcar.ytd uses 19.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/devcar_hi.yft uses 24.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/dunef+hi.ytd uses 160.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/dunef.ytd uses 160.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/evoque.ytd uses 152.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/f1.yft uses 29.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/f1.ytd uses 112.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/f150.ytd uses 74.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/f1_hi.yft uses 29.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenyr.yft uses 17.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenyr.ytd uses 172.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenyr_hi.yft uses 17.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenzo1.yft uses 29.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenzo1.ytd uses 108.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fenzo1_hi.yft uses 29.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ferrari458.ytd uses 19.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ferrarif12.ytd uses 74.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ferrarisf90.ytd uses 104.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/firebird.ytd uses 76.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fk8.ytd uses 41.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fpace2017.yft uses 22.3 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fpace2017.ytd uses 25.2 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fpace2017_hi.yft uses 22.3 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/fxxkevo.ytd uses 212.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/gmcat4.yft uses 29.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/gmcat4.ytd uses 99.5 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/gmcat4_hi.yft uses 29.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/golfmk6.ytd uses 52.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/hayabusa.ytd uses 47.8 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/hilux1.yft uses 30.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/hilux1.ytd uses 148.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/huayra.ytd uses 30.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/huayra_hi.yft uses 17.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/i8.ytd uses 128.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/i8_hi.yft uses 20.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/laferrari.yft uses 24.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/laferrari.ytd uses 19.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/laferrari_hi.yft uses 24.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ldsv.ytd uses 93.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ligier_lmp2+hi.ytd uses 36.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/ligier_lmp2.ytd uses 36.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/m3f80.yft uses 32.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/m3f80.ytd uses 91.5 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/m3f80_hi.yft uses 32.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/m939+hi.ytd uses 48.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/mbbs20.ytd uses 88.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/mcgt20.ytd uses 92.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/mclarenp1.ytd uses 34.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/mclarenp1_hi.yft uses 23.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/mclarenspeedtail.ytd uses 88.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/monaro.ytd uses 23.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/porsche911.ytd uses 86.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/r8ppi.ytd uses 117.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rift2019.ytd uses 40.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rimac.ytd uses 94.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rmodgt63.yft uses 18.2 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rs7.yft uses 31.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rs7.ytd uses 75.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/rs7_hi.yft uses 31.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/s281.ytd uses 29.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/senna.ytd uses 52.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/slsamg.yft uses 29.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/slsamg.ytd uses 76.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/slsamg_hi.yft uses 29.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/sorento19.yft uses 24.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/sorento19.ytd uses 94.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/sorento19_hi.yft uses 24.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/stockade4.ytd uses 68.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/superbird.ytd uses 28.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/svjrtz.yft uses 19.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/svjrtz.ytd uses 57.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/svjrtz_hi.yft uses 19.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/testarossa.ytd uses 48.5 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/tmaxDX.yft uses 24.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/tmaxDX_hi.yft uses 24.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/toyotasupra.yft uses 22.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/toyotasupra.ytd uses 86.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/toyotasupra_hi.yft uses 22.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/trhawk.ytd uses 18.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/urnext.ytd uses 35.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/valhalla.ytd uses 27.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/vapidlow.yft uses 25.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/vapidlow.ytd uses 48.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/vapidlow_hi.yft uses 25.5 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/vega.ytd uses 94.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/viper.ytd uses 124.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/viper_hi.yft uses 25.0 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/wmfenyr.ytd uses 38.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset AYVehicles/z48.ytd uses 59.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
+[38;5;73m[ citizen-server-impl] Started resource AYVehicles
+[38;5;161m[    c-scripting-core] Creating script environments for Badger_Discord_API
+[38;5;73m[ citizen-server-impl] Started resource Badger_Discord_API
+[38;5;161m[    c-scripting-core] Creating script environments for discord_perms
+[38;5;73m[ citizen-server-impl] Started resource discord_perms
+[38;5;161m[    c-scripting-core] Creating script environments for discordroles
+[38;5;73m[ citizen-server-impl] Started resource discordroles
+[38;5;161m[    c-scripting-core] Creating script environments for DiscordWhitelist
+[38;5;73m[ citizen-server-impl] Started resource DiscordWhitelist
+[38;5;73m[ citizen-server-impl] Started resource AYDiscord
+[38;5;73m[ citizen-server-impl] Started resource AYLoading
+[38;5;73m[ citizen-server-impl] Started resource AYSpeedo
+[38;5;161m[    c-scripting-core] Creating script environments for AYScripts
+[38;5;154m[   script:mapmanager] SCRIPT ERROR: @mapmanager/mapmanager_shared.lua:79: bad argument #1 to 'load' (function expected, got nil)
+[38;5;73m[ citizen-server-impl] Started resource AYScripts
+[38;5;161m[    c-scripting-core] Creating script environments for AYHUD
+[38;5;73m[ citizen-server-impl] Started resource AYHUD
+[38;5;73m[ citizen-server-impl] Asset AYHospital/gabz_pillbox_textures_01.ytd uses 23.1 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Started resource AYHospital
+[38;5;73m[ citizen-server-impl] Asset AYBuildings/qt_sg_mesh_doorframes.ydr uses 30.8 MiB of virtual memory.
+[38;5;73m[ citizen-server-impl] Asset AYBuildings/tex_qt_low_gover_only_sec_prop_high.ytd uses 24.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Started resource AYBuildings
+[38;5;73m[ citizen-server-impl] Started resource pd_sandy
+[38;5;73m[ citizen-server-impl] Started resource pdpaleto
+[38;5;73m[ citizen-server-impl] Started resource hospitalsandy
+[38;5;73m[ citizen-server-impl] Started resource patoche_shop
+[38;5;73m[ citizen-server-impl] Asset patoche_cyberbar_map/patoche_cyber_det10.ydr uses 26.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Started resource patoche_cyberbar_map
+[38;5;73m[ citizen-server-impl] Started resource allinteriors
+[38;5;73m[ citizen-server-impl] Started resource cassino_props
+[38;5;73m[ citizen-server-impl] Asset vwdlc_int_02/vw_vwint01_vwdlc_vw_casino.ytd uses 25.8 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset vwdlc_int_02/vw_vwint02_casino_apart.ytd uses 33.5 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Started resource vwdlc_int_02
+[38;5;73m[ citizen-server-impl] Asset ch3_additions/hei_ch3_12_casinonew_emmisive.ydr uses 24.0 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Asset ch3_additions/hei_ch3_12_vw_dlc_casino.ytd uses 16.2 MiB of physical memory.
+[38;5;73m[ citizen-server-impl] Started resource ch3_additions
+[38;5;161m[    c-scripting-core] Creating script environments for dpemotes
+[38;5;73m[ citizen-server-impl] Started resource dpemotes
+[38;5;73m[ citizen-server-impl] Started resource dpclothing
+[38;5;161m[    c-scripting-core] Creating script environments for vMenu
+[38;5;165m[        script:vMenu] Instantiated instance of script vMenuServer.BanManager.
+[38;5;165m[        script:vMenu] [vMenu] [WARNING] vMenu is set up to ignore permissions!
+[38;5;165m[        script:vMenu] If you did this on purpose then you can ignore this warning.
+[38;5;165m[        script:vMenu] If you did not set this on purpose, then you must have made a mistake while setting up vMenu.
+[38;5;165m[        script:vMenu] Please read the vMenu documentation (https://docs.vespura.com/vmenu).
+[38;5;165m[        script:vMenu] Most likely you are not executing the permissions.cfg (correctly).
+[38;5;165m[        script:vMenu] Instantiated instance of script vMenuServer.MainServer.
+[38;5;73m[ citizen-server-impl] Started resource vMenu
+[38;5;161m[    c-scripting-core] Creating script environments for EasyAdmin
+[38;5;73m[ citizen-server-impl] Started resource EasyAdmin
+[38;5;66m[          svadhesive] Authenticating server license key...
+[38;5;159m[  script:mysql-async] [mysql-async] [SUCCESS] Database server connection established.
+[38;5;220m[  script:es_extended] [es_extended] [INFO] ESX developed by ESX-Org has been initialized
+[38;5;84m[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin]  _______ _______ _______ __   __ _______ ______  _______ _____ __   _
+[38;5;128m[    script:EasyAdmin]  |______ |_____| |______   \_/   |_____| |     \ |  |  |   |   | \  |
+[38;5;128m[    script:EasyAdmin]  |______ |     | ______|    |    |     | |_____/ |  |  | __|__ |  \_|
+[38;5;128m[    script:EasyAdmin]                            Version 5.901
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin (EasyAdmin) is outdated.
+[38;5;128m[    script:EasyAdmin] Newest Version: 6.0
+[38;5;128m[    script:EasyAdmin] Your Version: 5.901
+[38;5;128m[    script:EasyAdmin] Please update it from https://github.com/Blumlaut/EasyAdmin
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] Update Changelog:
+[38;5;128m[    script:EasyAdmin] Lots and lots and LOTS of improvements! Temporary+Permanent Ban Permission! Revamped Webhooks, Optimisations
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin: screenshot-basic is not installed on this Server, screenshots unavailable
+[38;5;55m[ script:discordroles] [discordroles] discordroles is up to date.
+[38;5;55m[ script:discordroles] 
+[38;5;55m[ script:discordroles] [discordroles] successfully validated bot token.
+[38;5;55m[ script:discordroles]   • Current account: Aystralia Bot#8130 (755792927891914812)
+[38;5;55m[ script:discordroles] 
+[38;5;41m[script:Badger_Discor] [Badger_Perms] Permission system guild set to: Aystralia Network (775399964204990495)
+[38;5;104m[script:discord_perms] Permission system guild set to: Aystralia Network (775399964204990495)
+[38;5;66m[          svadhesive] Server license key authentication succeeded. Welcome!
+[38;5;73m[ citizen-server-impl]         fff                          
+[38;5;73m[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[38;5;73m[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[38;5;73m[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[38;5;73m[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[38;5;73m[ citizen-server-impl]                                      
+[38;5;73m[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://alshebab-9zggqa.users.cfx.re/
+[38;5;73m[ citizen-server-impl] -- [server notice: tebex_not_set]
+[38;5;73m[ citizen-server-impl] ================
+[38;5;73m[ citizen-server-impl] Monetize your server using Tebex! Visit https://tebex.io/fivem for more info.
+[38;5;73m[ citizen-server-impl] ================
+[38;5;73m[ citizen-server-impl] 
+[38;5;134m[      script:hardcap] Connecting: kazza
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;19m[    script:AYScripts] Syncing weather for: kazza
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 234 milliseconds
+[38;5;220m[  script:es_extended] [es_extended] [INFO] A player with name "Al Shebab" has connected to the server with assigned player id 1
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
