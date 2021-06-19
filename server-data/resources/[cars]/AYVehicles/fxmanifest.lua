@@ -1,8 +1,8 @@
 fx_version 'bodacious'
 game 'gta5'
 
-author 'Blaze'
-description 'All Elite RP Vehicles'
+author 'Al Shebab'
+description 'Vehicles'
 
 files {
 	'data/**/vehicles.meta',
