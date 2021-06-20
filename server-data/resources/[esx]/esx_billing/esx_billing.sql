@@ -1,4 +1,4 @@
-USE `aystralia`;
+USE `aystralia_db`;
 
 CREATE TABLE `billing` (
 	`id` int NOT NULL AUTO_INCREMENT,

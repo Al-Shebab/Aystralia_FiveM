@@ -1,4 +1,4 @@
-USE `aystralia`;
+USE `aystralia_db`;
 
 CREATE TABLE `datastore` (
 	`name` VARCHAR(60) NOT NULL,
