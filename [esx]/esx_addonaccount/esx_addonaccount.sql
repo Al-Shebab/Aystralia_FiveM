@@ -1,4 +1,4 @@
-USE `es_extended`;
+USE `aystralia_db`;
 
 CREATE TABLE `addon_account` (
 	`name` VARCHAR(60) NOT NULL,

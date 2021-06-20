@@ -1,3 +1,3 @@
-USE `es_extended`;
+USE `aystralia_db`;
 
 ALTER TABLE `users` ADD COLUMN `skin` LONGTEXT NULL DEFAULT NULL;

@@ -1,4 +1,4 @@
-USE `es_extended`;
+USE `elohopea_db`;
 
 CREATE TABLE `weashops` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
