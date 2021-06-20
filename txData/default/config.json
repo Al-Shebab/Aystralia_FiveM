@@ -33,8 +33,11 @@
     "statusMessage": "**IP:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>"
   },
   "fxRunner": {
+    "serverDataPath": "C:/Users/kazza/Desktop/Aystralia/FiveM/server-data/",
+    "cfgPath": "C:/Users/kazza/Desktop/Aystralia/FiveM/server-data/server.cfg",
+    "commandLine": "",
+    "onesync": "off",
     "autostart": true,
-    "serverDataPath": "C:/Users/kazza/Desktop/Development/server-data/",
-    "cfgPath": "C:/Users/kazza/Desktop/Development/server-data/server.cfg"
+    "quiet": false
   }
 }

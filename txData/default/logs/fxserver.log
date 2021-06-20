@@ -1,10 +1,16 @@
 
 ================================================================
-======== FXServer starting - 20/06/2021, 8:57:40 am
+======== FXServer starting - 20/06/2021, 3:47:54 pm
 ================================================================
 [38;5;161m[    c-scripting-core] Creating script environments for _cfx_internal
 [38;5;73m[ citizen-server-impl] Scanning resources.
-[38;5;73m[ citizen-server-impl] Found 90 resources.
+[38;5;163m[    c-resources-core] Resource loading for Loadingscreendev failed:
+[38;5;163m[    c-resources-core] Could not open resource metadata file C:/Users/kazza/Desktop/Aystralia/FiveM/server-data/resources//[hud]/Loadingscreendev/__resource.lua.
+[38;5;73m[ citizen-server-impl] Found 94 resources.
+[38;5;73m[ citizen-server-impl] Some resources have an outdated resource manifest:
+[38;5;73m[ citizen-server-impl]     - infinitespeed
+[38;5;73m[ citizen-server-impl] 
+[38;5;73m[ citizen-server-impl] Please update these resources.
 [38;5;161m[    c-scripting-core] Creating script environments for sessionmanager
 [38;5;73m[ citizen-server-impl] Started resource sessionmanager
 [38;5;161m[    c-scripting-core] Creating script environments for monitor
@@ -47,11 +53,9 @@
 [38;5;73m[ citizen-server-impl] Started resource esx_skin
 [38;5;161m[    c-scripting-core] Creating script environments for esx_status
 [38;5;73m[ citizen-server-impl] Started resource esx_status
-[38;5;73m[ citizen-server-impl] Couldn't find resource esx_basicneeds.
 [38;5;161m[    c-scripting-core] Creating script environments for esx_billing
 [38;5;73m[ citizen-server-impl] Started resource esx_billing
-[38;5;161m[    c-scripting-core] Creating script environments for esx_addoninventory
-[38;5;73m[ citizen-server-impl] Started resource esx_addoninventory
+[38;5;73m[ citizen-server-impl] Couldn't find resource esx_addoninventory.
 [38;5;161m[    c-scripting-core] Creating script environments for esx_addonaccount
 [38;5;73m[ citizen-server-impl] Started resource esx_addonaccount
 [38;5;161m[    c-scripting-core] Creating script environments for esx_society
@@ -227,6 +231,7 @@
 [38;5;73m[ citizen-server-impl] Asset AYVehicles/wmfenyr.ytd uses 38.0 MiB of physical memory.
 [38;5;73m[ citizen-server-impl] Asset AYVehicles/z48.ytd uses 59.0 MiB of physical memory. Oversized assets can and WILL lead to streaming issues (models not loading/rendering, commonly known as 'texture loss', 'city bug' or 'streaming isn't great').
 [38;5;73m[ citizen-server-impl] Started resource AYVehicles
+[38;5;73m[ citizen-server-impl] Started resource infinitespeed
 [38;5;161m[    c-scripting-core] Creating script environments for Badger_Discord_API
 [38;5;73m[ citizen-server-impl] Started resource Badger_Discord_API
 [38;5;161m[    c-scripting-core] Creating script environments for discord_perms
@@ -243,6 +248,12 @@
 [38;5;73m[ citizen-server-impl] Started resource AYScripts
 [38;5;161m[    c-scripting-core] Creating script environments for AYHUD
 [38;5;73m[ citizen-server-impl] Started resource AYHUD
+[38;5;73m[ citizen-server-impl] Couldn't find resource gc-dumpster.
+[38;5;161m[    c-scripting-core] Creating script environments for gc-inventory
+[38;5;73m[ citizen-server-impl] Started resource gc-inventory
+[38;5;161m[    c-scripting-core] Creating script environments for gc-inventory-trunk
+[38;5;73m[ citizen-server-impl] Started resource gc-inventory-trunk
+[38;5;73m[ citizen-server-impl] Couldn't find resource gc-inventory-glovebox.
 [38;5;73m[ citizen-server-impl] Asset AYHospital/gabz_pillbox_textures_01.ytd uses 23.1 MiB of physical memory.
 [38;5;73m[ citizen-server-impl] Started resource AYHospital
 [38;5;73m[ citizen-server-impl] Asset AYBuildings/qt_sg_mesh_doorframes.ydr uses 30.8 MiB of virtual memory.
@@ -255,6 +266,7 @@
 [38;5;73m[ citizen-server-impl] Asset patoche_cyberbar_map/patoche_cyber_det10.ydr uses 26.0 MiB of physical memory.
 [38;5;73m[ citizen-server-impl] Started resource patoche_cyberbar_map
 [38;5;73m[ citizen-server-impl] Started resource allinteriors
+[38;5;73m[ citizen-server-impl] Started resource concessfreepatoche
 [38;5;73m[ citizen-server-impl] Started resource cassino_props
 [38;5;73m[ citizen-server-impl] Asset vwdlc_int_02/vw_vwint01_vwdlc_vw_casino.ytd uses 25.8 MiB of physical memory.
 [38;5;73m[ citizen-server-impl] Asset vwdlc_int_02/vw_vwint02_casino_apart.ytd uses 33.5 MiB of physical memory.
@@ -277,14 +289,31 @@
 [38;5;161m[    c-scripting-core] Creating script environments for EasyAdmin
 [38;5;73m[ citizen-server-impl] Started resource EasyAdmin
 [38;5;66m[          svadhesive] Authenticating server license key...
-[38;5;159m[  script:mysql-async] [mysql-async] [SUCCESS] Database server connection established.
-[38;5;220m[  script:es_extended] [es_extended] [INFO] ESX developed by ESX-Org has been initialized
+[38;5;159m[  script:mysql-async] [mysql-async] [ERROR] ER_BAD_DB_ERROR: Unknown database 'database'
 [38;5;84m[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
+[38;5;220m[  script:es_extended] [es_extended] [INFO] ESX developed by ESX-Org has been initialized
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin]  _______ _______ _______ __   __ _______ ______  _______ _____ __   _
 [38;5;128m[    script:EasyAdmin]  |______ |_____| |______   \_/   |_____| |     \ |  |  |   |   | \  |
 [38;5;128m[    script:EasyAdmin]  |______ |     | ______|    |    |     | |_____/ |  |  | __|__ |  \_|
 [38;5;128m[    script:EasyAdmin]                            Version 5.901
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [es_extended] An error happens for query "SELECT * FROM items : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [es_extended] An error happens for query "SELECT * FROM jobs : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_vehicleshop] An error happens for query "SELECT * FROM vehicle_categories : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_addonaccount] An error happens for query "SELECT * FROM addon_account : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_datastore] An error happens for query "SELECT * FROM datastore : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_joblisting] An error happens for query "SELECT name, label FROM jobs WHERE whitelisted = ? : [false]": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_weaponshop] An error happens for query "SELECT * FROM weashops : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_shops] An error happens for query "SELECT * FROM shops LEFT JOIN items ON items.name = shops.item : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_society] An error happens for query "SELECT * FROM jobs : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;220m[  script:es_extended] SCRIPT ERROR: @es_extended/server/common.lua:23: bad argument #1 to 'for iterator' (table expected, got nil)
+[38;5;220m[  script:es_extended] > ref (@es_extended/server/common.lua:23)
+[38;5;220m[  script:es_extended] > <unknown> (@mysql-async/mysql-async.js:15543)
+[38;5;159m[  script:mysql-async] 
+[38;5;159m[  script:mysql-async] 
+[38;5;159m[  script:mysql-async] 
+[38;5;159m[  script:mysql-async] 
+[38;5;159m[  script:mysql-async] 
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
 [38;5;128m[    script:EasyAdmin] 
@@ -299,11 +328,24 @@
 [38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
 [38;5;128m[    script:EasyAdmin] 
 [38;5;128m[    script:EasyAdmin] EasyAdmin: screenshot-basic is not installed on this Server, screenshots unavailable
-[38;5;55m[ script:discordroles] [discordroles] discordroles is up to date.
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [esx_vehicleshop] An error happens for query "SELECT * FROM vehicles : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;159m[  script:mysql-async] [MySQL] [ERROR] [gc-inventory] An error happens for query "SELECT * FROM items WHERE LCASE(name) LIKE '%weapon_%' : []": ER_BAD_DB_ERROR: Unknown database 'database'
+[38;5;65m[script:esx_addonacco] SCRIPT ERROR: @esx_addonaccount/server/main.lua:9: attempt to get length of a nil value (local 'result')
+[38;5;65m[script:esx_addonacco] > fn (@mysql-async/lib/MySQL.lua:226)
+[38;5;78m[script:esx_datastore] SCRIPT ERROR: @esx_datastore/server/main.lua:9: attempt to get length of a nil value (local 'result')
+[38;5;78m[script:esx_datastore] > fn (@mysql-async/lib/MySQL.lua:226)
+[38;5;230m[  script:esx_society] SCRIPT ERROR: @esx_society/server/main.lua:18: attempt to get length of a nil value (local 'result')
+[38;5;230m[  script:esx_society] > fn (@mysql-async/lib/MySQL.lua:226)
+[38;5;81m[script:esx_vehiclesh] SCRIPT ERROR: @esx_vehicleshop/server/main.lua:32: bad argument #1 to 'for iterator' (table expected, got nil)
+[38;5;81m[script:esx_vehiclesh] > ref (@esx_vehicleshop/server/main.lua:32)
+[38;5;81m[script:esx_vehiclesh] > <unknown> (@mysql-async/mysql-async.js:15543)
+[38;5;159m[  script:mysql-async] 
+[38;5;159m[  script:mysql-async] 
 [38;5;55m[ script:discordroles] 
 [38;5;55m[ script:discordroles] [discordroles] successfully validated bot token.
 [38;5;55m[ script:discordroles]   • Current account: Aystralia Bot#8130 (755792927891914812)
 [38;5;55m[ script:discordroles] 
+[38;5;55m[ script:discordroles] [discordroles] discordroles is up to date.
 [38;5;41m[script:Badger_Discor] [Badger_Perms] Permission system guild set to: Aystralia Network (775399964204990495)
 [38;5;104m[script:discord_perms] Permission system guild set to: Aystralia Network (775399964204990495)
 [38;5;66m[          svadhesive] Server license key authentication succeeded. Welcome!
@@ -319,9 +361,136 @@
 [38;5;73m[ citizen-server-impl] Monetize your server using Tebex! Visit https://tebex.io/fivem for more info.
 [38;5;73m[ citizen-server-impl] ================
 [38;5;73m[ citizen-server-impl] 
-[38;5;134m[      script:hardcap] Connecting: kazza
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
-[38;5;19m[    script:AYScripts] Syncing weather for: kazza
-[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 234 milliseconds
-[38;5;220m[  script:es_extended] [es_extended] [INFO] A player with name "Al Shebab" has connected to the server with assigned player id 1
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin (EasyAdmin) is outdated.
+[38;5;128m[    script:EasyAdmin] Newest Version: 6.0
+[38;5;128m[    script:EasyAdmin] Your Version: 5.901
+[38;5;128m[    script:EasyAdmin] Please update it from https://github.com/Blumlaut/EasyAdmin
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] Update Changelog:
+[38;5;128m[    script:EasyAdmin] Lots and lots and LOTS of improvements! Temporary+Permanent Ban Permission! Revamped Webhooks, Optimisations
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin: screenshot-basic is not installed on this Server, screenshots unavailable
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin (EasyAdmin) is outdated.
+[38;5;128m[    script:EasyAdmin] Newest Version: 6.0
+[38;5;128m[    script:EasyAdmin] Your Version: 5.901
+[38;5;128m[    script:EasyAdmin] Please update it from https://github.com/Blumlaut/EasyAdmin
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] Update Changelog:
+[38;5;128m[    script:EasyAdmin] Lots and lots and LOTS of improvements! Temporary+Permanent Ban Permission! Revamped Webhooks, Optimisations
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin: screenshot-basic is not installed on this Server, screenshots unavailable
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin (EasyAdmin) is outdated.
+[38;5;128m[    script:EasyAdmin] Newest Version: 6.0
+[38;5;128m[    script:EasyAdmin] Your Version: 5.901
+[38;5;128m[    script:EasyAdmin] Please update it from https://github.com/Blumlaut/EasyAdmin
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] Update Changelog:
+[38;5;128m[    script:EasyAdmin] Lots and lots and LOTS of improvements! Temporary+Permanent Ban Permission! Revamped Webhooks, Optimisations
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] --------------------------------------------------------------------------
+[38;5;128m[    script:EasyAdmin] 
+[38;5;128m[    script:EasyAdmin] EasyAdmin: screenshot-basic is not installed on this Server, screenshots unavailable
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
+[38;5;220m[  script:es_extended] [es_extended] [INFO] Saved 0 player(s)
 [38;5;73m[ citizen-server-impl] Sending heartbeat to https://servers-ingress-live.fivem.net/ingress
