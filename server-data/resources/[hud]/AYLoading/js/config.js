@@ -18,8 +18,8 @@
 */
 
 var config = {
-    music: ["bAq9LLuRsEk"],
-    songnames: ["Koos - Fire"],
+    music: ["yt9R9jIDf34"],
+    songnames: ["A"],
     musicVolume: 2, // volume should be under 50% to not cause earrape
     enableMusic: true
 }
