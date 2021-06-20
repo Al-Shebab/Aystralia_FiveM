@@ -1,4 +1,4 @@
-USE `aystralia_db`;
+USE `aystralia`;
 
 CREATE TABLE `society_moneywash` (
 	`id` int NOT NULL AUTO_INCREMENT,

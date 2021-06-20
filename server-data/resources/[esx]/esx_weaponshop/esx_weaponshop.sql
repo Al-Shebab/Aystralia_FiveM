@@ -1,4 +1,4 @@
-USE `elohopea_db`;
+USE `aystralia`;
 
 CREATE TABLE `weashops` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -8,10 +8,6 @@ CREATE TABLE `weashops` (
 
 	PRIMARY KEY (`id`)
 );
-
-INSERT INTO `licenses` (`type`, `label`) VALUES
-	('weapon', "Permis de port d'arme")
-;
 
 INSERT INTO `weashops` (`zone`, `item`, `price`) VALUES
 	('GunShop','WEAPON_PISTOL', 300),
