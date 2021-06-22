@@ -53,6 +53,21 @@ strong {
   animation: music 3s;
 }
 
+.Pause {
+  color: #e7e7e7;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  font-weight: 400;
+
+  margin: -5%;
+  animation: music 3s;
+}
+
 @keyframes music {
     from {
         opacity: 0.1;
