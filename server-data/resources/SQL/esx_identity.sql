@@ -1,4 +1,4 @@
-USE `aystralia_db`;
+USE `aystralia`;
 
 ALTER TABLE `users`
 	ADD COLUMN `firstname` VARCHAR(50) NULL DEFAULT '',

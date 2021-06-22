@@ -1,4 +1,4 @@
-USE `aystralia_db`;
+USE `aystralia`;
 
 CREATE TABLE `addon_inventory` (
 	`name` VARCHAR(60) NOT NULL,
