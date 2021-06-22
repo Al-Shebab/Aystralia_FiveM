@@ -1,0 +1,47 @@
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FiveM | Loadingscreen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
+</head>
+<body>
+	<div id='player'></div>
+        <div id='intro'>
+            <div id='currentSong'></div>
+            <div id='pressspacebar'>
+            <script src='js/synn.js'></script>
+            <script src='js/config.js'></script>
+        </div>
+    </div>
+    <h1 class="Connecting"><strong>Connecting to the server.</strong></h1>
+    <audio id='song' volume='0.2' autoplay controls hidden>
+        <source src="music/music.mp3" type="audio/mpeg">
+      </audio>
+    <script>
+        var play = false;
+        var myAudio = document.getElementById("song");
+            
+        function onKeyDown(event) {
+                switch (event.keyCode) {
+                    case 32: //SpaceBar                    
+                        if (play) {
+                            myAudio.pause();
+                            play = false;
+                        } else {
+                            myAudio.play();
+                            play = true;
+                        }
+                        break;
+                }
+          return false;
+        }
+    
+        window.addEventListener("keydown", onKeyDown, false);
+    </script>
+</body>
+</html>

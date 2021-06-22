@@ -1,94 +1,91 @@
 @font-face {
-  font-family: bankgothic;
-  src: url("../fonts/bankgothic.ttf");
+	font-family: bankgothic;
+	src: url('../fonts/bankgothic.ttf');
 }
 
 @font-face {
-  font-family: pcdown;
-  src: url("../fonts/pdown.ttf");
+	font-family: pcdown;
+	src: url('../fonts/pdown.ttf');
 }
 
 #controls {
-  font-family: Pricedown;
-  font-size: 5em;
-  position: absolute;
-  bottom: 40;
-  right: 40;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 5em;
+	color: #FFF;
+	position: absolute;
+	bottom: 40;
+	right: 40;
 }
 
 .controls {
-  display: none;
+	display: none;
 }
 
 .dialog {
-  font-family: Pricedown;
-  background-color: rgba(0, 0, 0, 0);
-  color: #fff;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  width: 840px;
-  height: 224px;
-  transform: translate(-50%, -50%);
+	font-family: 'PT Sans Narrow', sans-serif;
+	background-color: rgba(40, 40, 40, 1);
+	color: #fff;
+	position: absolute;
+	overflow: hidden;
+	top: 50%;
+	left: 50%;
+	width: 640px;
+	height: 124px;
+	transform: translate(-50%, -50%);
 }
 
 .dialog.big {
-  box-shadow: 0px 0px 50px 0px rgb(223, 223, 223);
-  height: 200px;
+	height: 200px;
 }
 
 .dialog .head {
-  box-shadow: 0px 0px 50px 0px rgb(223, 223, 223);
-  background: linear-gradient(to left bottom, #000000, #000000);
-  text-align: center;
-  height: 60px;
-  font-size: 42px;
+	background-color: #4682B4;
+	text-align: center;
+	height: 40px;
+	font-size: 22px;
 }
 
 .dialog .head span:before {
-  box-shadow: 0px 0px 50px 0px rgb(223, 223, 223);
-  content: "";
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
 }
 
 .dialog input[type="text"] {
-  font-family: Pricedown;
-  text-align: center;
-  width: 100%;
-  height: 82px;
-  color: #fff;
-  font-size: 30px;
-  background-color: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 42px;
+	color: #fff;
+	font-size: 20px;
+	background-color: rgba(20, 20, 20, 1);
+	border-bottom: 2px solid 	#e76767;
 }
 
 .dialog textarea {
-  font-family: Pricedown;
-  width: 100%;
-  height: 138px;
-  color: #fff;
-  font-size: 30px;
-  background-color: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 138px;
+	color: #fff;
+	font-size: 20px;
+	background-color: rgba(20, 20, 20, 1);
+	border-bottom: 2px solid 	#e76767;
 }
 
 .dialog button[name="submit"] {
-  box-shadow: 0px 0px 50px 0px rgb(223, 223, 223);
-  font-family: Pricedown;
-  width: 50%;
-  color: rgb(2, 177, 25);
-  height: 42px;
-  font-size: 22px;
-  background: linear-gradient(to left bottom, #000000, #000000);
+	width: 75%;
+	color: #fff;
+	height: 42px;
+	font-size: 22px;
+	border: 0px solid 	#e76767;
+	border-right: 1px solid 	#e76767;
+	background-color: rgba(40, 40, 40, 1)
 }
 
 .dialog button[name="cancel"] {
-  box-shadow: 0px 0px 50px 0px rgb(223, 223, 223);
-  font-family: Pricedown;
-  width: 50%;
-  color: rgb(214, 0, 0);
-  height: 42px;
-  font-size: 20px;
-  background: linear-gradient(to left bottom, #000000, #000000);
+	width: 25%;
+	color: rgb(236, 75, 75);
+	height: 42px;
+	font-size: 20px;
+	border: 0px solid 	#e76767;
+	border-left: 1px solid 	#e76767;
+	background-color: rgba(40, 40, 40, 1)
 }

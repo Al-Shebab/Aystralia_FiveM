@@ -3,7 +3,7 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('esx_billing:sendBill')
-AddEventHandler('esx_billing:sendBill', function(playerId, sharedAccountName, label, amount) if exports["pac"]:WasEventCanceled("esx_billing:sendBill") then return end
+AddEventHandler('esx_billing:sendBill', function(playerId, sharedAccountName, label, amount)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local xTarget = ESX.GetPlayerFromId(playerId)
 	amount = ESX.Math.Round(amount)
