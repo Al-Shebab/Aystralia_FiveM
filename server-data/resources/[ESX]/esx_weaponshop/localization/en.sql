@@ -1,4 +1,4 @@
-USE `elohopea_db`;
+USE `essentialmode`;
 
 CREATE TABLE `weashops` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -10,7 +10,7 @@ CREATE TABLE `weashops` (
 );
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
-	('weapon', "Permis de port d'arme")
+	('weapon', "Weapons license")
 ;
 
 INSERT INTO `weashops` (`zone`, `item`, `price`) VALUES
