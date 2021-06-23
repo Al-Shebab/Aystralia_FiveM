@@ -2,8 +2,7 @@
 server-data/cache
 server-data/cache/*
 server-data/resources/[cars]
-server-data/resources/[cars]/*
+server-data\resources\[cars]
 start.bat
 server-data/resources/[cars]/AYVehicles/
-server-data/resources/[cars]/AYVehicles/fxmanifest.lua
-server-data/resources/[cars]/AYVehicles/
+server-data/resources/[cars]/AAYVehicles/
