@@ -64,8 +64,8 @@ strong {
 
   font-weight: 400;
 
-  margin: -5%;
-  animation: music 3s;
+  margin: -3%;
+  animation: music 5s;
 }
 
 @keyframes music {
