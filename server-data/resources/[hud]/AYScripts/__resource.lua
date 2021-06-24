@@ -42,6 +42,9 @@ client_scripts{
 	"cars/main.lua",
 	"cars/config.lua",
   -- "noweapondrops-client.lua"
+  "infinitespeed/config.lua",
+  "infinitespeed/client.lua",
+  "infinitespeed/city_speed_limit.lua",
  }
  
   exports {
