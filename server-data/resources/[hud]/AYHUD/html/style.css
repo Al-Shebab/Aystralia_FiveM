@@ -1,0 +1,165 @@
+﻿
+@font-face {
+    font-family: PricedownBL;
+    src: url(s.ttf);
+}
+
+body {
+	display: block;
+}
+
+
+
+
+
+.money  {
+	border-left: 4px solid rgb(197, 184, 0);
+	position: absolute;
+    right: 3.8vh;
+    top: 7vh;
+	border-radius: 7vh;
+	background-color: rgba(39, 39, 39, 0.699);
+	display: block
+}
+
+.money .iconmoney {
+	font-size: 2.0vh;
+	color: rgb(47, 233, 0);
+	float: left;
+}
+.money div {
+	margin-right: 0vh;
+	color: rgba(255, 255, 255, 0.719);
+	float: right;
+	font-size: 1.8vh;
+	font-family: "Verdana", sans-serif;
+
+	padding: .7vh 2.5vh
+}
+.schwarzmoney  {
+	border-left: 4px solid rgb(197, 184, 0);
+	position: absolute;
+    right: 3.8vh;
+    top: 11vh;
+	border-radius: 7vh;
+	background-color: rgba(39, 39, 39, 0.699);
+	display: none;
+}
+
+.schwarzmoney .iconmoney {
+	font-size: 2.0vh;
+	color: rgb(243, 16, 0);
+	float: left;
+}
+.schwarzmoney div {
+	margin-right: 0vh;
+	color: rgba(255, 255, 255, 0.719);
+	float: right;
+	font-size: 1.8vh;
+	font-family: "Verdana", sans-serif;
+
+	padding: .7vh 2.5vh
+}
+
+.voice1 {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 12vh;
+	    height: 3.5vh;}
+
+
+
+.voice2 {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 12vh;
+	    height: 3.5vh;}
+
+
+.voice3 {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 12vh;
+	    height: 3.5vh;}
+
+.voicemuted {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 12vh;
+	    height: 3.5vh;}
+
+.voice4 {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 12vh;
+	    height: 3.5vh;}
+			
+			
+			.voice1black {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 16vh;
+	    height: 3.5vh;
+
+			}
+
+.voice2black {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 16vh;
+	    height: 3.5vh;}
+
+
+.voice3black {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 16vh;
+	    height: 3.5vh;}
+
+.voicemutedblack {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 16vh;
+	    height: 3.5vh;}
+
+.voice4black {
+    position: absolute;
+	display: none;
+    right: 3.9vh;
+    top: 16vh;
+	    height: 3.5vh;}
+.funk {
+    position: absolute;
+	display: none;
+    right: 9.5vh;
+    top: 12vh;
+		    height: 3.4vh;}
+
+.funke {
+    position: absolute;
+	display: none;
+    right: 9.5vh;
+    top: 12vh;
+		    height: 3.4vh;}
+.funkblack {
+    position: absolute;
+	display: none;
+    right: 9.5vh;
+    top: 16vh;
+		    height: 3.4vh;}
+
+.funkeblack {
+    position: absolute;
+	display: none;
+    right: 9.5vh;
+    top: 16vh;
+		    height: 3.4vh;}

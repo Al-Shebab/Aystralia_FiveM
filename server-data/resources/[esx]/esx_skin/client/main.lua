@@ -258,7 +258,7 @@ AddEventHandler('esx:onPlayerSpawn', function()
         if firstSpawn and ESX.GetConfig().Multichar ~= true then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
                 if skin == nil then
-                    TriggerEvent('skinchanger:loadSkin', {sex = 0}, OpenSaveableMenu)
+                    TriggerEvent('nicoo_charcreator:CharCreator')
                 else
                     TriggerEvent('skinchanger:loadSkin', skin)
                 end
@@ -283,7 +283,7 @@ AddEventHandler('esx_skin:playerRegistered', function()
         if firstSpawn then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
                 if skin == nil then
-                    TriggerEvent('skinchanger:loadSkin', {sex = 0}, OpenSaveableMenu)
+                    TriggerEvent('nicoo_charcreator:CharCreator')
                     Citizen.Wait(100)
                     skinLoaded = true
                 else
