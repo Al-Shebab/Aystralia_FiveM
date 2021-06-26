@@ -36,7 +36,7 @@ end
 
 function getCharacters(source, callback)
 	local identifier = GetPlayerIdentifiers(source)[1]
-	MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier",
+	MySQL.Async.fetchAll("SELECT * FROM 'users' WHERE `identifier` = @identifier",
 	{
 		['@identifier'] = identifier
 	}, function(result)
@@ -142,17 +142,6 @@ function setIdentity(identifier, data, callback)
 			callback(true)
 		end
 	end)
-
-	MySQL.Async.execute(
-	'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height)',
-	{
-		['@identifier']		= identifier,
-		['@firstname']		= data.firstname,
-		['@lastname']		= data.lastname,
-		['@dateofbirth']	= data.dateofbirth,
-		['@sex']			= data.sex,
-		['@height']			= data.height
-	})
 end
 
 function updateIdentity(identifier, data, callback)
@@ -172,7 +161,7 @@ function updateIdentity(identifier, data, callback)
 end
 
 function deleteIdentity(identifier, data, callback)
-	MySQL.Async.execute("DELETE FROM `characters` WHERE identifier = @identifier AND firstname = @firstname AND lastname = @lastname AND dateofbirth = @dateofbirth AND sex = @sex AND height = @height",
+	MySQL.Async.execute("DELETE FROM 'users' WHERE identifier = @identifier AND firstname = @firstname AND lastname = @lastname AND dateofbirth = @dateofbirth AND sex = @sex AND height = @height",
 	{
 		['@identifier']		= identifier,
 		['@firstname']		= data.firstname,
