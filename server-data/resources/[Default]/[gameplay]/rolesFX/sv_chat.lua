@@ -11,16 +11,18 @@
 
 
 
-local owner = {"steam:11000010c5272ea","ip:",}
-local comm = {"steam:","ip:",}
+local owner = {"steam:11000010c5272ea","ip:",} -- Al Shebab
+local comm = {"steam:","ip:",} 
 local servermanager = {"steam:","ip:",}
 local staffmanager = {"steam:","ip:",}
-local dev = {"steam:110000115362d5f","ip:",}
+local dev = {"steam:110000115362d5f","ip:",} -- Mailar
+local sadmin = {"steam:","ip:",}
+local admin = {"steam:","ip:",}
+local smod = {"steam:","ip:",}
+local mod = {"steam:","ip:",}
+local tmod = {"steam:","ip:",}
+
 ---------------------------------------
-local Sheriff = {"steam:","ip:",}
-local Moderator = {"steam:","ip:",}
-local StateTroopers = {"steam:","ip:",}
-local Test = {"steam:","ip:",}
 
 AddEventHandler('chatMessage', function(Source, Name, Msg)
     args = stringsplit(Msg, " ")
@@ -40,18 +42,18 @@ AddEventHandler('chatMessage', function(Source, Name, Msg)
             TriggerClientEvent('chatMessage', -1, "Staff Manager | " .. Name, { 255, 101, 101 }, Msg)
         elseif has_value(dev, player) then
             TriggerClientEvent('chatMessage', -1, "Developer | " .. Name, { 255, 152, 152 }, Msg)
-        elseif has_value(Sheriff, player) then
-            TriggerClientEvent('chatMessage', -1, "Sheriff's Department | " .. Name, { 0, 0, 255 }, Msg)
-	    elseif has_value(Moderator, player) then
-            TriggerClientEvent('chatMessage', -1, "Moderator | " .. Name, { 0, 255, 247 }, Msg)
-        elseif has_value(StateTroopers, player) then
-            TriggerClientEvent('chatMessage', -1, "State Troopers | " .. Name, { 222, 0, 255 }, Msg)
-		elseif has_value(Test, player) then
-            TriggerClientEvent('chatMessage', -1, "State Troopers | Admin " .. Name, { 222, 0, 255 }, Msg)
-		elseif has_value(ScriptCreator, player) then
-            TriggerClientEvent('chatMessage', -1, "Chat Roles Creator | " .. Name, { 0, 255, 43 }, Msg)
+        elseif has_value(sadmin, player) then
+            TriggerClientEvent('chatMessage', -1, "Senior Administrator | " .. Name, { 255, 180, 0 }, Msg)
+	    elseif has_value(admin, player) then
+            TriggerClientEvent('chatMessage', -1, "Administator | " .. Name, { 0, 255, 247 }, Msg)
+        elseif has_value(smod, player) then
+            TriggerClientEvent('chatMessage', -1, "Senior Moderator | " .. Name, { 148, 255, 87 }, Msg)
+		elseif has_value(mod, player) then
+            TriggerClientEvent('chatMessage', -1, "Moderator | " .. Name, { 74, 255, 121 }, Msg)
+		elseif has_value(tmod, player) then
+            TriggerClientEvent('chatMessage', -1, "Trial Moderator | " .. Name, { 24, 249, 255 }, Msg)
         else
-            TriggerClientEvent('chatMessage', -1, "Civilian | " .. Name, { 235, 214, 51 }, Msg)
+            TriggerClientEvent('chatMessage', -1, "Member | " .. Name, { 93, 24, 255 }, Msg)
         end
             
     end
@@ -79,31 +81,4 @@ function stringsplit(inputstr, sep)
     return t
 end
 
----ALLOWS YOU TO CHECK VERSIONS IN GAME
-
-AddEventHandler('chatMessage', function(source, name, msg)
-  if msg:sub(1, 1) == "/" then
-    sm = stringsplit(msg, " ");
-	   if sm[1] == "/fversion" then
-		     CancelEvent()
-	TriggerClientEvent('chatMessage', source, "^0[^1RolesFX Script Version Check^0]", {30, 144, 255}, " ^2Version 1.1.0 | RolesFX By Jay Gatsby!^0 ) " .. string.sub(msg,11))
-     end
-  end
-
-end)
-
----PRINTS THIS CODE BELOW TO THE CONSOLE 
-
-print('Jays Roles FX has loaded in to the server! Type in chat to test it out!')
-
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
---- IP'S ARE BROKEN DO NOT USE
+print('^8Aystralia Chat Permissions working!')
