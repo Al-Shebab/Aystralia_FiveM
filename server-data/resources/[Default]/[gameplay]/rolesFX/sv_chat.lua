@@ -11,8 +11,8 @@
 
 
 
-local Owner = {"steam:","ip:127.0.0.1",}
-local Admin = {"steam:","ip:",}
+local Owner = {"steam:11000010c5272ea","ip:",}
+local Admin = {"steam:110000115362d5f","ip:",}
 local HighwayPatrol = {"steam:","ip:",}
 local Fire = {"steam:","ip:",}
 local EMT = {"steam:","ip:",}
