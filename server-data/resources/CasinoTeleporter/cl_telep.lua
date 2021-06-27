@@ -67,16 +67,16 @@ lwin = false
 
 Citizen.CreateThread(function()
     while true do 
-        if dAsc1 < 1.5  then
+        if dAsc1 < 4.5  then
             fols = false 
             showAsc(true)
-        elseif dAsc2 < 1.5 then
+        elseif dAsc2 < 4.5 then
             fols = false
             showAsc(true)
-        elseif dAsc3 < 1.5 then
+        elseif dAsc3 < 4.5 then
             fols = false
             showAsc(true)
-        elseif dAsc4 < 1.5 then
+        elseif dAsc4 < 4.5 then
             fols = false
             showAsc(true)
         elseif dAsc5 < 1.5 then
