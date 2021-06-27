@@ -15,7 +15,7 @@ AddEventHandler('vb-banking:server:depositvb', function(amount, inMenu)
 	amount = tonumber(amount)
 	Citizen.Wait(50)
 	if amount == nil or amount <= 0 or amount > _char.getMoney() then
-		TriggerClientEvent('chatMessage', _src, "Invalid Quantity.")
+		_char.showNotification("You do not have $"..amount)
 	else
 		_char.removeMoney(amount)
 		_char.addAccountMoney('bank', tonumber(amount))
@@ -32,7 +32,7 @@ AddEventHandler('vb-banking:server:withdrawvb', function(amount, inMenu)
 	_base = _char.getAccount('bank').money
 	Citizen.Wait(100)
 	if amount == nil or amount <= 0 or amount > _base then
-		TriggerClientEvent('chatMessage', _src, "Invalid Quantity")
+		_char.showNotification("You do not have $"..amount)
 	else
 		_char.removeAccountMoney('bank', amount)
 		_char.addMoney(amount)
