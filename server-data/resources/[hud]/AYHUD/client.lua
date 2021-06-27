@@ -1,14 +1,14 @@
---███╗░░░███╗░█████╗░██████╗░███████╗███╗░░██╗░█████╗░
---████╗░████║██╔══██╗██╔══██╗██╔════╝████╗░██║██╔══██╗
---██╔████╔██║██║░░██║██████╔╝█████╗░░██╔██╗██║██║░░██║
---██║╚██╔╝██║██║░░██║██╔══██╗██╔══╝░░██║╚████║██║░░██║
---██║░╚═╝░██║╚█████╔╝██║░░██║███████╗██║░╚███║╚█████╔╝
---╚═╝░░░░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝░╚════╝░
+--[[
+	
+███╗░░░███╗███████╗███████╗██████╗░██████╗░██╗
+████╗░████║██╔════╝██╔════╝██╔══██╗██╔══██╗██║
+██╔████╔██║█████╗░░█████╗░░██████╔╝██████╦╝██║
+██║╚██╔╝██║██╔══╝░░██╔══╝░░██╔══██╗██╔══██╗██║
+██║░╚═╝░██║███████╗███████╗██║░░██║██████╦╝██║
+╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝
+]]
 
 local ESX = nil
-local stage = 1
-local micmuted = false
-local voice = {default = 6.0, shout = 15.0, whisper = 2.0, current = 0} 
 local Keys = {
 
     ["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57,
@@ -30,7 +30,6 @@ local Keys = {
     ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 
 }
-local voicelevel = 0
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -38,7 +37,6 @@ Citizen.CreateThread(function()
 	end
 	TriggerEvent('esx:setMoneyDisplay', 0.0)
 	ESX.UI.HUD.SetDisplay(0.0)
-
 end)
 
 
@@ -67,11 +65,6 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	end
 end)
 
-AddEventHandler("onClientMapStart", function()
-	NetworkSetTalkerProximity(voice.default)
-	SendNUIMessage({action = "setVoiceLevel", level = 2});
-end)
-
 RegisterNetEvent('esx:setAccountMoney')
 AddEventHandler('esx:setAccountMoney', function(account)
 	
@@ -91,95 +84,17 @@ end)
 
 RegisterNetEvent('SaltyChat_TalkStateChanged')
 AddEventHandler('SaltyChat_TalkStateChanged', function(SaltyisTalking)
-            if voice.current == 0 then
-                SendNUIMessage({action = "setVoiceLevel", level = 2});
-            elseif voice.current == 1 then
-                SendNUIMessage({action = "setVoiceLevel", level = 3});
-            elseif voice.current == 2 then
-                SendNUIMessage({action = "setVoiceLevel", level = 1});
-            end
+    SendNUIMessage({action = "setVoiceTalking", val = SaltyisTalking});
 end)
 
-
-
-RegisterNetEvent('SaltyChat_MicStateChanged')
-AddEventHandler('SaltyChat_MicStateChanged', function(SaltyisMicrophoneMuted)
-
-	if SaltyisMicrophoneMuted == true then
-
-            if voice.current == 0 then
-                SendNUIMessage({action = "setVoiceLevel", level = 2});
-            elseif voice.current == 1 then
-                SendNUIMessage({action = "setVoiceLevel", level = 3});
-            elseif voice.current == 2 then
-                SendNUIMessage({action = "setVoiceLevel", level = 1});
-            end
-  	SendNUIMessage({action = "muted", muted = true})
-	micmuted = true
-	
-	else
-	            if voice.current == 0 then
-                SendNUIMessage({action = "setVoiceLevel", level = 2});
-            elseif voice.current == 1 then
-                SendNUIMessage({action = "setVoiceLevel", level = 3});
-            elseif voice.current == 2 then
-                SendNUIMessage({action = "setVoiceLevel", level = 1});
-            end
-					SendNUIMessage({action = "nomuted"})
-				micmuted = false
-	end
-	
+RegisterNetEvent('SaltyChat_SetRadioChannel')
+AddEventHandler('SaltyChat_SetRadioChannel', function(radiochannel, primary)
+	local isFunk = true
+	if radiochannel == nil or radiochannel == 0 or radiochannel == '0' or radiochannel == " " then isFunk = false end
+	SendNUIMessage({action = "setFunkTalking", val = isFunk});
 end)
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1)
-        local coords = GetEntityCoords(PlayerPedId())
-		
-		if IsControlJustPressed(1, 243) then
-            voice.current = (voice.current + 1) % 3
-            if voice.current == 0 then
-                NetworkSetTalkerProximity(voice.default)
-                SendNUIMessage({action = "setVoiceLevel", level = 2});
-				voiceCoords = voice.default
-				TriggerEvent("grv_notify", "#28C801", "STIMMENLAGE", "Normal (6 Meter)")
-            elseif voice.current == 1 then
-                NetworkSetTalkerProximity(voice.shout)
-                SendNUIMessage({action = "setVoiceLevel", level = 3});
-				voiceCoords = voice.shout
-				TriggerEvent("grv_notify", "#C85E01", "STIMMENLAGE", "Schreien (15 Meter)")
-            elseif voice.current == 2 then
-                NetworkSetTalkerProximity(voice.whisper)
-                SendNUIMessage({action = "setVoiceLevel", level = 1});
-				voiceCoords = voice.whisper
-				TriggerEvent("grv_notify", "#FFFFFF", "STIMMENLAGE", "Flüstern (2 Meter)")
-            end
-			
-
-        end
-    end
-end)
-
-local prox = 26.0
-local allowProximityChange = true
 
 RegisterNetEvent('esx:activateMoney')
 AddEventHandler('esx:activateMoney', function(e)
 	SendNUIMessage({action = "setMoney", money = e})
 end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(500)
-		local data = exports.saltychat:GetRadioChannel(true)
-
-if  data == nil or data == '' then
-	SendNUIMessage({action = "hide"})
-
-else
-	SendNUIMessage({action = "show"})
-
-end
-
-	  end
-  end)

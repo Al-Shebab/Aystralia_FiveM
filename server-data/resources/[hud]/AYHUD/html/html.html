@@ -1,36 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hud</title>
+<style id="applicationStylesheet" type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+body::-webkit-scrollbar {
+  display: none;
+}
 
+body {
+
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  animation: slide-in 1s forwards;
+}
+			*{
+				z-index : 99999999999;
+			}
+	@keyframes slide-in {
+    0% {
+        top: 20px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
+	.mediaViewInfo {
+		--web-view-name: Canvas;
+		--web-view-id: Canvas;
+		--web-scale-to-fit: true;
+		--web-scale-to-fit-type: width;
+		--web-enable-scale-up: true;
+		--web-scale-on-resize: true;
+		--web-center-vertically: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: Canvas;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#Canvas {
+		position: absolute;
+		width: 1920px;
+		height: 1080px;
+		background-color: rgba(0,0,0,0);
+		overflow: hidden;
+		--web-view-name: Canvas;
+		--web-view-id: Canvas;
+		--web-scale-to-fit: true;
+		--web-scale-to-fit-type: width;
+		--web-enable-scale-up: true;
+		--web-scale-on-resize: true;
+		--web-center-vertically: true;
+		--web-enable-deep-linking: true;
+	}
+	#Gruppe_13 {
+		position: absolute;
+		width: 210px;
+		height: 120px;
+		left: 1670px;
+		top: 41px;
+		overflow: visible;
+	}
+	#Ebene_3 {
+		position: absolute;
+		width: 210px;
+		height: 32px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Ebene_4 {
+		position: absolute;
+		width: 210px;
+		height: 32px;
+		left: 0px;
+		top: 40px;
+		overflow: visible;
+	}
+	#Ebene_5 {
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		left: 122px;
+		top: 83px;
+		overflow: visible;
+	}
+	#Ebene_6 {
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		left: 171px;
+		top: 83px;
+		overflow: visible;
+	}
+	#microphone-alt-solid {
+		position: absolute;
+		width: 11px;
+		height: 15px;
+		left: 133px;
+		top: 92px;
+		overflow: visible;
+	}
+	#broadcast-tower-solid_1 {
+		position: absolute;
+		width: 20px;
+		height: 15px;
+		left: 179px;
+		top: 94px;
+		overflow: visible;
+	}
+	#money-bill-solid {
+		position: absolute;
+		width: 23px;
+		height: 14px;
+		left: 7px;
+		top: 9px;
+		overflow: visible;
+	}
+	#content2 {
+		left: 68px;
+		top: 3px;
+		position: absolute;
+		overflow: visible;
+		width: 95px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 15.74666976928711px;
+		color: rgba(23,193,246,1);
+	}
+	#content {
+		left: 68px;
+		top: 43px;
+		position: absolute;
+		overflow: visible;
+		width: 95px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 15.74666976928711px;
+		color: rgba(23,193,246,1);
+	}
+	#wallet-solid_2 {
+		position: absolute;
+		width: 19px;
+		height: 15px;
+		left: 9px;
+		top: 48px;
+		overflow: visible;
+	}
+</style>
+<script id="applicationScript" type="text/javascript" src="rescale.js"></script>
+</head>
+<body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-		<body>
-<script src="script.js"></script>
-			<div class="money">
-<div id="content">0$</div>
-				<div class="iconmoney" id="wallet" style="display:block;"><i class="fas fa-dollar-sign"></i></div>
-			</div>
-			<div class="schwarzmoney">
-<div id="content2">0$</div>
-				<div class="iconmoney" id="wallet" style="display:block;"><i class="fas fa-dollar-sign"></i></div>
-			</div>
-
-
-	<img class="voice1" src="mic1.png" id ="shadow"> </img>
-
-	<img class="voice2" src="mic2.png" id="voicee">
-	<img class="voice3" src="mic3.png" id="voicee">
-	<img class="voice4" src="mic4.png" id="voicee"> 
-    <img class="voicemuted" src="muted.png" id="voicemuted"> 
-	<img class="voice1black" src="mic1.png" id ="shadow"> </img>
-
-	<img class="voice2black" src="mic2.png" id="voicee">
-	<img class="voice3black" src="mic3.png" id="voicee">
-	<img class="voice4black" src="mic4.png" id="voicee"> 
-    <img class="voicemutedblack" src="muted.png" id="voicemuted"> 
-	<img class="funk" src="funkan3.png" id="funk">
-    <img class="funke" src="funkaus3.png" id="funke">
-	<img class="funkblack" src="funkan3.png" id="funk">
-    <img class="funkeblack" src="funkaus3.png" id="funke">
+	<script src="script.js"></script>
+<div id="Canvas">
+	<div id="Gruppe_13">
+		<img id="Ebene_3" src="https://cdn.discordapp.com/attachments/788240573382787114/835897099538268210/Ebene_3.png">
+			
+		<img id="Ebene_4" src="https://cdn.discordapp.com/attachments/788240573382787114/835897099538268210/Ebene_3.png">
+			
+		<img id="Ebene_5" src="https://cdn.discordapp.com/attachments/788240573382787114/835897177993248788/Ebene_5.png">
+			
+		<img id="Ebene_6" src="https://cdn.discordapp.com/attachments/788240573382787114/835897177993248788/Ebene_5.png">
+			
+		<img id="microphone-alt-solid" src="https://cdn.discordapp.com/attachments/788240573382787114/835897308209479760/microphone-alt-solid.png">
+			
+		<img id="broadcast-tower-solid_1" src="https://cdn.discordapp.com/attachments/788240573382787114/835897251531718716/broadcast-tower-solid_1.png">
+			
+		<img id="money-bill-solid" src="https://cdn.discordapp.com/attachments/788240573382787114/835897360143745045/money-bill-solid.png">
+		<div class="schwarzmoney">
+			<div id="content2">0$</div>
+		</div>
+		<div class="money">
+			<div id="content">0$</div>
+		</div>
+		<img id="wallet-solid_2" src="https://cdn.discordapp.com/attachments/788240573382787114/835897428129349673/wallet-solid_2.png">
+			
+	</div>
+</div>
 </body>
+</html>
