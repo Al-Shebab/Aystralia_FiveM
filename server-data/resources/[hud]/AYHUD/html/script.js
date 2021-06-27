@@ -168,7 +168,7 @@ $(document).ready(function () {
 });
 
 function setAnzahl(anzahl) {
-    document.getElementById("content").innerHTML = new Intl.NumberFormat('de-DE').format(anzahl) + " $";
+    document.getElementById("content").innerHTML = "$" + new Intl.NumberFormat('ja-JP').format(anzahl);
 
 }
 function setAnzahle(anzahl) {
@@ -180,6 +180,6 @@ function setAnzahle(anzahl) {
 		$('.schwarzmoney').show();
 		$('#Ebene_3').show();
 	}
-    document.getElementById("content2").innerHTML = new Intl.NumberFormat('de-DE').format(anzahl) + " $";
+    document.getElementById("content2").innerHTML = "$" + new Intl.NumberFormat('ja-JP').format(anzahl);
 
 }
