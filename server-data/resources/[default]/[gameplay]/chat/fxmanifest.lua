@@ -1,30 +1,27 @@
--- This resource is part of the default Cfx.re asset pack (cfx-server-data)
--- Altering or recreating for local use only is strongly discouraged.
+fx_version 'adamant'
 
-version '1.0.0'
-author 'Cfx.re <root@cfx.re>'
-description 'Provides baseline chat functionality using a NUI-based interface.'
-repository 'https://github.com/citizenfx/cfx-server-data'
+game 'gta5'
 
-ui_page 'dist/ui.html'
+description 'KS_CHAT'
 
-client_script 'cl_chat.lua'
-server_script 'sv_chat.lua'
+ui_page 'html/index.html'
+
+client_scripts {'@es_extended/locale.lua','clientside/*.lua', 'locales/*.lua', 'configs/*.lua'}
+
+server_scripts {'@es_extended/locale.lua','serverside/*.lua'}
 
 files {
-  'dist/ui.html',
-  'dist/index.css',
+
+  'html/*.html',
+
+  'html/*.css',
+
+  'html/*.js',
+
+  'html/vendor/*.js',
+
   'html/vendor/*.css',
+
   'html/vendor/fonts/*.woff2',
+
 }
-
-fx_version 'adamant'
-games { 'rdr3', 'gta5' }
-rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
-
-dependencies {
-  'yarn',
-  'webpack'
-}
-
-webpack_config 'webpack.config.js'

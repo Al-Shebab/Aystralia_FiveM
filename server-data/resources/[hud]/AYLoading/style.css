@@ -22,6 +22,11 @@ html {
     animation: travel 9000s;
 }
 
+html, body {
+  cursor: url('hand.cur'),default;
+  /* just change the cursor.ico path to your location */
+}
+
 strong {
     font-weight: 800;
 }
