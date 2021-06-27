@@ -11,7 +11,7 @@
 
 
 
-local Director = {"steam:","ip:127.0.0.1",}
+local Owner = {"steam:","ip:127.0.0.1",}
 local Admin = {"steam:","ip:",}
 local HighwayPatrol = {"steam:","ip:",}
 local Fire = {"steam:","ip:",}
@@ -29,8 +29,8 @@ AddEventHandler('chatMessage', function(Source, Name, Msg)
         table.remove(args, 1)
     else     
         local player = GetPlayerIdentifiers(Source)[1]
-        if has_value(Director, player) then
-            TriggerClientEvent('chatMessage', -1, "Director | " .. Name, { 255, 0, 0 }, Msg)           
+        if has_value(Owner, player) then
+            TriggerClientEvent('chatMessage', -1, "Owner | " .. Name, { 255, 0, 0 }, Msg)           
         elseif has_value(Admin, player) then
             TriggerClientEvent('chatMessage', -1, "Admin | " .. Name, { 255, 0, 0 }, Msg)
         elseif has_value(HighwayPatrol, player) then
