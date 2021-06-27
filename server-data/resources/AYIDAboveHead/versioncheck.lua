@@ -18,7 +18,6 @@ Citizen.CreateThread(function()
             print("   Please consider downgrading to the latest stable version as the version you are\n   currently running may contain bugs.")
             print("\n##################################")
         else
-            print("Congratulations! Your version of " .. GetCurrentResourceName() .. " is correct and up-to-date, you're awesome!")
         end
 
     end, "GET", "", {version = 'this'})
