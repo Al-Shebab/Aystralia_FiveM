@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
     if nearBankorATM() then
       _sleep = false
-      DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ouvrir la banque ~b~.")
+      DisplayHelpText("Use ~INPUT_PICKUP~ to access ~b~.")
       if IsControlJustPressed(1, 38) then
         inMenu = true
         SetNuiFocus(true, true)
@@ -129,7 +129,7 @@ nearBankorATM = function()
         if distance <= 3 then
           atbank = true
           toreturn = true
-          DrawText3D(search.x, search.y, search.z, 'Appuyez sur ~y~E~w~ pour ~r~ouvrir~w~ la banque')
+          DrawText3D(search.x, search.y, search.z, 'Use ~y~E~w~ to ~r~access~w~ the bank')
           DrawMarker(2,search.x, search.y, search.z, 0.0, 0.0, 0.0, 300.0, 0.0, 0.0, 0.25, 0.25, 0.05, 0, 100, 255, 255, false, true, 2, false, false, false, false)
         end
     end

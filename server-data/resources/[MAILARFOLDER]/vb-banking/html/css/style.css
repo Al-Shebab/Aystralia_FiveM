@@ -189,7 +189,7 @@ body {
     height: 13vh;
     border-radius: 1vh;
     background: white;
-    background-image: url("https://i.imgur.com/p1QG3AV.jpg");
+    background-image: url(../img/creditcard.png);
     background-size: cover;
 }
 
@@ -894,7 +894,7 @@ body {
     height: 14vh;
     border-radius: 2vh;
     background: white;
-    background-image: url("https://i.imgur.com/p1QG3AV.jpg");
+    background-image: url(../img/creditcard.png);
     background-size: cover;
 }
 
