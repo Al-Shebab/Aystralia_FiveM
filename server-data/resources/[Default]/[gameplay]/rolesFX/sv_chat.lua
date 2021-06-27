@@ -11,11 +11,12 @@
 
 
 
-local Owner = {"steam:11000010c5272ea","ip:",}
-local Admin = {"steam:110000115362d5f","ip:",}
-local HighwayPatrol = {"steam:","ip:",}
-local Fire = {"steam:","ip:",}
-local EMT = {"steam:","ip:",}
+local owner = {"steam:11000010c5272ea","ip:",}
+local comm = {"steam:","ip:",}
+local servermanager = {"steam:","ip:",}
+local staffmanager = {"steam:","ip:",}
+local dev = {"steam:110000115362d5f","ip:",}
+---------------------------------------
 local Sheriff = {"steam:","ip:",}
 local Moderator = {"steam:","ip:",}
 local StateTroopers = {"steam:","ip:",}
@@ -29,16 +30,16 @@ AddEventHandler('chatMessage', function(Source, Name, Msg)
         table.remove(args, 1)
     else     
         local player = GetPlayerIdentifiers(Source)[1]
-        if has_value(Owner, player) then
+        if has_value(owner, player) then
             TriggerClientEvent('chatMessage', -1, "Owner | " .. Name, { 255, 0, 0 }, Msg)           
-        elseif has_value(Admin, player) then
-            TriggerClientEvent('chatMessage', -1, "Admin | " .. Name, { 255, 0, 0 }, Msg)
-        elseif has_value(HighwayPatrol, player) then
-            TriggerClientEvent('chatMessage', -1, "Highway Patrol | " .. Name, { 0, 0, 255 }, Msg)
-        elseif has_value(Fire, player) then
-            TriggerClientEvent('chatMessage', -1, "Fire | " .. Name, { 0, 0, 255 }, Msg)
-        elseif has_value(EMT, player) then
-            TriggerClientEvent('chatMessage', -1, "EMT | " .. Name, { 0, 0, 255 }, Msg)
+        elseif has_value(comm, player) then
+            TriggerClientEvent('chatMessage', -1, "Community Manager | " .. Name, { 255, 72, 72 }, Msg)
+        elseif has_value(servermanager, player) then
+            TriggerClientEvent('chatMessage', -1, "Server Manager | " .. Name, { 255, 89, 89 }, Msg)
+        elseif has_value(staffmanager, player) then
+            TriggerClientEvent('chatMessage', -1, "Staff Manager | " .. Name, { 255, 101, 101 }, Msg)
+        elseif has_value(dev, player) then
+            TriggerClientEvent('chatMessage', -1, "Developer | " .. Name, { 255, 152, 152 }, Msg)
         elseif has_value(Sheriff, player) then
             TriggerClientEvent('chatMessage', -1, "Sheriff's Department | " .. Name, { 0, 0, 255 }, Msg)
 	    elseif has_value(Moderator, player) then
