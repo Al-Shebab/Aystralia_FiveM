@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
     if nearBankorATM() then
       _sleep = false
-      DisplayHelpText("Use ~INPUT_PICKUP~ to access ~b~.")
+      DisplayHelpText("~b~Use ~INPUT_PICKUP~ ~b~to access the bank")
       if IsControlJustPressed(1, 38) then
         inMenu = true
         SetNuiFocus(true, true)
@@ -126,16 +126,15 @@ nearBankorATM = function()
     local _toreturn = false
     for _, search in pairs(Config.Zonas["banks"]) do
     local distance = #(vector3(search.x, search.y, search.z) - vector3(_pcoords))
-        if distance <= 3 then
+        if distance <= 5 then
           atbank = true
           toreturn = true
-          DrawText3D(search.x, search.y, search.z, 'Use ~y~E~w~ to ~r~access~w~ the bank')
           DrawMarker(2,search.x, search.y, search.z, 0.0, 0.0, 0.0, 300.0, 0.0, 0.0, 0.25, 0.25, 0.05, 0, 100, 255, 255, false, true, 2, false, false, false, false)
         end
     end
     for _, search in pairs(Config.Zonas["atms"]) do
     local distance = #(vector3(search.x, search.y, search.z) - vector3(_pcoords))
-    if distance <= 2 then
+    if distance <= 3 then
         atbank = false
         _toreturn = true
         end
