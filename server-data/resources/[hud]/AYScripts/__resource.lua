@@ -17,7 +17,7 @@ client_scripts{
   -- "main.lua",
   "hud.lua",
   "mapfix.lua",
-  "teleporter.lua",
+  -- "teleporter.lua",
   -- "teleporter.lua",
   -- "cl_afk.lua",
   -- "cl_antivdm.lua",
