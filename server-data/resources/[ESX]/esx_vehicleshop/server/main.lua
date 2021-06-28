@@ -1,12 +1,10 @@
 ESX              = nil
 local Categories = {}
 local Vehicles   = {}
-local PlayersTransforming  = {}
-local PlayersHarvesting  = {}
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-TriggerEvent('esx_phone:registerNumber', 'customcars', _U('dealer_customers'), false, false)
+TriggerEvent('esx_phone:registerNumber', 'cardealer', _U('dealer_customers'), false, false)
 TriggerEvent('esx_society:registerSociety', 'cardealer', _U('car_dealer'), 'society_cardealer', 'society_cardealer', 'society_cardealer', {type = 'private'})
 
 Citizen.CreateThread(function()
@@ -15,7 +13,7 @@ Citizen.CreateThread(function()
 	if Config.PlateUseSpace then char = char + 1 end
 
 	if char > 8 then
-		print(('esx_CryptosCustoms: ^1WARNING^7 plate character count reached, %s/8 characters.'):format(char))
+		print(('esx_vehicleshop: ^1WARNING^7 plate character count reached, %s/8 characters.'):format(char))
 	end
 end)
 
@@ -26,8 +24,8 @@ function RemoveOwnedVehicle(plate)
 end
 
 MySQL.ready(function()
-	Categories     = MySQL.Sync.fetchAll('SELECT * FROM vehicleaddon_categories')
-	local vehicles = MySQL.Sync.fetchAll('SELECT * FROM vehiclesaddon')
+	Categories     = MySQL.Sync.fetchAll('SELECT * FROM vehicle_categories')
+	local vehicles = MySQL.Sync.fetchAll('SELECT * FROM vehicles')
 
 	for i=1, #vehicles, 1 do
 		local vehicle = vehicles[i]
@@ -43,12 +41,12 @@ MySQL.ready(function()
 	end
 
 	-- send information after db has loaded, making sure everyone gets vehicle information
-	TriggerClientEvent('esx_CryptosCustoms:sendCategories', -1, Categories)
-	TriggerClientEvent('esx_CryptosCustoms:sendVehicles', -1, Vehicles)
+	TriggerClientEvent('esx_vehicleshop:sendCategories', -1, Categories)
+	TriggerClientEvent('esx_vehicleshop:sendVehicles', -1, Vehicles)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:setVehicleOwned')
-AddEventHandler('esx_CryptosCustoms:setVehicleOwned', function (vehicleProps)
+RegisterServerEvent('esx_vehicleshop:setVehicleOwned')
+AddEventHandler('esx_vehicleshop:setVehicleOwned', function (vehicleProps)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
@@ -62,8 +60,8 @@ AddEventHandler('esx_CryptosCustoms:setVehicleOwned', function (vehicleProps)
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:setVehicleOwnedPlayerId')
-AddEventHandler('esx_CryptosCustoms:setVehicleOwnedPlayerId', function (playerId, vehicleProps)
+RegisterServerEvent('esx_vehicleshop:setVehicleOwnedPlayerId')
+AddEventHandler('esx_vehicleshop:setVehicleOwnedPlayerId', function (playerId, vehicleProps)
 	local xPlayer = ESX.GetPlayerFromId(playerId)
 
 	MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle) VALUES (@owner, @plate, @vehicle)',
@@ -73,11 +71,11 @@ AddEventHandler('esx_CryptosCustoms:setVehicleOwnedPlayerId', function (playerId
 		['@vehicle'] = json.encode(vehicleProps)
 	}, function (rowsChanged)
 		TriggerClientEvent('esx:showNotification', playerId, _U('vehicle_belongs', vehicleProps.plate))
-	end)
+	end) 
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:setVehicleOwnedSociety')
-AddEventHandler('esx_CryptosCustoms:setVehicleOwnedSociety', function (society, vehicleProps)
+RegisterServerEvent('esx_vehicleshop:setVehicleOwnedSociety')
+AddEventHandler('esx_vehicleshop:setVehicleOwnedSociety', function (society, vehicleProps)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
@@ -91,8 +89,8 @@ AddEventHandler('esx_CryptosCustoms:setVehicleOwnedSociety', function (society, 
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:sellVehicle')
-AddEventHandler('esx_CryptosCustoms:sellVehicle', function (vehicle)
+RegisterServerEvent('esx_vehicleshop:sellVehicle')
+AddEventHandler('esx_vehicleshop:sellVehicle', function (vehicle)
 	MySQL.Async.fetchAll('SELECT * FROM cardealer_vehicles WHERE vehicle = @vehicle LIMIT 1', {
 		['@vehicle'] = vehicle
 	}, function (result)
@@ -104,13 +102,13 @@ AddEventHandler('esx_CryptosCustoms:sellVehicle', function (vehicle)
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:addToList')
-AddEventHandler('esx_CryptosCustoms:addToList', function(target, model, plate)
+RegisterServerEvent('esx_vehicleshop:addToList')
+AddEventHandler('esx_vehicleshop:addToList', function(target, model, plate)
 	local xPlayer, xTarget = ESX.GetPlayerFromId(source), ESX.GetPlayerFromId(target)
 	local dateNow = os.date('%Y-%m-%d %H:%M')
 
 	if xPlayer.job.name ~= 'cardealer' then
-		print(('esx_CryptosCustoms: %s attempted to add a sold vehicle to list!'):format(xPlayer.identifier))
+		print(('esx_vehicleshop: %s attempted to add a sold vehicle to list!'):format(xPlayer.identifier))
 		return
 	end
 
@@ -123,24 +121,15 @@ AddEventHandler('esx_CryptosCustoms:addToList', function(target, model, plate)
 	})
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getSoldVehicles', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getSoldVehicles', function (source, cb)
 
 	MySQL.Async.fetchAll('SELECT * FROM vehicle_sold', {}, function(result)
 		cb(result)
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getOutstandingBills', function (source, cb)
-
-	MySQL.Async.fetchAll('SELECT * FROM billing INNER JOIN users ON billing.identifier = users.identifier WHERE target = @target', {
-		['@target'] = 'society_cardealer'
-	}, function(result)
-		cb(result)
-	end)
-end)
-
-RegisterServerEvent('esx_CryptosCustoms:rentVehicle')
-AddEventHandler('esx_CryptosCustoms:rentVehicle', function (vehicle, plate, playerName, basePrice, rentPrice, target)
+RegisterServerEvent('esx_vehicleshop:rentVehicle')
+AddEventHandler('esx_vehicleshop:rentVehicle', function (vehicle, plate, playerName, basePrice, rentPrice, target)
 	local xPlayer = ESX.GetPlayerFromId(target)
 
 	MySQL.Async.fetchAll('SELECT * FROM cardealer_vehicles WHERE vehicle = @vehicle LIMIT 1', {
@@ -166,8 +155,8 @@ AddEventHandler('esx_CryptosCustoms:rentVehicle', function (vehicle, plate, play
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:getStockItem')
-AddEventHandler('esx_CryptosCustoms:getStockItem', function (itemName, count)
+RegisterServerEvent('esx_vehicleshop:getStockItem')
+AddEventHandler('esx_vehicleshop:getStockItem', function (itemName, count)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local sourceItem = xPlayer.getInventoryItem(itemName)
@@ -177,7 +166,7 @@ AddEventHandler('esx_CryptosCustoms:getStockItem', function (itemName, count)
 
 		-- is there enough in the society?
 		if count > 0 and item.count >= count then
-
+		
 			-- can the player carry the said amount of x item?
 			if sourceItem.limit ~= -1 and (sourceItem.count + count) > sourceItem.limit then
 				TriggerClientEvent('esx:showNotification', _source, _U('player_cannot_hold'))
@@ -192,8 +181,8 @@ AddEventHandler('esx_CryptosCustoms:getStockItem', function (itemName, count)
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:putStockItems')
-AddEventHandler('esx_CryptosCustoms:putStockItems', function (itemName, count)
+RegisterServerEvent('esx_vehicleshop:putStockItems')
+AddEventHandler('esx_vehicleshop:putStockItems', function (itemName, count)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 
@@ -210,15 +199,15 @@ AddEventHandler('esx_CryptosCustoms:putStockItems', function (itemName, count)
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getCategories', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getCategories', function (source, cb)
 	cb(Categories)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getVehicles', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getVehicles', function (source, cb)
 	cb(Vehicles)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:buyVehicle', function (source, cb, vehicleModel)
+ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, vehicleModel)
 	local xPlayer     = ESX.GetPlayerFromId(source)
 	local vehicleData = nil
 
@@ -237,7 +226,7 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:buyVehicle', function (source, cb
 	end
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:buyVehicleSociety', function (source, cb, society, vehicleModel)
+ESX.RegisterServerCallback('esx_vehicleshop:buyVehicleSociety', function (source, cb, society, vehicleModel)
 	local vehicleData = nil
 
 	for i=1, #Vehicles, 1 do
@@ -251,7 +240,8 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:buyVehicleSociety', function (sou
 		if account.money >= vehicleData.price then
 			account.removeMoney(vehicleData.price)
 
-			MySQL.Async.execute('INSERT INTO cardealer_vehicles (vehicle, price) VALUES (@vehicle, @price)', {
+			MySQL.Async.execute('INSERT INTO cardealer_vehicles (vehicle, price) VALUES (@vehicle, @price)',
+			{
 				['@vehicle'] = vehicleData.model,
 				['@price']   = vehicleData.price
 			}, function(rowsChanged)
@@ -264,7 +254,7 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:buyVehicleSociety', function (sou
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getCommercialVehicles', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getCommercialVehicles', function (source, cb)
 	MySQL.Async.fetchAll('SELECT * FROM cardealer_vehicles ORDER BY vehicle ASC', {}, function (result)
 		local vehicles = {}
 
@@ -280,8 +270,8 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:getCommercialVehicles', function 
 end)
 
 
-RegisterServerEvent('esx_CryptosCustoms:returnProvider')
-AddEventHandler('esx_CryptosCustoms:returnProvider', function(vehicleModel)
+RegisterServerEvent('esx_vehicleshop:returnProvider')
+AddEventHandler('esx_vehicleshop:returnProvider', function(vehicleModel)
 	local _source = source
 
 	MySQL.Async.fetchAll('SELECT * FROM cardealer_vehicles WHERE vehicle = @vehicle LIMIT 1', {
@@ -302,14 +292,14 @@ AddEventHandler('esx_CryptosCustoms:returnProvider', function(vehicleModel)
 
 			TriggerClientEvent('esx:showNotification', _source, _U('vehicle_sold_for', vehicleModel, ESX.Math.GroupDigits(price)))
 		else
-
-			print(('esx_CryptosCustoms: %s attempted selling an invalid vehicle!'):format(GetPlayerIdentifiers(_source)[1]))
+			
+			print(('esx_vehicleshop: %s attempted selling an invalid vehicle!'):format(GetPlayerIdentifiers(_source)[1]))
 		end
 
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getRentedVehicles', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getRentedVehicles', function (source, cb)
 	MySQL.Async.fetchAll('SELECT * FROM rented_vehicles ORDER BY player_name ASC', {}, function (result)
 		local vehicles = {}
 
@@ -325,7 +315,7 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:getRentedVehicles', function (sou
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:giveBackVehicle', function (source, cb, plate)
+ESX.RegisterServerCallback('esx_vehicleshop:giveBackVehicle', function (source, cb, plate)
 	MySQL.Async.fetchAll('SELECT * FROM rented_vehicles WHERE plate = @plate', {
 		['@plate'] = plate
 	}, function (result)
@@ -333,7 +323,8 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:giveBackVehicle', function (sourc
 			local vehicle   = result[1].vehicle
 			local basePrice = result[1].base_price
 
-			MySQL.Async.execute('INSERT INTO cardealer_vehicles (vehicle, price) VALUES (@vehicle, @price)', {
+			MySQL.Async.execute('INSERT INTO cardealer_vehicles (vehicle, price) VALUES (@vehicle, @price)',
+			{
 				['@vehicle'] = vehicle,
 				['@price']   = basePrice
 			})
@@ -350,7 +341,7 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:giveBackVehicle', function (sourc
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:resellVehicle', function (source, cb, plate, model)
+ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb, plate, model)
 	local resellPrice = 0
 
 	-- calculate the resell price
@@ -362,96 +353,107 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:resellVehicle', function (source,
 	end
 
 	if resellPrice == 0 then
-		print(('esx_CryptosCustoms: %s attempted to sell an unknown vehicle!'):format(GetPlayerIdentifiers(source)[1]))
+		print(('esx_vehicleshop: %s attempted to sell an unknown vehicle!'):format(GetPlayerIdentifiers(source)[1]))
 		cb(false)
-	else
-		MySQL.Async.fetchAll('SELECT * FROM rented_vehicles WHERE plate = @plate', {
-			['@plate'] = plate
-		}, function (result)
-			if result[1] then -- is it a rented vehicle?
-				cb(false) -- it is, don't let the player sell it since he doesn't own it
-			else
-				local xPlayer = ESX.GetPlayerFromId(source)
+	end
 
-				MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
-					['@owner'] = xPlayer.identifier,
-					['@plate'] = plate
-				}, function (result)
-					if result[1] then -- does the owner match?
-						local vehicle = json.decode(result[1].vehicle)
+	MySQL.Async.fetchAll('SELECT * FROM rented_vehicles WHERE plate = @plate', {
+		['@plate'] = plate
+	}, function (result)
+		if result[1] then -- is it a rented vehicle?
+			cb(false) -- it is, don't let the player sell it since he doesn't own it
+		else
+			local xPlayer = ESX.GetPlayerFromId(source)
 
-						if vehicle.model == model then
-							if vehicle.plate == plate then
-								xPlayer.addMoney(resellPrice)
-								RemoveOwnedVehicle(plate)
-								cb(true)
-							else
-								print(('esx_CryptosCustoms: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
-								cb(false)
-							end
+			MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
+				['@owner'] = xPlayer.identifier,
+				['@plate'] = plate
+			}, function (result)
+
+				if result[1] then -- does the owner match?
+
+					local vehicle = json.decode(result[1].vehicle)
+
+					if vehicle.model == model then
+						if vehicle.plate == plate then
+							xPlayer.addMoney(resellPrice)
+							RemoveOwnedVehicle(plate)
+
+							cb(true)
 						else
-							print(('esx_CryptosCustoms: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
+							print(('esx_vehicleshop: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
 							cb(false)
 						end
 					else
-						if xPlayer.job.grade_name == 'boss' then
-							MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
-								['@owner'] = 'society:' .. xPlayer.job.name,
-								['@plate'] = plate
-							}, function (result)
-								if result[1] then
-									local vehicle = json.decode(result[1].vehicle)
+						print(('esx_vehicleshop: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
+						cb(false)
+					end
 
-									if vehicle.model == model then
-										if vehicle.plate == plate then
-											xPlayer.addMoney(resellPrice)
-											RemoveOwnedVehicle(plate)
-											cb(true)
-										else
-											print(('esx_CryptosCustoms: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
-											cb(false)
-										end
+				else
+
+					if xPlayer.job.grade_name == 'boss' then
+						MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND @plate = plate', {
+							['@owner'] = 'society:' .. xPlayer.job.name,
+							['@plate'] = plate
+						}, function (result)
+
+							if result[1] then
+
+								local vehicle = json.decode(result[1].vehicle)
+
+								if vehicle.model == model then
+									if vehicle.plate == plate then
+										xPlayer.addMoney(resellPrice)
+										RemoveOwnedVehicle(plate)
+
+										cb(true)
 									else
-										print(('esx_CryptosCustoms: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
+										print(('esx_vehicleshop: %s attempted to sell an vehicle with plate mismatch!'):format(xPlayer.identifier))
 										cb(false)
 									end
 								else
+									print(('esx_vehicleshop: %s attempted to sell an vehicle with model mismatch!'):format(xPlayer.identifier))
 									cb(false)
 								end
-							end)
-						else
-							cb(false)
-						end
+
+							else
+								cb(false)
+							end
+
+						end)
+					else
+						cb(false)
 					end
-				end)
-			end
-		end)
-	end
+				end
+
+			end)
+		end
+	end)
 end)
 
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getStockItems', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getStockItems', function (source, cb)
 	TriggerEvent('esx_addoninventory:getSharedInventory', 'society_cardealer', function(inventory)
 		cb(inventory.items)
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:getPlayerInventory', function (source, cb)
+ESX.RegisterServerCallback('esx_vehicleshop:getPlayerInventory', function (source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local items = xPlayer.inventory
+	local items   = xPlayer.inventory
 
-	cb({items = items})
+	cb({ items = items })
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:isPlateTaken', function (source, cb, plate)
-	MySQL.Async.fetchAll('SELECT 1 FROM owned_vehicles WHERE plate = @plate', {
+ESX.RegisterServerCallback('esx_vehicleshop:isPlateTaken', function (source, cb, plate)
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE plate = @plate', {
 		['@plate'] = plate
 	}, function (result)
 		cb(result[1] ~= nil)
 	end)
 end)
 
-ESX.RegisterServerCallback('esx_CryptosCustoms:retrieveJobVehicles', function (source, cb, type)
+ESX.RegisterServerCallback('esx_vehicleshop:retrieveJobVehicles', function (source, cb, type)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND type = @type AND job = @job', {
@@ -463,8 +465,8 @@ ESX.RegisterServerCallback('esx_CryptosCustoms:retrieveJobVehicles', function (s
 	end)
 end)
 
-RegisterServerEvent('esx_CryptosCustoms:setJobVehicleState')
-AddEventHandler('esx_CryptosCustoms:setJobVehicleState', function(plate, state)
+RegisterServerEvent('esx_vehicleshop:setJobVehicleState')
+AddEventHandler('esx_vehicleshop:setJobVehicleState', function(plate, state)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	MySQL.Async.execute('UPDATE owned_vehicles SET `stored` = @stored WHERE plate = @plate AND job = @job', {
@@ -473,81 +475,105 @@ AddEventHandler('esx_CryptosCustoms:setJobVehicleState', function(plate, state)
 		['@job'] = xPlayer.job.name
 	}, function(rowsChanged)
 		if rowsChanged == 0 then
-			print(('esx_CryptosCustoms: %s exploited the garage!'):format(xPlayer.identifier))
+			print(('esx_vehicleshop: %s exploited the garage!'):format(xPlayer.identifier))
 		end
 	end)
 end)
 
+--SCRIPT PARA TRANSFERIR VEÍCULOS
+RegisterCommand('transfervehicle', function(source, args)
 
---Make License Plates
-local function Transform(source)
+	
+	myself = source
+	other = args[1]
+	
+	if(GetPlayerName(tonumber(args[1])))then
+			
+	else
+			
+            TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Incorrect player ID!")
+			return
+	end
+	
+	
+	local plate1 = args[2]
+	local plate2 = args[3]
+	local plate3 = args[4]
+	local plate4 = args[5]
+	
+  
+	if plate1 ~= nil then plate01 = plate1 else plate01 = "" end
+	if plate2 ~= nil then plate02 = plate2 else plate02 = "" end
+	if plate3 ~= nil then plate03 = plate3 else plate03 = "" end
+	if plate4 ~= nil then plate04 = plate4 else plate04 = "" end
+  
+  
+	local plate = (plate01 .. " " .. plate02 .. " " .. plate03 .. " " .. plate04)
 
-	if PlayersTransforming[source] == true then
+	
+	mySteamID = GetPlayerIdentifiers(source)
+	mySteam = mySteamID[1]
+	myID = ESX.GetPlayerFromId(source).identifier
+	myName = ESX.GetPlayerFromId(source).name
 
-		local xPlayer  = ESX.GetPlayerFromId(source)
-      		local blankQuantity = xPlayer.getInventoryItem('blank_plate').count
+	targetSteamID = GetPlayerIdentifiers(args[1])
+	targetSteamName = ESX.GetPlayerFromId(args[1]).name
+	targetSteam = targetSteamID[1]
+	
+	MySQL.Async.fetchAll(
+        'SELECT * FROM owned_vehicles WHERE plate = @plate',
+        {
+            ['@plate'] = plate
+        },
+        function(result)
+            if result[1] ~= nil then
+                local playerName = ESX.GetPlayerFromIdentifier(result[1].owner).identifier
+				local pName = ESX.GetPlayerFromIdentifier(result[1].owner).name
+				CarOwner = playerName
+				print("Car Transfer ", myID, CarOwner)
+				if myID == CarOwner then
+					print("Transfered")
+					
+					data = {}
+						TriggerClientEvent('chatMessage', other, "^4Vehicle with the plate ^*^1" .. plate .. "^r^4was transfered to you by: ^*^2" .. myName)
+			 
+						MySQL.Sync.execute("UPDATE owned_vehicles SET owner=@owner WHERE plate=@plate", {['@owner'] = targetSteam, ['@plate'] = plate})
+						TriggerClientEvent('chatMessage', source, "^4You have ^*^3transfered^0^4 your vehicle with the plate ^*^1" .. plate .. "\" ^r^4to ^*^2".. targetSteamName)
+				else
+					print("Did not transfer")
+					TriggerClientEvent('chatMessage', source, "^*^1You do not own the vehicle")
+				end
+			else
+				TriggerClientEvent('chatMessage', source, "^1^*ERROR: ^r^0This vehicle plate does not exist or the plate was incorrectly written.")
+            end
+		
+        end
+    )
+	
+end)
 
-		if blankQuantity < 1 then
-			TriggerClientEvent('esx:showNotification', source, _U('not_enough_blank'))
-       		return
-      	else
-        	--TriggerClientEvent('pNotify:SendNotification', source, {text = "Making Plate", type = "success", timeout = 30000, layout = "bottomCenter"})
+function PayRent(d, h, m)
+	MySQL.Async.fetchAll('SELECT * FROM rented_vehicles', {}, function (result)
+		for i=1, #result, 1 do
+			local xPlayer = ESX.GetPlayerFromIdentifier(result[i].owner)
 
-			SetTimeout(30000, function()
-            		xPlayer.removeInventoryItem('blank_plate', 1)
+			-- message player if connected
+			if xPlayer ~= nil then
+				xPlayer.removeAccountMoney('bank', result[i].rent_price)
+				TriggerClientEvent('esx:showNotification', xPlayer.source, _U('paid_rental', ESX.Math.GroupDigits(result[i].rent_price)))
+			else -- pay rent either way
+				MySQL.Sync.execute('UPDATE users SET bank = bank - @bank WHERE identifier = @identifier',
+				{
+					['@bank']       = result[i].rent_price,
+					['@identifier'] = result[i].owner
+				})
+			end
 
-			xPlayer.addInventoryItem('licenseplate', 1)
-			TriggerClientEvent('esx:showNotification', source, _U('made_plate'))
+			TriggerEvent('esx_addonaccount:getSharedAccount', 'society_cardealer', function(account)
+				account.addMoney(result[i].rent_price)
 			end)
 		end
-
-	end	
-end
-
-RegisterServerEvent('esx_CryptosCustoms:startMakePlate')
-AddEventHandler('esx_CryptosCustoms:startMakePlate', function(part)
-	local _source = source
-	PlayersTransforming[_source] = true
-	Transform(source)
-end)
-
-RegisterServerEvent('esx_CryptosCustoms:stopMakePlate')
-AddEventHandler('esx_CryptosCustoms:stopMakePlate', function()
-	local _source = source
-	PlayersTransforming[_source] = false		
-end)
-
--- Blank plate collection
-
-local function Harvest(source)
-  --TriggerClientEvent('pNotify:SendNotification', source, {text = "Collecting Blank Plates", type = "success", timeout = 20000, layout = "bottomCenter"})
-
-	SetTimeout(20000, function()
-
-		if PlayersHarvesting[source] == true then
-			local xPlayer = ESX.GetPlayerFromId(source)
-      			local plate = xPlayer.getInventoryItem('blank_plate')
-
-     			if plate.limit ~= -1 and plate.count >= plate.limit then
-				TriggerClientEvent('esx:showNotification', source, _U('you_do_not_room'))
-			else
-				xPlayer.addInventoryItem('blank_plate', 1)
-				TriggerClientEvent('esx:showNotification', source, _U('took_blank'))
-			end
-		end
-
 	end)
 end
 
-RegisterServerEvent('esx_CryptosCustoms:startPlateHarvest')
-AddEventHandler('esx_CryptosCustoms:startPlateHarvest', function()
-	local _source = source
-	PlayersHarvesting[_source] = true
-	Harvest(source)
-end)
-
-RegisterServerEvent('esx_CryptosCustoms:stopPlateHarvest')
-AddEventHandler('esx_CryptosCustoms:stopPlateHarvest', function()
-	local _source = source
-    PlayersHarvesting[_source] = false
-end)
+TriggerEvent('cron:runAt', 22, 00, PayRent)

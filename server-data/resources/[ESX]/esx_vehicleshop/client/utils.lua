@@ -16,10 +16,10 @@ function GeneratePlate()
 		if Config.PlateUseSpace then
 			generatedPlate = string.upper(GetRandomLetter(Config.PlateLetters) .. ' ' .. GetRandomNumber(Config.PlateNumbers))
 		else
-			generatedPlate = string.upper(GetRandomLetter(Config.PlateLetters) .. GetRandomNumber(Config.PlateNumbers) .. GetRandomLetter(Config.PlateLetters) .. GetRandomNumber(Config.PlateNumbers))
+			generatedPlate = string.upper(GetRandomLetter(Config.PlateLetters) .. GetRandomNumber(Config.PlateNumbers))
 		end
 
-		ESX.TriggerServerCallback('esx_CryptosCustoms:isPlateTaken', function (isPlateTaken)
+		ESX.TriggerServerCallback('esx_vehicleshop:isPlateTaken', function (isPlateTaken)
 			if not isPlateTaken then
 				doBreak = true
 			end
@@ -37,7 +37,7 @@ end
 function IsPlateTaken(plate)
 	local callback = 'waiting'
 
-	ESX.TriggerServerCallback('esx_CryptosCustoms:isPlateTaken', function(isPlateTaken)
+	ESX.TriggerServerCallback('esx_vehicleshop:isPlateTaken', function(isPlateTaken)
 		callback = isPlateTaken
 	end, plate)
 
