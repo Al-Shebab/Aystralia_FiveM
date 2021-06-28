@@ -1,8 +1,9 @@
 fx_version'bodacious'
 game'gta5'
 
-server_scripts{ 
-  "weathersync-server.lua",
+server_scripts{
+  "sv_chat.lua",
+  "vs_server.lua",
   -- "handsup-server.lua",
   -- "sv_carry.lua",
   -- "sv_piggyback.lua",
@@ -13,6 +14,7 @@ server_scripts{
 
 -- client scripts
 client_scripts{
+  "vs_client.lua",
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
@@ -36,7 +38,6 @@ client_scripts{
   "stopwanted-client.lua", 
   "anticarmovement.lua", 
   -- "gameui-client.lua",
-  "weathersync-client.lua",
   -- "missiontext-client.lua",
   "Nopeds/client.lua",
 	"cars/main.lua",
