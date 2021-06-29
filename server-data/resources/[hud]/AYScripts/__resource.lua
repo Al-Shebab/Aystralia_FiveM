@@ -2,6 +2,7 @@ fx_version'bodacious'
 game'gta5'
 
 server_scripts{
+  "sv_chat.lua",
   "vs_server.lua",
   -- "handsup-server.lua",
   -- "sv_carry.lua",
