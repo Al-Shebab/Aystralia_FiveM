@@ -81,7 +81,7 @@ Translation = {
     },
 
     ['en'] = {
-        ['interact_impound'] = 'Press ~g~E~s~, to access the Impound',
+        ['interact_impound'] = 'Press ~INPUT_PICKUP~ to access the ~y~Impound',
         ['impound'] = 'Impound',
         ['my_impounded_vehicles'] = 'My impounded vehicles',
         ['vehicle_model'] = 'Vehicle model: ',
