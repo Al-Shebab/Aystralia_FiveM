@@ -79,9 +79,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[st].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[st].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[st].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[st].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action1" data-id="`+ st +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[st].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[st].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action1" data-id="`+ st +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,9 +90,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[nd].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[nd].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[nd].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[nd].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action2" data-id="`+ nd +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[nd].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[nd].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action2" data-id="`+ nd +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>  
                                         </div>
@@ -101,9 +101,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[rd].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[rd].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[rd].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[rd].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action3" data-id="`+ rd +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[rd].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[rd].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action3" data-id="`+ rd +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>    
                                         </div>
@@ -114,9 +114,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[th].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[th].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[th].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[th].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action1" data-id="`+ th +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[th].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[th].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action1" data-id="`+ th +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,9 +125,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[kh].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[kh].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[kh].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[kh].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action2" data-id="`+ kh +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[kh].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[kh].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action2" data-id="`+ kh +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>  
                                         </div>
@@ -136,9 +136,9 @@ $(document).ready(function(){
                                                 <img src="`+data.cars[lh].imglink+`" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title">`+data.cars[lh].name+`</h5>
-                                                    <p class="card-text">Categoria: <b>`+data.cars[lh].category+`</b></p>
-                                                    <p class="card-text">Valor: <b>R$`+data.cars[lh].price+`</b></p>
-                                                    <p class="card-text"><button type="button" id="action3" data-id="`+ lh +`" class="btn btn-light btn-lg btn-block">Comprar</button></p>
+                                                    <p class="card-text">Category: <b>`+data.cars[lh].category+`</b></p>
+                                                    <p class="card-text">Price: <b>$`+data.cars[lh].price+`</b></p>
+                                                    <p class="card-text"><button type="button" id="action3" data-id="`+ lh +`" class="btn btn-light btn-lg btn-block">Buy</button></p>
                                                 </div>
                                             </div>    
                                         </div>
