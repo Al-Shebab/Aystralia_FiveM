@@ -1,22 +1,22 @@
 ConfigSV = {}
 
-ConfigSV.KickBanWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.KickBanWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.ScreenshotLogsWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.ScreenshotLogsWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.ScreenshotsWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.ScreenshotsWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.ReviveWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.ReviveWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.MoneyWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.MoneyWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.SlapWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.SlapWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.ForceskinWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.ForceskinWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.ClearloadoutWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.ClearloadoutWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
-ConfigSV.FreezeWebhook = "https://discord.com/api/webhooks/859044724987658241/wlPqCa9NwmMxTvcskXm6G4mNjk8Iu_4P8AkNgZzo5uAQil8BECb1xhhcSf-gVnh3fFI9"
+ConfigSV.FreezeWebhook = "https://discord.com/api/webhooks/860110654693572608/l_V8tHLgLWZBqHx73Tcv7I9N-UuoAG30Fo_nQtvdTzk8aBKUzSsD--eEUhshrGYjIrA3"
 
 ConfigSV.Discord = ""
 
