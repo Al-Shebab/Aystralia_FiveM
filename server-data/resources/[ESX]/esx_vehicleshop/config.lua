@@ -19,7 +19,7 @@ Config.PlateUseSpace = true
 Config.Zones = {
 
 	ShopEntering = {
-		Pos   = { x = -38.26, y = -1098.23, z = 26.00 },
+		Pos   = { x = -30.07, y = -1105.1, z = 26.42 },
 		Size  = { x = 1.5, y = 1.5, z = 1.0 },
 		Type  = 36
 	},
