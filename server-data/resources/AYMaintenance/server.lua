@@ -1,11 +1,11 @@
 -- Config
 Config = {}
 Config.UseWhitelist = false                        -- Use whitelist? Only people that are whitelisted are allowed to join.
-Config.UsePassword  = false                        -- Use password? If whitelist and password are true, you have to be whitelisted and know the password.
-Config.Password     = 'framework'                   -- Password
+Config.UsePassword  = true                        -- Use password? If whitelist and password are true, you have to be whitelisted and know the password.
+Config.Password     = 'k2!#2ka@£s@'                   -- Password
 Config.Attempts     = 3                            -- How many attempts a user has to enter the correct password
 Config.CleverMode   = true                         -- Use clever mode? If this is true, you will have to either be whitelisted *or* know the password. Recommended.
-Config.DiscordLink  = 'https://discord.gg/gzkjNkU' -- Your Discord server invite link.
+Config.DiscordLink  = 'https://discord.gg/hWN7zXtbQP' -- Your Discord server invite link.
 Config.Whitelist    = {                            -- You normally only need one identifier per person.
     'steam:11000010a2324b4',                               -- Puntherline: Steam
     'license:145ebc08c3ab10a72172c4e98483a4329a3f876e',    -- Puntherline: FiveM
@@ -19,7 +19,7 @@ Config.Whitelist    = {                            -- You normally only need one
 
 -- Globals
 local attempts = {}
-local passwordCard = {["type"]="AdaptiveCard",["minHeight"]="100px",["body"]={{["type"]="Container",["items"]={{["type"]="TextBlock",["horizontalAlignment"]="Left",["text"]="Password",},{["type"]="Input.Text",["id"]="password",["placeholder"]="Enter Password"},{["type"]="Container",["isVisible"]=false,["items"]={{["type"]="TextBlock",["weight"]="Bolder",["color"]="Attention",["text"]="Error: Invalid password entered!"}}}}}},["actions"]={{["type"]="Action.Submit",["title"]="Enter"}},["$schema"]="http://adaptivecards.io/schemas/adaptive-card.json",["version"]="1.2"}
+local passwordCard = {["type"]="AdaptiveCard",["minHeight"]="100px",["body"]={{["type"]="Container",["items"]={{["type"]="TextBlock",["horizontalAlignment"]="Left",["text"]="Aystralia Network is currently under maintenance break.",},{["type"]="Input.Text",["id"]="password",["placeholder"]="Enter Password"},{["type"]="Container",["isVisible"]=false,["items"]={{["type"]="TextBlock",["weight"]="Bolder",["color"]="Attention",["text"]="Error: Invalid password entered!"}}}}}},["actions"]={{["type"]="Action.Submit",["title"]="Enter"}},["$schema"]="http://adaptivecards.io/schemas/adaptive-card.json",["version"]="1.2"}
 
 
 
@@ -35,9 +35,9 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
 
     -- Stopping user from joining
     deferrals.defer()
-    Wait(100) -- May be tweaked, seems to cause issues closer to 0 on some servers.
-    deferrals.update('Please wait...')
-    Wait(100) -- May be tweaked, seems to cause issues closer to 0 on some servers.
+    Wait(10000) -- May be tweaked, seems to cause issues closer to 0 on some servers.
+    deferrals.update('⚠️ Please wait...')
+    Wait(10000) -- May be tweaked, seems to cause issues closer to 0 on some servers.
 
     -- Whitelist only
     if Config.UseWhitelist and not Config.UsePassword and not Config.CleverMode then
