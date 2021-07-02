@@ -36,6 +36,7 @@ client_scripts{
   -- "pointfinger-client.lua",
   -- "handsup-client.lua",
   "stopwanted-client.lua", 
+  "holograms.lua", 
   "anticarmovement.lua", 
   -- "gameui-client.lua",
   -- "missiontext-client.lua",
