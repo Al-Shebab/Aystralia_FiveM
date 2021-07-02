@@ -2,7 +2,7 @@
 Config = {}
 Config.UseWhitelist = false                        -- Use whitelist? Only people that are whitelisted are allowed to join.
 Config.UsePassword  = true                        -- Use password? If whitelist and password are true, you have to be whitelisted and know the password.
-Config.Password     = 'k2!#2ka@£s@'                   -- Password
+Config.Password     = '12345'                   -- Password
 Config.Attempts     = 3                            -- How many attempts a user has to enter the correct password
 Config.CleverMode   = true                         -- Use clever mode? If this is true, you will have to either be whitelisted *or* know the password. Recommended.
 Config.DiscordLink  = 'https://discord.gg/hWN7zXtbQP' -- Your Discord server invite link.
