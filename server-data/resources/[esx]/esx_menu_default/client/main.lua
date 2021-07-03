@@ -1,420 +1,167 @@
 ESX = nil
 
-local MenuType = 'default'
-
-
-
-VAL = {}
-
-VAL.Opened = {}
-
-
-
-local _menuPool = MenuPool.New()
-
-
-
 Citizen.CreateThread(function()
 
 	while ESX == nil do
-
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
 		Citizen.Wait(0)
+	end
+
+	local Keys = {
+		["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, 
+		["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, 
+		["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18,
+		["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182,
+		["LEFTSHIFT"] = 21, ["Z"] = 20, ["X"] = 73, ["C"] = 26, ["V"] = 0, ["B"] = 29, ["N"] = 249, ["M"] = 244, [","] = 82, ["."] = 81,
+		["LEFTCTRL"] = 36, ["LEFTALT"] = 19, ["SPACE"] = 22, ["RIGHTCTRL"] = 70, 
+		["HOME"] = 213, ["PAGEUP"] = 10, ["PAGEDOWN"] = 11, ["DELETE"] = 178,
+		["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173,
+		["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
+	}
+
+	local GUI      = {}
+	GUI.Time       = 0
+	local MenuType = 'default'
+
+	local openMenu = function(namespace, name, data)
+
+		SendNUIMessage({
+			action    = 'openMenu',
+			namespace = namespace,
+			name      = name,
+			data      = data,
+		})
 
 	end
 
+	local closeMenu = function(namespace, name)
 
+		SendNUIMessage({
+			action    = 'closeMenu',
+			namespace = namespace,
+			name      = name,
+			data      = data,
+		})
+	end
 
-	VAL.Open = function(namespace, name, data, submit, cancel, change, close)
+	ESX.UI.Menu.RegisterType(MenuType, openMenu, closeMenu)
 
-		local activeMenu = _menuPool:GetActiveMenu()
+	RegisterNUICallback('menu_submit', function(data, cb)
+		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 		
-
-		data.namespace = namespace
-
-		data.name = name
-
-		data.handle = UIMenu.New(GetPlayerName(PlayerId()), data.title, 0, 0, 'commonmenu', 'interaction_bgd', 0, 255, 255, 255, 255)
-
-		_menuPool:Add(data.handle)
-		data.handle:SetMenuWidthOffset(20)
-        
-
-
-		data.handle.OnItemSelect = function(menu, item, index)
-
-			local esx_menu = ESX.UI.Menu.GetOpened(MenuType, data.namespace, data.name)
-
-
-
-			if submit then
-
-				Citizen.CreateThread(function()
-
-					submit({current = data.elements[index]}, esx_menu)
-
-				end)
-
-			end
-
+		if menu.submit ~= nil then
+			menu.submit(data, menu)
 		end
 
+		cb('OK')
+	end)
 
-
-		data.handle.OnListSelect = function(menu, list, listindex)
-
-			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_CLOTHESSHOP_SOUNDSET", 1)
-
-
-			local esx_menu = ESX.UI.Menu.GetOpened(MenuType, data.namespace, data.name)
-
-			local index = data.handle:CurrentSelection()
-
-
-
-			if submit then
-
-				Citizen.CreateThread(function()
-				
-
-					submit({current = data.elements[index]}, esx_menu)
-
-				end)
-
-			end
-
+	RegisterNUICallback('menu_cancel', function(data, cb)
+		
+		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
+		
+		if menu.cancel ~= nil then
+			menu.cancel(data, menu)
 		end
 
-
-
-		data.handle.OnMenuClosed = function(menu, dontexec)
-
-			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_CLOTHESSHOP_SOUNDSET", 1)
-
-			local esx_menu = ESX.UI.Menu.GetOpened(MenuType, data.namespace, data.name)
-
-
-
-			if esx_menu then
-
-				esx_menu.destruct()
-
-
-
-				if cancel and dontexec == nil then
-
-					Citizen.CreateThread(function()
-
-						cancel({}, esx_menu)
-
-					end)
-
-				end
-
-			end
-
-		end
-
-
-
-		data.handle.OnIndexChange = function(menu, index)
-
-			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_CLOTHESSHOP_SOUNDSET", 1)
-
-			local esx_menu = ESX.UI.Menu.GetOpened(MenuType, data.namespace, data.name)
-
-
-
-			if change then
-
-				Citizen.CreateThread(function()
-
-					change({current = data.elements[index]}, esx_menu)
-
-				end)
-
-			end
-
-		end
-
-
-
-		data.handle.OnListChange = function(menu, list, listindex)
-
-			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_CLOTHESSHOP_SOUNDSET", 1)
-
-			local esx_menu = ESX.UI.Menu.GetOpened(MenuType, data.namespace, data.name)
-
-			local index = data.handle:CurrentSelection()
-
-
-
-			if data.elements[index].type == 'list' then
-
-				list:Description(data.elements[index].options.description[listindex])
-
-				menu.ReDraw = true
-
-				data.elements[index].value = listindex
-
-			elseif data.elements[index].type == 'slider' then
-
-				data.elements[index].value = listindex
-
-			end
-
-
-
-			if change then
-
-				Citizen.CreateThread(function()
-
-					change({current = data.elements[index]}, esx_menu)
-
-				end)
-
-			end
-
-		end
-
-
-
-		for k, v in ipairs(data.elements) do
-
-			if v.type == 'list' then
-
-				local elementListItem = UIMenuListItem.New(v.label, v.options.name, v.value, v.options.description[v.value])
-
-				data.handle:AddItem(elementListItem)
-
-			elseif v.type == 'slider' then
-
-				v.options = {name = {}}
-
-				v.max = v.max or 0
-
-				v.min = v.min or 0
-
-
-
-				for i = v.min, v.max, 1 do
-
-					v.options.name[i] = i
-
-				end
-
-
-
-				if v.options.name[v.min] == nil or v.min == v.max then
-
-					v.options.name[v.min] = 'Vide'
-
-				end
-
-
-
-				local elementListItem = UIMenuListItem.New(v.label, v.options.name, v.value, '', true, v.max, v.min)
-
-				data.handle:AddItem(elementListItem)
-
+		cb('OK')
+	end)
+
+	RegisterNUICallback('menu_change', function(data, cb)
+		
+		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
+		
+		for i=1, #data.elements, 1 do
+			
+			menu.setElement(i, 'value', data.elements[i].value)
+
+			if data.elements[i].selected then
+				menu.setElement(i, 'selected', true)
 			else
-
-				local elementItem = UIMenuItem.New(v.label, '')
-
-
-
-				if v.rightlabel then
-
-					elementItem:RightLabel(v.rightlabel[1], v.rightlabel[2], v.rightlabel[3])
-
-				end
-
-
-
-				data.handle:AddItem(elementItem)
-
+				menu.setElement(i, 'selected', false)
 			end
 
 		end
 
-
-
-		VAL.Opened[namespace] = VAL.Opened[namespace] or {}
-
-		VAL.Opened[namespace][name] = data
-
-
-
-		data.handle:RefreshIndex()
-
-
-
-		if activeMenu then
-
-			data.handle.ParentMenu = activeMenu
-
-			activeMenu:Visible(false)
-
+		if menu.change ~= nil then
+			menu.change(data, menu)
 		end
 
+		cb('OK')
+	end)
 
+	Citizen.CreateThread(function()
+		while true do
 
-		data.handle:Visible(true)
+	  	Wait(0)
 
-	end
+			if IsControlPressed(0, Keys['ENTER']) and (GetGameTimer() - GUI.Time) > 150 then
 
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'ENTER'
+				})
 
-
-	VAL.Close = function(namespace, name)
-
-		if VAL.Opened[namespace] then
-
-			if VAL.Opened[namespace][name] then
-
-				VAL.Opened[namespace][name].handle:GoBack()
-
-				VAL.Opened[namespace][name] = nil
+				GUI.Time = GetGameTimer()
 
 			end
 
-		end
+			if IsControlPressed(0, Keys['BACKSPACE']) and (GetGameTimer() - GUI.Time) > 150 then
 
-	end
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'BACKSPACE'
+				})
 
-
-
-	VAL.CloseAll = function()
-
-		_menuPool:CloseAllMenus()
-
-		_menuPool = nil
-
-		_menuPool = MenuPool.New()
-
-	end
-
-
-
-	VAL.Update = function(namespace, name, query, newData)
-
-		local menu = VAL.Opened[namespace][name]
-
-
-
-		for i = 1, #menu.elements, 1 do
-
-			local match = true
-
-
-
-			for k, v in pairs(query) do
-
-				if menu.elements[i][k] ~= v then
-
-					match = false
-
-				end
+				GUI.Time = GetGameTimer()
 
 			end
 
+			if IsControlPressed(0, Keys['TOP']) and (GetGameTimer() - GUI.Time) > 150 then
 
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'TOP'
+				})
 
-			if match then
-
-				local item = menu.handle:GetItemAt(i)
-
-
-
-				for k, v in pairs(newData) do
-
-					menu.elements[i][k] = v
-
-
-
-					if k == 'max' then
-
-						item.SliderMax = v
-
-					elseif k == 'min' then
-
-						item.SliderMin = v
-
-					elseif k == 'value' then
-
-						item._Index = v
-
-					end
-
-				end
-
-
-
-				if menu.elements[i].type == 'slider' then
-
-					menu.elements[i].options = {name = {}}
-
-					menu.elements[i].max = menu.elements[i].max or 0
-
-					menu.elements[i].min = menu.elements[i].min or 0
-
-
-
-					for j = menu.elements[i].min, menu.elements[i].max, 1 do
-
-						menu.elements[i].options.name[j] = j
-
-					end
-
-
-
-					if menu.elements[i].options.name[menu.elements[i].min] == nil or menu.elements[i].min == menu.elements[i].max then
-
-						menu.elements[i].options.name[menu.elements[i].min] = 'Vide'
-
-					end
-
-
-
-					item.Items = menu.elements[i].options.name
-
-				end
+				GUI.Time = GetGameTimer()
 
 			end
 
-		end
+			if IsControlPressed(0, Keys['DOWN']) and (GetGameTimer() - GUI.Time) > 150 then
 
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'DOWN'
+				})
 
+				GUI.Time = GetGameTimer()
 
-		menu.handle.ReDraw = true
+			end
 
-	end
+			if IsControlPressed(0, Keys['LEFT']) and (GetGameTimer() - GUI.Time) > 150 then
 
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'LEFT'
+				})
 
+				GUI.Time = GetGameTimer()
 
-	ESX.UI.Menu.RegisterType(MenuType, VAL.Open, VAL.Close, VAL.CloseAll, VAL.Update)
-	
+			end
 
-end)
+			if IsControlPressed(0, Keys['RIGHT']) and (GetGameTimer() - GUI.Time) > 150 then
 
+				SendNUIMessage({
+					action  = 'controlPressed',
+					control = 'RIGHT'
+				})
 
+				GUI.Time = GetGameTimer()
 
-Citizen.CreateThread(function()
+			end
 
-	while true do
-
-		if _menuPool ~= nil then
-		  
-
-
-			_menuPool:ProcessMenus()
-
-		end
-
-
-
-		Citizen.Wait(0)
-
-	end
+	  end
+	end)
 
 end)
