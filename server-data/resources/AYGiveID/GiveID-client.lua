@@ -10,7 +10,7 @@ end)
 RegisterNetEvent('esx_giveid:GiveIdResponse')
 AddEventHandler('esx_giveid:GiveIdResponse', function(response)
 	if response then 
-		ESX.ShowNotification("You have given your ID to ~y~" .. response)
+		ESX.ShowNotification("You have given your ID to ~b~" .. response)
 	else
 		ESX.ShowNotification("~r~Error no ID found")
 	end
