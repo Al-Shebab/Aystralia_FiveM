@@ -1,3 +1,0 @@
-
-start esx_amazonsecondary
-start amazon-map
