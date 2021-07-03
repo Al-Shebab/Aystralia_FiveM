@@ -64,7 +64,7 @@ function GetCharacterInfo(source)
 			gender = "Female"
 		end
 		--return ("Name: %s %s\nDOB: %s\nGender: %s\nEye Color: %s"):format(result[1].firstname, result[1].lastname, result[1].dateofbirth, gender, eyeColor)
-		return ("Name: %s %s\nDOB: %s\nGender: %s"):format(result[1].firstname, result[1].lastname, result[1].dateofbirth, gender)
+		return ("Name: %s %s\nDOB: %s\nGender: %s\nHeight: 190cm"):format(result[1].firstname, result[1].lastname, result[1].dateofbirth, gender)
 	else
 		return GetPlayerName(source)
 	end
