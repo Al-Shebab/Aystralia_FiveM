@@ -88,7 +88,7 @@ RegisterCommand("giveid", function(source,args)
 end, false)
 
 function DrawCTRPNotification(title, subject, msg, icon, iconType)
-	SetNotificationBackgroundColor(145)
+	SetNotificationBackgroundColor(2)
 	SetNotificationTextEntry('STRING')
 	AddTextComponentString(msg)
 	SetNotificationMessage(icon, icon, false, iconType, title, subject)
