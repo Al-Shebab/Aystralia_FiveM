@@ -1,188 +1,121 @@
-Config = {
-	Locale = "en",
-	DrawDistance = 100,
-	Price = 3000,
+Config = {}
 
-	-- This is the multiplier of price to pay when the car is damaged
-	-- 100% damaged means 1000 * Multiplier
-	-- 50% damaged means 500 * Multiplier
-	-- Etc.
-	RepairMultiplier = 1, 
-	
-	BlipInfos = {
-		Sprite = 290,
-		Color = 38
-	},
-	
-	BlipPound = {
-		Sprite = 67,
-		Color = 64
-	}
-}
+Config.VehicleMenu = true -- enable this if you wan't a vehicle menu.
+Config.VehicleMenuButton = 344 -- change this to the key you want to open the menu with. buttons: https://docs.fivem.net/game-references/controls/
+Config.RangeCheck = 25.0 -- this is the change you will be able to control the vehicle.
 
 Config.Garages = {
+    ["A"] = {
+        ["positions"] = {
+            ["menu"] = {
+                ["position"] = vector3(273.67422485352, -344.15573120117, 44.919834136963)
+            },
+            ["vehicle"] = {
+                ["position"] = vector3(272.50082397461, -337.40579223633, 44.919834136963), 
+                ["heading"] = 160.0
+            }
+        },
+        ["camera"] = { 
+            ["x"] = 283.28225708008, 
+            ["y"] = -333.24017333984, 
+            ["z"] = 50.004745483398, 
+            ["rotationX"] = -21.637795701623, 
+            ["rotationY"] = 0.0, 
+            ["rotationZ"] = 125.73228356242 
+        }
+    },
+    ["B"] = {
+        ["positions"] = {
+            ["menu"] = {
+                ["position"] = vector3(-796.48968505859, -2023.3764648438, 9.1683320999146)
+            },
+            ["vehicle"] = {
+                ["position"] = vector3(-776.12188720703, -2024.51953125, 8.8724946975708), 
+                ["heading"] = 218.09
+            }
+        },
+        ["camera"] = {  -- camera is not needed just if you want cool effects.
+            ["x"] = -779.10546875, 
+            ["y"] = -2042.7177734375, 
+            ["z"] = 11.88006401062, 
+            ["rotationX"] = -25.941574149728, 
+            ["rotationY"] = 0.0, 
+            ["rotationZ"] = -4.84 
+        }
+    },
 
-	Garage_Centre = {	
-		Pos = {x = 215.800, y = -810.057, z = 29.727},
-		Color = {r = 204, g = 204, b = 0},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
-		Marker = 1,
-		
-		SpawnPoint = {
-			Pos = {x = 229.700, y = -800.1149, z = 29.5722},
-			Color = {r = 0, g = 255, b = 0},
-			Size = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1,
-			Heading = 157.84
-		},
-		DeletePoint = {
-			Pos = {x = 215.124, y = -791.377, z = 29.646},
-			Color = {r = 255, g = 0, b = 0},
-			Size = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1,
-			
-		},
-		MunicipalPoundPoint = {
-			Pos = {x = 482.896, y =- 1316.557, z = 28.301},
-			Color = {r = 25, g = 25, b = 112},
-			Size = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		SpawnMunicipalPoundPoint = {
-			Pos = {x = 490.942, y = -1313.067, z = 27.964},
-			Color = {r = 0, g = 255, b = 0},
-			Size = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1,
-			Heading = 299.42
-		},
-	},
-	
-	Garage_Paleto = {	
-		Pos = {x=  105.359, y = 6613.586, z = 31.3973},
-		Color = {r = 204, g = 204, b = 0},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
-		Marker = 1,
-		
-		SpawnPoint = {
-			Pos = {x = 128.7822, y = 6622.9965, z = 30.7828},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		DeletePoint = {
-			Pos = {x = 126.3572, y = 6608.4150, z = 30.8565},
-			Color = {r = 255, g = 0, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		MunicipalPoundPoint = {
-			Pos = {x = -185.187, y = 6272.027, z = 30.580},
-			Color = {r = 25, g = 25, b = 112},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},	
-		SpawnMunicipalPoundPoint = {
-			Pos = {x = -199.160, y = 6274.180, z = 30.580},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-	},
-	
-	Garage_Poissoniers = {	
-		Pos = {x = -1511.6556396484, y = 5009.875, z = 61.800533294678},
-		Color = {r = 204, g = 204, b = 0},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
-		Marker = 1,
-		
-		SpawnPoint = {
-			Pos = {x = -1511.6556396484,y = 5009.875,z = 61.800533294678},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		DeletePoint = {
-			Pos = {x = -1524.1857910156,y = 4997.2885742188,z = 61.598690032959},
-			Color = {r = 255, g = 0, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		MunicipalPoundPoint = {
-			Pos = {x = -2211.8347167969,y = 4241.1069335938,z = 46.61901473999},
-			Color = {r = 25, g = 25, b = 112},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},	
-		SpawnMunicipalPoundPoint = {
-			Pos = {x = -2205.4594726563, y = 4247.3603515625, z = 46.639003753662},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-	},
-	
-	Garage_SandyShore = {	
-		Pos = {x = 1501.2, y = 3762.19, z = 33.0},
-		Color = {r = 204, g = 204, b = 0},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
-		Marker = 1,
-		
-		SpawnPoint = {
-			Pos = {x = 1497.15, y = 3761.37, z = 32.8},
-			Color = {r = 0, g = 255,b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		DeletePoint = {
-			Pos = {x = 1504.1, y = 3765.55, z = 32.8},
-			Color = {r = 255, g = 0, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		MunicipalPoundPoint = {
-			Pos = {x = 1561.6000976563, y = 3522.8583984375, z = 34.789356231689},
-			Color = {r = 25, g = 25, b = 112},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},	
-		SpawnMunicipalPoundPoint = {
-			Pos = {x = 1551.8347167969, y = 3518.1003417969, z = 34.988235473633},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-	},
-	
-	Garage_Aeroport = {	
-		Pos = {x = -977.21661376953, y = -2710.3798828125, z = 12.853487014771},
-		Color = {r = 204, g = 204, b = 0},
-		Size  = {x = 3.0, y = 3.0, z = 1.0},
-		Marker = 1,
-		
-		SpawnPoint = {
-			Pos = {x = -977.21661376953, y = -2710.3798828125, z = 12.853487014771},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		DeletePoint = {
-			Pos = {x = -966.88208007813, y = -2709.9028320313, z = 12.83367729187},
-			Color = {r = 255,g = 0,b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-		MunicipalPoundPoint = {
-			Pos = {x = -1041.4571533203, y = -2676.3471679688, z = 12.830760002136},
-			Color = {r = 25,g = 25, b = 112},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},	
-		SpawnMunicipalPoundPoint = {
-			Pos = {x = -1048.3468017578, y = -2669.771484375, z = 12.830758094788},
-			Color = {r = 0, g = 255, b = 0},
-			Size  = {x = 3.0, y = 3.0, z = 1.0},
-			Marker = 1
-		},
-	},
+    ["C"] = {
+        ["positions"] = {
+            ["menu"] = {
+                ["position"] = vector3(1737.5509033203, 3711.140625, 34.131916046143)
+            },
+            ["vehicle"] = {
+                ["position"] = vector3(1728.7093505859, 3713.8803710938, 34.178329467773), 
+                ["heading"] = 24.23
+            }
+        },
+        ["camera"] = {  -- camera is not needed just if you want cool effects.
+            ["x"] = 1720.4931640625, 
+            ["y"] = 3716.8557128906, 
+            ["z"] = 36.169788360596, 
+            ["rotationX"] = -25.941574149728, 
+            ["rotationY"] = 0.0, 
+            ["rotationZ"] = 247.0 
+        }
+    },
 
+    ["D"] = {
+        ["positions"] = {
+            ["menu"] = {
+                ["position"] = vector3(105.25187683105, 6613.7915039063, 32.397304534912)
+            },
+            ["vehicle"] = {
+                ["position"] = vector3(117.31244659424, 6599.5498046875, 32.010261535645), 
+                ["heading"] = 268.54
+            }
+        },
+        ["camera"] = {  -- camera is not needed just if you want cool effects.
+            ["x"] = 129.04795837402, 
+            ["y"] = 6608.5385742188, 
+            ["z"] = 34.846836090088, 
+            ["rotationX"] = -25.941574149728, 
+            ["rotationY"] = 0.0, 
+            ["rotationZ"] = 115.11 
+        }
+    },
+
+    ["E"] = {
+        ["positions"] = {
+            ["menu"] = {
+                ["position"] = vector3(-1803.8967285156, -341.45928955078, 43.986347198486)
+            },
+            ["vehicle"] = {
+                ["position"] = vector3(-1810.7857666016, -337.13592529297, 43.552074432373), 
+                ["heading"] = 320.0
+            }
+        },
+        ["camera"] = { 
+            ["x"] = -1813.5513916016, 
+            ["y"] = -340.40087890625, 
+            ["z"] = 46.962894439697, 
+            ["rotationX"] = -39.496062710881, 
+            ["rotationY"] = 0.0, 
+            ["rotationZ"] = -42.110235854983 
+        }
+    }
 }
+
+Config.Labels = {
+    ["menu"] = "~INPUT_CONTEXT~ åben garagen",
+    ["vehicle"] = "~INPUT_CONTEXT~ parker garagen"
+}
+
+Config.Trim = function(value)
+	if value then
+		return (string.gsub(value, "^%s*(.-)%s*$", "%1"))
+	else
+		return nil
+	end
+end
+
+Config.AlignMenu = "right" -- this is where the menu is located [left, right, center, top-right, top-left etc.]
