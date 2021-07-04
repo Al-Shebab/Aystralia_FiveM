@@ -49,8 +49,7 @@ body {
     background-image: url("header.png");
     background-repeat: no-repeat;
     background-position: 10px 3px;
-    border-radius: 50px 20px;
-
+    border-radius: 15px;
 }
 
 .shopTitle {
@@ -63,6 +62,7 @@ body {
     cursor: pointer;
     color: white!important;
     padding: 5px 0 0 10px;
+    border-radius: 15px;
 }
 
 .vehicleCard {
@@ -105,6 +105,7 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    border-radius: 15px;
 }
 
 .showCaseWrapper {
