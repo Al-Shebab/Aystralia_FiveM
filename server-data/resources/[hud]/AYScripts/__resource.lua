@@ -2,6 +2,7 @@ fx_version'bodacious'
 game'gta5'
 
 server_scripts{
+  "AYStaff-server.lua",
   "sv_chat.lua",
   "vs_server.lua",
   "GiveID-server.lua",
@@ -15,6 +16,7 @@ server_scripts{
 
 -- client scripts
 client_scripts{
+  "AYStaff-client.lua",
   "vs_client.lua",
   -- "cfg/config.lua",
   -- "main.lua",
