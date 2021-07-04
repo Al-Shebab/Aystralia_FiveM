@@ -58,7 +58,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-RMenu.Add('parachute', 'main', RageUI.CreateMenu("", "~b~Ammunition", nil, nil, "shopui_title_gunclub"))
+RMenu.Add('parachute', 'main', RageUI.CreateMenu("", "~b~Ammunition", nil, nil, "shopui_title_gunclub", "shopui_title_gunclub"))
 
 Citizen.CreateThread(function()
     while true do
