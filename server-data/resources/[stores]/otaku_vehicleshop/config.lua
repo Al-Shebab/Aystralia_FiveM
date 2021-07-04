@@ -9,7 +9,7 @@ Config.VersionCheck = true
 
 Config.Zones = {
 	ShopEntering = {
-		Pos = {x = -38.26, y = -1098.23, z = 26.00},
+		Pos = {x = -30.00, y = -1105.07, z = 26.42},
 		Size = {x = 1.5, y = 1.5, z = 1.0},
 		Type = 36
 	},
@@ -20,7 +20,7 @@ Config.Zones = {
 		Type = -1
 	},
 	ResellVehicle = {
-		Pos = {x = -44.98, y = -1082.19, z = 26.00},
+		Pos = {x = -4400.98, y = -10082.19, z = 2006.00},
 		Size = {x = 3.0, y = 3.0, z = 1.0},
 		Type = 25
 	}
