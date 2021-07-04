@@ -1,80 +1,61 @@
 ESX = nil
 
-local cachedData = {}
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-TriggerEvent("esx:getSharedObject", function(library) 
-	ESX = library 
+RegisterServerEvent('esx_garage:setParking')
+AddEventHandler('esx_garage:setParking', function(garage, zone, vehicleProps)
+	local _source = source
+	local xPlayer  = ESX.GetPlayerFromId(_source)
+
+	if vehicleProps == false then
+
+		MySQL.Async.execute('DELETE FROM `user_parkings` WHERE `identifier` = @identifier AND `garage` = @garage AND zone = @zone',
+		{
+			['@identifier'] = xPlayer.identifier,
+			['@garage']     = garage;
+			['@zone']       = zone
+		}, function(rowsChanged)
+			xPlayer.showNotification(_U('veh_released'))
+		end)
+	else
+		MySQL.Async.execute('INSERT INTO `user_parkings` (`identifier`, `garage`, `zone`, `vehicle`) VALUES (@identifier, @garage, @zone, @vehicle)',
+		{
+			['@identifier'] = xPlayer.identifier,
+			['@garage']     = garage;
+			['@zone']       = zone,
+			['vehicle']     = json.encode(vehicleProps)
+		}, function(rowsChanged)
+			xPlayer.showNotification(_U('veh_stored'))
+		end)
+	end
 end)
 
-ESX.RegisterServerCallback("garage:fetchPlayerVehicles", function(source, callback, garage)
-	local player = ESX.GetPlayerFromId(source)
+RegisterServerEvent('esx_garage:updateOwnedVehicle')
+AddEventHandler('esx_garage:updateOwnedVehicle', function(vehicleProps)
+	MySQL.Async.execute('UPDATE owned_vehicles SET vehicle = @vehicle WHERE plate = @plate', {
+		['@plate'] = vehicleProps.plate,
+		['@vehicle'] = json.encode(vehicleProps)
+	})
+end)
 
-	if player then
-		local sqlQuery = [[
-			SELECT
-				plate, vehicle
-			FROM
-				owned_vehicles
-			WHERE
-				owner = @cid
-		]]
+ESX.RegisterServerCallback('esx_vehicleshop:getVehiclesInGarage', function(source, cb, garage)
+	local xPlayer  = ESX.GetPlayerFromId(source)
 
-		if garage then
-			sqlQuery = [[
-				SELECT
-					plate, vehicle
-				FROM
-					owned_vehicles
-				WHERE
-					owner = @cid and garage = @garage
-			]]
+	MySQL.Async.fetchAll('SELECT * FROM `user_parkings` WHERE `identifier` = @identifier AND garage = @garage',
+	{
+		['@identifier'] = xPlayer.identifier,
+		['@garage']     = garage
+	}, function(result)
+
+		local vehicles = {}
+		for i=1, #result, 1 do
+			table.insert(vehicles, {
+				zone    = result[i].zone,
+				vehicle = json.decode(result[i].vehicle)
+			})
 		end
 
-		MySQL.Async.fetchAll(sqlQuery, {
-			["@cid"] = player["identifier"],
-			["@garage"] = garage
-		}, function(responses)
-			local playerVehicles = {}
+		cb(vehicles)
 
-			for key, vehicleData in ipairs(responses) do
-				table.insert(playerVehicles, {
-					["plate"] = vehicleData["plate"],
-					["props"] = json.decode(vehicleData["vehicle"])
-				})
-			end
-
-			callback(playerVehicles)
-		end)
-	else
-		callback(false)
-	end
-end)
-
-ESX.RegisterServerCallback("garage:validateVehicle", function(source, callback, vehicleProps, garage)
-	local player = ESX.GetPlayerFromId(source)
-
-	if player then
-		local sqlQuery = [[
-			SELECT
-				owner
-			FROM
-				owned_vehicles
-			WHERE
-				plate = @plate
-		]]
-
-		MySQL.Async.fetchAll(sqlQuery, {
-			["@plate"] = vehicleProps["plate"]
-		}, function(responses)
-			if responses[1] then
-				UpdateGarage(vehicleProps, garage)
-
-				callback(true)
-			else
-				callback(false)
-			end
-		end)
-	else
-		callback(false)
-	end
+	end)
 end)

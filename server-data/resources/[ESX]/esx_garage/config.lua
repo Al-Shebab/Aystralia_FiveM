@@ -1,121 +1,356 @@
-Config = {}
+Config                      = {}
+Config.DrawDistance         = 100.0
+Config.MarkerType           = 1
+Config.MarkerSize           = {x = 2.0, y = 2.0, z = 1.0}
+Config.MarkerColor          = {r = 204, g = 204, b = 0}
+Config.ParkingMarkerSize    = {x = 3.0, y = 3.0, z = 2.0}
+Config.ParkingMarkerColor   = {r = 102, g = 102, b = 204}
+Config.ZDiff                = 0.5
+Config.EnableOwnedVehicles  = true
+Config.MinimumHealthPercent = 0
 
-Config.VehicleMenu = true -- enable this if you wan't a vehicle menu.
-Config.VehicleMenuButton = 344 -- change this to the key you want to open the menu with. buttons: https://docs.fivem.net/game-references/controls/
-Config.RangeCheck = 25.0 -- this is the change you will be able to control the vehicle.
+Config.Locale = 'en'
+
+Config.Zones = {}
 
 Config.Garages = {
-    ["A"] = {
-        ["positions"] = {
-            ["menu"] = {
-                ["position"] = vector3(273.67422485352, -344.15573120117, 44.919834136963)
-            },
-            ["vehicle"] = {
-                ["position"] = vector3(272.50082397461, -337.40579223633, 44.919834136963), 
-                ["heading"] = 160.0
-            }
-        },
-        ["camera"] = { 
-            ["x"] = 283.28225708008, 
-            ["y"] = -333.24017333984, 
-            ["z"] = 50.004745483398, 
-            ["rotationX"] = -21.637795701623, 
-            ["rotationY"] = 0.0, 
-            ["rotationZ"] = 125.73228356242 
-        }
-    },
-    ["B"] = {
-        ["positions"] = {
-            ["menu"] = {
-                ["position"] = vector3(-796.48968505859, -2023.3764648438, 9.1683320999146)
-            },
-            ["vehicle"] = {
-                ["position"] = vector3(-776.12188720703, -2024.51953125, 8.8724946975708), 
-                ["heading"] = 218.09
-            }
-        },
-        ["camera"] = {  -- camera is not needed just if you want cool effects.
-            ["x"] = -779.10546875, 
-            ["y"] = -2042.7177734375, 
-            ["z"] = 11.88006401062, 
-            ["rotationX"] = -25.941574149728, 
-            ["rotationY"] = 0.0, 
-            ["rotationZ"] = -4.84 
-        }
-    },
 
-    ["C"] = {
-        ["positions"] = {
-            ["menu"] = {
-                ["position"] = vector3(1737.5509033203, 3711.140625, 34.131916046143)
-            },
-            ["vehicle"] = {
-                ["position"] = vector3(1728.7093505859, 3713.8803710938, 34.178329467773), 
-                ["heading"] = 24.23
-            }
-        },
-        ["camera"] = {  -- camera is not needed just if you want cool effects.
-            ["x"] = 1720.4931640625, 
-            ["y"] = 3716.8557128906, 
-            ["z"] = 36.169788360596, 
-            ["rotationX"] = -25.941574149728, 
-            ["rotationY"] = 0.0, 
-            ["rotationZ"] = 247.0 
-        }
-    },
+	MiltonDrive = {
 
-    ["D"] = {
-        ["positions"] = {
-            ["menu"] = {
-                ["position"] = vector3(105.25187683105, 6613.7915039063, 32.397304534912)
-            },
-            ["vehicle"] = {
-                ["position"] = vector3(117.31244659424, 6599.5498046875, 32.010261535645), 
-                ["heading"] = 268.54
-            }
-        },
-        ["camera"] = {  -- camera is not needed just if you want cool effects.
-            ["x"] = 129.04795837402, 
-            ["y"] = 6608.5385742188, 
-            ["z"] = 34.846836090088, 
-            ["rotationX"] = -25.941574149728, 
-            ["rotationY"] = 0.0, 
-            ["rotationZ"] = 115.11 
-        }
-    },
+		IsClosed = true,
+		
+		ExteriorEntryPoint = {
+			Pos = {x= -796.542, y = 318.137, z = 84.673},
+		},
 
-    ["E"] = {
-        ["positions"] = {
-            ["menu"] = {
-                ["position"] = vector3(-1803.8967285156, -341.45928955078, 43.986347198486)
-            },
-            ["vehicle"] = {
-                ["position"] = vector3(-1810.7857666016, -337.13592529297, 43.552074432373), 
-                ["heading"] = 320.0
-            }
-        },
-        ["camera"] = { 
-            ["x"] = -1813.5513916016, 
-            ["y"] = -340.40087890625, 
-            ["z"] = 46.962894439697, 
-            ["rotationX"] = -39.496062710881, 
-            ["rotationY"] = 0.0, 
-            ["rotationZ"] = -42.110235854983 
-        }
-    }
+		ExteriorSpawnPoint = {
+			Pos     = {x = -796.501, y = 302.271, z = 85.000},
+			Heading = 180.0
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 228.930, y = -1000.698, z = -100.000},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 224.613, y = -1004.769, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 224.500, y = -998.695, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -994.630, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -990.255, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -986.628, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -982.496, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 232.500, y = -982.496, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -986.628, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -990.255, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -994.630, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -998.695, z = -100.000},
+				Heading = 135.0
+			},
+		}
+
+	},
+	
+	IntegrityWay = {
+
+		IsClosed = true,
+
+		ExteriorEntryPoint = {
+			Pos = {x= -37.01, y = -702.82, z = 31.34},
+		},
+
+		ExteriorSpawnPoint = {
+			Pos     = {x = -34.79, y = -697.73, z = 32.34},
+			Heading = 350.42
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 228.930, y = -1000.698, z = -100.000},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 224.613, y = -1004.769, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 224.500, y = -998.695, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -994.630, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -990.255, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -986.628, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -982.496, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 232.500, y = -982.496, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -986.628, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -990.255, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -994.630, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -998.695, z = -100.000},
+				Heading = 135.0
+			},
+		}
+
+	},
+	
+	DidionWay = {
+
+		IsClosed = true,
+
+		ExteriorEntryPoint = {
+			Pos = {x= -259.88, y = 395.19, z = 109.02},
+		},
+
+		ExteriorSpawnPoint = {
+			Pos     = {x = -259.82, y = 397.33, z = 109.01},
+			Heading = 12.15
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 202.27, y = -1004.1, z =-100.00},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 196.69, y = -1006.26, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 193.06, y = -995.95, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 192.61, y = -1000.16, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 192.06, y = -1003.64, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 205.85, y = -1002.17, z = -100.000},
+				Heading = 105.0
+			},
+			{
+				Pos     = {x =201.98, y = -996.98, z = -100.000},
+				Heading = 175.0
+			},
+			{
+				Pos     = {x = 198.33, y = -996.42, z = -100.000},
+				Heading = 175.0
+			},
+		}
+
+	},
+	
+	VinewoodEstate2650 = {
+
+		IsClosed = true,
+
+		ExteriorEntryPoint = {
+			Pos = {x= -102.79, y = 824.03, z = 234.73},
+		},
+
+		ExteriorSpawnPoint = {
+			Pos     = {x = -106.94, y =833.55, z = 234.72},
+			Heading = 346.42
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 228.930, y = -1000.698, z = -100.000},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 224.613, y = -1004.769, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 224.500, y = -998.695, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -994.630, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -990.255, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -986.628, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 224.500, y = -982.496, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 232.500, y = -982.496, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -986.628, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -990.255, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -994.630, z = -100.000},
+				Heading = 135.0
+			},
+			{
+				Pos     = {x = 232.500, y = -998.695, z = -100.000},
+				Heading = 135.0
+			},
+		}
+
+	},
+	
+	ImaginationCt265 = {
+
+		IsClosed = true,
+
+		ExteriorEntryPoint = {
+			Pos = {x=-1129.65, y = -1072.38, z = 1.15},
+		},
+
+		ExteriorSpawnPoint = {
+			Pos     = {x = -1126.48, y =-1069.065, z =1.1},
+			Heading = 15.87
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 174.11, y = -1007.15, z = -100.000},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 171.71, y = -1007.4, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 176.07, y = -1001.51, z = -100.000},
+				Heading = 173.03
+			},
+			{
+				Pos     = {x = 170.73, y = -1002.39, z = -100.000},
+				Heading = 173.03
+			},
+		}
+
+	},
+	
+	SteeleWay1150 = {
+
+		IsClosed = true,
+
+		ExteriorEntryPoint = {
+			Pos = {x= -924.81, y = 211.54, z = 66.46},
+		},
+
+		ExteriorSpawnPoint = {
+			Pos     = {x =-931.5, y = 210.98, z = 66.46},
+			Heading = 12.15
+		},
+
+		InteriorSpawnPoint = {
+			Pos     = {x = 202.27, y = -1004.1, z =-100.00},
+			Heading = 0.0
+		},
+
+		InteriorExitPoint = {
+			Pos = {x = 196.69, y = -1006.26, z = -100.000},
+		},
+
+		Parkings = {
+			{
+				Pos     = {x = 193.06, y = -995.95, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 192.61, y = -1000.16, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 192.06, y = -1003.64, z = -100.000},
+				Heading = 225.0
+			},
+			{
+				Pos     = {x = 205.85, y = -1002.17, z = -100.000},
+				Heading = 105.0
+			},
+			{
+				Pos     = {x =201.98, y = -996.98, z = -100.000},
+				Heading = 175.0
+			},
+			{
+				Pos     = {x = 198.33, y = -996.42, z = -100.000},
+				Heading = 175.0
+			},
+		}
+
+	},
+
 }
-
-Config.Labels = {
-    ["menu"] = "~INPUT_CONTEXT~ åben garagen",
-    ["vehicle"] = "~INPUT_CONTEXT~ parker garagen"
-}
-
-Config.Trim = function(value)
-	if value then
-		return (string.gsub(value, "^%s*(.-)%s*$", "%1"))
-	else
-		return nil
-	end
-end
-
-Config.AlignMenu = "right" -- this is where the menu is located [left, right, center, top-right, top-left etc.]
