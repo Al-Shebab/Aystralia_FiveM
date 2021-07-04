@@ -3,8 +3,6 @@
 body {
     background-color: transparent;
     font-family: Montserrat;
-    border-radius: 15px;
-
 }
 
 .container-fluid {
@@ -15,15 +13,11 @@ body {
     left: 7.5vw;
     top: 20vw;
     transition: right 1.0s;
-    border-radius: 15px;
-
 }
 
 .container {
     display: block;
     top: 3vw;
-    border-radius: 15px;
-
 }
 
 .unselectable {
@@ -38,16 +32,12 @@ body {
     cursor: pointer;
     margin: auto;
     color: white!important;
-    border-radius: 15px;
-
 }
 
 #page-nxt.end, #page-prv.end {
     color: #212529!important;
     cursor: not-allowed;
     opacity: 0;
-    border-radius: 15px;
-
 }
 
 #close {
@@ -55,11 +45,10 @@ body {
 }
 
 .stbackground {
-    background-color: #326eb6;
+    background-color: #161616;
     background-image: url("header.png");
     background-repeat: no-repeat;
     background-position: 10px 3px;
-    border-radius: 15px;
 }
 
 .shopTitle {
@@ -72,78 +61,58 @@ body {
     cursor: pointer;
     color: white!important;
     padding: 5px 0 0 10px;
-    border-radius: 15px;
 }
 
 .vehicleCard {
     width: 250px;
     height: 305px;
     margin: 0px!important;
-    border-radius: 15px;
-
 }
 
 .vehicleCard > span {
     min-height: 140px;
     margin: auto;
     padding-top: 40px;
-    border-radius: 15px;
-
 }
 
 .vehicleImage {
     max-height: 135px;
-    border-radius: 15px;
-
 }
 
 .selected {
     font-weight: 800;
-    border-radius: 15px;
-
 }
 
 .showCaseBox {
     width: 965px;
     height: 674px;
-    border-radius: 15px;
-
 }
 
 .ltdShowBox {
     flex-direction: column;
     background-size: cover;
     background-position: center;
-    border-radius: 15px;
-
 }
 
 .ltdShowBox > h1, .ltdShowBox > h3 {
     text-shadow: 2px 2px 2px #000;
     font-weight: 900;
-    border-radius: 15px;
-
 }
 
 .ltdBuyBtn {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    border-radius: 15px;
 }
 
 .showCaseWrapper {
     width: 810px;
     height: 634px;
-    border-radius: 15px;
-
 }
 
 .rowOverflow {
     overflow: hidden;
     margin-right: 0px!important;
-    border-radius: 15px;
-
 }
 
 .fade-enter-active {
