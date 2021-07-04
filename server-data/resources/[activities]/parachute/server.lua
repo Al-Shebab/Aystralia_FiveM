@@ -1,5 +1,13 @@
 ESX = nil
 
+RegisterServerEvent('vb-banking:server:balance')
+AddEventHandler('vb-banking:server:balance', function(inMenu)
+	local _src = source
+	local _char = ESX.GetPlayerFromId(_src)
+	local balance = _char.getAccount('bank').money
+	TriggerClientEvent('vb-banking:client:refreshbalance', _src, balance)
+end)
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
@@ -17,9 +25,6 @@ AddEventHandler('h4ci:giveparachute', function()
 
         xPlayer.removeMoney(price)
         xPlayer.addWeapon('GADGET_PARACHUTE', 42)
-        TriggerClientEvent('esx:showNotification', source, "~g~Parachute~w~ bought ! ~r~-1000$")
-    else
-         TriggerClientEvent('esx:showNotification', source, "You don't have enough ~r~money")
     end
     end
 end)
