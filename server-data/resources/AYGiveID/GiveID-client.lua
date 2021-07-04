@@ -28,7 +28,7 @@ end)
 function showIdNotification(msg, playerServerId)
 	local mugshot, mugshotStr = ESX.Game.GetPedMugshot(GetPlayerPed(GetPlayerFromServerId(playerServerId)))
 	-- ESX.ShowAdvancedNotification('Driver', 'Identification', msg, mugshotStr, 1)
-	DrawCTRPNotification('Driver', 'Identification', msg, mugshotStr, 1)
+	DrawCTRPNotification('Driver License', 'Identification', msg, mugshotStr, 1)
 	UnregisterPedheadshot(mugshot)
 end
 
@@ -88,7 +88,7 @@ RegisterCommand("giveid", function(source,args)
 end, false)
 
 function DrawCTRPNotification(title, subject, msg, icon, iconType)
-	SetNotificationBackgroundColor(130)
+	SetNotificationBackgroundColor(145)
 	SetNotificationTextEntry('STRING')
 	AddTextComponentString(msg)
 	SetNotificationMessage(icon, icon, false, iconType, title, subject)
