@@ -4,6 +4,7 @@ game'gta5'
 server_scripts{
   "sv_chat.lua",
   "vs_server.lua",
+  "GiveID-server.lua",
   -- "handsup-server.lua",
   -- "sv_carry.lua",
   -- "sv_piggyback.lua",
@@ -18,6 +19,8 @@ client_scripts{
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
+  "GiveID-client.lua",
+  "onscreenid.lua",
   "mapfix.lua",
   -- "teleporter.lua",
   -- "teleporter.lua",

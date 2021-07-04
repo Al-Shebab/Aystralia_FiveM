@@ -17,5 +17,5 @@ function miid(x,y ,width,height,scale, text, r,g,b,a, outline)
 	SetTextOutline()
     SetTextEntry("STRING")
     AddTextComponentString(text)
-    DrawText(x - width/2, y - height/2 + 0.005)
+    DrawText(x - width/2 - 0.02, y - height/2 + 0.022)
 end
