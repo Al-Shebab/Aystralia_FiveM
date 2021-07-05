@@ -157,13 +157,13 @@ Citizen.CreateThread(function()
 
 				_,lightson,highbeams = GetVehicleLightsState(veh)
 				if lightson == 1 or highbeams == 1 then
-					curTachometer = "night_labels_"..labelType
+					curTachometer = "labels_"..labelType
 					if useKPH then
-						curTurbo = "turbo"
+						curTurbo = "turbo_day"
 					else
-						curTurbo = "turbo_psi"
+						curTurbo = "turbo_day_psi"
 					end
-					curTurboNeedle = "needle"
+					curTurboNeedle = "needle_day"
 				else
 					curTachometer = "labels_"..labelType
 					if useKPH then
