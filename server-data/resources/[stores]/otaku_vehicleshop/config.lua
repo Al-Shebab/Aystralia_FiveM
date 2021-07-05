@@ -10,7 +10,7 @@ Config.VersionCheck = true
 Config.Zones = {
 	ShopEntering = {
 		Pos = {x = -30.00, y = -1105.07, z = 26.42},
-		Size = {x = 1.5, y = 1.5, z = 1.0},
+		Size = {x = 4.0, y = 4.0, z = 4.0},
 		Type = 36
 	},
 	ShopOutside = {
