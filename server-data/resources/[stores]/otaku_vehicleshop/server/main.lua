@@ -69,7 +69,6 @@ AddEventHandler(
 				["@owner"] = xPlayer.identifier,
 				["@plate"] = vehicleProps.plate,
 				["@vehicle"] = json.encode(vehicleProps),
-				["@vehiclename"] = Vehicles[tostring(vehicleProps.model)].name
 			},
 			function(rowsChanged)
 				TriggerClientEvent(
