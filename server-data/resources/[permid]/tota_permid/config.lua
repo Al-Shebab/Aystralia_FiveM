@@ -1,4 +1,0 @@
-Config = Config or {}
-
-Config.Marker = true -- True to show Marker Above Head while talking, False not to show it
-Config.Command = "permid" -- Personalize your ID command
