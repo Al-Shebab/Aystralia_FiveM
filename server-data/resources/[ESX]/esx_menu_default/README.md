@@ -1,82 +1,12 @@
-# ESX MENU STANDART GTA ONLINE TARZI
+# Information
+This is re-design of the original esx_menu_default resource.
 
+This re-design includes sound, banner, animations, 2D, and 3D. 
+These can easily be changed - View the release on https://forum.cfx.re/ for more information.
 
-### How to use :
+# Install
+1. Create a backup of your current esx_menu_default resource.
+2. Drag & drop esx_menu_default into your resources folder, replacing the old one.
 
-github linki : : https://github.com/ESX-Org/esx_menu_default
-örnek: 
-
- 
-
-    ESX.UI.Menu.Open(
-    
-    'default', GetCurrentResourceName(), 'shop',
-    
-    {
-    
-    css =  'superete',
-    
-    title =  'Magasin',
-    
-    elements = elements
-    
-    },
-    
-    function(data, menu)
-    
-    TriggerServerEvent('esx_shop:buyItem', data.current.value, data.current.price)
-    
-    end,
-    
-    function(data, menu)
-    
-      
-    
-    menu.close()
-    
-      
-    
-    CurrentAction =  'shop_menu'
-    
-    CurrentActionMsg =  _U('press_menu')
-    
-    CurrentActionData = {zone = zone}
-    
-    end
-    
-    )
-
-css = 'superete' matches with 
-
-        .menu .head_superete{
-    
-    font-family: SignPainter;
-    
-    font-size: 59px;
-    
-      
-    
-    background-image: url("../img/header/247.png");
-    
-    text-align : center;
-    
-    height : 90px;
-    
-    line-height : 105px;
-    
-    color : white;
-    
-    font-style: oblique;
-    
-    }
-
-ve bunun gibi görünüyor 
-![Menu esx_shops (mükemmel)](https://i.gyazo.com/c60d33351078f2c04a606c397e9a704a.png)
-
-herşey imkanlı : 
-![Menu Exemple](https://i.gyazo.com/8d2713daca657ce3eab729a03e293df9.png)
-![Exemple](https://i.gyazo.com/10df6a7551488e3b5a6741a12afa7946.png)
-![Exemple](https://i.gyazo.com/9fd978ab07fdde2e7c68f5fa70555b7f.png)
-
-Edit Polat-BASKAN'a aittir
-
+# Dependencies
+es_extended

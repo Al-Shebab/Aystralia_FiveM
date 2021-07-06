@@ -291,7 +291,12 @@
 									let min = (typeof elem.min == 'undefined') ? 0 : elem.min;
 
 									if (elem.value > min) {
+										if(elem.decimal){
+											elem.value = elem.value-elem.decimal;
+										}else{
 										elem.value--;
+										}
+
 										ESX_MENU.change(focused.namespace, focused.name, elem);
 									}
 
@@ -322,12 +327,22 @@
 
 								case 'slider': {
 									if (typeof elem.options != 'undefined' && elem.value < elem.options.length - 1) {
+										if(elem.decimal){
+											elem.value = elem.value+elem.decimal;
+										}else{
 										elem.value++;
+										}
+										
 										ESX_MENU.change(focused.namespace, focused.name, elem);
 									}
 
 									if (typeof elem.max != 'undefined' && elem.value < elem.max) {
+										if(elem.decimal){
+											elem.value = elem.value+elem.decimal;
+										}else{
 										elem.value++;
+										}
+
 										ESX_MENU.change(focused.namespace, focused.name, elem);
 									}
 

@@ -1,7 +1,7 @@
 ESX = nil
+local soundOn = true
 
 Citizen.CreateThread(function()
-
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Citizen.Wait(0)
@@ -24,7 +24,6 @@ Citizen.CreateThread(function()
 	local MenuType = 'default'
 
 	local openMenu = function(namespace, name, data)
-
 		SendNUIMessage({
 			action    = 'openMenu',
 			namespace = namespace,
@@ -35,7 +34,6 @@ Citizen.CreateThread(function()
 	end
 
 	local closeMenu = function(namespace, name)
-
 		SendNUIMessage({
 			action    = 'closeMenu',
 			namespace = namespace,
@@ -57,7 +55,6 @@ Citizen.CreateThread(function()
 	end)
 
 	RegisterNUICallback('menu_cancel', function(data, cb)
-		
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 		
 		if menu.cancel ~= nil then
@@ -68,19 +65,22 @@ Citizen.CreateThread(function()
 	end)
 
 	RegisterNUICallback('menu_change', function(data, cb)
-		
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
-		
+
 		for i=1, #data.elements, 1 do
-			
 			menu.setElement(i, 'value', data.elements[i].value)
 
 			if data.elements[i].selected then
 				menu.setElement(i, 'selected', true)
+				if soundOn == true then
+					PlaySound(0, "Apt_Style_Purchase", "DLC_APT_Apartment_SoundSet", 0, 0, 1);
+				end
 			else
 				menu.setElement(i, 'selected', false)
+				if soundOn == true then
+					PlaySound(0, "Apt_Style_Purchase", "DLC_APT_Apartment_SoundSet", 0, 0, 1);	
+				end		
 			end
-
 		end
 
 		if menu.change ~= nil then
@@ -93,75 +93,63 @@ Citizen.CreateThread(function()
 	Citizen.CreateThread(function()
 		while true do
 
-	  	Wait(0)
+			Citizen.Wait(10)
 
-			if IsControlPressed(0, Keys['ENTER']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['ENTER']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 150 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'ENTER'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-			if IsControlPressed(0, Keys['BACKSPACE']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['BACKSPACE']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 150 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'BACKSPACE'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-			if IsControlPressed(0, Keys['TOP']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['TOP']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 200 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'TOP'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-			if IsControlPressed(0, Keys['DOWN']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['DOWN']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 200 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'DOWN'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-			if IsControlPressed(0, Keys['LEFT']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['LEFT']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 150 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'LEFT'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-			if IsControlPressed(0, Keys['RIGHT']) and (GetGameTimer() - GUI.Time) > 150 then
-
+			if IsControlPressed(0, Keys['RIGHT']) and GetLastInputMethod(2) and (GetGameTimer() - GUI.Time) > 150 then
 				SendNUIMessage({
 					action  = 'controlPressed',
 					control = 'RIGHT'
 				})
 
 				GUI.Time = GetGameTimer()
-
 			end
 
-	  end
+		end
 	end)
 
 end)
