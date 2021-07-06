@@ -106,6 +106,7 @@ RegisterNUICallback(
 			"otaku_vehicleshop:buyVehicle",
 			function(hasEnoughMoney)
 				if hasEnoughMoney then
+					Citizen.Wait(2000)
 					ESX.Game.SpawnVehicle(
 						veh.model,
 						Config.Zones.ShopOutside.Pos,
@@ -117,7 +118,9 @@ RegisterNUICallback(
 							local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 							vehicleProps.plate = newPlate
 							SetVehicleNumberPlateText(vehicle, newPlate)
+							ESX.ShowNotification("~r~You have bought new vehicle")
 							TriggerServerEvent("otaku_vehicleshop:setVehicleOwned", vehicleProps)
+
 						end
 					)
 				else
@@ -376,7 +379,7 @@ Citizen.CreateThread(
 								if vehicleSold then
 									ESX.Game.DeleteVehicle(CurrentActionData.vehicle)
 									ESX.ShowNotification(_U("vehicle_sold_for", CurrentActionData.label, ESX.Math.GroupDigits(CurrentActionData.price)))
-								else
+                                    else
 									ESX.ShowAdvancedNotification("Vehicle Resell", "You dont own this Vehicle", "fas fa-exclamation", "red")
 								end
 							end,

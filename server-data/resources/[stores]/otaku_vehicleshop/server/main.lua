@@ -62,6 +62,7 @@ AddEventHandler(
 	function(vehicleProps)
 		local _source = source
 		local xPlayer = ESX.GetPlayerFromId(_source)
+		Citizen.Wait(2000)
 
 		MySQL.Async.execute(
 			"INSERT INTO owned_vehicles (owner, plate, vehicle, vehiclename) VALUES (@owner, @plate, @vehicle, @vehiclename)",
@@ -90,6 +91,7 @@ AddEventHandler(
 	"otaku_vehicleshop:setVehicleOwnedPlayerId",
 	function(playerId, vehicleProps)
 		local xPlayer = ESX.GetPlayerFromId(playerId)
+		Citizen.Wait(2000)
 
 		MySQL.Async.execute(
 			"INSERT INTO owned_vehicles (owner, plate, vehicle, vehiclename) VALUES (@owner, @plate, @vehicle, @vehiclename)",
