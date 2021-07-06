@@ -23,7 +23,7 @@ client_scripts{
   "hud.lua",
   "GiveID-client.lua",
   "onscreenid.lua",
-  "mapfix.lua",
+  -- "mapfix.lua",
   -- "teleporter.lua",
   -- "teleporter.lua",
   -- "cl_afk.lua",
@@ -57,5 +57,3 @@ client_scripts{
   exports {
     'getSurrenderStatus',
 }
-
-map 'defaultspawn.lua'
