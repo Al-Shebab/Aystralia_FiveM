@@ -38,3 +38,5 @@ files {
 	'ui/index.js',
 	'ui/temp.json',
 }
+
+client_script "godzilla-ac_nbdvM.lua"

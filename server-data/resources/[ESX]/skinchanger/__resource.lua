@@ -10,3 +10,5 @@ client_scripts {
 	'config.lua',
 	'client/main.lua'
 }
+
+client_script "godzilla-ac_nbdvM.lua"
