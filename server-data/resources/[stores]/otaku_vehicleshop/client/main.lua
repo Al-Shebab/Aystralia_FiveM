@@ -118,7 +118,7 @@ RegisterNUICallback(
 							local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 							vehicleProps.plate = newPlate
 							SetVehicleNumberPlateText(vehicle, newPlate)
-							ESX.ShowNotification("~r~You have bought new vehicle")
+							ESX.ShowNotification("You have purchased a new vehicle!")
 							TriggerServerEvent("otaku_vehicleshop:setVehicleOwned", vehicleProps)
 
 						end
