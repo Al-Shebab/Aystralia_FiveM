@@ -619,7 +619,7 @@ local function DriveOutOfGarage(pos)
 end
 
 --Draw text on screen
-local function drawTxt(text,font,centre,x,y,scale,r,g,b,a)
+local function drawNotification(text,font,centre,x,y,scale,r,g,b,a)
 	SetTextFont(font)
 	SetTextProportional(0)
 	SetTextScale(scale, scale)
@@ -683,10 +683,10 @@ Citizen.CreateThread(function()
 												currentgarage = i
 												DriveInGarage()
 											else
-												drawTxt("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
+												drawNotification("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
 											end
 										else
-											drawTxt("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
+											drawNotification("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
 										end
 									else
 										if IsControlJustPressed(1,201) then
@@ -695,11 +695,11 @@ Citizen.CreateThread(function()
 											currentgarage = i
 											DriveInGarage()
 										else
-											drawTxt("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
+											drawNotification("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
 										end
 									end
 								else
-									drawTxt("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
+									drawNotification("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
 								end
 							end
 						else
@@ -716,7 +716,7 @@ Citizen.CreateThread(function()
 											currentgarage = i
 											DriveInGarage()
 										else
-											drawTxt("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
+											drawNotification("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
 										end
 									else
 										inside = true
@@ -725,7 +725,7 @@ Citizen.CreateThread(function()
 										DriveInGarage()
 									end
 								else
-									drawTxt("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
+									drawNotification("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
 								end
 							end
 						end
@@ -1450,4 +1450,8 @@ Citizen.CreateThread(function()
 	end
 end)
 
-
+function drawNotification(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentSubstringPlayerName(text)
+    DrawNotification(false, false)
+end
