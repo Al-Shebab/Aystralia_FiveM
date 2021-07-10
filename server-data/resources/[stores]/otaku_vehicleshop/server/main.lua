@@ -72,15 +72,6 @@ AddEventHandler(
 				["@vehicle"] = json.encode(vehicleProps),
 			},
 			function(rowsChanged)
-				TriggerClientEvent(
-					"esx:showAdvancedNotification",
-					_source,
-					"Vehicle Registration",
-					_U("vehicle_belongs", vehicleProps.plate),
-					"fas fa-car",
-					"green",
-					3
-				)
 			end
 		)
 	end
@@ -102,15 +93,6 @@ AddEventHandler(
 				["@vehiclename"] = Vehicles[tostring(vehicleProps.model)].name
 			},
 			function(rowsChanged)
-				TriggerClientEvent(
-					"esx:showAdvancedNotification",
-					playerId,
-					"Vehicle Registration",
-					_U("vehicle_belongs", vehicleProps.plate),
-					"fas fa-car",
-					"green",
-					3
-				)
 			end
 		)
 	end

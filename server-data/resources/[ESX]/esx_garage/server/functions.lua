@@ -3,14 +3,13 @@ UpdateGarage = function(vehicleProps, newGarage)
 		UPDATE
 			owned_vehicles
 		SET
-			garage = @garage, vehicle = @newVehicle
+			vehicle = @newVehicle
 		WHERE
 			plate = @plate
 	]]
 
 	MySQL.Async.execute(sqlQuery, {
 		["@plate"] = vehicleProps["plate"],
-		["@garage"] = newGarage,
 		["@newVehicle"] = json.encode(vehicleProps)
 	}, function(rowsChanged)
 		if rowsChanged > 0 then
