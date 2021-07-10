@@ -92,6 +92,9 @@ Citizen.CreateThread(function()
 
 						if dstCheck <= markerSize - 0.1 then
 							local usable, displayText = not DoesCamExist(cachedData["cam"]), GetDisplayText(action, garage)
+
+							ESX.ShowHelpNotification(usable and displayText or "Stored Vehicles")
+
 							if usable then
 								if IsControlJustPressed(0, 38) then
 									cachedData["currentGarage"] = garage
