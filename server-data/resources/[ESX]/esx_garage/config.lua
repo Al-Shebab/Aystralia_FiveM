@@ -106,8 +106,8 @@ Config.Garages = {
 }
 
 Config.Labels = {
-    ["menu"] = "~INPUT_CONTEXT~ åben garagen",
-    ["vehicle"] = "~INPUT_CONTEXT~ parker garagen"
+    ["menu"] = "Press ~INPUT_CONTEXT~ to access the Garage",
+    ["vehicle"] = "Press ~INPUT_CONTEXT~ to store your vehicle"
 }
 
 Config.Trim = function(value)
@@ -118,4 +118,4 @@ Config.Trim = function(value)
 	end
 end
 
-Config.AlignMenu = "right" -- this is where the menu is located [left, right, center, top-right, top-left etc.]
+Config.AlignMenu = "top-left" -- this is where the menu is located [left, right, center, top-right, top-left etc.]
