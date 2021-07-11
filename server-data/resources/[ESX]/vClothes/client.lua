@@ -256,7 +256,7 @@ end
 
 
 function Angle()
-    AddTextEntry(GetCurrentResourceName(), ('Appuyez sur ~INPUT_JUMP~ pour changer de ~b~Côté'))
+    AddTextEntry(GetCurrentResourceName(), ('Press ~INPUT_JUMP~ to change ~b~Side'))
     DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 end
 
@@ -284,25 +284,25 @@ function gettxt2(txtt)
 end
 
 
-RMenu.Add('menu', 'main', RageUI.CreateMenu("Magasin", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'main', RageUI.CreateMenu("", "~b~Actions disponibles", nil, 75, "shopui_title_midfashion", "shopui_title_midfashion"))
 RMenu.Add('menu', 'access', RageUI.CreateMenu("Mes Accessoires", "~b~Actions disponibles"))
-RMenu.Add('menu', 'torso', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Vestes", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'pants', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Pantalon", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'arms', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Bras", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'shoes', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Chaussures", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'glasses', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Lunettes", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'hats', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Chapeaux", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'bag', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Sac à dos", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'oreille', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Boucles d'oreilles", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'chain', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Chaînes", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'clock', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Montres", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'torso', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'pants', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'arms', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'shoes', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'glasses', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'hats', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'bag', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'oreille', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'chain', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'clock', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
 RMenu.Add('menu', 'colortorso', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Variations du Torse", "~b~Actions disponibles", nil, 75))
 RMenu.Add('menu', 'colorpants', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Variations du Pantalon", "~b~Actions disponibles", nil, 75))
 RMenu.Add('menu', 'colorshoes', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Variations des Chaussures", "~b~Actions disponibles", nil, 75))
 RMenu.Add('menu', 'colortshirt', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Variations du T-shirt", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'shirt', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "T-Shirt", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'dressing', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Dressing", "~b~Actions disponibles", nil, 75))
-RMenu.Add('menu', 'watodo', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Que faire ?", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'shirt', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'dressing', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
+RMenu.Add('menu', 'watodo', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "", "~b~Actions disponibles", nil, 75))
 
 
 local listClotheshop = {
@@ -324,12 +324,12 @@ local listClotheshop = {
 
 local watodo = {
 	indexwatodo = 1,
-	listwatodo = {'Equiper', 'Renommer', 'Supprimer'},
+	listwatodo = {'Equip', 'Rename', 'Remove'},
 }
 
 local watodoo = {
 	indexwatodoo = 1,
-	listwatodoo = {'Equiper', 'Renommer', 'Donner', 'Jeter'},
+	listwatodoo = {'Equip', 'Rename', 'Give', 'Discard'},
 }
 
 
@@ -350,7 +350,7 @@ Citizen.CreateThread(function()
 
         if dist <= 1.5 then
             RageUI.Text({
-                message = "Appuyez sur [E] pour changer de ~b~Style",
+                message = "Press [~b~E~w~] to change ~b~Clothes",
                 time_display = 1
             })
             attente = 1
@@ -385,37 +385,37 @@ Citizen.CreateThread(function()
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             end
-            RageUI.Button("Mon Dressing", "", { RightBadge = RageUI.BadgeStyle.Clothes },true, function()
+            RageUI.Button("Dressing Room", "", { RightBadge = RageUI.BadgeStyle.Clothes },true, function()
             end, RMenu:Get('menu', 'dressing'))
-            RageUI.Button("Vestes", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Jacket", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'torso'))
-            RageUI.Button("Variations des Vestes", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Jacket Textures", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colortorso'))
-            RageUI.Button("Bras", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Arms", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'arms')) 
             RageUI.Button("T-Shirt", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'shirt'))
-            RageUI.Button("Variations des T-Shirt", "", { RightLabel = "→" },true, function()
+            RageUI.Button("T-Shirt Textures", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colortshirt'))
-            RageUI.Button("Pantalon", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Pants", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'pants'))
-            RageUI.Button("Variations des Pantalons", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Pants Textures", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colorpants'))
-            RageUI.Button("Chaussures", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Shoes", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'shoes'))
-            RageUI.Button("Variations des Chaussures", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Shoes Textures", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colorshoes'))
-            RageUI.Button("Chapeaux", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Hats", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'hats'))
-            RageUI.Button("Lunettes", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Glasses", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'glasses'))
-            RageUI.Button("Sac", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Bags", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'bag'))
-            RageUI.Button("Montres", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Watches", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'clock'))
-            RageUI.Button("Chaînes", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Chains", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'chain'))
-            RageUI.Button("Boucles d'oreilles", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Earrings", "", { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'oreille'))
         end, function()
         end, 1)
@@ -430,9 +430,9 @@ Citizen.CreateThread(function()
                 Tourner()       
             end
             Angle()
-            RageUI.Button("Ranger une tenue", "Range une tenue dans ton dressing fréro !", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Save your outfit", "Save an outfit in your closet!", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
                 if (Selected) then
-                    k = gettxt2("Comment tu veux appeler ta tenue fréro ?")
+                    k = gettxt2("What do you want to call your outfit?")
                     if k ~= nil then
                         if tostring(k) ~= nil and tostring(k) ~= "" then
         
@@ -446,7 +446,7 @@ Citizen.CreateThread(function()
                 end
             end)
             if #TenueTable == 0 then
-                RageUI.Button("Vide comme mes Cojones", "Ta save 0 tenue , mdr clochard va !", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Empty all", "Your save 0 outfit!", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
                     if (Selected) then
                     end
                 end)
@@ -500,7 +500,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for f = 1, 115 do
-                RageUI.Button("Pantalon #" .. f, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Pantalon #" .. f, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants1 = f
                         pants2 = 0
@@ -542,7 +542,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),6, shoes1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         shoes2 = i
                         CreateShoes()
@@ -591,7 +591,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),8, tshirt1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         tshirt2 = i
                         CreateTop()
@@ -640,7 +640,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),11, torso1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso2 = i
                         CreateTop()
@@ -689,7 +689,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),4,pants1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Variations #"..i, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants2 = i
                         CreateFutal()
@@ -736,7 +736,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for k = 1, 289 do
-                RageUI.Button("Vestes #" .. k, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Vestes #" .. k, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso1 = k
                         torso2 = 0
@@ -776,7 +776,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for l = 1, 91 do
-                RageUI.Button("Chaussures #" .. l, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Chaussures #" .. l, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         shoes1 = l
                         shoes2 = 0
@@ -857,7 +857,7 @@ Citizen.CreateThread(function()
                 if lunetteItem[i] == nil then
                     lunetteItem[i] = "Lunette #"..i
                 end
-                RageUI.Button(lunetteItem[ind], "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button(lunetteItem[ind], "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         glasses1 = i
                         glasses2 = 0
@@ -887,7 +887,7 @@ Citizen.CreateThread(function()
                 --
                 local amount = {}
                 local ind = i+2
-                RageUI.Button("Chaine #"..ind, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Chaine #"..ind, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         chain1 = i
                         chain2 = 0
@@ -939,7 +939,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for a = 1, 144 do
-                RageUI.Button("Bras #" .. a, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Bras #" .. a, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         arms1 = a
                         SetPedComponentVariation(GetPlayerPed(-1), 3, arms1)
@@ -1035,7 +1035,7 @@ Citizen.CreateThread(function()
                 if boucleItem[i] == nil then
                     boucleItem[i] = "Boucle #"..i
                 end
-                RageUI.Button(boucleItem[ind], "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button(boucleItem[ind], "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         boucl1 = i
                         boucl2 = 0
@@ -1071,7 +1071,7 @@ Citizen.CreateThread(function()
                     
                 end
 
-                RageUI.Button("Montre #"..ind, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Montre #"..ind, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         clock1 = i
                         clock2 = 0
@@ -1122,7 +1122,7 @@ Citizen.CreateThread(function()
                 Tourner()       
             end
             Angle()
-            RageUI.Button("Aucun", "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Aucun", "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1), 5, 0, 0, 2)
                 end
@@ -1152,7 +1152,7 @@ Citizen.CreateThread(function()
                end)
                 end
             end)
-            RageUI.Button("Sac à dos", "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Sac à dos", "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1),7, 3, 0, 2)
                 end
@@ -1183,7 +1183,7 @@ Citizen.CreateThread(function()
                end)
                 end
             end)
-            RageUI.Button("Sac Tactique", "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Sac Tactique", "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1), 5, 44, 0, 2)
                 end
@@ -1227,7 +1227,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for t = 1, 144 do
-                RageUI.Button("T-Shirt #" .. t, "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("T-Shirt #" .. t, "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         tshirt1 = t
                         tshirt2 = 0
@@ -1347,7 +1347,7 @@ Citizen.CreateThread(function()
                 if chapeauItem[i] == nil then
                     chapeauItem[i] = i
                 end
-                RageUI.Button(chapeauItem[ind], "Cette tenue est disponible dans notre magasin.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
+                RageUI.Button(chapeauItem[ind], "Cette tenue est disponible dans notre Clothing Shop.", { RightLabel = "→ 🛒 (~g~25$~w~)" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         hats1 = i
                         hats2 = 0
@@ -1612,19 +1612,19 @@ Citizen.CreateThread(function()
 
 
 local blips = {
-	{title="Magasin de vêtements", colour=57, id=366, x = 72.254,    y = -1399.102, z = 28.396},
-	{title="Magasin de vêtements", colour=57, id=366, x = -703.776,  y = -152.258,  z = 36.435},
-	{title="Magasin de vêtements", colour=57, id=366, x = -167.863,  y = -298.969,  z = 38.743},
-	{title="Magasin de vêtements", colour=57, id=366, x = 428.694,   y = -800.106,  z = 28.511},
-	{title="Magasin de vêtements", colour=57, id=366, x = -1447.797, y = -242.461,  z = 48.840},
-	{title="Magasin de vêtements", colour=57, id=366, x = 11.632,    y = 6514.224,  z = 30.897},
-	{title="Magasin de vêtements", colour=57, id=366, x = 123.646,   y = -219.440,  z = 53.577},
-	{title="Magasin de vêtements", colour=57, id=366, x = 1696.291,  y = 4829.312,  z = 41.083},
-	{title="Magasin de vêtements", colour=57, id=366, x = 618.093,   y = 2759.629,  z = 41.108},
-	{title="Magasin de vêtements", colour=57, id=366, x = 1190.550,  y = 2713.441,  z = 37.242},
-	{title="Magasin de vêtements", colour=57, id=366, x = -1193.429, y = -772.262,  z = 16.344},
-	{title="Magasin de vêtements", colour=57, id=366, x = -3172.496, y = 1048.133,  z = 19.883},
-	{title="Magasin de vêtements", colour=57, id=366, x = -1108.441, y = 2708.923,  z = 18.127}
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 72.254,    y = -1399.102, z = 28.396},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -703.776,  y = -152.258,  z = 36.435},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -167.863,  y = -298.969,  z = 38.743},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 428.694,   y = -800.106,  z = 28.511},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -1447.797, y = -242.461,  z = 48.840},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 11.632,    y = 6514.224,  z = 30.897},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 123.646,   y = -219.440,  z = 53.577},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 1696.291,  y = 4829.312,  z = 41.083},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 618.093,   y = 2759.629,  z = 41.108},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = 1190.550,  y = 2713.441,  z = 37.242},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -1193.429, y = -772.262,  z = 16.344},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -3172.496, y = 1048.133,  z = 19.883},
+	{title="Clothing Shop de vêtements", colour=57, id=366, x = -1108.441, y = 2708.923,  z = 18.127}
 }
 
 Citizen.CreateThread(function()

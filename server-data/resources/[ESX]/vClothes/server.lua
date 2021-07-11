@@ -10,7 +10,7 @@ AddEventHandler('VmLife:DeleteTenue', function(id,label)
       ['@id'] =  id
     }
   )
-  TriggerClientEvent("esx:showNotification",source,"Tenue supprimé")
+  TriggerClientEvent("esx:showNotification",source,"~r~Outfit deleted")
 
 end)
 
@@ -25,7 +25,7 @@ AddEventHandler('VmLife:RenameTenue', function(id,label)
 
     }
   )
-  TriggerClientEvent("esx:showNotification",source,"Vous avez bien renommé votre tenue en "..label)
+  TriggerClientEvent("esx:showNotification",source,"You have renamed your outfit to "..label)
 
 end)
 
