@@ -49,7 +49,7 @@ Citizen.CreateThread(function()
 
         if isInZone then         
             BeginTextCommandDisplayHelp("STRING")
-            AddTextComponentSubstringPlayerName("Appuyez sur ~INPUT_CONTEXT~ pour accéder à la boutique !")
+            AddTextComponentSubstringPlayerName("Press ~INPUT_CONTEXT~ to access the clothes shop")
             EndTextCommandDisplayHelp(0, 0, 1, -1)
 
             if IsControlJustPressed(0, 38) then 
@@ -66,29 +66,29 @@ Citizen.CreateThread(function()
             if RageUI.Visible(RMenu:Get('mrw_clothes', 'Clothe Shop')) then
                 RageUI.Visible(RMenu:Get('mrw_clothes', 'Clothe Shop'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Tee-shirt')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Tee-shirt'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shirts')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Shirts'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Haut')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Haut'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Suits')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Suits'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Calque')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Calque'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Branding')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Branding'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Bras')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Bras'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Arms')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Arms'), false) 
             end
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaine')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaine'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chains')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Chains'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Sac')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Sac'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Backpacks')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Backpacks'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Pantalon')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Pantalon'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Pants')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Pants'), false) 
             end	
-            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaussure')) then
-                RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaussure'), false) 
+            if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shoes')) then
+                RageUI.Visible(RMenu:Get('mrw_clothes', 'Shoes'), false) 
             end		
         end
     end 

@@ -6,7 +6,7 @@
 
 local loadPlyClothe, player = {}, {}
 local saveClothe = true
-local price = 20
+local price = 0
 ESX_READY = true 
 
 ---
@@ -37,9 +37,8 @@ if ESX_READY == true then
   ESX.RegisterServerCallback('mrw_clothes:buyClothes', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    if xPlayer.getMoney() >= price then
-      xPlayer.removeMoney(price)
-      TriggerClientEvent('esx:showNotification', source, "Vous avez payé : "..price.." $.")
+    if xPlayer.getMoney() >= -1 then
+      xPlayer.removeMoney(0)
       cb(true)
     else
       cb(false)
@@ -91,7 +90,7 @@ AddEventHandler('mrw_clothes:saveClothe', function(name, clothe)
       },
       function(result)
         player[x_source].AddClothe(name, clothe)
-        TriggerClientEvent('mrw_clothes:Notification', x_source, 'Votre tenue à été ~g~sauvegarder~w~ !')
+        TriggerClientEvent('mrw_clothes:Notification', x_source, 'Your outfit has been saved!')
       end
     )
  -- end  
@@ -140,8 +139,8 @@ AddEventHandler('mrw_clothes:giveClothe', function(name, closestPlayer)
           player[x_source].DeleteClothe(name)
           player[closestPlayer].AddClothe(name, v.clothe)
 
-          TriggerClientEvent('mrw_clothes:Notification', x_source, "Vous avez donné une tenue !")
-          TriggerClientEvent('mrw_clothes:Notification', closestPlayer, "Une tenue vous à été donné !")
+          TriggerClientEvent('mrw_clothes:Notification', x_source, "You have sent an outfit")
+          TriggerClientEvent('mrw_clothes:Notification', closestPlayer, "You have recieved an outfit")
         end 
       end   
     end
@@ -160,7 +159,7 @@ AddEventHandler('mrw_clothes:dropClothe', function(name)
     },
     function(result)
       player[x_source].DeleteClothe(name)
-      TriggerClientEvent('mrw_clothes:Notification', x_source, "Vous avez jeté une tenue !")
+      TriggerClientEvent('mrw_clothes:Notification', x_source, "You have deleted an outfit")
     end
   )
 end)

@@ -20,30 +20,30 @@ if ESX_READY == true then
 end
 
 
-RMenu.Add('mrw_clothes', 'Clothe Shop', RageUI.CreateMenu("Clothe Shop", "Vétements", 2, 200))
+RMenu.Add('mrw_clothes', 'Clothe Shop', RageUI.CreateMenu("Clothe Shop", "Clothing Selection", 2, 200))
 RMenu:Get('mrw_clothes', 'Clothe Shop'):SetRectangleBanner(255, 0, 0, 100)
 RMenu:Get('mrw_clothes', 'Clothe Shop').EnableMouse = false
 
 
  --RageUI.CreateSubMenu(ParentMenu, Title, Subtitle, X, Y, TextureDictionary, TextureName, R, G, B, A)
 
-RMenu.Add('mrw_clothes', 'Tee-shirt', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Tee-shirt", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Shirts', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Shirts", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Haut', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Haut", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Suits', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Suits", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Calque', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Calque", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Branding', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Branding", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Bras', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Bras", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Arms', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Arms", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Chaine', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Chaine", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Chains', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Chains", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Sac', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Sac", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Backpacks', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Backpacks", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Pantalon', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Pantalon", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Pants', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Pants", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Chaussure', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Chaussure", nil, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Shoes', RageUI.CreateSubMenu(RMenu:Get('mrw_clothes', 'Clothe Shop'), "Clothe Shop", "Shoes", nil, nil, nil, nil))
 
-RMenu.Add('mrw_clothes', 'Clothe Menu', RageUI.CreateMenu("Vétements", 'Vos vétements', 10 , 200,  nil, nil, 255, nil, nil, nil))
+RMenu.Add('mrw_clothes', 'Clothe Menu', RageUI.CreateMenu("Clothing Selection", 'Vos Clothing Selection', 10 , 200,  nil, nil, 255, nil, nil, nil))
 RMenu:Get('mrw_clothes', 'Clothe Menu'):SetRectangleBanner(255, 0, 0, 100)
 
 
@@ -141,7 +141,6 @@ function OpenKeyboard()
   if (GetOnscreenKeyboardResult()) then
     result = GetOnscreenKeyboardResult()
     if result == nil or result == '' then
-      RageUI.Popup({message = "~r~Valeur incorrect !."})
     else 
       return result  
     end     
@@ -190,35 +189,35 @@ function GetComponent()
 	local shoes_1Comp  = GetNumberOfPedDrawableVariations(PlayerPedId(), 6) 
  
   for i=0, tshirt_1Comp, 1 do
-	table.insert(tshirt_1c, 'Article n° : '..i)
+	table.insert(tshirt_1c, ''..i)
 	end  
 
 	for i=0, torso_1Comp, 1 do
-	table.insert(torso_1c, 'Article n° : '..i)
+	table.insert(torso_1c, ''..i)
   end
   
 	for i=0, decals_1Comp, 1 do
-	table.insert(decals_1c, 'Article n° : '..i)
+	table.insert(decals_1c, ''..i)
   end
 
   for i=0, chain_1Comp, 1 do
-	table.insert(chain_1c, 'Article n° : '..i)
+	table.insert(chain_1c, ''..i)
   end
   
 	for i=0, arms_1Comp, 1 do
-	table.insert(arms_1c, 'Article n° : '..i)
+	table.insert(arms_1c, ''..i)
 	end
 
 	for i=0, bags_1Comp, 1 do
-	table.insert(bags_1c, 'Article n° : '..i)
+	table.insert(bags_1c, ''..i)
 	end
 
   for i=0, pants_1Comp, 1 do
-	table.insert(pants_1c, 'Article n° : '..i)
+	table.insert(pants_1c, ''..i)
   end 
   
 	for i=0, shoes_1Comp, 1 do
-	table.insert(shoes_1c, 'Article n° : '..i)
+	table.insert(shoes_1c, ''..i)
 	end
 end
 
@@ -231,55 +230,55 @@ RageUI.CreateWhile(1.0, function()
     if RageUI.Visible(RMenu:Get('mrw_clothes', 'Clothe Shop')) then
         RageUI.DrawContent({ header = true, instructionalButton = true }, function()
 
-          RageUI.Button("Rayon tee-shirt" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Shirts" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
             end
-          end, RMenu:Get('mrw_clothes', 'Tee-shirt')) 
+          end, RMenu:Get('mrw_clothes', 'Shirts')) 
 
-          RageUI.Button("Rayon haut" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Suits" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
             end
-          end, RMenu:Get('mrw_clothes', 'Haut')) 
+          end, RMenu:Get('mrw_clothes', 'Suits')) 
 
-          RageUI.Button("Rayon calque" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Branding" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
             end
-          end,RMenu:Get('mrw_clothes', 'Calque')) 
+          end,RMenu:Get('mrw_clothes', 'Branding')) 
 
-          RageUI.Button("Rayon bras" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Arms" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
             end
-          end, RMenu:Get('mrw_clothes', 'Bras')) 
+          end, RMenu:Get('mrw_clothes', 'Arms')) 
 
-          RageUI.Button("Rayon chaine" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
-            if Selected then
-
-            end
-          end, RMenu:Get('mrw_clothes', 'Chaine')) 
-
-          RageUI.Button("Rayon sac" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Chains" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
 
             end
-          end, RMenu:Get('mrw_clothes', 'Sac')) 
+          end, RMenu:Get('mrw_clothes', 'Chains')) 
 
-          RageUI.Button("Rayon pantalon" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Backpacks" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
 
             end
-          end, RMenu:Get('mrw_clothes', 'Pantalon')) 
+          end, RMenu:Get('mrw_clothes', 'Backpacks')) 
 
-         RageUI.Button("Rayon Chaussure" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+          RageUI.Button("Pants" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
             if Selected then
 
             end
-          end, RMenu:Get('mrw_clothes', 'Chaussure')) 
+          end, RMenu:Get('mrw_clothes', 'Pants')) 
 
-          RageUI.Button("Passer à la caisse !" , nil, {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+         RageUI.Button("Shoes" , nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+            if Selected then
+
+            end
+          end, RMenu:Get('mrw_clothes', 'Shoes')) 
+
+          RageUI.Button("Save outfit" , nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then
               local name = OpenKeyboard()
               if name == nil or name == '' then 
-                RageUI.Popup({ message = "~r~Vous devez ENTRER un nom pour votre tenue !." })
+                RageUI.Popup({ message = "~r~Please enter a name for your outfit" })
               else  
                 table.insert(plyClothe, {
                   tshirt_1 = ptshirt_1 ,
@@ -361,9 +360,9 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Tee-shirt')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shirts')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
-        RageUI.List("Tee-shirt : ", tshirt_1c, index.tshirt_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+        RageUI.List("Shirts : ", tshirt_1c, index.tshirt_1, nil, {}, true, function(Hovered, Active, Selected, Index)
 
           index.tshirt_1 = Index
       
@@ -380,14 +379,14 @@ RageUI.CreateWhile(1.0, function()
             end  
 
             for i=0, tshirt_2Comp, 1 do
-              table.insert(tshirt_2c, 'Variation n° : '..i)
+              table.insert(tshirt_2c, ''..i)
             end
              ptshirt_1 = Index-1
           end
         end)
 
         if #tshirt_2c ~= 0 and ptshirt_1 ~= 15 then 
-          RageUI.List('Variation tee-shirt : ', tshirt_2c, index.tshirt_2, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Colour', tshirt_2c, index.tshirt_2, nil, {}, true, function(Hovered, Active, Selected, Index)
             index.tshirt_2 = Index
 
             if (Active) then
@@ -396,7 +395,7 @@ RageUI.CreateWhile(1.0, function()
             end
           end)
         end 
-         RageUI.Button('Valider vos articles', nil, {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+         RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
              RageUI.GoBack()
             end
@@ -408,9 +407,9 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Haut')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Suits')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
-         RageUI.List('Haut : ', torso_1c, index.torso_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Suits : ', torso_1c, index.torso_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           
           index.torso_1 = Index
 
@@ -427,7 +426,7 @@ RageUI.CreateWhile(1.0, function()
             end 
 
             for i=0, torso_2Comp, 1 do
-              table.insert(torso_2c, 'Variation n° : '..i)
+              table.insert(torso_2c, ''..i)
             end
 
             ptorso_1 = Index-1
@@ -435,7 +434,7 @@ RageUI.CreateWhile(1.0, function()
         end)
 
         if #torso_2c ~= 0 then 
-          RageUI.List('Variation haut', torso_2c, index.torso_2, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Colour', torso_2c, index.torso_2, nil, {}, true, function(Hovered, Active, Selected, Index)
             index.torso_2 = Index 
 
             if (Active) then 
@@ -446,7 +445,7 @@ RageUI.CreateWhile(1.0, function()
           end)
         end
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                 RageUI.GoBack()
             end
@@ -459,9 +458,9 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Calque')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Branding')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
-        RageUI.List('Calque', decals_1c, index.decals_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+        RageUI.List('Branding', decals_1c, index.decals_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.decals_1 = Index 
 
           if (Active) then 
@@ -476,13 +475,13 @@ RageUI.CreateWhile(1.0, function()
             end  
 
             for i=0, decals_2Comp, 1 do
-              table.insert(decals_2c, 'Variation n° : '..i)
+              table.insert(decals_2c, ''..i)
             end
               pdecals_1 = Index-1
           end
         end) 
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                RageUI.GoBack()
             end
@@ -496,10 +495,10 @@ end, 1)
 
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Bras')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Arms')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
        
-          RageUI.List('Bras', arms_1c, index.arms, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Arms', arms_1c, index.arms, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.arms = Index 
 
           if (Active) then 
@@ -514,7 +513,7 @@ RageUI.CreateWhile(1.0, function()
             end  
 
             for i=0, arms_2Comp, 1 do
-              table.insert(arms_2c, 'Variation n° : '..i)
+              table.insert(arms_2c, ''..i)
             end
 
             parms_1 = Index-1
@@ -523,7 +522,7 @@ RageUI.CreateWhile(1.0, function()
         end) 
 
         if #arms_2c ~= 0 then
-          RageUI.List('Variation bras : ', arms_2c, index.arms_2, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Colour', arms_2c, index.arms_2, nil, {}, true, function(Hovered, Active, Selected, Index)
             index.arms_2 = Index
 
             if (Active) then 
@@ -534,7 +533,7 @@ RageUI.CreateWhile(1.0, function()
           end)
         end  
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                 RageUI.GoBack()
             end
@@ -547,10 +546,10 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaine')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chains')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
        
-        RageUI.List('Chaine', chain_1c, index.chain_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+        RageUI.List('Chains', chain_1c, index.chain_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.chain_1 = Index 
 
             if (Active) then 
@@ -564,14 +563,14 @@ RageUI.CreateWhile(1.0, function()
               end  
 
               for i=0, chain_2Comp, 1 do
-                table.insert(chain_2c, 'Variation n° : '..i)
+                table.insert(chain_2c, ''..i)
               end
                pchain_1 = Index-1
             end
         end) 
 
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                RageUI.GoBack() 
             end
@@ -585,10 +584,10 @@ end, 1)
 
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Sac')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Backpacks')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
 
-          RageUI.List('Sac', bags_1c, index.bags_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Backpacks', bags_1c, index.bags_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.bags_1 = Index 
 
           if (Active) then 
@@ -603,7 +602,7 @@ RageUI.CreateWhile(1.0, function()
             end  
 
             for i=0, bags_2Comp, 1 do
-              table.insert(bags_2c, 'Variation n° : '..i)
+              table.insert(bags_2c, ''..i)
             end
 
             pbags_1 = Index-1
@@ -611,7 +610,7 @@ RageUI.CreateWhile(1.0, function()
 
         end) 
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                 RageUI.GoBack()
             end
@@ -624,10 +623,10 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Pantalon')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Pants')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
 
-         RageUI.List('Pantalon : ', pants_1c, index.pants_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Pants : ', pants_1c, index.pants_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.pants_1 = Index
 
           if (Active) then 
@@ -643,14 +642,14 @@ RageUI.CreateWhile(1.0, function()
             end 
 
             for i=0, pants_2Comp, 1 do
-              table.insert(pants_2c, 'Variation n° : '..i)
+              table.insert(pants_2c, ''..i)
             end
              ppants_1 = Index-1
           end 
         end)
 
         if #pants_2c ~= 0 then
-          RageUI.List('Variation pantalon : ', pants_2c, index.pants_2, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Colour', pants_2c, index.pants_2, nil, {}, true, function(Hovered, Active, Selected, Index)
             index.pants_2 = Index
 
             if (Active) then 
@@ -661,7 +660,7 @@ RageUI.CreateWhile(1.0, function()
           end)
         end  
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
               RageUI.GoBack()
             end
@@ -674,10 +673,10 @@ RageUI.CreateWhile(1.0, function()
 end, 1)
 
 RageUI.CreateWhile(1.0, function()
-      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Chaussure')) then
+      if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shoes')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
 
-         RageUI.List('Chaussure : ', shoes_1c, index.shoes_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Shoes : ', shoes_1c, index.shoes_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.shoes_1 = Index 
 
           if (Active) then 
@@ -692,7 +691,7 @@ RageUI.CreateWhile(1.0, function()
             end 
 
             for i=0, shoes_2Comp, 1 do
-              table.insert(shoes_2c, 'Variation n° : '..i)
+              table.insert(shoes_2c, ''..i)
             end
 
              pshoes_1 = Index-1
@@ -701,7 +700,7 @@ RageUI.CreateWhile(1.0, function()
         end)
 
         if #shoes_2c ~= 0 then 
-          RageUI.List('Variation chaussures : ',shoes_2c, index.shoes_2, nil, {}, true, function(Hovered, Active, Selected, Index)
+          RageUI.List('Colour',shoes_2c, index.shoes_2, nil, {}, true, function(Hovered, Active, Selected, Index)
             index.shoes_2 = Index
 
             if (Active) then 
@@ -714,7 +713,7 @@ RageUI.CreateWhile(1.0, function()
 
 
 
-        RageUI.Button('Valider vos articles', "", {RightBadge = RageUI.BadgeStyle.Alert}, true, function(Hovered, Active, Selected)
+        RageUI.Button('Back', nil, {}, true, function(Hovered, Active, Selected)
             if (Selected) then 
                 RageUI.GoBack()
             end
