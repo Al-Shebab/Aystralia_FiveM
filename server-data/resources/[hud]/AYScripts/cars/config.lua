@@ -2,7 +2,7 @@ ShowRange = 1000
 
 DoorLock = true
 
-carInvincible = false 
+carInvincible = true
 
 Cars = {
     {
