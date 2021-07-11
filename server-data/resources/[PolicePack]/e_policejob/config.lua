@@ -27,10 +27,10 @@ Config.WhitelistedCops = {
 Config.ESXLib = "esx:getSharedObject"
 
 -- Webhook Discord pour les plaintes
-Config.PlaintesWebhook = "https://discord.com/api/webhooks/790259094107717663/FhDiQN1fa1lAdjtXSM0WF6CTeOAAMGVJpf1WZHSTsSwjlgkN5h5-92eomFkS6_qcy-tS"
+Config.PlaintesWebhook = "https://discord.com/api/webhooks/863735640709529631/a5oSFj4omTlK8obojXz7U5PLYGA4COJ975b4Z9REAY-KPYc-GCqtZfm8O-R_W0AHBPB8"
 
 -- Webhook Discord pour les demandes de rendez-vous
-Config.RdvWebhook = "https://discord.com/api/webhooks/790259094107717663/FhDiQN1fa1lAdjtXSM0WF6CTeOAAMGVJpf1WZHSTsSwjlgkN5h5-92eomFkS6_qcy-tS"
+Config.RdvWebhook = "https://discord.com/api/webhooks/863735640709529631/a5oSFj4omTlK8obojXz7U5PLYGA4COJ975b4Z9REAY-KPYc-GCqtZfm8O-R_W0AHBPB8"
 
 -- Permets de génerer des peds décoratif dans le comissariat.
 Config.AddPeds = false

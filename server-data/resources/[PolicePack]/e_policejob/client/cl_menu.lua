@@ -240,18 +240,18 @@ AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 
-RMenu.Add('police', 'main', RageUI.CreateMenu("LSPD", "Intéraction"))
-RMenu.Add('police', 'inter', RageUI.CreateMenu("LSPD", "Intéraction"))
-RMenu.Add('police', 'doc', RageUI.CreateMenu("LSPD", "Intéraction"))
-RMenu.Add('police', 'renfort', RageUI.CreateMenu("LSPD", "Intéraction"))
-RMenu.Add('police', 'voiture', RageUI.CreateMenu("LSPD", "Intéraction"))
-RMenu.Add('police', 'chien', RageUI.CreateMenu("LSPD", "Intéraction"))
+RMenu.Add('police', 'main', RageUI.CreateMenu("Police", "Interaction"))
+RMenu.Add('police', 'inter', RageUI.CreateMenu("Police", "Interaction"))
+RMenu.Add('police', 'doc', RageUI.CreateMenu("Police", "Interaction"))
+RMenu.Add('police', 'renfort', RageUI.CreateMenu("Police", "Interaction"))
+RMenu.Add('police', 'voiture', RageUI.CreateMenu("Police", "Interaction"))
+RMenu.Add('police', 'chien', RageUI.CreateMenu("Police", "Interaction"))
 
 Citizen.CreateThread(function()
     while true do
         RageUI.IsVisible(RMenu:Get('police', 'main'), true, true, true, function()
 
-            RageUI.Checkbox("Prendre/Quitter son service",nil, service,{},function(Hovered,Ative,Selected,Checked)
+            RageUI.Checkbox("Onduty / Offduty",nil, service,{},function(Hovered,Ative,Selected,Checked)
                 if (Selected) then
 
                     service = Checked
@@ -271,45 +271,33 @@ Citizen.CreateThread(function()
             end)
 
 			if onservice then
-				
-				RageUI.Separator("↓ ~o~Documentation ~s~↓")
-				
-				RageUI.Button("Gestion documentation", nil, {RightLabel = "→"},true, function()
+								
+				RageUI.Button("Documentation management", nil, {RightLabel = "→"},true, function()
 				end, RMenu:Get('police', 'doc'))
-
-				RageUI.Separator("↓ ~o~Intéractions ~s~↓")
 				
-				RageUI.Button("Intéractions sur personne", nil, {RightLabel = "→"},true, function()
+				RageUI.Button("Person interactions", nil, {RightLabel = "→"},true, function()
 				end, RMenu:Get('police', 'inter'))
 
-				RageUI.Separator("↓ ~o~Intéractions Véhicules ~s~↓")
-
-				RageUI.Button("Intéractions sur véhicules", nil, {RightLabel = "→"},true, function()
+				RageUI.Button("Vehicle interactions", nil, {RightLabel = "→"},true, function()
 				end, RMenu:Get('police', 'voiture'))
 
-				RageUI.Separator("↓ ~o~Demande d'aide ~s~↓")
-
-				RageUI.Button("Demande de renfort", nil, {RightLabel = "→"},true, function()
+				RageUI.Button("Reinforcement request", nil, {RightLabel = "→"},true, function()
 				end, RMenu:Get('police', 'renfort'))
 
-				RageUI.Separator("↓ ~o~Gestion Radar ~s~↓")
-
-				RageUI.Button("Poser/Prendre Radar",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+				RageUI.Button("Install / Take Radar",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 					if Selected then
 						RageUI.CloseAll()       
 						TriggerEvent('police:POLICE_radar')
 					end
 				end)
 
-				RageUI.Separator("↓ ~o~Gestion chien ~s~↓")
-
-				RageUI.Button("Menu Chien",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
-					if Selected then
-						RageUI.CloseAll()
-						ESX.ShowAdvancedNotification("Gestion Chien", "", "Menu chien ouvert ✅", 'CHAR_LAMAR', 2)
-						TriggerEvent('esx_policedog:openMenu')
-					end
-				end)
+			--	RageUI.Button("Dog menu",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+			--		if Selected then
+			--			RageUI.CloseAll()
+			--			ESX.ShowAdvancedNotification("Gestion Chien", "", "Menu chien ouvert ✅", 'CHAR_LAMAR', 2)
+			--			TriggerEvent('esx_policedog:openMenu')
+			--		end
+			--	end)
 			end
             
     end, function()
@@ -317,7 +305,7 @@ Citizen.CreateThread(function()
 
 		RageUI.IsVisible(RMenu:Get('police', 'inter'), true, true, true, function()
 	
-			RageUI.Button("Fouiller la personne",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+			RageUI.Button("Search the person",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 				if Selected then
 					local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 					if closestPlayer ~= -1 and closestDistance <= 3.0 then
@@ -328,7 +316,7 @@ Citizen.CreateThread(function()
 				end
 			end)
 	
-			RageUI.Button("Menotter la personne", nil, { RightLabel = ">" },true, function(h, a, s)
+			RageUI.Button("Handcuff", nil, { RightLabel = ">" },true, function(h, a, s)
 				if s then 
 					local target, distance = ESX.Game.GetClosestPlayer()
 					local target_id = GetPlayerServerId(target)
@@ -338,12 +326,12 @@ Citizen.CreateThread(function()
 					if distance <= 2.0 then
 						TriggerServerEvent('policejob:mettremenotte', target_id, playerheading, playerCoords, playerlocation)
 					else
-						ESX.ShowNotification('~r~Aucun joueur à proximité')
+						ESX.ShowNotification('~r~No player nearby')
 					end
 				end
 			end)
 		
-			RageUI.Button("Démenotter", nil, {RightLabel = "~b~→"},true, function(h, a, s)
+			RageUI.Button("Demenote", nil, {RightLabel = "~b~→"},true, function(h, a, s)
 				if s then
 					local target, distance = ESX.Game.GetClosestPlayer()
 					local target_id = GetPlayerServerId(target)
@@ -353,24 +341,24 @@ Citizen.CreateThread(function()
 					if distance <= 2.0 then
 					TriggerServerEvent('policejob:enlevermenotte', target_id, playerheading, playerCoords, playerlocation)
 				else
-					ESX.ShowNotification('~r~Aucun joueur à proximité')
+					ESX.ShowNotification('~r~No player nearby')
 					end
 				end
 			end)
 			
 			local closestPlayer = ESX.Game.GetClosestPlayer()
-			RageUI.Button("Escorte", nil, {RightLabel = "~b~→"},true, function(h, a, s)
+			RageUI.Button("Escort", nil, {RightLabel = "~b~→"},true, function(h, a, s)
 				if s then
 					local target, distance = ESX.Game.GetClosestPlayer()
 					if distance <= 2.0 then
 					TriggerServerEvent('policejob:drag', GetPlayerServerId(closestPlayer))
 				else
-					ESX.ShowNotification('~r~Aucun joueur à proximité')
+					ESX.ShowNotification('~r~No player nearby')
 				end
 				end
 			end)
 
-		RageUI.Button("Mettre la personne dans le véhicule",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+		RageUI.Button("Put the person in the vehicle",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 			if Selected then 
 				local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 				if closestPlayer ~= -1 and closestDistance <= 3.0 then
@@ -379,7 +367,7 @@ Citizen.CreateThread(function()
 		end
 		end)
 	
-		RageUI.Button("Sortir la personne du véhicule",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+		RageUI.Button("Get the person out of the vehicle",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 			if Selected then 
 				local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 				if closestPlayer ~= -1 and closestDistance <= 3.0 then
@@ -393,7 +381,7 @@ Citizen.CreateThread(function()
 
 	RageUI.IsVisible(RMenu:Get('police', 'renfort'), true, true, true, function()
 
-		RageUI.Button("Petite demande",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+		RageUI.Button("~g~Code 1",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 			if Selected then
 				local raison = 'petit'
 				local elements  = {}
@@ -404,7 +392,7 @@ Citizen.CreateThread(function()
 		end
 	end)
 
-	RageUI.Button("Moyenne demande",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+	RageUI.Button("~o~Code 2",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 		if Selected then
 			local raison = 'importante'
 			local elements  = {}
@@ -415,7 +403,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RageUI.Button("Grosse demande",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+RageUI.Button("~r~Code 3",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 	if Selected then
 		local raison = 'omgad'
 		local elements  = {}
@@ -431,7 +419,7 @@ end)
 
 	RageUI.IsVisible(RMenu:Get('police', 'voiture'), true, true, true, function()
 
-		RageUI.Button("Rechercher une plaque dans la base de données",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+		RageUI.Button("Search for a plate in the database",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 			local elements  = {}
 			local playerPed = PlayerPedId()
 			local vehicle = ESX.Game.GetVehicleInDirection()
@@ -443,7 +431,7 @@ end)
 			end
 			end)
 
-			RageUI.Button("Mettre le véhicule en fourrière",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+			RageUI.Button("Impound the vehicle",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 				if Selected then 
 					ImpoundVehicle(vehicle)
 					RageUI.CloseAll()
@@ -456,29 +444,19 @@ end)
 
 	RageUI.IsVisible(RMenu:Get('police', 'doc'), true, true, true, function()
 
-		RageUI.Button("Donner une Amende",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+		RageUI.Button("Give a Fine",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 			if Selected then
 				RageUI.CloseAll()        
 				OpenBillingMenu() 
 			end
 		end)
 
-	RageUI.Button("Gérer les licenses",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
+	RageUI.Button("Manage licenses",nil, {RightLabel = ">"}, true, function(Hovered, Active, Selected)
 		if Selected then
 			local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 			if closestPlayer ~= -1 and closestDistance <= 3.0 then
 				ShowPlayerLicense(closestPlayer)
 				RageUI.CloseAll()
-			end
-		end
-	end)
-
-	RageUI.Button("Attribuer le PPA (Permis port d'arme)",nil, {RightLabel = "~g~1500$"}, true, function(Hovered, Active, Selected)
-		if Selected then
-			local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-			if closestPlayer ~= -1 and closestDistance <= 3.0 then
-				TriggerServerEvent('donner:ppa')
-				TriggerServerEvent('esx_license:addLicense', GetPlayerServerId(closestPlayer), 'weapon')
 			end
 		end
 	end)

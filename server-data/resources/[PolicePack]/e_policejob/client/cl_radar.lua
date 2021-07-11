@@ -129,7 +129,7 @@ function POLICE_radar()
         end
    
     else 
-        maxSpeed = radarSetSpeed("50")
+        maxSpeed = radarSetSpeed("120")
        
         Citizen.Wait(200) 
         RadarPos = GetOffsetFromEntityInWorldCoords(GetPlayerPed(-1), 0, 1.5, 0)
@@ -242,9 +242,9 @@ Citizen.CreateThread(function()
                        
                      
                 if vehSpeedKm < maxSpeed then
-                    info = string.format("   Vehicule ~r~%s ~w~Plaque ~r~%s ~w~Km/h ~g~%s", vehDesc, vehPlate, math.ceil(vehSpeedKm))
+                    info = string.format("   Vehicle ~r~%s ~w~Plate ~r~%s ~w~Km/h ~g~%s", vehDesc, vehPlate, math.ceil(vehSpeedKm))
                 else
-                    info = string.format("   Vehicule ~r~%s ~w~Plaque ~r~%s ~w~Km/h ~r~%s", vehDesc, vehPlate, math.ceil(vehSpeedKm))
+                    info = string.format("   Vehicle ~r~%s ~w~Plate ~r~%s ~w~Km/h ~r~%s", vehDesc, vehPlate, math.ceil(vehSpeedKm))
                     if LastPlate ~= vehPlate then
                         LastSpeed = vehSpeedKm
                         LastVehDesc = vehDesc
@@ -252,7 +252,7 @@ Citizen.CreateThread(function()
                     elseif LastSpeed < vehSpeedKm and LastPlate == vehPlate then
                             LastSpeed = vehSpeedKm
                     end
-                    LastInfo = string.format("   Vehicule ~r~%s ~w~Plaque ~r~%s ~w~Km/h ~r~%s", LastVehDesc, LastPlate, math.ceil(LastSpeed))
+                    LastInfo = string.format("   Vehicle ~r~%s ~w~Plate ~r~%s ~w~Km/h ~r~%s", LastVehDesc, LastPlate, math.ceil(LastSpeed))
                 end
                    
                 DrawRect(0.88, 0.97, 0.2, 0.03, 0, 0, 0, 220)
