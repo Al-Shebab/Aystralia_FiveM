@@ -19,7 +19,7 @@ AddEventHandler('vb-banking:server:depositvb', function(amount, inMenu)
 	else
 		_char.removeMoney(amount)
 		_char.addAccountMoney('bank', tonumber(amount))
-		_char.showNotification("You've deposited  $"..amount)
+		_char.showNotification("You've deposited $"..amount)
 	end
 end)
 

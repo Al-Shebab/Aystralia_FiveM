@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
     if nearBankorATM() then
       _sleep = false
-      DisplayHelpText("~b~Use ~INPUT_PICKUP~ ~b~to access the bank")
+      DisplayHelpText("Use ~INPUT_PICKUP~ to access the bank")
       if IsControlJustPressed(1, 38) then
         inMenu = true
         SetNuiFocus(true, true)

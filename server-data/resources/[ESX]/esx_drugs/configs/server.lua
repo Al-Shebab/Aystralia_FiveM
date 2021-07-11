@@ -63,7 +63,7 @@ ServerConfig.Zones = {
 		},
 		outputs = {
 			{
-                account = 'black_money',
+                account = 'money',
                 price = {
                     min = 500,
                     max = 800,
@@ -126,7 +126,7 @@ ServerConfig.Zones = {
 		},
 		outputs = {
 			{
-                account = 'black_money',
+                account = 'money',
                 price = {
                     min = 700,
                     max = 1000,
@@ -184,7 +184,7 @@ ServerConfig.Zones = {
 		},
 		outputs = {
 			{
-                account = 'black_money',
+                account = 'money',
                 price = {
                     min = 900,
                     max = 1200,
