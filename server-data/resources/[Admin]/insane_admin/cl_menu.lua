@@ -513,19 +513,19 @@ function openStaffMenu()
 						end
 					end)
 					if InStaff then
-						RageUI.Button("Actions perso", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Personal actions", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'perso'))
-						RageUI.Button("Actions staff", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Staff actions", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'actionstaff'))
-						RageUI.Button("Actions véhicule", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Vehicle actions", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'veh'))
-						RageUI.Button("Liste des joueurs", "", { RightLabel = "→" },true, function()
+						RageUI.Button("List of players", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'joueurs'))
-						RageUI.Button("Options HRP", "", { RightLabel = "→" },true, function()
+						RageUI.Button("HRP options", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'world'))
-						RageUI.Button("Gestion temps", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Time management", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'time'))
-						RageUI.Button("Menu Peds", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Peds menu", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'ped'))
 						RageUI.Button("Warn", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'warn')) 
@@ -538,7 +538,7 @@ function openStaffMenu()
 				
 				RageUI.IsVisible(RMenu:Get('menu', 'perso'), true, true, true, function()
 
-					RageUI.Button("Téléporter sur son marqueur", nil, {
+					RageUI.Button("TP To Waypoint", nil, {
 					}, true, function(_, _, Selected)
 					if Selected then
 						local playerPed = GetPlayerPed(-1)
@@ -552,44 +552,37 @@ function openStaffMenu()
 					end
 					end)
 
-					RageUI.Button("Afficher/Cacher coordonnées",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Display Coordinates",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then   
 							Admin.showcoords = not Admin.showcoords    
 							end   
 						end)
 
-					RageUI.Button("S'octroyer du Heal",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Treat yourself to Heal",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							SetEntityHealth(GetPlayerPed(-1), 200)
 							Notify("~g~Heal effectué~w~")
 						end
 					end)
 
-					RageUI.Button("S'octroyer du Blindage",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Treat yourself to Armor",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							SetPedArmour(GetPlayerPed(-1), 200)
 							Notify("~g~Blindage effectué~w~")
 						end
 					end)
 
-					RageUI.Button("S'octroyer de ~g~l'argent cash",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Give cash",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveCash()
 							Notify("~g~Give cash effectué~w~")
 						end
 					end)
 
-					RageUI.Button("S'octroyer de ~b~l'argent banque",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Give bank",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveBanque()
 							Notify("~g~Give banque effectué~w~")
-						end
-					end)
-
-					RageUI.Button("S'octroyer de ~r~l'argent sale",description, {}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							GiveND()
-							Notify("~g~Give argent sale effectué~w~")
 						end
 					end)
 
@@ -604,7 +597,7 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Checkbox("Nage rapide", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
+					RageUI.Checkbox("Fast swimming", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							fastSwim = Checked
 							if Checked then
@@ -615,7 +608,7 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Checkbox("Super Sprint", description, fastSprint,{},function(Hovered,Ative,Selected,Checked)
+					RageUI.Checkbox("Fast running", description, fastSprint,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							fastSprint = Checked
 							if Checked then
