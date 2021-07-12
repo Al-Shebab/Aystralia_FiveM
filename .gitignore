@@ -3,3 +3,5 @@ server-data/cache
 server-data/cache/*
 server-data/resources/AYVehicles/
 start.bat
+server/server-tls.crt
+server/server-tls.key
