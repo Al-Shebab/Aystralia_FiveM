@@ -698,4 +698,3 @@ end
 function RageUI.GetStyleAudio()
     return RageUI.Settings.Audio.Use or "RageUI"
 end
-

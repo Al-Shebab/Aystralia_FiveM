@@ -82,7 +82,7 @@ function openMenuf6ambulance()
                 while ambulance do
                 Wait(1)
 				RageUI.IsVisible(RMenu:Get('ambulance', 'main'), true, true, true, function()
-					RageUI.Checkbox("Prendre/Quitter son service", nil, ambuservice, { Style = RageUI.CheckboxStyle.Tick }, function(Hovered, Selected, Active, Checked)
+					RageUI.Checkbox("On/Offduty", nil, ambuservice, { Style = RageUI.CheckboxStyle.Tick }, function(Hovered, Selected, Active, Checked)
 						ambuservice = Checked;
 					end, function()
 						ambuservice = true
@@ -91,21 +91,19 @@ function openMenuf6ambulance()
 					end)
 	
 						if ambuservice then
-			
-							RageUI.Separator("~s~↓ ~b~Interaction et facturation ~s~↓")
-							
-							RageUI.ButtonWithStyle("Intéraction citoyens", nil, {RightLabel = "~b~Intéragir ~s~→→"}, true, function(Hovered, Active, Selected)
+										
+							RageUI.ButtonWithStyle("Citizen interaction", nil, {RightLabel = "~b~→→"}, true, function(Hovered, Active, Selected)
 							end, RMenu:Get('ambulance', 'citoyens'))
 
 											
-							RageUI.ButtonWithStyle("Intéraction Appels", nil, {RightLabel = "~b~Intéragir ~s~→→"}, true, function(Hovered, Active, Selected)
+							RageUI.ButtonWithStyle("Interaction Calls", nil, {RightLabel = "~b~→→"}, true, function(Hovered, Active, Selected)
 							ESX.TriggerServerCallback('ems:afficheappels', function(keys)
 							reportlistesql = keys
 							end)
 							end, RMenu:Get('ambulance', 'lister'))
 							
 				
-							RageUI.ButtonWithStyle("Donner une facture",nil, {RightLabel = "~b~Facturer~s~ →→"}, true, function(_,_,s)
+						--[[	RageUI.ButtonWithStyle("Give an invoice",nil, {RightLabel = "~b~Facturer~s~ →→"}, true, function(_,_,s)
 								local player, distance = ESX.Game.GetClosestPlayer()
 								if s then
 									local raison = ""
@@ -145,7 +143,7 @@ function openMenuf6ambulance()
 									end
 									end
 								end
-							end)
+							end)--]]
 							
 							RageUI.Separator("~s~↓ ~b~Annonces EMS ~s~↓")
 							RageUI.ButtonWithStyle("[~y~annonce~s~] :~g~ disponible", nil, {RightLabel = "→→"}, true, function(Hovered, Active, Selected)
@@ -166,17 +164,17 @@ function openMenuf6ambulance()
 
 				RageUI.IsVisible(RMenu:Get('ambulance', 'citoyens'), true, true, true, function()
             
-					RageUI.ButtonWithStyle("Réanimer la Personne", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
+					RageUI.ButtonWithStyle("Revive", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
 						if Selected then 
 							revivePlayer(closestPlayer)    
 						end
 					end)
 		
-					RageUI.ButtonWithStyle("Soigner une petite blessure", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
+					RageUI.ButtonWithStyle("Treat a small wound", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
 						if (Selected) then 
 							local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 							if closestPlayer == -1 or closestDistance > 1.0 then
-								ESX.ShowNotification('Aucune Personne à Proximité')
+								ESX.ShowNotification('No Person Nearby')
 							else
 								ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(quantity)
 									if quantity > 0 then
@@ -207,11 +205,11 @@ function openMenuf6ambulance()
 						end
 					end)
 		
-					RageUI.ButtonWithStyle("Soigner une plus grande blessure", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
+					RageUI.ButtonWithStyle("Heal a bigger injury", nil, { RightBadge = RageUI.BadgeStyle.Heart },true, function(Hovered, Active, Selected)
 						if (Selected) then 
 							local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 							if closestPlayer == -1 or closestDistance > 1.0 then
-								ESX.ShowNotification('Aucune Personne à Proximité')
+								ESX.ShowNotification('No Person Nearby')
 							else
 								ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(quantity)
 									if quantity > 0 then
@@ -244,15 +242,13 @@ function openMenuf6ambulance()
 				end)
 
 				RageUI.IsVisible(RMenu:Get('ambulance', 'lister'), true, true, true, function()
-					RageUI.Separator('↓ ~b~Autres ↓')
-					RageUI.ButtonWithStyle("Effacer les appels en cours", nil, {RightLabel = "→→"}, true, function(Hovered, Active, Selected)
+					RageUI.ButtonWithStyle("Delete current calls", nil, {RightLabel = "→→"}, true, function(Hovered, Active, Selected)
 						if Selected then
 							TriggerEvent("EMS:ClearAppel")
 						end
 					end)
-					RageUI.Separator('↓ ~b~Appels ↓')
 					for numreport = 1, #reportlistesql, 1 do
-					  RageUI.ButtonWithStyle("[~y~Patient ~s~: "..reportlistesql[numreport].reporteur.."~s~] - ~b~Numéro ~s~: "..reportlistesql[numreport].id, nil, { RightLabel = "~r~En ATTENTE"}, true, function(Hovered, Active, Selected)
+					  RageUI.ButtonWithStyle("[~y~Patient ~s~: "..reportlistesql[numreport].reporteur.."~s~] - ~b~Number ~s~: "..reportlistesql[numreport].id, nil, { RightLabel = "~r~Waiting"}, true, function(Hovered, Active, Selected)
 						  if (Selected) then
 							  typereport = reportlistesql[numreport].type
 							  reportjoueur = reportlistesql[numreport].reporteur
@@ -275,10 +271,10 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)
        RageUI.IsVisible(RMenu:Get('ambulance', 'gestr'), true, true, true, function()
-        RageUI.Separator("~y~Type~s~ : Demande d'EMS")
-        RageUI.Separator("~b~Nom du Patient~s~ : ".. reportjoueur)
+        RageUI.Separator("~y~Type~s~ : EMS request")
+        RageUI.Separator("~b~Patient's Name~s~ : ".. reportjoueur)
        
-        RageUI.CenterButton("~g~Accepter ~s~l'appel", nil, {}, true, function(Hovered, Active, Selected)
+        RageUI.CenterButton("~g~Accept ~s~the call", nil, {}, true, function(Hovered, Active, Selected)
 			if Selected then
 				pris = true
                 TriggerServerEvent('EMS:PriseAppelServeur')
