@@ -677,29 +677,33 @@ Citizen.CreateThread(function()
 									if pos.locked then
 										--If the config lock system is not enabled then we can go traight in garage, but if it is enabled then not
 										if not LSC_Config.lock then
-											if IsControlJustPressed(1,201) then
+											if IsControlJustPressed(1,38) then
 												inside = true
 												currentpos = pos
 												currentgarage = i
 												DriveInGarage()
 											else
-												drawNotification("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
+												AddTextEntry(GetCurrentResourceName(), ('Press ~b~ENTER~w~ to enter ~b~Los Santos Customs'))
+           										DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 											end
 										else
-											drawNotification("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
+											AddTextEntry(GetCurrentResourceName(), ('~r~Locked, please wait'))
+											DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 										end
 									else
-										if IsControlJustPressed(1,201) then
+										if IsControlJustPressed(1,38) then
 											inside = true
 											currentpos = pos
 											currentgarage = i
 											DriveInGarage()
 										else
-											drawNotification("Press ~b~ENTER~w~ to enter ~b~Los Santos Customs ",4,1,0.5,0.8,1.0,255,255,255,255)
+											AddTextEntry(GetCurrentResourceName(), ('Press ~b~ENTER~w~ to enter ~b~Los Santos Customs'))
+											DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 										end
 									end
 								else
-									drawNotification("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
+									AddTextEntry(GetCurrentResourceName(), ('This vehicle can not be upgraded'))
+									DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 								end
 							end
 						else
@@ -716,7 +720,8 @@ Citizen.CreateThread(function()
 											currentgarage = i
 											DriveInGarage()
 										else
-											drawNotification("~r~Locked, please wait",4,1,0.5,0.8,1.0,255,255,255,255)
+											AddTextEntry(GetCurrentResourceName(), ('locked m8'))
+											DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 										end
 									else
 										inside = true
@@ -725,7 +730,8 @@ Citizen.CreateThread(function()
 										DriveInGarage()
 									end
 								else
-									drawNotification("~r~This vehicle can't be upgraded",4,1,0.5,0.8,1.0,255,255,255,255)
+									AddTextEntry(GetCurrentResourceName(), ('na fuck off cnat be upgrades'))
+									DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 								end
 							end
 						end
@@ -1328,11 +1334,11 @@ local function AddBlips()
 		SetBlipAsShortRange(blip,true)
 		if i == 5 then
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Beeker's Garage")
+			AddTextComponentString("Los Santos Custom")
 			EndTextCommandSetBlipName(blip)
 		elseif i == 6 then
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Benny's Motorworks")
+			AddTextComponentString("Los Santos Custom")
 			EndTextCommandSetBlipName(blip)
 		end
 	end
