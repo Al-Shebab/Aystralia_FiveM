@@ -16,7 +16,7 @@ local blips = {
                    zoneblip = AddBlipForRadius(v.x,v.y,v.z, 300.0)
                               SetBlipSprite(zoneblip,4 * 3.14159)
                               SetBlipColour(zoneblip,62)
-                              SetBlipAlpha(zoneblip,30)
+                              SetBlipAlpha(zoneblip,0)
                              
             end
              

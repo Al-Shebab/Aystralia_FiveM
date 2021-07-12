@@ -362,7 +362,7 @@ end, 1)
 RageUI.CreateWhile(1.0, function()
       if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shirts')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
-        RageUI.List("Shirts : ", tshirt_1c, index.tshirt_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+        RageUI.List("Shirts", tshirt_1c, index.tshirt_1, nil, {}, true, function(Hovered, Active, Selected, Index)
 
           index.tshirt_1 = Index
       
@@ -409,7 +409,7 @@ end, 1)
 RageUI.CreateWhile(1.0, function()
       if RageUI.Visible(RMenu:Get('mrw_clothes', 'Suits')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
-         RageUI.List('Suits : ', torso_1c, index.torso_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Suits',torso_1c, index.torso_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           
           index.torso_1 = Index
 
@@ -626,7 +626,7 @@ RageUI.CreateWhile(1.0, function()
       if RageUI.Visible(RMenu:Get('mrw_clothes', 'Pants')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
 
-         RageUI.List('Pants : ', pants_1c, index.pants_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Pants',pants_1c, index.pants_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.pants_1 = Index
 
           if (Active) then 
@@ -676,7 +676,7 @@ RageUI.CreateWhile(1.0, function()
       if RageUI.Visible(RMenu:Get('mrw_clothes', 'Shoes')) then
         RageUI.DrawContent({ header = false, instructionalButton = true }, function()
 
-         RageUI.List('Shoes : ', shoes_1c, index.shoes_1, nil, {}, true, function(Hovered, Active, Selected, Index)
+         RageUI.List('Shoes',shoes_1c, index.shoes_1, nil, {}, true, function(Hovered, Active, Selected, Index)
           index.shoes_1 = Index 
 
           if (Active) then 
