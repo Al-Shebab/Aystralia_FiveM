@@ -20,9 +20,7 @@ if ESX_READY == true then
 end
 
 
-RMenu.Add('mrw_clothes', 'Clothe Shop', RageUI.CreateMenu("Clothe Shop", "Clothing Selection", 2, 200))
-RMenu:Get('mrw_clothes', 'Clothe Shop'):SetRectangleBanner(255, 0, 0, 100)
-RMenu:Get('mrw_clothes', 'Clothe Shop').EnableMouse = false
+RMenu.Add('mrw_clothes', 'Clothe Shop', RageUI.CreateMenu("", "Clothing Selection", nil, nil, "shopui_title_gunclub", "shopui_title_gunclub"))
 
 
  --RageUI.CreateSubMenu(ParentMenu, Title, Subtitle, X, Y, TextureDictionary, TextureName, R, G, B, A)

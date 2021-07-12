@@ -3969,10 +3969,10 @@ function RageUI.Banner(Enabled, Glare)
                     end
 
                     if Glare then
-                        local ScaleformMovie = RequestScaleformMovie("MP_MENU_GLARE")
+                        local ScaleformMovie = RequestScaleformMovie("")
                         Citizen.CreateThread(function()
                             if not HasScaleformMovieLoaded(ScaleformMovie) then
-                                ScaleformMovie = RequestScaleformMovie("MP_MENU_GLARE")
+                                ScaleformMovie = RequestScaleformMovie("")
                                 while not HasScaleformMovieLoaded(ScaleformMovie) do
                                     Citizen.Wait(0)
                                 end
