@@ -35,7 +35,7 @@ function OpenShopMenu()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'tattoo_shop', {
 		title    = _U('tattoos'),
-		align    = 'bottom-right',
+		align    = 'top-right',
 		elements = elements
 	}, function(data, menu)
 		local currentLabel, currentValue = data.current.label, data.current.value
@@ -53,7 +53,7 @@ function OpenShopMenu()
 
 			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'tattoo_shop_categories', {
 				title    = _U('tattoos') .. ' | '..currentLabel,
-				align    = 'bottom-right',
+				align    = 'top-right',
 				elements = elements
 			}, function(data2, menu2)
 				local price = data2.current.price
