@@ -284,10 +284,10 @@ Citizen.CreateThread(function()
 				TriggerServerEvent('Ambulance:AppelNotifs', supprimer)
             end
         end) 
-        RageUI.CenterButton("~r~Refuser ~s~l'appel~s~ ~b~N°".. supprimer, nil, {}, true, function(Hovered, Active, Selected)
+        RageUI.CenterButton("~r~Refuse ~s~the call~s~ ~b~N°".. supprimer, nil, {}, true, function(Hovered, Active, Selected)
 			if (Selected) then
 				pris = false
-                ESX.ShowAdvancedNotification("ems", "~b~Demande de ems", "Vous avez refuser l'appel.", "CHAR_CALL911", 8)
+                ESX.ShowAdvancedNotification("ems", "~b~Ems request", "You refused the call.", "CHAR_CALL911", 8)
                 TriggerServerEvent('ems:supprimeappels', supprimer)
             end
         end)
