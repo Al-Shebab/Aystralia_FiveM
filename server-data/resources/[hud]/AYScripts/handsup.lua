@@ -12,6 +12,7 @@ Citizen.CreateThread(function()
             if not handsup then
                 TaskPlayAnim(GetPlayerPed(-1), dict, "handsup_enter", 8.0, 8.0, -1, 50, 0, false, false, false)
                 handsup = true
+                ESX.UI.Menu.CloseAll()
             else
                 handsup = false
                 ClearPedTasks(GetPlayerPed(-1))

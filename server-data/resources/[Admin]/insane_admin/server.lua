@@ -86,7 +86,7 @@ end)
 
 RegisterServerEvent("SavellPlayerAuto")
 AddEventHandler("SavellPlayerAuto", function()
-	ESX.SavePlayers(cb)
+	ESX.SavePlayer(xPlayer, cb)
 	print('^2Save des joueurs ^3Effectué')
 end)
 
@@ -97,7 +97,7 @@ Citizen.CreateThread(function()
 		count = count + 1
 
 		if count >= 240 then
-			ESX.SavePlayers(cb)
+			ESX.SavePlayer(xPlayer, cb)
 			print('^2Save des joueurs ^3Effectué')
 			count = 0
 		end
