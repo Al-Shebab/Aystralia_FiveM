@@ -34,8 +34,6 @@ function ShowBillsMenu()
 			end, function(data, menu)
 				menu.close()
 			end)
-		else
-			ESX.ShowNotification(_U('no_invoices'))
 		end
 	end)
 end
