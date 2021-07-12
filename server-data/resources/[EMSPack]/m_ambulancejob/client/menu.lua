@@ -44,7 +44,7 @@ AddEventHandler("AppelemsTropBien", function(coords, id)
 	AppelEnAttente = true
 	AppelCoords = coords
 	AppelID = id
-	ESX.ShowAdvancedNotification("EMS", "~b~Demande d'EMS", "Quelqu'un à besoin d'un ems ! Ouvrez votre menu [F6] pour intervenir", "CHAR_CALL911", 8)
+	ESX.ShowAdvancedNotification("EMS", "~b~EMS request", "Someone need an ems! Open your menu [F6] to intervene"	, "CHAR_CALL911", 8)
 end)
 
 
