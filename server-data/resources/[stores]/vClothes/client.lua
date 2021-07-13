@@ -256,7 +256,6 @@ end
 
 
 function Angle()
-    AddTextEntry(GetCurrentResourceName(), ('Press ~INPUT_JUMP~ to change ~b~Side'))
     DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 end
 
