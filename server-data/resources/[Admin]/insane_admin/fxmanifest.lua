@@ -15,11 +15,6 @@ client_scripts {
     "src/menu/windows/*.lua",
 }
 
-shared_scripts {
-    '@es_extended/locale.lua',
-    'config.lua'
-}
-
 client_scripts {
     '@es_extended/locale.lua',
     'cl_menu.lua',

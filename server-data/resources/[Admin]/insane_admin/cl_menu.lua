@@ -8,21 +8,20 @@ Citizen.CreateThread(function()
 
 reportlistesql = {}
 
-RMenu.Add('menu', 'main', RageUI.CreateMenu("Insane Admin V2", " "))
-RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'joueurs', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'warn', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'sanction', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'actionstaff', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'perso', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'world', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'veh', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'customcolor', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'ped', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'lister', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'gestr', RageUI.CreateSubMenu(RMenu:Get('menu', 'lister'), "Insane Admin V2", " "))
-RMenu.Add('menu', 'time', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin V2", " "))
+RMenu.Add('menu', 'main', RageUI.CreateMenu("Insane Admin", " "))
+RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'joueurs', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'warn', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'sanction', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'actionstaff', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'perso', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'world', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'veh', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'customcolor', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'ped', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'lister', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'gestr', RageUI.CreateSubMenu(RMenu:Get('menu', 'lister'), "Insane Admin", " "))
 RMenu:Get('menu', 'main'):SetSubtitle(" ")
 RMenu:Get('menu', 'main').EnableMouse = false
 RMenu:Get('menu', 'main').Closed = function()
@@ -40,6 +39,7 @@ local invincible = false
 local crossthemap = false
 local affichername = false
 local afficherblips = false
+local pris = false
 local Freeze = false
 local superJump = false
 local fastSprint = false
@@ -49,6 +49,7 @@ local Frigo2 = false
 local godmode = true
 local fastSwim = false
 local blipsStatus = 0
+local ademo26 = false
 local StaffMod = false
 local NoClip = false
 local NoClipSpeed = 2.0
@@ -60,6 +61,7 @@ local GetBlips = false
 local pBlips = {}
 local armor = 0
 local InStaff = false
+local pris = false
 local Spectating = false
 local WarnType = {
     "Freekill",
@@ -80,6 +82,12 @@ local WarnType = {
     "Non respect du mass RP",
     "Autre...(Entrer la raison)",
 }
+
+if pris then
+	label = "~g~Appel pris"
+else
+	couscous = "~r~Non traité"
+end	
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -168,39 +176,6 @@ MainColor = {
 	a = 255
 }
 
------------------------------------- Color Menu ------------------------------------------
-
-local menuColor = {118, 9, 9}
-Citizen.CreateThread(function()
-    Wait(1000)
-    menuColor[1] = GetResourceKvpInt("menuR")
-    menuColor[2] = GetResourceKvpInt("menuG")
-    menuColor[3] = GetResourceKvpInt("menuB")
-    ReloadColor()
-end)
-
-local AllMenuToChange = nil
-function ReloadColor()
-    Citizen.CreateThread(function()
-        if AllMenuToChange == nil then
-            AllMenuToChange = {}
-            for Name, Menu in pairs(RMenu['menu']) do
-                if Menu.Menu.Sprite.Dictionary == "commonmenu" then
-                    table.insert(AllMenuToChange, Name)
-                end
-            end
-        end
-        for k,v in pairs(AllMenuToChange) do
-            RMenu:Get('menu', v):SetRectangleBanner(118, 9, 9)
-            for name, menu in pairs(RMenu['menu']) do
-              RMenu:Get('menu', name).TitleFont = 4
-          end
-        end
-    end)
-end
-
-----------------------------------------------------------------------------------
-
 function DrawTxt(text,r,z)
     SetTextColour(MainColor.r, MainColor.g, MainColor.b, 255)
     SetTextFont(0)
@@ -245,76 +220,28 @@ Citizen.CreateThread(function()
   
   end)
 
-function DrawPlayerInfo(target)
-    drawTarget = target
-    drawInfo = true
-end
+function SpectatePlayer(player)
+	--local playerPed = PlayerPedId()
+	Spectating = not Spectating
+	local targetPed = GetPlayerPed(player)
 
-function StopDrawPlayerInfo()
-    drawInfo = false
-    drawTarget = 0
-end
+	if(Spectating)then
 
-Citizen.CreateThread( function()
-    while true do
-        Citizen.Wait(0)
-        if drawInfo then
-            local text = {}
-            -- cheat checks
-            local targetPed = GetPlayerPed(drawTarget)
-            
-            table.insert(text,"E pour stop spectate")
-            
-            for i,theText in pairs(text) do
-                SetTextFont(0)
-                SetTextProportional(1)
-                SetTextScale(0.0, 0.30)
-                SetTextDropshadow(0, 0, 0, 0, 255)
-                SetTextEdge(1, 0, 0, 0, 255)
-                SetTextDropShadow()
-                SetTextOutline()
-                SetTextEntry("STRING")
-                AddTextComponentString(theText)
-                EndTextCommandDisplayText(0.3, 0.7+(i/30))
-            end
-            
-            if IsControlJustPressed(0,103) then
-                local targetPed = PlayerPedId()
-                local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
-    
-                RequestCollisionAtCoord(targetx,targety,targetz)
-                NetworkSetInSpectatorMode(false, targetPed)
-    
-                StopDrawPlayerInfo()
-                
-            end
-            
-        end
-    end
-end)
+		local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
 
-function SpectatePlayer(targetPed,target,name)
-    local playerPed = PlayerPedId() -- yourself
-    enable = true
-    if targetPed == playerPed then enable = false end
+		RequestCollisionAtCoord(targetx,targety,targetz)
+		NetworkSetInSpectatorMode(true, targetPed)
 
-    if(enable)then
+		drawNotification('Spectating '..GetPlayerName(player))
+	else
 
-        local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
+		local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
 
-        RequestCollisionAtCoord(targetx,targety,targetz)
-        NetworkSetInSpectatorMode(true, targetPed)
-        DrawPlayerInfo(target)
-        ESX.ShowNotification('~g~Mode spectateur en cours')
-    else
+		RequestCollisionAtCoord(targetx,targety,targetz)
+		NetworkSetInSpectatorMode(false, targetPed)
 
-        local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
-
-        RequestCollisionAtCoord(targetx,targety,targetz)
-        NetworkSetInSpectatorMode(false, targetPed)
-        StopDrawPlayerInfo()
-        ESX.ShowNotification('~b~Mode spectateur arrêtée')
-    end
+		drawNotification('Stopped Spectating '..GetPlayerName(player))
+	end
 end
 
 function drawNotification(text)
@@ -338,25 +265,29 @@ function soufle()
       end
    end
 
-   function Keyboardput(TextEntry, ExampleText, MaxStringLength)
+   function KeyboardInput(TextEntry, ExampleText, MaxStringLenght)
 
-	AddTextEntry('FMMC_KEY_TIP1', TextEntry .. ':')
-	DisplayOnscreenKeyboard(1, "FMMC_KEY_TIP1", "", ExampleText, "", "", "", MaxStringLength)
-	blockinput = true
+	-- TextEntry		-->	The Text above the typing field in the black square
+	-- ExampleText		-->	An Example Text, what it should say in the typing field
+	-- MaxStringLenght	-->	Maximum String Lenght
 
-	while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do
+	AddTextEntry('FMMC_KEY_TIP1', TextEntry) --Sets the Text above the typing field in the black square
+	DisplayOnscreenKeyboard(1, "FMMC_KEY_TIP1", "", ExampleText, "", "", "", MaxStringLenght) --Actually calls the Keyboard Input
+	blockinput = true --Blocks new input while typing if **blockinput** is used
+
+	while UpdateOnscreenKeyboard() ~= 1 and UpdateOnscreenKeyboard() ~= 2 do --While typing is not aborted and not finished, this loop waits
 		Citizen.Wait(0)
 	end
-
+		
 	if UpdateOnscreenKeyboard() ~= 2 then
-		local result = GetOnscreenKeyboardResult()
-		Citizen.Wait(500)
-		blockinput = false
-		return result
+		local result = GetOnscreenKeyboardResult() --Gets the result of the typing
+		Citizen.Wait(500) --Little Time Delay, so the Keyboard won't open again if you press enter to finish the typing
+		blockinput = false --This unblocks new Input when typing is done
+		return result --Returns the result
 	else
-		Citizen.Wait(500)
-		blockinput = false
-		return nil
+		Citizen.Wait(500) --Little Time Delay, so the Keyboard won't open again if you press enter to finish the typing
+		blockinput = false --This unblocks new Input when typing is done
+		return nil --Returns nil if the typing got aborted
 	end
 end
 
@@ -485,19 +416,16 @@ function openStaffMenu()
         Citizen.CreateThread(function()
 			while VM.Staff do
 				RageUI.IsVisible(RMenu:Get('menu', 'main'), true, true, true, function()
-					RageUI.Checkbox("Staff On/Duty", "", InStaff, { Style = RageUI.CheckboxStyle.Tick }, function(Hovered, Selected, Active, Checked)
+					RageUI.Checkbox("On/Offduty", "", InStaff, { Style = RageUI.CheckboxStyle.Tick }, function(Hovered, Selected, Active, Checked)
 						InStaff = Checked;
 						if Selected then
-							if Checked then
-								notifdezub()					
+							if Checked then							
 								InStaff = true
 								StaffMod = true
 							else
-							if nombrecheck == 1 then 
-								nombrecheck = nombrecheck - 1
-								end
 								InStaff = false
 								StaffMod = false
+				
 								FreezeEntityPosition(GetPlayerPed(-1), false)
 								NoClip = false
 				
@@ -513,19 +441,18 @@ function openStaffMenu()
 						end
 					end)
 					if InStaff then
-						RageUI.Button("Personal actions", "", { RightLabel = "→" },true, function()
+						RageUI.Separator("↓ ~r~Menu Staff by Enos ~s~↓")
+						RageUI.Button("Actions perso", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'perso'))
-						RageUI.Button("Staff actions", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Actions staff", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'actionstaff'))
-						RageUI.Button("Vehicle actions", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Actions véhicule", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'veh'))
-						RageUI.Button("List of players", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Liste des joueurs", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'joueurs'))
-						RageUI.Button("HRP options", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Options HRP", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'world'))
-						RageUI.Button("Time management", "", { RightLabel = "→" },true, function()
-						end, RMenu:Get('menu', 'time'))
-						RageUI.Button("Peds menu", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Menu Peds", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'ped'))
 						RageUI.Button("Warn", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'warn')) 
@@ -538,7 +465,7 @@ function openStaffMenu()
 				
 				RageUI.IsVisible(RMenu:Get('menu', 'perso'), true, true, true, function()
 
-					RageUI.Button("TP To Waypoint", nil, {
+					RageUI.Button("Téléporter sur son marqueur", nil, {
 					}, true, function(_, _, Selected)
 					if Selected then
 						local playerPed = GetPlayerPed(-1)
@@ -552,37 +479,44 @@ function openStaffMenu()
 					end
 					end)
 
-					RageUI.Button("Display Coordinates",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Afficher/Cacher coordonnées",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then   
 							Admin.showcoords = not Admin.showcoords    
 							end   
 						end)
 
-					RageUI.Button("Treat yourself to Heal",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("S'octroyer du Heal",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							SetEntityHealth(GetPlayerPed(-1), 200)
 							Notify("~g~Heal effectué~w~")
 						end
 					end)
 
-					RageUI.Button("Treat yourself to Armor",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("S'octroyer du Blindage",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							SetPedArmour(GetPlayerPed(-1), 200)
 							Notify("~g~Blindage effectué~w~")
 						end
 					end)
 
-					RageUI.Button("Give cash",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("S'octroyer de ~g~l'argent cash",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveCash()
 							Notify("~g~Give cash effectué~w~")
 						end
 					end)
 
-					RageUI.Button("Give bank",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("S'octroyer de ~b~l'argent banque",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveBanque()
 							Notify("~g~Give banque effectué~w~")
+						end
+					end)
+
+					RageUI.Button("S'octroyer de ~r~l'argent sale",description, {}, true, function(Hovered, Active, Selected)
+						if (Selected) then
+							GiveND()
+							Notify("~g~Give argent sale effectué~w~")
 						end
 					end)
 
@@ -597,7 +531,7 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Checkbox("Fast swimming", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
+					RageUI.Checkbox("Nage rapide", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							fastSwim = Checked
 							if Checked then
@@ -608,7 +542,7 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Checkbox("Fast running", description, fastSprint,{},function(Hovered,Ative,Selected,Checked)
+					RageUI.Checkbox("Super Sprint", description, fastSprint,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							fastSprint = Checked
 							if Checked then
@@ -635,39 +569,12 @@ function openStaffMenu()
 				end)
 
 				RageUI.IsVisible(RMenu:Get('menu', 'actionstaff'), true, true, true, function()
-					RageUI.Separator("↓ ~b~Intéraction Chat  ~s~↓", nil, {}, true, function(_, _, _)
-					end)
-
-					RageUI.Button("Vider le Chat", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                        ExecuteCommand("clear")
-                        end
+					RageUI.Separator("↓ ~b~Intéraction possible sur un joueur ~s~↓", nil, {}, true, function(_, _, _)
                     end)
-					
-					RageUI.Button("Annonce serveur", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
-                        if (Selected) then
-                            local msg = Keyboardput("Message d'annonce", "", 600)
-                            ExecuteCommand("alert "..msg)
-
-                            if msg ~= nil then
-                                msg = tostring(msg)
-
-                                if type(msg) == 'string' then
-                                    TriggerServerEvent("hAdmin:Message", msg)
-                                    RageUI.CloseAll()
-                                end
-                            end
-                        end
-                    end)
-
-
-					RageUI.Separator("↓ ~b~Intéraction possible sur un joueur  ~s~↓", nil, {}, true, function(_, _, _)
-					end)
-					
 					RageUI.Button("Envoyer un message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 100)
-							local msg = Keyboardput("Raison", "", 100)
+							local quelid = KeyboardInput("ID", "", 100)
+							local msg = KeyboardInput("Raison", "", 100)
 
 							if msg ~= nil then
 								msg = tostring(msg)
@@ -682,14 +589,14 @@ function openStaffMenu()
 					end)
 					RageUI.Button("Téléporter sur joueur", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 100)
+							local quelid = KeyboardInput("ID", "", 100)
 							ExecuteCommand("goto "..quelid)
 							ESX.ShowNotification("~b~Vous venez de vous téléporter à l\'ID : ~s~ " ..quelid)
 						end
 					end)
 					RageUI.Button("Téléporter à vous", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected, target)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 100)
+							local quelid = KeyboardInput("ID", "", 100)
 							ExecuteCommand("bring "..quelid)
 							ESX.ShowNotification("~b~Vous venez de téléporter l\'ID :~s~ " ..quelid.. " ~b~à vous~s~ !")
 						end
@@ -697,9 +604,9 @@ function openStaffMenu()
 					if superadmin then
 						RageUI.Button("Setjob une personne", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local quelid = Keyboardput("ID", "", 10)
-								local job = Keyboardput("Job", "", 10)
-								local grade = Keyboardput("Grade", "", 10)
+								local quelid = KeyboardInput("ID", "", 10)
+								local job = KeyboardInput("Job", "", 10)
+								local grade = KeyboardInput("Grade", "", 10)
 								if job and grade and quelid then
 									ExecuteCommand("setjob "..quelid.. " " ..job.. " " ..grade)
 									ESX.ShowNotification("Vous venez de setjob ~g~"..job.. " " .. grade .. " l\'ID : " ..quelid)
@@ -712,7 +619,7 @@ function openStaffMenu()
 
 					RageUI.Button("Heal une personne", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 3)
+							local quelid = KeyboardInput("ID", "", 3)
 							if quelid then
 								ExecuteCommand("heal "..quelid)
 								Notify("~g~Heal de l'ID "..quelid.." effectué~w~")
@@ -724,16 +631,16 @@ function openStaffMenu()
 
 					RageUI.Button("Revive une personne",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then   
-							local previve = Keyboardput('ID du Joueur', '', 3)
+							local previve = KeyboardInput('ID du Joueur', '', 3)
 							ExecuteCommand('revive', previve)
 							end      
 						end)
 
 					RageUI.Button("Give un item", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 3)
-							local item = Keyboardput("Item", "", 10)
-							local amount = Keyboardput("Nombre", "", 10)
+							local quelid = KeyboardInput("ID", "", 3)
+							local item = KeyboardInput("Item", "", 10)
+							local amount = KeyboardInput("Nombre", "", 10)
 							if item and quelid and amount then
 								ExecuteCommand("giveitem "..quelid.. " " ..item.. " " ..amount)
 								ESX.ShowNotification("Vous venez de donner ~g~"..amount.. " " .. item .. " ~w~à l'ID :" ..quelid)	
@@ -746,9 +653,9 @@ function openStaffMenu()
 					if superadmin then
 						RageUI.Button("Give une arme", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local quelid = Keyboardput("ID", "", 3)
-								local weapon = Keyboardput("WEAPON_...", "", 50)
-								local ammo = Keyboardput("Munitions", "", 100)
+								local quelid = KeyboardInput("ID", "", 3)
+								local weapon = KeyboardInput("WEAPON_...", "", 50)
+								local ammo = KeyboardInput("Munitions", "", 100)
 								if weapon and ammo and quelid then
 									ExecuteCommand("giveweapon "..quelid.. " " ..weapon.. " " ..ammo)
 									ESX.ShowNotification("Vous venez de donner ~g~"..weapon.. " avec " .. ammo .. " munitions ~w~à l'ID :" ..quelid)
@@ -760,8 +667,8 @@ function openStaffMenu()
 
 					RageUI.Button("~o~Kick", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 3)
-							local reason = Keyboardput("Raison du kick", "", 100)
+							local quelid = KeyboardInput("ID", "", 3)
+							local reason = KeyboardInput("Raison du kick", "", 100)
 							ExecuteCommand("kick "..quelid.. "" ..reason)
 							if quelid and reason then
 								ExecuteCommand("kick "..quelid.. " " ..reason)
@@ -774,9 +681,9 @@ function openStaffMenu()
 
 					RageUI.Button("~r~Bannir", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local quelid = Keyboardput("ID", "", 3)
-							local day = Keyboardput("Jours", "", 100)
-							local raison = Keyboardput("Raison du kick", "", 100)
+							local quelid = KeyboardInput("ID", "", 3)
+							local day = KeyboardInput("Jours", "", 100)
+							local raison = KeyboardInput("Raison du kick", "", 100)
 							if quelid and day and raison then
 								ExecuteCommand("sqlban "..quelid.. " " ..day.. " " ..raison)
 								ESX.ShowNotification("Vous venez de ban l\'ID :"..quelid.. " " ..day.. " pour la raison suivante : " ..raison)
@@ -788,7 +695,7 @@ function openStaffMenu()
 
 					RageUI.Button("~g~Faire un déban", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local name = Keyboardput("Nom Steam", "", 100)
+							local name = KeyboardInput("Nom Steam", "", 100)
 							if name then
 								ExecuteCommand("sqlunban "..name)
 								ESX.ShowNotification("Vous venez de déban : "..name)
@@ -807,7 +714,7 @@ function openStaffMenu()
 					RageUI.Separator(GetPlayerName(GetPlayerFromServerId(IdSelected)))
 					RageUI.Button("Envoyer un message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local msg = Keyboardput("Raison", "", 100)
+							local msg = KeyboardInput("Raison", "", 100)
 
 							if msg ~= nil then
 								msg = tostring(msg)
@@ -824,8 +731,8 @@ function openStaffMenu()
 					if superadmin then
 						RageUI.Button("Setjob", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local job = Keyboardput("Job", "", 10)
-								local grade = Keyboardput("Grade", "", 10)
+								local job = KeyboardInput("Job", "", 10)
+								local grade = KeyboardInput("Grade", "", 10)
 								if job and grade then
 									ExecuteCommand("setjob "..IdSelected.. " " ..job.. " " ..grade)
 									ESX.ShowNotification("Vous venez de setjob ~g~"..job.. " " .. grade .. " " .. GetPlayerName(GetPlayerFromServerId(IdSelected)))
@@ -850,22 +757,15 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Button("Spectate", nil, {}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-						local playerId = GetPlayerFromServerId(IdSelected)
-                            SpectatePlayer(GetPlayerPed(playerId),playerId,GetPlayerName(playerId))
-						end
-					end)
-
 					RageUI.Checkbox("Freeze / Defreeze", description, Frigo,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							Frigo = Checked
 							if Checked then
 								ESX.ShowNotification("~r~Joueur Freeze ("..GetPlayerName(GetPlayerFromServerId(IdSelected))..")")
-								TriggerEvent("admin:Freeze", IdSelected)
+								TriggerEvent("admin:Freeze",IdSelected)
 							else
 								ESX.ShowNotification("~r~Joueur Defreeze ("..GetPlayerName(GetPlayerFromServerId(IdSelected))..")")
-								TriggerEvent("admin:Freeze", IdSelected)
+								TriggerEvent("admin:Freeze",IdSelected)
 							end
 						end
 					end)
@@ -897,8 +797,8 @@ function openStaffMenu()
 
 					RageUI.Button("Give un item", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local item = Keyboardput("Item", "", 10)
-							local amount = Keyboardput("Nombre", "", 10)
+							local item = KeyboardInput("Item", "", 10)
+							local amount = KeyboardInput("Nombre", "", 10)
 							if item and amount then
 								ExecuteCommand("giveitem "..IdSelected.. " " ..item.. " " ..amount)
 								ESX.ShowNotification("Vous venez de donner ~g~"..amount.. " " .. item .. " ~w~à " .. GetPlayerName(GetPlayerFromServerId(IdSelected)))	
@@ -911,8 +811,8 @@ function openStaffMenu()
 					if superadmin then
 						RageUI.Button("Give une arme", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local weapon = Keyboardput("WEAPON_...", "", 100)
-								local ammo = Keyboardput("Munitions", "", 100)
+								local weapon = KeyboardInput("WEAPON_...", "", 100)
+								local ammo = KeyboardInput("Munitions", "", 100)
 								if weapon and ammo then
 									ExecuteCommand("giveweapon "..IdSelected.. " " ..weapon.. " " ..ammo)
 									ESX.ShowNotification("Vous venez de donner ~g~"..weapon.. " avec " .. ammo .. " munitions ~w~à " .. GetPlayerName(GetPlayerFromServerId(IdSelected)))
@@ -923,16 +823,16 @@ function openStaffMenu()
 						end)
 						RageUI.Button("~o~Kick", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local kick = Keyboardput("Raison du kick", "", 100)
+								local kick = KeyboardInput("Raison du kick", "", 100)
 								TriggerServerEvent('vStaff:KickPerso', kick)
 							end
 						end)
 
 						RageUI.Button("~r~Bannir", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
-								local quelid = Keyboardput("ID", "", 100)
-								local day = Keyboardput("Jours", "", 100)
-								local raison = Keyboardput("Raison du kick", "", 100)
+								local quelid = KeyboardInput("ID", "", 100)
+								local day = KeyboardInput("Jours", "", 100)
+								local raison = KeyboardInput("Raison du kick", "", 100)
 								if quelid and day and raison then
 									ExecuteCommand("sqlban "..quelid.. " " ..day.. " " ..raison)
 									ESX.ShowNotification("Vous venez de ban l\'ID :"..quelid.. " " ..day.. " pour la raison suivante : " ..raison)
@@ -1000,33 +900,12 @@ function openStaffMenu()
 
 				RageUI.IsVisible(RMenu:Get('menu', 'veh'), true, true, true, function()
 
-					RageUI.Button("Give véhicule (avec clé)", nil, {}, true, function(_, _, Selected)
-					if Selected then
-		
-						local ped = GetPlayerPed(tgt)
-						local ModelName = Keyboardput("Véhicule", "", 100)
-		
-						if ModelName and IsModelValid(ModelName) and IsModelAVehicle(ModelName) then
-							RequestModel(ModelName)
-							while not HasModelLoaded(ModelName) do
-								Citizen.Wait(0)
-							end
-								--local veh = CreateVehicle(GetHashKey(ModelName), GetEntityCoords(GetPlayerPed(-1)), GetEntityHeading(GetPlayerPed(-1)), true, true)
-								TaskWarpPedIntoVehicle(GetPlayerPed(-1), veh, -1)
-								give_vehi(ModelName)
-								Wait(50)
-						else
-							ShowNotification("Erreur !")
-						end
-					end
-					end)
-
 					RageUI.Button("Faire apparaître un véhicule", nil, {}
 					, true, function(_, _, Selected)
 					if Selected then
 		
 						local ped = GetPlayerPed(tgt)
-						local ModelName = Keyboardput("Véhicule", "", 100)
+						local ModelName = KeyboardInput("Véhicule", "", 100)
 		
 						if ModelName and IsModelValid(ModelName) and IsModelAVehicle(ModelName) then
 							RequestModel(ModelName)
@@ -1059,7 +938,7 @@ function openStaffMenu()
 					RageUI.Button("Changer la plaque", nil, {}, true, function(_, Active, Selected)
 					if Selected then
 						if IsPedSittingInAnyVehicle(GetPlayerPed(-1)) then
-							local plaqueVehicule = Keyboardput("Plaque", "", 8)
+							local plaqueVehicule = KeyboardInput("Plaque", "", 8)
 							SetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), false) , plaqueVehicule)
 							ESX.ShowNotification("La plaque du véhicule est désormais : ~g~"..plaqueVehicule)
 						else
@@ -1150,7 +1029,7 @@ function openStaffMenu()
 					RageUI.Button("Entrer un ped custom", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
 						if (Selected) then   
 						local j1 = PlayerId()
-						local newped = Keyboardput('Entrer le nom de votre Ped', '', 45)
+						local newped = KeyboardInput('Entrer le nom de votre Ped', '', 45)
 						local p1 = GetHashKey(newped)
 						RequestModel(p1)
 						while not HasModelLoaded(p1) do
@@ -1257,72 +1136,12 @@ function openStaffMenu()
 				end, function()
 				end)
 
-				RageUI.IsVisible(RMenu:Get('menu', 'time'), true, true, true, function()
-
-					RageUI.Button("Choisir une heure", "Format → heures (espace) minutes", {RightLabel = "→"}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-						local heure = Keyboardput('Entrer l\'heure que vous souhaiter', '', 45)
-							ExecuteCommand("time "..heure)
-						end
-					end)
-
-					RageUI.Button("Bloqué le temps", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("freezetime")
-						end
-					end)
-			
-					RageUI.Button("Soleil plein", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather EXTRASUNNY")
-						end
-					end)
-
-					RageUI.Button("Temps dégagé", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather CLEAR")
-						end
-					end)
-
-					RageUI.Button("Temps neutre", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						  if (Selected) then
-							ExecuteCommand("weather NEUTRAL")
-						  end
-					  end)
-
-					RageUI.Button("Temps halloween", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather HALLOWEEN")
-						end
-					end)
-
-					RageUI.Button("Temps de neige", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather XMAS")
-						end
-					end)
-
-
-					RageUI.Button("Temps de pluit", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather RAIN")
-						end
-					end)
-
-					RageUI.Button("Temps nuageux", nil, {RightLabel = ""}, true, function(Hovered, Active, Selected)
-						if (Selected) then
-							ExecuteCommand("weather CLOUDS")
-						end
-					end)
-			  
-			 end, function()
-			  end)
-
 				RageUI.IsVisible(RMenu:Get('menu', 'lister'), true, true, true, function()
 			
 					for numreport = 1, #reportlistesql, 1 do
 					  RageUI.Button("[Joueur : "..reportlistesql[numreport].reporteur.."~s~] - "..reportlistesql[numreport].type, "Numéro : "..reportlistesql[numreport].id, { RightLabel = label or couscous }, true, function(Hovered, Active, Selected)
 						  if (Selected) then
+							pris = true
 							  typereport = reportlistesql[numreport].type
 							  sonid = reportlistesql[numreport].sonid
 							  reportjoueur = reportlistesql[numreport].reporteur
@@ -1354,28 +1173,9 @@ function openStaffMenu()
 				end
 			end)
 
-			RageUI.Button("Le téléporter", nil, {}, true, function(Hovered, Active, Selected)
+			RageUI.Button("Spectate (Bêta)", nil, {}, true, function(Hovered, Active, Selected)
 				if (Selected) then
-					ExecuteCommand("bring "..sonid)
-				end
-			end)
-
-			RageUI.Button("Spectate", nil, {}, true, function(Hovered, Active, Selected)
-				if (Selected) then
-					ExecuteCommand("spect "..sonid)
-				end
-			end)
-
-			RageUI.Checkbox("Freeze / Defreeze", description, Frigo,{},function(Hovered,Ative,Selected,Checked)
-				if Selected then
-					Frigo = Checked
-					if Checked then
-						ExecuteCommand("freeze "..sonid)
-						ESX.ShowNotification("~r~Joueur Freeze")
-					else
-						ExecuteCommand("freeze "..sonid)
-						ESX.ShowNotification("~g~Joueur Defreeze")
-					end
+                    ----- Fait le ou attend la V2
 				end
 			end)
 
@@ -1391,7 +1191,6 @@ function openStaffMenu()
 			  end)
 
 				RageUI.IsVisible(RMenu:Get('menu', 'world'), true, true, true, function()
-					
 					RageUI.Checkbox("Afficher les Noms", description, affichername,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							affichername = Checked
@@ -1413,30 +1212,6 @@ function openStaffMenu()
 							end
 						end
 					end)
-
-					RageUI.Button("Invincible", nil, {RightLabel = "~g~ON~b~/~r~OFF"}, true, function(Hovered, Active, Selected)
-						if (Selected) then       
-					   -- SetEntityVisible(PlayerPedId(), false, false)
-					   Admin.godmode = not Admin.godmode
-		
-						if Admin.godmode then
-						SetEntityInvincible(PlayerPedId(), true)
-						ESX.ShowNotification('Invicible ~g~ON')
-						else
-						SetEntityInvincible(PlayerPedId(), false)
-						ESX.ShowNotification('Invicible ~r~OFF')
-						end
-						
-						end
-					end)
-
-					RageUI.Button("Activer/Desactiver Crosshair",description, {}, true, function(Hovered, Active, Selected)
-						if (Selected) then 
-								Admin.showcrosshair = not Admin.showcrosshair  
-						end
-					end)
-
-
 				end, function()
 				end)
 				Wait(0)
@@ -1448,19 +1223,6 @@ end
 TriggerEvent('chat:addSuggestion', '/report', 'Faire un appel staff', {
     { name="Raison", help="Merci de détailler votre demande" },
 })
-
-RegisterCommand("spect", function(source, args, rawCommand) 
-  ESX.TriggerServerCallback('RubyMenu:getUsergroup', function(group)
-  playergroup = group
-  if playergroup == 'superadmin' or playergroup == 'owner' then
-  idnum = tonumber(args[1])
-  local playerId = GetPlayerFromServerId(idnum)
-  SpectatePlayer(GetPlayerPed(playerId),playerId,GetPlayerName(playerId))
-  else
-    ESX.ShowNotification("Vous n'avez pas accès à cette commande")
-  end
-end)
-end)
 
 Citizen.CreateThread(function()
 	while true do
@@ -1496,7 +1258,7 @@ function GetPlayers()
 end
 
 function GiveCash()
-	local amount = Keyboardput("Combien?", "", 8)
+	local amount = KeyboardInput("Combien?", "", 8)
 
 	if amount ~= nil then
 		amount = tonumber(amount)
@@ -1509,7 +1271,7 @@ end
 
 
 function GiveBanque()
-	local amount = Keyboardput("Combien?", "", 8)
+	local amount = KeyboardInput("Combien?", "", 8)
 
 	if amount ~= nil then
 		amount = tonumber(amount)
@@ -1522,7 +1284,7 @@ end
 
 
 function GiveND()
-	local amount = Keyboardput("Combien?", "", 8)
+	local amount = KeyboardInput("Combien?", "", 8)
 
 	if amount ~= nil then
 		amount = tonumber(amount)
@@ -1534,7 +1296,7 @@ function GiveND()
 end
 
 function admin_heal_player()
-	local plyId = Keyboardput1("N_BOX_ID", "", "", 8)
+	local plyId = KeyboardInput1("N_BOX_ID", "", "", 8)
 	if plyId ~= nil then
 		plyId = tonumber(plyId)
 		if type(plyId) == 'number' then
@@ -1744,65 +1506,4 @@ Citizen.CreateThread(function()
 	end
   end)
 
------------------------ Alert
-
-alertstring = false
-lastfor = 5
-doalert = false
-
-RegisterNetEvent('alert')
-announcestring = false
-AddEventHandler('alert', function(msg)
-	alertstring = msg
-	doalert = true
-	PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 1)
-	AddTextEntry("FACES_WARNH2", "Alert")
-	AddTextEntry("QM_NO_0", alertstring)
-end)
-
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		if doalert then
-			if IsControlJustPressed(13,201) then
-				print("yes")
-				PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
-				doalert = false
-				alertstring = false
-			end
-			DrawFrontendAlert("FACES_WARNH2", "QM_NO_0", 2, nil, "", 0, 0, false, "FM_NXT_RAC", 1, true, false)
-		end
-	end
-end)
-
------------------
-
-nombrecheck = 0
-
-function notifdezub()
-	while nombrecheck  < 1 do
-	ExecuteCommand("staffservice te")
-	nombrecheck = nombrecheck  + 1
-	end
-end
-
-----------------------
-
-local voituregive = {}
-
-function give_vehi(veh)
-    local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-    
-    Citizen.Wait(10)
-    ESX.Game.SpawnVehicle(veh, {x = plyCoords.x+2 ,y = plyCoords.y, z = plyCoords.z+2}, 313.4216, function (vehicle)
-            local plate = exports.esx_vehicleshop:GeneratePlate()
-            table.insert(voituregive, vehicle)		
-            print(plate)
-            local vehicleProps = ESX.Game.GetVehicleProperties(voituregive[#voituregive])
-            vehicleProps.plate = plate
-            SetVehicleNumberPlateText(voituregive[#voituregive] , plate)
-			TriggerServerEvent('shop:vehicule', vehicleProps, plate)
-		
-	end)
-end
+-- FIN NEWS NOCLIP
