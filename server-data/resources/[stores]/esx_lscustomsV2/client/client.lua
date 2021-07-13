@@ -683,7 +683,7 @@ Citizen.CreateThread(function()
 												currentgarage = i
 												DriveInGarage()
 											else
-												AddTextEntry(GetCurrentResourceName(), ('Press ~b~ENTER~w~ to enter ~b~Los Santos Customs'))
+												AddTextEntry(GetCurrentResourceName(), ('Press ~INPUT_PICKUP~ to enter ~b~Los Santos Customs'))
            										DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 											end
 										else
@@ -697,7 +697,7 @@ Citizen.CreateThread(function()
 											currentgarage = i
 											DriveInGarage()
 										else
-											AddTextEntry(GetCurrentResourceName(), ('Press ~b~ENTER~w~ to enter ~b~Los Santos Customs'))
+											AddTextEntry(GetCurrentResourceName(), ('Press ~INPUT_PICKUP~ to enter ~b~Los Santos Customs'))
 											DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
 										end
 									end
