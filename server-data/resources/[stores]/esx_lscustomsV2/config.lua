@@ -82,7 +82,7 @@ LSC_Config.ModelBlacklist = {
 LSC_Config.lock = false
 
 --Enable/disable old entering way
-LSC_Config.oldenter = false
+LSC_Config.oldenter = true
 
 
 

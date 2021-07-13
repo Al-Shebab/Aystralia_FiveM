@@ -83,27 +83,6 @@ AddEventHandler("spawnVehAll", function()
 	TriggerClientEvent("SpawnAllVeh", -1)
 end)
 
-
-RegisterServerEvent("SavellPlayerAuto")
-AddEventHandler("SavellPlayerAuto", function()
-	ESX.SavePlayer(xPlayer, cb)
-	print('^2Save des joueurs ^3Effectué')
-end)
-
-count = 0
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1000)
-		count = count + 1
-
-		if count >= 240 then
-			ESX.SavePlayer(xPlayer, cb)
-			print('^2Save des joueurs ^3Effectué')
-			count = 0
-		end
-	end
-end)
-
 -----------------------------
 
 -- Warn system
