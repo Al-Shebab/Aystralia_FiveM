@@ -37,8 +37,8 @@ local skinData = {
 	Speed2Loc = {-0.004,0.042,0.025,0.06}, -- 2nd digit
 	Speed3Loc = {0.020,0.042,0.025,0.06}, -- 1st digit
 	UnitLoc = {0.029,0.088,0.025,0.025},
-	TurboBGLoc = {0.053, -0.130, 0.075,0.090},
-	TurboGaugeLoc = {0.0533, -0.125, 0.045,0.060},
+	TurboBGLoc = {0.153, -0.130, 0.075,0.090},
+	TurboGaugeLoc = {0.1533, -0.125, 0.045,0.060},
 
 	RotMult = 2.036936,
 	RotStep = 2.32833,
