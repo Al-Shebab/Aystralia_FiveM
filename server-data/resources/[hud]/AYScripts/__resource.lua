@@ -18,6 +18,7 @@ server_scripts{
 client_scripts{
   "AYStaff-client.lua",
   "vs_client.lua",
+  "blips.lua",
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
@@ -41,6 +42,7 @@ client_scripts{
   -- "pointfinger-client.lua",
   -- "handsup-client.lua",
   "stopwanted-client.lua", 
+  "handsup.lua", 
   "holograms.lua", 
   "anticarmovement.lua", 
   -- "gameui-client.lua",
