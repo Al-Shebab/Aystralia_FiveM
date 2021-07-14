@@ -83,9 +83,9 @@ function disableControl()
   
     DisableControlAction(0, 29,  true) -- Point
 
-    DisableControlAction(0, Keys['Q'], true)
+    DisableControlAction(0, Keys['W'], true)
 
-    DisableControlAction(0, Keys['Z'], true)
+    DisableControlAction(0, Keys['A'], true)
 
     DisableControlAction(0, Keys['S'], true)
 
