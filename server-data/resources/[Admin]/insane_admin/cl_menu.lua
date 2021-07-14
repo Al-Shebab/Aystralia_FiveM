@@ -10,7 +10,7 @@ reportlistesql = {}
 
 RMenu.Add('menu', 'main', RageUI.CreateMenu("Insane Admin", " "))
 RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
-RMenu.Add('menu', 'joueurs', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'players', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'warn', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'sanction', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'actionstaff', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
@@ -73,20 +73,20 @@ local WarnType = {
     "Troll",
     "Power Gaming",
     "Insultes",
-    "Non respect du staff",
+    "Disrespect of staff member",
     "Meta Gaming",
     "Force RP",
     "Free Shoot",
     "Free Punch",
     "Tire en zone safe",
-    "Non respect du mass RP",
-    "Autre...(Entrer la raison)",
+    "Non respect (Mass RP)",
+    "Other...(Enter Reason)",
 }
 
 if pris then
-	label = "~g~Appel pris"
+	label = "~g~Answered call"
 else
-	couscous = "~r~Non traité"
+	couscous = "~r~Untreated"
 end	
 
 RegisterNetEvent('esx:playerLoaded')
@@ -259,9 +259,9 @@ end)
 function soufle()
     infStamina = not infStamina
       if infStamina then
-        Notify("Endurance infini ~g~activé")
+        Notify("Endurance infini ~g~activated")
       else
-        Notify("Endurance infini ~r~desactivé")
+        Notify("Endurance infini ~r~deactivated")
       end
    end
 
@@ -303,7 +303,7 @@ AddEventHandler("hAdmin:envoyer", function(msg)
 		Wait(1)
 	end
 	headshot = GetPedheadshotTxdString(head)
-	ESX.ShowAdvancedNotification('Message du Staff', '~r~Informations', '~r~Raison ~w~: ' ..msg, headshot, 3)
+	ESX.ShowAdvancedNotification('Message from Staff ',' ~ r ~ Informations ',' ~ r ~ Reason ~w~: ' ..msg, headshot, 3)
 end)
 
 Citizen.CreateThread(function()
@@ -442,14 +442,14 @@ function openStaffMenu()
 					end)
 					if InStaff then
 						RageUI.Separator("↓ ~r~Menu Staff by Enos ~s~↓")
-						RageUI.Button("Actions perso", "", { RightLabel = "→" },true, function()
-						end, RMenu:Get('menu', 'perso'))
-						RageUI.Button("Actions staff", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Personal actions", "", { RightLabel = "→" },true, function()
+						end, RMenu:Get('menu', 'personal'))
+						RageUI.Button("Staff actions", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'actionstaff'))
-						RageUI.Button("Actions véhicule", "", { RightLabel = "→" },true, function()
+						RageUI.Button("Vehicle actions", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'veh'))
-						RageUI.Button("Liste des joueurs", "", { RightLabel = "→" },true, function()
-						end, RMenu:Get('menu', 'joueurs'))
+						RageUI.Button("List of players", "", { RightLabel = "→" },true, function()
+						end, RMenu:Get('menu', 'players'))
 						RageUI.Button("Options HRP", "", { RightLabel = "→" },true, function()
 						end, RMenu:Get('menu', 'world'))
 						RageUI.Button("Menu Peds", "", { RightLabel = "→" },true, function()
@@ -465,7 +465,7 @@ function openStaffMenu()
 				
 				RageUI.IsVisible(RMenu:Get('menu', 'perso'), true, true, true, function()
 
-					RageUI.Button("Téléporter sur son marqueur", nil, {
+					RageUI.Button("Teleport to marker", nil, {
 					}, true, function(_, _, Selected)
 					if Selected then
 						local playerPed = GetPlayerPed(-1)
@@ -506,17 +506,17 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Button("S'octroyer de ~b~l'argent banque",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Allow yourself ~ b ~ money from the bank",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveBanque()
-							Notify("~g~Give banque effectué~w~")
+							Notify("~g~Give bank~w~")
 						end
 					end)
 
-					RageUI.Button("S'octroyer de ~r~l'argent sale",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Allow yourself ~ r ~ dirty money",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							GiveND()
-							Notify("~g~Give argent sale effectué~w~")
+							Notify("~g~Give dirty money~w~")
 						end
 					end)
 
@@ -531,7 +531,7 @@ function openStaffMenu()
 						end
 					end)
 
-					RageUI.Checkbox("Nage rapide", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
+					RageUI.Checkbox("Fast swimming", description, fastSwim,{},function(Hovered,Ative,Selected,Checked)
 						if Selected then
 							fastSwim = Checked
 							if Checked then
@@ -556,7 +556,7 @@ function openStaffMenu()
 				end, function()
 				end)
 		
-				RageUI.IsVisible(RMenu:Get('menu', 'joueurs'), true, true, true, function()
+				RageUI.IsVisible(RMenu:Get('menu', 'players'), true, true, true, function()
 					for k,v in ipairs(ServersIdSession) do
 						if GetPlayerName(GetPlayerFromServerId(v)) == "**Invalid**" then table.remove(ServersIdSession, k) end
 						RageUI.Button(v.." : " ..GetPlayerName(GetPlayerFromServerId(v)), nil, {}, true, function(Hovered, Active, Selected)
@@ -569,9 +569,9 @@ function openStaffMenu()
 				end)
 
 				RageUI.IsVisible(RMenu:Get('menu', 'actionstaff'), true, true, true, function()
-					RageUI.Separator("↓ ~b~Intéraction possible sur un joueur ~s~↓", nil, {}, true, function(_, _, _)
+					RageUI.Separator("↓ ~b~Possible interaction on a player ~s~↓", nil, {}, true, function(_, _, _)
                     end)
-					RageUI.Button("Envoyer un message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Send a message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 100)
 							local msg = KeyboardInput("Raison", "", 100)
@@ -584,32 +584,32 @@ function openStaffMenu()
 									RageUI.CloseAll()
 								end
 							end
-							ESX.ShowNotification("Vous venez d'envoyer le message à  l'ID : ~r~ " ..quelid)
+							ESX.ShowNotification("You just sent the message à  l'ID : ~r~ " ..quelid)
 						end
 					end)
-					RageUI.Button("Téléporter sur joueur", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Teleport to player", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 100)
 							ExecuteCommand("goto "..quelid)
-							ESX.ShowNotification("~b~Vous venez de vous téléporter à l\'ID : ~s~ " ..quelid)
+							ESX.ShowNotification("~b~You just teleported to l\'ID : ~s~ " ..quelid)
 						end
 					end)
-					RageUI.Button("Téléporter à vous", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected, target)
+					RageUI.Button("Teleported to you", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected, target)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 100)
 							ExecuteCommand("bring "..quelid)
-							ESX.ShowNotification("~b~Vous venez de téléporter l\'ID :~s~ " ..quelid.. " ~b~à vous~s~ !")
+							ESX.ShowNotification("~b~You just teleported l\'ID :~s~ " ..quelid.. " ~b~à vous~s~ !")
 						end
 					end)
 					if superadmin then
-						RageUI.Button("Setjob une personne", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+						RageUI.Button("Setjob for person", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
 								local quelid = KeyboardInput("ID", "", 10)
 								local job = KeyboardInput("Job", "", 10)
 								local grade = KeyboardInput("Grade", "", 10)
 								if job and grade and quelid then
 									ExecuteCommand("setjob "..quelid.. " " ..job.. " " ..grade)
-									ESX.ShowNotification("Vous venez de setjob ~g~"..job.. " " .. grade .. " l\'ID : " ..quelid)
+									ESX.ShowNotification("You just setjob to ~g~"..job.. " " .. grade .. " l\'ID : " ..quelid)
 								else
 									RageUI.CloseAll()	
 								end	
@@ -617,33 +617,33 @@ function openStaffMenu()
 						end)
 					end
 
-					RageUI.Button("Heal une personne", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Heal a person", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 3)
 							if quelid then
 								ExecuteCommand("heal "..quelid)
-								Notify("~g~Heal de l'ID "..quelid.." effectué~w~")
+								Notify("~g~Heal from l'ID "..quelid.." effectué~w~")
 							else
 								RageUI.CloseAll()	
 							end
 						end
 					end)
 
-					RageUI.Button("Revive une personne",description, {}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Revive a person",description, {}, true, function(Hovered, Active, Selected)
 						if (Selected) then   
 							local previve = KeyboardInput('ID du Joueur', '', 3)
 							ExecuteCommand('revive', previve)
 							end      
 						end)
 
-					RageUI.Button("Give un item", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Give an item", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 3)
 							local item = KeyboardInput("Item", "", 10)
-							local amount = KeyboardInput("Nombre", "", 10)
+							local amount = KeyboardInput("Number", "", 10)
 							if item and quelid and amount then
 								ExecuteCommand("giveitem "..quelid.. " " ..item.. " " ..amount)
-								ESX.ShowNotification("Vous venez de donner ~g~"..amount.. " " .. item .. " ~w~à l'ID :" ..quelid)	
+								ESX.ShowNotification("You just gave ~g~"..amount.. " " .. item .. " ~w~à l'ID :" ..quelid)	
 							else
 								RageUI.CloseAll()	
 							end			
@@ -651,14 +651,14 @@ function openStaffMenu()
 					end)
 
 					if superadmin then
-						RageUI.Button("Give une arme", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+						RageUI.Button("Give a weapon", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 							if (Selected) then
 								local quelid = KeyboardInput("ID", "", 3)
 								local weapon = KeyboardInput("WEAPON_...", "", 50)
-								local ammo = KeyboardInput("Munitions", "", 100)
+								local ammo = KeyboardInput("Ammunition", "", 100)
 								if weapon and ammo and quelid then
 									ExecuteCommand("giveweapon "..quelid.. " " ..weapon.. " " ..ammo)
-									ESX.ShowNotification("Vous venez de donner ~g~"..weapon.. " avec " .. ammo .. " munitions ~w~à l'ID :" ..quelid)
+									ESX.ShowNotification("You just gave ~g~"..weapon.. " avec " .. ammo .. " munitions ~w~à l'ID :" ..quelid)
 								else
 									RageUI.CloseAll()	
 								end
@@ -668,37 +668,37 @@ function openStaffMenu()
 					RageUI.Button("~o~Kick", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 3)
-							local reason = KeyboardInput("Raison du kick", "", 100)
+							local reason = KeyboardInput("Reason for kick", "", 100)
 							ExecuteCommand("kick "..quelid.. "" ..reason)
 							if quelid and reason then
 								ExecuteCommand("kick "..quelid.. " " ..reason)
-								ESX.ShowNotification("Vous venez de kick l\'ID :"..quelid.. " pour la raison suivante : " ..reason)
+								ESX.ShowNotification("You just kicked l\'ID :"..quelid.. " pour la raison suivante : " ..reason)
 							else
 								RageUI.CloseAll()	
 							end	
 						end
 					end)
 
-					RageUI.Button("~r~Bannir", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("~r~Banish", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local quelid = KeyboardInput("ID", "", 3)
-							local day = KeyboardInput("Jours", "", 100)
-							local raison = KeyboardInput("Raison du kick", "", 100)
+							local day = KeyboardInput("Days", "", 100)
+							local raison = KeyboardInput("Reason for kick", "", 100)
 							if quelid and day and raison then
 								ExecuteCommand("sqlban "..quelid.. " " ..day.. " " ..raison)
-								ESX.ShowNotification("Vous venez de ban l\'ID :"..quelid.. " " ..day.. " pour la raison suivante : " ..raison)
+								ESX.ShowNotification("You just banned l\'ID :"..quelid.. " " ..day.. " for the following reason: " ..raison)
 							else
 								RageUI.CloseAll()	
 							end
 						end
 					end)
 
-					RageUI.Button("~g~Faire un déban", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("~g~Make a unban", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
-							local name = KeyboardInput("Nom Steam", "", 100)
+							local name = KeyboardInput("Steam name", "", 100)
 							if name then
 								ExecuteCommand("sqlunban "..name)
-								ESX.ShowNotification("Vous venez de déban : "..name)
+								ESX.ShowNotification("You have just unbanned : "..name)
 							else
 								RageUI.CloseAll()	
 							end
@@ -709,10 +709,10 @@ function openStaffMenu()
 				end)
 		
 				RageUI.IsVisible(RMenu:Get('menu', 'options'), true, true, true, function()
-					RageUI.Separator("↓ ~r~Actions possible sur ~s~↓", nil, {}, true, function(_, _, _)
+					RageUI.Separator("↓ ~r~Possible actions on ~s~↓", nil, {}, true, function(_, _, _)
 					end)
 					RageUI.Separator(GetPlayerName(GetPlayerFromServerId(IdSelected)))
-					RageUI.Button("Envoyer un message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
+					RageUI.Button("Send a message", nil, {RightLabel = nil}, true, function(Hovered, Active, Selected)
 						if (Selected) then
 							local msg = KeyboardInput("Raison", "", 100)
 
@@ -724,7 +724,7 @@ function openStaffMenu()
 									RageUI.CloseAll()
 								end
 							end
-							ESX.ShowNotification("Vous venez d'envoyer le message à ~b~" .. GetPlayerName(GetPlayerFromServerId(IdSelected)))
+							ESX.ShowNotification("You just sent the message to ~b~" .. GetPlayerName(GetPlayerFromServerId(IdSelected)))
 						end
 					end)
 
