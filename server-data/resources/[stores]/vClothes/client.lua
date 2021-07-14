@@ -1151,7 +1151,7 @@ Citizen.CreateThread(function()
                
                
                end)
-                end
+            end
             end)
             RageUI.Button("Duffle Bag", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
