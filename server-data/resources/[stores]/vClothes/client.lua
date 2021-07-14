@@ -260,7 +260,7 @@ function Angle()
 end
 
 function gettxt2(txtt)
-    AddTextEntry('FMMC_MPM_NA', "Texte")
+    AddTextEntry('FMMC_MPM_NA', "Enter a name for your outfit")
     DisplayOnscreenKeyboard(1, "FMMC_MPM_NA", "", txtt, "", "", "", 100)
     while (UpdateOnscreenKeyboard() == 0) do
         DisableAllControlActions(0);
@@ -335,7 +335,7 @@ local watodoo = {
 
 local watoda = {
 	indexwatoda = 1,
-	listwatoda = {'Masque', 'Chapeau', 'Lunettes', 'Boucles d\'oreilles'},
+	listwatoda = {'Mask', 'Hat', 'Glasses', 'Earrings'},
 }
 
 MaskTab = {}
@@ -348,7 +348,7 @@ Citizen.CreateThread(function()
         local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
         local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, listClotheshop[k].x, listClotheshop[k].y, listClotheshop[k].z)
 
-        if dist <= 1.5 then   
+        if dist <= 3.5 then   
             AddTextEntry(GetCurrentResourceName(), ('Press ~INPUT_PICKUP~ to access the ~b~Clothes Shop'))
             DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
             if IsControlJustPressed(1, 51) then
@@ -437,7 +437,7 @@ Citizen.CreateThread(function()
             Angle()
             RageUI.Button("Save your outfit", "Save an outfit in your closet!", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
                 if (Selected) then
-                    k = gettxt2("What do you want to call your outfit?")
+                    k = gettxt2("")
                     if k ~= nil then
                         if tostring(k) ~= nil and tostring(k) ~= "" then
         
@@ -451,7 +451,7 @@ Citizen.CreateThread(function()
                 end
             end)
             if #TenueTable == 0 then
-                RageUI.Button("Empty all", "Your save 0 outfit!", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Empty all", nil, { RightLabel = "→" }, true, function(Hovered, Active, Selected)
                     if (Selected) then
                     end
                 end)
@@ -505,7 +505,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for f = 1, 115 do
-                RageUI.Button("Pantalon #" .. f, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Pants #" .. f, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants1 = f
                         pants2 = 0
@@ -547,7 +547,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),6, shoes1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         shoes2 = i
                         CreateShoes()
@@ -596,7 +596,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),8, tshirt1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         tshirt2 = i
                         CreateTop()
@@ -645,7 +645,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),11, torso1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso2 = i
                         CreateTop()
@@ -694,7 +694,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),4,pants1) , 1 do
                 am[i] = i
-                RageUI.Button("Variations #"..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants2 = i
                         CreateFutal()
@@ -741,7 +741,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for k = 1, 289 do
-                RageUI.Button("Vestes #" .. k, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Vest " .. k, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso1 = k
                         torso2 = 0
@@ -781,7 +781,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for l = 1, 91 do
-                RageUI.Button("Chaussures #" .. l, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Shoes " .. l, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         shoes1 = l
                         shoes2 = 0
@@ -821,33 +821,32 @@ Citizen.CreateThread(function()
             end
             Angle()
             lunetteItem = {
-                "Aucune",
-                "Lunette sport",
-                "Lunette de soleil",
-                "Lunette old school",
-                "Lunette moyen-age",
-                "Lunette de soleil",
-                "Aucune",
-                "Lunette de soleil",
-                "Lunette",
-                "Lunette sport",
-                "Lunette mafieux",
-                "Aucune",
-                "Lunette luxe",
-                "Lunette de baron",
-                "Aucune",
-                "Lunette sport",
-                "Lunette sport",
-                "Lunette teinté",
-                "Lunette",
-                "Fausse lunette",
-                "Lunette moderne",
-                "Lunette america",
-                "Lunette america",
-                "Lunette sport",
-                
-                "Lunette aviateur",
-                "Lunette aviateur"
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1",
+                "Glasses 1"
             }
             for i = 0,25,1 do
                 --
@@ -869,7 +868,7 @@ Citizen.CreateThread(function()
                         SetPedPropIndex(playerPed, 1, glasses1-1, glasses2, 2)
                     end
                     if (Selected) then
-                        TriggerServerEvent("dqp:SetNewMasque", glasses1, glasses2,"Lunette", lunetteItem[i])
+                        TriggerServerEvent("dqp:SetNewMasque", glasses1, glasses2,"Glasses 1", lunetteItem[i])
                     end
                 end)
         
@@ -892,7 +891,7 @@ Citizen.CreateThread(function()
                 --
                 local amount = {}
                 local ind = i+2
-                RageUI.Button("Chaine #"..ind, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Chain "..ind, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         chain1 = i
                         chain2 = 0
@@ -944,7 +943,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for a = 1, 144 do
-                RageUI.Button("Bras #" .. a, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Arms " .. a, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         arms1 = a
                         SetPedComponentVariation(GetPlayerPed(-1), 3, arms1)
@@ -985,44 +984,43 @@ Citizen.CreateThread(function()
             end
             Angle()
             boucleItem = {
-                "Oreillete",
-                "Oreillete",
-                "Oreillete",
-                "Aucun",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-                "Boucle d'oreille",
-        
-                "Boucle d'oreille",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
+                "Earrings 1",
         
         
         
@@ -1127,7 +1125,7 @@ Citizen.CreateThread(function()
                 Tourner()       
             end
             Angle()
-            RageUI.Button("Aucun", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Earrings ", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1), 5, 0, 0, 2)
                 end
@@ -1157,7 +1155,7 @@ Citizen.CreateThread(function()
                end)
                 end
             end)
-            RageUI.Button("Sac à dos", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Gun Sack", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1),7, 3, 0, 2)
                 end
@@ -1188,7 +1186,7 @@ Citizen.CreateThread(function()
                end)
                 end
             end)
-            RageUI.Button("Sac Tactique", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Bags", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1), 5, 44, 0, 2)
                 end
@@ -1232,7 +1230,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for t = 1, 144 do
-                RageUI.Button("T-Shirt #" .. t, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Shirt " .. t, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         tshirt1 = t
                         tshirt2 = 0
@@ -1272,72 +1270,72 @@ Citizen.CreateThread(function()
             end
             Angle()
             local chapeauItem = {
-                "Casque",
-                "Bonnet d'âne",
-                "Bonnet",
-                "Bob",
-                "Casquette LS",
-                "Bonnet",
-                "Casquette miliaire",
-                "Beret",
-                "",
-                "Casquette à l'envers",
-                "Casquette",
-                "",
-                "Chapeau",
-                "Chapeau Cowboy",
-                "Bandana",
-                "Casque de musique",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casque de pilote",
-                "Bob de pêcheur",
-                "Chapeau chill",
-                "Chapeau de noël",
-                "Chapeau de lutin",
-                "Corne de noël",
-                "Chapeau",
-                "Chapeau melon",
-                "Chapeau haut",
-                "Bonnet",
-                "Chapeau",
-                "Chapeau",
-                "Chapeau USA",
-                "Chapeau USA",
-                "Chapeau USA",
-                "Bonnet USA",
-                "USA",
-                "Entenne USA",
-                "Casque à bière",
-                "Casque aviation",
-                "Casque d'intervention",
-                "Chapeau noël",
-                "Chapeau noël",
-                "Chapeau noël",
-                "Chapeau noël",
-                "Casquette",
-                "Casquette à l'envers",
-                "Casquette LSPD",
-                "Casque d'aviateur",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casque",
-                "Casquette",
-                "Casquette",
-                "Casquette",
-                "Chapeau Alien",
-                "Casquette",
-                "Casque",
-                "Casquette",
-                "Chapeau",
-                "Casque",
-                "Chapeau",
-                "Casquette"
+                "Hat 1",
+                "Hat 2",
+                "Hat 3",
+                "Hat 4",
+                "Hat 5",
+                "Hat 6",
+                "Hat 7",
+                "Hat 8",
+                "Hat 9",
+                "Hat 10",
+                "Hat 11",
+                "Hat 12",
+                "Hat 13",
+                "Hat 14",
+                "Hat 15",
+                "Hat 16",
+                "Hat 17",
+                "Hat 18",
+                "Hat 19",
+                "Hat 20",
+                "Hat 21",
+                "Hat 22",
+                "Hat 23",
+                "Hat 24",
+                "Hat 25",
+                "Hat 26",
+                "Hat 27",
+                "Hat 28",
+                "Hat 29",
+                "Hat 30",
+                "Hat 31",
+                "Hat 32",
+                "Hat 33",
+                "Hat 34",
+                "Hat 35",
+                "Hat 36",
+                "Hat 37",
+                "Hat 38",
+                "Hat 39",
+                "Hat 40",
+                "Hat 41",
+                "Hat 42",
+                "Hat 43",
+                "Hat 44",
+                "Hat 45",
+                "Hat 46",
+                "Hat 47",
+                "Hat 48",
+                "Hat 49",
+                "Hat 50",
+                "Hat 51",
+                "Hat 52",
+                "Hat 53",
+                "Hat 54",
+                "Hat 55",
+                "Hat 56",
+                "Hat 57",
+                "Hat 58",
+                "Hat 59",
+                "Hat 60",
+                "Hat 61",
+                "Hat 62",
+                "Hat 63",
+                "Hat 64",
+                "Hat 65",
+                "Hat 67"
                 
             }
             for i = -1,GetNumberOfPedDrawableVariations(GetPlayerPed(-1), 0),1 do
@@ -1359,7 +1357,7 @@ Citizen.CreateThread(function()
                         SetPedPropIndex(GetPlayerPed(-1), 0, hats1-1, 0, 2)
                     end
                     if (Selected) then
-                        TriggerServerEvent("Mushy:SetNewMasque", hats1-1,hats2,"Chapeau",chapeauItem[i],0)
+                        TriggerServerEvent("Mushy:SetNewMasque", hats1-1,hats2,"Hat 1",chapeauItem[i],0)
                     end
                 end)
         
