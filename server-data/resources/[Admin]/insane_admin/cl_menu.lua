@@ -20,7 +20,7 @@ RMenu.Add('menu', 'options', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "In
 RMenu.Add('menu', 'veh', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'customcolor', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'ped', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
-RMenu.Add('menu', 'lister', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
+RMenu.Add('menu', 'list', RageUI.CreateSubMenu(RMenu:Get('menu', 'main'), "Insane Admin", " "))
 RMenu.Add('menu', 'gestr', RageUI.CreateSubMenu(RMenu:Get('menu', 'lister'), "Insane Admin", " "))
 RMenu:Get('menu', 'main'):SetSubtitle(" ")
 RMenu:Get('menu', 'main').EnableMouse = false
@@ -67,7 +67,7 @@ local WarnType = {
     "Freekill",
     "ForceRP",
     "HRP-Vocal",
-    "Conduite-HRP",
+    "Conduct-HRP",
     "No Fear RP",
     "No Pain RP",
     "Troll",
