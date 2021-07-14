@@ -169,10 +169,10 @@ local function DriveInGarage()
 	if DoesEntityExist(veh) then
 		--Set menu title
 		if currentgarage == 4 or currentgarage == 5 then
-			LSCMenu:setTitle("Beeker's Garage")
+			LSCMenu:setTitle("Los Santos Custom")
 			LSCMenu.title_sprite = "shopui_title_carmod2"
 		elseif currentgarage == 6 then
-			LSCMenu:setTitle("Benny's Motorworks")
+			LSCMenu:setTitle("Los Santos Custom")
 			LSCMenu.title_sprite = "shopui_title_supermod"
 		else
 			LSCMenu:setTitle("Los Santos Customs")
@@ -1334,11 +1334,11 @@ local function AddBlips()
 		SetBlipAsShortRange(blip,true)
 		if i == 5 then
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Los Santos Custom")
+			AddTextComponentString("Los Santos Customs")
 			EndTextCommandSetBlipName(blip)
 		elseif i == 6 then
 			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Los Santos Custom")
+			AddTextComponentString("Los Santos Customs")
 			EndTextCommandSetBlipName(blip)
 		end
 	end
