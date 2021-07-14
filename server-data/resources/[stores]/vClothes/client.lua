@@ -451,7 +451,7 @@ Citizen.CreateThread(function()
                 end
             end)
             if #TenueTable == 0 then
-                RageUI.Button("Empty all", nil, { RightLabel = "→" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Clear all saved outfits", nil, { RightLabel = "→" }, true, function(Hovered, Active, Selected)
                     if (Selected) then
                     end
                 end)
@@ -505,7 +505,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for f = 1, 115 do
-                RageUI.Button("Pants #" .. f, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Pants " .. f, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants1 = f
                         pants2 = 0
@@ -822,31 +822,31 @@ Citizen.CreateThread(function()
             Angle()
             lunetteItem = {
                 "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1",
-                "Glasses 1"
+                "Glasses 2",
+                "Glasses 3",
+                "Glasses 4",
+                "Glasses 5",
+                "Glasses 6",
+                "Glasses 7",
+                "Glasses 8",
+                "Glasses 9",
+                "Glasses 10",
+                "Glasses 11",
+                "Glasses 12",
+                "Glasses 13",
+                "Glasses 14",
+                "Glasses 15",
+                "Glasses 16",
+                "Glasses 17",
+                "Glasses 18",
+                "Glasses 19",
+                "Glasses 20",
+                "Glasses 21",
+                "Glasses 22",
+                "Glasses 23",
+                "Glasses 24",
+                "Glasses 25",
+                "Glasses 26"
             }
             for i = 0,25,1 do
                 --
@@ -985,45 +985,43 @@ Citizen.CreateThread(function()
             Angle()
             boucleItem = {
                 "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-                "Earrings 1",
-        
-        
-        
+                "Earrings 2",
+                "Earrings 3",
+                "Earrings 4",
+                "Earrings 5",
+                "Earrings 6",
+                "Earrings 7",
+                "Earrings 8",
+                "Earrings 9",
+                "Earrings 10",
+                "Earrings 11",
+                "Earrings 12",
+                "Earrings 13",
+                "Earrings 14",
+                "Earrings 15",
+                "Earrings 16",
+                "Earrings 17",
+                "Earrings 18",
+                "Earrings 19",
+                "Earrings 20",
+                "Earrings 21",
+                "Earrings 22",
+                "Earrings 23",
+                "Earrings 24",
+                "Earrings 25",
+                "Earrings 26",
+                "Earrings 27",
+                "Earrings 28",
+                "Earrings 29",
+                "Earrings 30",
+                "Earrings 31",
+                "Earrings 32",
+                "Earrings 33",
+                "Earrings 34",
+                "Earrings 35",
+                "Earrings 36",
+                "Earrings 37",
+                "Earrings 38",
             }
             local playerPed = GetPlayerPed(-1)
             for i = 0,36,1 do
@@ -1074,7 +1072,7 @@ Citizen.CreateThread(function()
                     
                 end
 
-                RageUI.Button("Montre #"..ind, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Watch "..ind, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         clock1 = i
                         clock2 = 0
@@ -1125,7 +1123,7 @@ Citizen.CreateThread(function()
                 Tourner()       
             end
             Angle()
-            RageUI.Button("Earrings ", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("No Bag ", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1), 5, 0, 0, 2)
                 end
@@ -1155,7 +1153,7 @@ Citizen.CreateThread(function()
                end)
                 end
             end)
-            RageUI.Button("Gun Sack", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+            RageUI.Button("Duffle Bag", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
                     SetPedComponentVariation(GetPlayerPed(-1),7, 3, 0, 2)
                 end
@@ -1170,36 +1168,6 @@ Citizen.CreateThread(function()
         
                        }
         
-                       TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
-                       
-                   
-                   
-               end)
-        
-               TriggerEvent('skinchanger:getSkin', function(skin)
-        
-                   
-                   TriggerServerEvent('esx_skin:save', skin)
-                   
-               
-               
-               end)
-                end
-            end)
-            RageUI.Button("Bags", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
-                if (Active) then
-                    SetPedComponentVariation(GetPlayerPed(-1), 5, 44, 0, 2)
-                end
-                if (Selected) then
-                    TriggerEvent('skinchanger:getSkin', function(skin)
-            
-                        
-            
-                        clothesSkin = {
-                           ['bags_1'] = 44, ['torso_2'] = 0,
-        
-        
-                        }
                        TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
                        
                    
