@@ -1133,7 +1133,7 @@ Citizen.CreateThread(function()
                         
             
                         clothesSkin = {
-                           ['bags_1'] = 0, ['chain_1'] = 0,
+                            ['bags_1'] = 44, ['torso_2'] = 0,
         
         
                         }
