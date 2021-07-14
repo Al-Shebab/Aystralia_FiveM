@@ -63,11 +63,11 @@ function ToggleVehicleLock()
 			if lockStatus == 1 then -- unlocked
 				SetVehicleDoorsLocked(vehicle, 2)
 				PlayVehicleDoorCloseSound(vehicle, 1)
-                ESX.ShowNotification("~b~Locked")
+				exports['okokNotify']:Alert("", "Locked!", 5000, 'success')
 			elseif lockStatus == 2 then -- locked
 				SetVehicleDoorsLocked(vehicle, 1)
 				PlayVehicleDoorOpenSound(vehicle, 0)
-                ESX.ShowNotification("~r~Unlocked")
+				exports['okokNotify']:Alert("", "Unlocked!", 5000, 'warning')
 			end
 		end
 
