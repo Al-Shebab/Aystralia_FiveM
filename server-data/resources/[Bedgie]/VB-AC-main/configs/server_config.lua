@@ -16,9 +16,9 @@ VB_AC = {}
 VB_AC.UseESX = true
 VB_AC.ESXTrigger = "esx:getSharedObject"
 
-VB_AC.GeneralBanWebhook = ""
-VB_AC.EntitiesWebhookLog = ""
-VB_AC.ExplosionWebhookLog = ""
+VB_AC.GeneralBanWebhook = "https://discord.com/api/webhooks/864837659595636756/BJr66zlrWcDCUTpF1ZI3jEkW1UJxVzlwFhmxe6dW4zfVS-76XmqZAJ27pnqyrU0f8IT3"
+VB_AC.EntitiesWebhookLog = "https://discord.com/api/webhooks/864837659595636756/BJr66zlrWcDCUTpF1ZI3jEkW1UJxVzlwFhmxe6dW4zfVS-76XmqZAJ27pnqyrU0f8IT3"
+VB_AC.ExplosionWebhookLog = "https://discord.com/api/webhooks/864837659595636756/BJr66zlrWcDCUTpF1ZI3jEkW1UJxVzlwFhmxe6dW4zfVS-76XmqZAJ27pnqyrU0f8IT3"
 
 
 VB_AC.ExplosionProtection = true
@@ -27,7 +27,7 @@ VB_AC.AntiBlacklistedWords = true
 VB_AC.AntiBlacklistedTriggers = true
 VB_AC.AntiClearPedTasks = true
 VB_AC.AntiFakeChatMessages = true
-VB_AC.AntiVPN = true
+VB_AC.AntiVPN = false
 VB_AC.ReloadBanListTime = 600000 -- 10 Mins
 
 VB_AC.MaxPedsPerUser = 4

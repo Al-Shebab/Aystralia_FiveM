@@ -56,11 +56,11 @@ VB_AC.ClearPedsAfterDetection = true
 VB_AC.ClearObjectsAfterDetection = true
 VB_AC.ClearVehiclesAfterDetection = true
 VB_AC.AntiMenyoo = true
-VB_AC.AntiPedRevive = true
-VB_AC.AntiSuicide = true -- This isn't perfectly working, if normal players get banned because of this, disable it.
-VB_AC.AntiGiveArmour = true
+VB_AC.AntiPedRevive = false
+VB_AC.AntiSuicide = false -- This isn't perfectly working, if normal players get banned because of this, disable it.
+VB_AC.AntiGiveArmour = false
 
-VB_AC.AntiVehicleSpawn = true
+VB_AC.AntiVehicleSpawn = false
 VB_AC.GarageList = { -- Place all of the garage coordinates right here.
 	{x = 217.89, y = -804.99, z = 30.91},
 }
