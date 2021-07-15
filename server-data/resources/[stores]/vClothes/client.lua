@@ -1151,11 +1151,11 @@ Citizen.CreateThread(function()
                
                
                end)
-            end
+                end
             end)
             RageUI.Button("Duffle Bag", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                 if (Active) then
-                    SetPedComponentVariation(GetPlayerPed(-1), 5, 44, 0, 2)
+                    SetPedComponentVariation(GetPlayerPed(-1),7, 3, 0, 2)
                 end
                 if (Selected) then
                     TriggerEvent('skinchanger:getSkin', function(skin)
@@ -1163,53 +1163,27 @@ Citizen.CreateThread(function()
                         
             
                         clothesSkin = {
-                        ['bags_1'] = 44, ['torso_2'] = 0,
+                           ['chain_1'] = 2, ['chain_2'] = 0,
         
         
-                        }
-                    TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
-                    
-                
-                
-            end)
+                       }
         
-            TriggerEvent('skinchanger:getSkin', function(skin)
+                       TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
+                       
+                   
+                   
+               end)
         
-                
-                TriggerServerEvent('esx_skin:save', skin)
-                
-            
-            
-                    end)
+               TriggerEvent('skinchanger:getSkin', function(skin)
+        
+                   
+                   TriggerServerEvent('esx_skin:save', skin)
+                   
+               
+               
+               end)
                 end
             end)
-           RageUI.Button("Bags", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
-                if (Active) then
-                      SetPedComponentVariation(GetPlayerPed(-1), 5, 44, 0, 2)
-         end
-         if (Selected) then
-             TriggerEvent('skinchanger:getSkin', function(skin)
-     
-                 
-     
-                 clothesSkin = {
-                    ['bags_1'] = 44, ['torso_2'] = 0,
- 
- 
-                 }
-                TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
-                
-            
-            
-        end)
- 
-        TriggerEvent('skinchanger:getSkin', function(skin)
- 
-            
-            TriggerServerEvent('esx_skin:save', skin)
-            
-        
-        
         end, function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'shirt'), true, true, true, function()
@@ -1677,5 +1651,4 @@ function DrawAnim()
     TaskPlayAnim(ped, ad, "try_shirt_positive_c", 8.0, 0.6, -1, 49, 0, 0, 0, 0 )
     TaskPlayAnim(ped, ad, "try_shirt_positive_d", 8.0, 0.6, -1, 49, 0, 0, 0, 0 )
 end
-
 
