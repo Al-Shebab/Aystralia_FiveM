@@ -390,37 +390,37 @@ Citizen.CreateThread(function()
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             end
-            RageUI.Button("Dressing Room", "", { RightBadge = RageUI.BadgeStyle.Clothes },true, function()
+            RageUI.Button("Dressing Room", nil, { RightBadge = RageUI.BadgeStyle.Clothes },true, function()
             end, RMenu:Get('menu', 'dressing'))
-            RageUI.Button("Jacket", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Jacket", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'torso'))
-            RageUI.Button("Jacket Colours", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Jacket Colours", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colortorso'))
-            RageUI.Button("Arms", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Arms", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'arms')) 
-            RageUI.Button("T-Shirt", "", { RightLabel = "→" },true, function()
+            RageUI.Button("T-Shirt", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'shirt'))
-            RageUI.Button("T-Shirt Colours", "", { RightLabel = "→" },true, function()
+            RageUI.Button("T-Shirt Colours", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colortshirt'))
-            RageUI.Button("Pants", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Pants", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'pants'))
-            RageUI.Button("Pants Colours", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Pants Colours", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colorpants'))
-            RageUI.Button("Shoes", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Shoes", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'shoes'))
-            RageUI.Button("Shoes Colours", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Shoes Colours", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'colorshoes'))
-            RageUI.Button("Hats", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Hats", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'hats'))
-            RageUI.Button("Glasses", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Glasses", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'glasses'))
-            RageUI.Button("Bags", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Bags", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'bag'))
-            RageUI.Button("Watches", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Watches", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'clock'))
-            RageUI.Button("Chains", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Chains", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'chain'))
-            RageUI.Button("Earrings", "", { RightLabel = "→" },true, function()
+            RageUI.Button("Earrings", nil, { RightLabel = "→" },true, function()
             end, RMenu:Get('menu', 'oreille'))
         end, function()
         end, 1)
@@ -440,11 +440,13 @@ Citizen.CreateThread(function()
                     k = gettxt2("")
                     if k ~= nil then
                         if tostring(k) ~= nil and tostring(k) ~= "" then
-        
                             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
                                 TriggerServerEvent("VmLife:SaveTenueS",k,skin)
                             end)
-                            Wait(550)
+                            RenderScriptCams(0, 1, 1000, 1, 1)
+                            DestroyAllCams(true)
+                            ClearPedTasks(GetPlayerPed(-1))
+                            FreezeEntityPosition(GetPlayerPed(-1), false)
                             RageUI.CloseAll()
                         end
                     end
@@ -547,7 +549,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),6, shoes1) , 1 do
                 am[i] = i
-                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Shoes Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         shoes2 = i
                         CreateShoes()
@@ -596,7 +598,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),8, tshirt1) , 1 do
                 am[i] = i
-                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Shirt Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         tshirt2 = i
                         CreateTop()
@@ -645,7 +647,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),11, torso1) , 1 do
                 am[i] = i
-                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Jacket Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso2 = i
                         CreateTop()
@@ -694,7 +696,7 @@ Citizen.CreateThread(function()
             local am = {}
             for i = 0 , GetNumberOfPedTextureVariations(GetPlayerPed(-1),4,pants1) , 1 do
                 am[i] = i
-                RageUI.Button("Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Pants Colour "..i, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         pants2 = i
                         CreateFutal()
@@ -741,7 +743,7 @@ Citizen.CreateThread(function()
             end
             Angle()
             for k = 1, 289 do
-                RageUI.Button("Vest " .. k, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
+                RageUI.Button("Jacket " .. k, nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
                     if (Active) then
                         torso1 = k
                         torso2 = 0

@@ -621,42 +621,22 @@ function InstructionalButtons(scaleform)
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(0)
-    Button(GetControlInstructionalButton(2, 174, true))
-    ButtonMessage("LEFT")
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(1)
-    Button(GetControlInstructionalButton(2, 175, true))
-    ButtonMessage("RIGHT")
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(2)
-    Button(GetControlInstructionalButton(2, 172, true))
-    ButtonMessage("UP")
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(3)
-    Button(GetControlInstructionalButton(2, 173, true))
-    ButtonMessage("DOWN")
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(4)
-    Button(GetControlInstructionalButton(2, 178, true)) -- The button to display
-    ButtonMessage("EXIT") -- the message to display next to it
-    PopScaleformMovieFunctionVoid()
-
-    PushScaleformMovieFunction(scaleform, "DRAW_INSTRUCTIONAL_BUTTONS")
-    PopScaleformMovieFunctionVoid()
-
-    PushScaleformMovieFunction(scaleform, "SET_BACKGROUND_COLOUR")
-    PushScaleformMovieFunctionParameterInt(0)
-    PushScaleformMovieFunctionParameterInt(0)
-    PushScaleformMovieFunctionParameterInt(0)
-    PushScaleformMovieFunctionParameterInt(80)
     PopScaleformMovieFunctionVoid()
 
     return scaleform
