@@ -91,7 +91,7 @@ AddEventHandler("Mushy:RenameMasque", function(id,txt,type)
 
     }
   )
-  TriggerClientEvent("esx:showNotification",source,"Vous avez bien renommé votre "..type.." en "..txt)
+  TriggerClientEvent("esx:showNotification",source,"You have renamed your "..type.." en "..txt)
 
 end)
 
@@ -139,7 +139,7 @@ AddEventHandler("Mushy:SetNewMasque", function(mask,variation,type,label)
     }
   )
   TriggerClientEvent("Mushy:SyncAccess",source)
-  TriggerClientEvent("esx:showNotification",source,"~g~Vous avez reçu un nouveau " .. type .."~n~~r~-50$" )
+  TriggerClientEvent("esx:showNotification",source,"~g~You have received a new " .. type .."~n~~r~-50$" )
 else
   TriggerClientEvent('esx:showNotification', _source, 'Pas assez d\'argent (50$)')
 end
