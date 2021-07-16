@@ -87,7 +87,7 @@ function openAmbulanceDeadMenu()
 							local nameResults = "Appel EMS"
 							TriggerServerEvent('ems:ajoutappels', typereport, playerName, nameResults, reasonResults)
 							TriggerEvent("AppelemsGetCoords")
-							ESX.ShowAdvancedNotification("Détresse", "~g~EMS", "Ta position a était envoyer au Ambulancier en service", "CHAR_CALL911", 7)
+							ESX.ShowAdvancedNotification("EMERGENCY REQUEST", "~g~EMS", "Your position was sent to the Paramedic on duty", "CHAR_CALL911", 7)
 						end
 					end, RMenu:Get('signalenvoyer', 'maines'))
 
