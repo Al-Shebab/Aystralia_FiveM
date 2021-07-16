@@ -64,7 +64,7 @@ end
 
 
 local menuambulancejoblol = false
-RMenu.Add('mortmenuambu', 'maines', RageUI.CreateMenu("Coma", "Signal de Détresse"))
+RMenu.Add('mortmenuambu', 'maines', RageUI.CreateMenu("~r~DEAD", "You are dead"))
 RMenu:Get('mortmenuambu', 'maines').Closable = false;
 RMenu.Add('signalenvoyer', 'maines', RageUI.CreateMenu("Signal", "~b~Envoyer au EMS"))
 RMenu:Get('signalenvoyer', 'maines').Closable = false;
@@ -79,7 +79,7 @@ function openAmbulanceDeadMenu()
 				RageUI.IsVisible(RMenu:Get('mortmenuambu', 'maines'), true, true, true, function()
 					
 					RageUI.Separator("")
-                    RageUI.ButtonWithStyle("Appuyez sur ~g~ENTRER~s~ pour envoyer le signal", nil, {}, true, function(h, a, s)
+                    RageUI.ButtonWithStyle("Press ~g~ENTER~s~ to call ems", nil, {}, true, function(h, a, s)
 						if s then
 							local reasonResults = ("Urgent")
 							local playerName = GetPlayerName(PlayerId())

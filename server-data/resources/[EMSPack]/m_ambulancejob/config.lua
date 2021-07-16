@@ -9,8 +9,8 @@ Config.AntiCombatLog              = true -- Enable anti-combat logging? (Removes
 
 Config.Locale                     = 'fr'
 
-Config.EarlyRespawnTimer          = 60000 * 5  -- time til respawn is available
-Config.BleedoutTimer              = 60000 * 5 -- time til the player bleeds out
+Config.EarlyRespawnTimer          = 60000 * 1  -- time til respawn is available
+Config.BleedoutTimer              = 60000 * 1 -- time til the player bleeds out
 
 Config.EnablePlayerManagement     = true -- Enable society managing (If you are using esx_society).
 

@@ -59,7 +59,7 @@ Locales['fr'] = {
   -- Phone
   ['alert_ambulance'] = 'alerte Ambulance',
   -- Mort
-  ['respawn_available_in'] = 'réanimation possible dans ~b~%sm & %ss~s~',
+  ['respawn_available_in'] = 'respawn available in ~b~%sm & %ss~s~',
   ['respawn_bleedout_in'] = 'vous allez souffrir d\'une hémorragie dans ~b~%s minutes %s secondes~s~\n',
   ['respawn_bleedout_prompt'] = 'maintenez [~b~E~s~] pour être réanimé',
   ['respawn_bleedout_fine'] = 'maintenez [~b~E~s~] pour être réanimé pour ~g~$%s~s~',
