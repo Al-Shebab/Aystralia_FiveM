@@ -1,7 +1,7 @@
 --Modded Locations have a colour ID of 3 (Blue)
 
  local blips = {
-    {title="Los Santos Custom", colour=3, id=446, x = 34.31, y = -874.73, z = 38.009},
+    {title="City Hall", colour=29, id=590, x = -551.79, y = -192.37, z = 38.29},
  }
      
 Citizen.CreateThread(function()
@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
      info.blip = AddBlipForCoord(info.x, info.y, info.z)
      SetBlipSprite(info.blip, info.id)
      SetBlipDisplay(info.blip, 4)
-     SetBlipScale(info.blip, 1.0)
+     SetBlipScale(info.blip, 0.9)
      SetBlipColour(info.blip, info.colour)
      SetBlipAsShortRange(info.blip, true)
      BeginTextCommandSetBlipName("STRING")
