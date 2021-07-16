@@ -47,6 +47,13 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	for k, v in pairs(accounts) do
 		local account = v
 		Citizen.CreateThread(function()
+			if account.name == "bank" then
+				if account.money > 0 then
+				SendNUIMessage({action = "setBlackMoney", black = account.money})
+				else
+					SendNUIMessage({action = "setBlackMoney", black = account.money})
+				end
+			end
 			while true do
 				Citizen.Wait(500)
 				if ESX.GetPlayerData().money ~= nil then
@@ -67,7 +74,11 @@ AddEventHandler('esx:setAccountMoney', function(account)
 	
 	
 	elseif account.name == "bank" then
-	SendNUIMessage({action = "setBlackMoney", black = account.money})
+		if account.money > 0 then
+			SendNUIMessage({action = "setBlackMoney", black = account.money})
+		else
+			SendNUIMessage({action = "setBlackMoney", black = account.money})
+	    end
 	end
 end)
 
