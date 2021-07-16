@@ -1737,20 +1737,20 @@ Citizen.CreateThread(function()
 
 
 local blips = {
-	{title="Clothes Shop", colour=57, id=366, x = 72.254,    y = -1399.102, z = 28.396},
-	{title="Clothes Shop", colour=57, id=366, x = -703.776,  y = -152.258,  z = 36.435},
-	{title="Clothes Shop", colour=57, id=366, x = -167.863,  y = -298.969,  z = 38.743},
-	{title="Clothes Shop", colour=57, id=366, x = 428.694,   y = -800.106,  z = 28.511},
-	{title="Clothes Shop", colour=57, id=366, x = -1447.797, y = -242.461,  z = 48.840},
-	{title="Clothes Shop", colour=57, id=366, x = 11.632,    y = 6514.224,  z = 30.897},
-	{title="Clothes Shop", colour=57, id=366, x = 123.646,   y = -219.440,  z = 53.577},
-	{title="Clothes Shop", colour=57, id=366, x = 1696.291,  y = 4829.312,  z = 41.083},
-	{title="Clothes Shop", colour=57, id=366, x = 618.093,   y = 2759.629,  z = 41.108},
-	{title="Clothes Shop", colour=57, id=366, x = 1190.550,  y = 2713.441,  z = 37.242},
-	{title="Clothes Shop", colour=57, id=366, x = -1193.429, y = -772.262,  z = 16.344},
-	{title="Clothes Shop", colour=57, id=366, x = -3172.496, y = 1048.133,  z = 19.883},
-	{title="Clothes Shop", colour=57, id=366, x = 199.52, y = -875.06,  z = 30.71},
-	{title="Clothes Shop", colour=57, id=366, x = -1108.441, y = 2708.923,  z = 18.127}
+	{title="Clothes Shop", colour=57, id=73, x = 72.254,    y = -1399.102, z = 28.396},
+	{title="Clothes Shop", colour=57, id=73, x = -703.776,  y = -152.258,  z = 36.435},
+	{title="Clothes Shop", colour=57, id=73, x = -167.863,  y = -298.969,  z = 38.743},
+	{title="Clothes Shop", colour=57, id=73, x = 428.694,   y = -800.106,  z = 28.511},
+	{title="Clothes Shop", colour=57, id=73, x = -1447.797, y = -242.461,  z = 48.840},
+	{title="Clothes Shop", colour=57, id=73, x = 11.632,    y = 6514.224,  z = 30.897},
+	{title="Clothes Shop", colour=57, id=73, x = 123.646,   y = -219.440,  z = 53.577},
+	{title="Clothes Shop", colour=57, id=73, x = 1696.291,  y = 4829.312,  z = 41.083},
+	{title="Clothes Shop", colour=57, id=73, x = 618.093,   y = 2759.629,  z = 41.108},
+	{title="Clothes Shop", colour=57, id=73, x = 1190.550,  y = 2713.441,  z = 37.242},
+	{title="Clothes Shop", colour=57, id=73, x = -1193.429, y = -772.262,  z = 16.344},
+	{title="Clothes Shop", colour=57, id=73, x = -3172.496, y = 1048.133,  z = 19.883},
+	{title="Clothes Shop", colour=57, id=73, x = 199.52, y = -875.06,  z = 30.71},
+	{title="Clothes Shop", colour=57, id=73, x = -1108.441, y = 2708.923,  z = 18.127}
 }
 
 Citizen.CreateThread(function()
