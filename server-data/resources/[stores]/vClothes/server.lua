@@ -10,7 +10,7 @@ AddEventHandler('VmLife:DeleteTenue', function(id,label)
       ['@id'] =  id
     }
   )
-  TriggerClientEvent("esx:showNotification",source,"~r~Outfit deleted")
+  TriggerClientEvent("esx:showNotification",source,"Outfit deleted")
 
 end)
 

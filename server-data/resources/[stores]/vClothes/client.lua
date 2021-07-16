@@ -426,17 +426,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -502,17 +502,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -552,17 +552,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -577,7 +577,7 @@ Citizen.CreateThread(function()
                         CreateShoes()
                         if IsControlJustPressed(0, 194) then
                             RenderScriptCams(0, 1, 1000, 1, 1)
-                            DestroyAllCams(true)
+                            DestroyAllCams(false)
                             CreateMain()
                         end
                         if IsControlJustPressed(0, 22) then
@@ -611,17 +611,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -636,7 +636,7 @@ Citizen.CreateThread(function()
                         CreateTop()
                         if IsControlJustPressed(0, 194) then
                             RenderScriptCams(0, 1, 1000, 1, 1)
-                            DestroyAllCams(true)
+                            DestroyAllCams(false)
                             CreateMain()
                         end
                         if IsControlJustPressed(0, 22) then
@@ -670,17 +670,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -695,7 +695,7 @@ Citizen.CreateThread(function()
                         CreateTop()
                         if IsControlJustPressed(0, 194) then
                             RenderScriptCams(0, 1, 1000, 1, 1)
-                            DestroyAllCams(true)
+                            DestroyAllCams(false)
                             CreateMain()
                         end
                         if IsControlJustPressed(0, 22) then
@@ -729,17 +729,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -754,7 +754,7 @@ Citizen.CreateThread(function()
                         CreateFutal()
                         if IsControlJustPressed(0, 194) then
                             RenderScriptCams(0, 1, 1000, 1, 1)
-                            DestroyAllCams(true)
+                            DestroyAllCams(false)
                             CreateMain()
                         end
                         if IsControlJustPressed(0, 22) then
@@ -788,17 +788,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -838,17 +838,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -888,17 +888,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -964,17 +964,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1030,17 +1030,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1081,17 +1081,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1169,17 +1169,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1241,17 +1241,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1325,17 +1325,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
@@ -1375,17 +1375,17 @@ Citizen.CreateThread(function()
             FreezeEntityPosition(GetPlayerPed(-1), true)
             if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
-                DestroyAllCams(true)
+                DestroyAllCams(false)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
             else
