@@ -369,26 +369,23 @@ Citizen.CreateThread(function()
         RageUI.IsVisible(RMenu:Get('menu', 'main'), true, true, true, function()
             Angle()
             disableControl()
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
-            end
-            if IsControlJustPressed(0, 191) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
-            end
-            if IsControlJustPressed(0, 322) then
+            elseif IsControlJustPressed(0, 322) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
-            end
-            if IsControlJustPressed(0, 194) then
+            elseif IsControlJustPressed(0, 194) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
                 ClearPedTasks(GetPlayerPed(-1))
                 FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             RageUI.Button("Dressing Room", nil, { RightBadge = RageUI.BadgeStyle.Clothes },true, function()
             end, RMenu:Get('menu', 'dressing'))
@@ -426,13 +423,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'dressing'), true, true, true, function()
             CreateMain()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             RageUI.Button("Save your outfit", "Save an outfit in your closet!", { RightLabel = "→" }, true, function(Hovered, Active, Selected)
@@ -443,11 +450,6 @@ Citizen.CreateThread(function()
                             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
                                 TriggerServerEvent("VmLife:SaveTenueS",k,skin)
                             end)
-                            RenderScriptCams(0, 1, 1000, 1, 1)
-                            DestroyAllCams(true)
-                            ClearPedTasks(GetPlayerPed(-1))
-                            FreezeEntityPosition(GetPlayerPed(-1), false)
-                            RageUI.CloseAll()
                         end
                     end
                 end
@@ -497,13 +499,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'pants'), true, true, true, function()
             CreateFutal()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for f = 1, 115 do
@@ -537,13 +549,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'colorshoes'), true, true, true, function()
             CreateShoes()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local am = {}
@@ -586,13 +608,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'colortshirt'), true, true, true, function()
             CreateTop()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local am = {}
@@ -635,13 +667,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'colortorso'), true, true, true, function()
             CreateTop()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local am = {}
@@ -684,13 +726,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'colorpants'), true, true, true, function()
             CreateFutal()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local am = {}
@@ -733,13 +785,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'torso'), true, true, true, function()
             CreateTop()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for k = 1, 289 do
@@ -773,13 +835,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'shoes'), true, true, true, function() 
             CreateShoes()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for l = 1, 91 do
@@ -813,13 +885,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'glasses'), true, true, true, function()
             CreateFace()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             lunetteItem = {
@@ -879,13 +961,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'chain'), true, true, true, function()
             CreateTop()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local playerPed = GetPlayerPed(-1)
@@ -935,13 +1027,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'arms'), true, true, true, function()
             CreateArms()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for a = 1, 144 do
@@ -976,13 +1078,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'oreille'), true, true, true, function()
             CreateFace()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             boucleItem = {
@@ -1054,13 +1166,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'clock'), true, true, true, function()
             CreateMontre()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for i = -1,19,1 do
@@ -1116,13 +1238,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'bag'), true, true, true, function()
             CreateBack()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             RageUI.Button("No Bag ", nil , { RightLabel = "→ 🛒" }, true, function(Hovered, Active, Selected)
@@ -1190,13 +1322,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'shirt'), true, true, true, function()
             CreateTop()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             for t = 1, 144 do
@@ -1230,13 +1372,23 @@ Citizen.CreateThread(function()
         end, 1)
         RageUI.IsVisible(RMenu:Get('menu', 'hats'), true, true, true, function()
             CreateFace()
-            if IsControlJustPressed(0, 194) then
+            FreezeEntityPosition(GetPlayerPed(-1), true)
+            if IsControlJustPressed(0, 70) then
                 RenderScriptCams(0, 1, 1000, 1, 1)
                 DestroyAllCams(true)
-                CreateMain()
-            end
-            if IsControlJustPressed(0, 22) then
-                Tourner()       
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 322) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            elseif IsControlJustPressed(0, 194) then
+                RenderScriptCams(0, 1, 1000, 1, 1)
+                DestroyAllCams(true)
+                ClearPedTasks(GetPlayerPed(-1))
+                FreezeEntityPosition(GetPlayerPed(-1), false)
+            else
             end
             Angle()
             local chapeauItem = {
