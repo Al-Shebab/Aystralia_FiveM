@@ -118,6 +118,21 @@ Citizen.CreateThread(function()
 	end
 end)
 
+function CreateMapBlip(k,v)
+	local mk = v.blip
+	if mk.enable then
+		local blip = AddBlipForCoord(v.keypads[1].pos[1], v.keypads[1].pos[2], v.keypads[1].pos[3])
+		SetBlipSprite (blip, mk.sprite)
+		SetBlipDisplay(blip, mk.display)
+		SetBlipScale  (blip, mk.scale)
+		SetBlipColour (blip, mk.color)
+		SetBlipAsShortRange(blip, true)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString(mk.bName)
+		EndTextCommandSetBlipName(blip)
+	end
+end
+
 -- Is Player A cop?
 function IsPlayerJobCop()	
 	if not PlayerData then return false end

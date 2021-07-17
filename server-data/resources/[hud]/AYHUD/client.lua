@@ -64,9 +64,9 @@ AddEventHandler('esx:setAccountMoney', function(account)
 	
 	if account.name == "money" then
 	SendNUIMessage({action = "setMoney", money = ESX.GetPlayerData().money})
-	end
 	
-	if account.name == "bank" then
+	
+	elseif account.name == "bank" then
 	SendNUIMessage({action = "setBlackMoney", black = account.money})
 	end
 end)
@@ -86,4 +86,5 @@ end)
 RegisterNetEvent('esx:activateMoney')
 AddEventHandler('esx:activateMoney', function(e)
 	SendNUIMessage({action = "setMoney", money = e})
+	SendNUIMessage({action = "setBlackMoney", bank = e})
 end)
