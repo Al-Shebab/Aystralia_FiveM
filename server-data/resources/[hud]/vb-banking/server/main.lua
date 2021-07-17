@@ -64,8 +64,8 @@ AddEventHandler('vb-banking:server:transfervb', function(to, amountt, inMenu)
 			else
 				xPlayer.removeAccountMoney('bank', tonumber(amountt))
 				zPlayer.addAccountMoney('bank', tonumber(amountt))
-				zPlayer.showNotification("You've received a bank transfer of "..amountt.."$ from the ID: ".._source)
-				xPlayer.showNotification("You've sent a bank transfer of "..amountt.."$ to the ID: "..to)
+				zPlayer.showNotification("You've received a bank transfer of $"..amountt.." from the ID: ".._source)
+				xPlayer.showNotification("You've sent a bank transfer of $"..amountt.." to the ID: "..to)
 			end
 		end
 	else
