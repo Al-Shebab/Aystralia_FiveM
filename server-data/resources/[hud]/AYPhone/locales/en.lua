@@ -5,11 +5,9 @@ Locales['en'] = {
     ["new_message"] = "~o~New message",
     ["new_message_from"] = "~o~New message from ~y~%s",
     ["new_message_transmitter"] = "~o~New message from ~g~%s",
+    ["service_call_prefix"] = "From #%s: %s",
     ["use_fixed"] = "~g~%s's phone ~o~(%s) ~n~~INPUT_PICKUP~~w~ Use phone",
     
     -- Social
-    ["new_tweet"] = "New Tweet!",
-
-    -- Warning
-    ["no_phone"] = "You do not have a ~r~phone~s~."
+    ["new_tweet"] = "New Tweet!"
 }

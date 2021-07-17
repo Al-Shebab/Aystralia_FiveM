@@ -58,7 +58,6 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 				Citizen.Wait(500)
 				if ESX.GetPlayerData().money ~= nil then
 					SendNUIMessage({action = "setMoney", money = ESX.GetPlayerData().money})
-					SendNUIMessage({action = "setBlackMoney", black = account.money})
 				end
 
 			end
@@ -70,10 +69,11 @@ RegisterNetEvent('esx:setAccountMoney')
 AddEventHandler('esx:setAccountMoney', function(account)
 	
 	if account.name == "money" then
+
 	SendNUIMessage({action = "setMoney", money = ESX.GetPlayerData().money})
+	end
 	
-	
-	elseif account.name == "bank" then
+	if account.name == "bank" then
 		if account.money > 0 then
 			SendNUIMessage({action = "setBlackMoney", black = account.money})
 		else
@@ -97,5 +97,4 @@ end)
 RegisterNetEvent('esx:activateMoney')
 AddEventHandler('esx:activateMoney', function(e)
 	SendNUIMessage({action = "setMoney", money = e})
-	SendNUIMessage({action = "setBlackMoney", bank = e})
 end)

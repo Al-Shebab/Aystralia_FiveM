@@ -1778,11 +1778,6 @@ Citizen.CreateThread(function()
 	while true do
 	  Citizen.Wait(0)
       if IsControlJustPressed(0, 47) then
-        ESX.TriggerServerCallback("Mushy:getMask", function(result)
-            MaskTab = result
-        end)
-        Wait(25)
-        RageUI.Visible(RMenu:Get('menu', 'access'), not RageUI.Visible(RMenu:Get('menu', 'access')))
 	  end
 	end
   end)
