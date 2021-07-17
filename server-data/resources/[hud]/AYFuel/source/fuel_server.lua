@@ -9,6 +9,10 @@ if Config.UseESX then
 		local amount = ESX.Math.Round(price)
 		if xPlayer.getAccount("bank").money >= amount then
 			xPlayer.removeAccountMoney("bank", amount)
+		elseif xPlayer.getAccount("money").money >= amount then
+			xPlayer.removeAccountMoney("money", amount)
+		elseif xPlayer.getAccount("money").money < amount then
+			xPlayer.showNotification("Poor fuck lol")
 		end
 	end)
 end
