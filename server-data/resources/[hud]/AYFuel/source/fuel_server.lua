@@ -7,9 +7,8 @@ if Config.UseESX then
 	AddEventHandler('fuel:pay', function(price)
 		local xPlayer = ESX.GetPlayerFromId(source)
 		local amount = ESX.Math.Round(price)
-
-		if price > 0 then
-			xPlayer.removeMoney(amount)
+		if xPlayer.getAccount("bank").money >= amount then
+			xPlayer.removeAccountMoney("bank", amount)
 		end
 	end)
 end
