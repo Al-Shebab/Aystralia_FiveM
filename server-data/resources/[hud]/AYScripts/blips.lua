@@ -1,7 +1,12 @@
 --Modded Locations have a colour ID of 3 (Blue)
 
  local blips = {
-    {title="City Hall", colour=29, id=590, x = -551.79, y = -192.37, z = 38.29},
+   {title="City Hall", colour=29, id=590, x = -551.79, y = -192.37, z = 38.29},
+   {title="Han's Garage", colour=29, id=590, x = -67.41, y = -123.9, z = 38.29},
+   {title="Splits Side", colour=29, id=590, x = -436.44, y = -274.72, z = 38.29},
+   {title="Offroad Vehicles", colour=29, id=590, x = -442.52, y = -2178.19, z = 38.29},
+   {title="Cocaine Processing", colour=29, id=590, x = -1138.12, y = -990.97, z = 38.29},
+   {title="Motorcycle Dealer", colour=29, id=590, x = 1224.28, y = 2733.53, z = 38.29},
  }
      
 Citizen.CreateThread(function()
