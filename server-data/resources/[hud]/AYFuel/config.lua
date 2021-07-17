@@ -4,8 +4,8 @@ Config = {}
 Config.UseESX = true
 
 -- What should the price of jerry cans be?
-Config.JerryCanCost = 150
-Config.RefillCost = 50000 -- If it is missing half of it capacity, this amount will be divided in half, and so on.
+Config.JerryCanCost = 25
+Config.RefillCost = 50 -- If it is missing half of it capacity, this amount will be divided in half, and so on.
 
 -- Fuel decor - No need to change this, just leave it.
 Config.FuelDecor = "_FUEL_LEVEL"
@@ -17,16 +17,16 @@ Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 
 Config.EnableHUD = false
 
 -- Configure blips here. Turn both to false to disable blips all together.
-Config.ShowNearestGasStationOnly = false
-Config.ShowAllGasStations = true
+Config.ShowNearestGasStationOnly = true
+Config.ShowAllGasStations = false
 
 -- Modify the fuel-cost here, using a multiplier value. Setting the value to 2.0 would cause a doubled increase.
-Config.CostMultiplier = 2.0
+Config.CostMultiplier = 1.0
 
 -- Configure the strings as you wish here.
 Config.Strings = {
 	ExitVehicle = "Exit the vehicle to refuel",
-	EToRefuel = "Nyomj egy ~g~E ~w~ e betüt ,hogy elkezdj tankolni",
+	EToRefuel = "Press ~g~E ~w~to refuel vehicle",
 	JerryCanEmpty = "Jerry can is empty",
 	FullTank = "Tank is full",
 	PurchaseJerryCan = "Press ~g~E ~w~to purchase a jerry can for ~g~$" .. Config.JerryCanCost,
@@ -56,12 +56,12 @@ Config.PumpModels = {
 
 -- Blacklist certain vehicles. Use names or hashes. https://wiki.gtanet.work/index.php?title=Vehicle_Models
 Config.Blacklist = {
-	"voltic",
-	"tr22"
+	--"Adder",
+	--276773164
 }
 
 -- Do you want the HUD removed from showing in blacklisted vehicles?
-Config.RemoveHUDForBlacklistedVehicle = false
+Config.RemoveHUDForBlacklistedVehicle = true
 
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
@@ -80,8 +80,8 @@ Config.Classes = {
 	[12] = 1.0, -- Vans
 	[13] = 0.0, -- Cycles
 	[14] = 1.0, -- Boats
-	[15] = 0.1, -- Helicopters
-	[16] = 0.1, -- Planes
+	[15] = 1.0, -- Helicopters
+	[16] = 1.0, -- Planes
 	[17] = 1.0, -- Service
 	[18] = 1.0, -- Emergency
 	[19] = 1.0, -- Military
