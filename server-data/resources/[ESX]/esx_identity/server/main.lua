@@ -39,8 +39,7 @@ function getCharacters(source, callback)
 	MySQL.Async.fetchAll("SELECT * FROM 'users' WHERE `identifier` = @identifier",
 	{
 		['@identifier'] = identifier
-	},
-	function(result)
+	},	function(result)
 		if result[1] and result[2] and result[3] then
 			local data = {
 				identifier		= result[1].identifier,

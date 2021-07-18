@@ -255,7 +255,8 @@ Citizen.CreateThread(function()
 end)
 
 function OpenSaveableMenu(submitCb, cancelCb, restrict)
-	TriggerEvent('myCreator:openMenu')
+	TriggerEvent('myCreator:openMenu', function(skin)
+		LastSkin = skin
 	end)
 
 	OpenMenu(function(data, menu)
