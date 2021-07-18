@@ -1,3 +1,3 @@
 Config = {}
 
-Config.minutes = 10-- How long should it take, until the beard grows again
+Config.minutes = 20-- How long should it take, until the beard grows again

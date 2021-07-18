@@ -31,34 +31,34 @@ Citizen.CreateThread(function()
 		
 		RageUI.IsVisible(RMenu:Get('report', 'main'), true, true, true, function()
 			
-            RageUI.Button("Faire un appel staff", nil, {RightLabel = "📞"}, true, function(Hovered, Active, Selected)
+            RageUI.Button("Make a staff call", nil, {RightLabel = "📞"}, true, function(Hovered, Active, Selected)
                 if (Selected) then
                 for _, i in ipairs(GetActivePlayers()) do
-                local reasonResults = KeyboardInput("Raison de l'appel: ", "", 70)
+                local reasonResults = KeyboardInput("Reason for appeal: ", "", 70)
                 local playerName = GetPlayerName(PlayerId())
                 local typereport = "Appel staff"
                 local nameResults = "Staff"
                 local sonid = GetPlayerServerId(i)
 
-                TriggerEvent('chatMessage', "Appel Staff", {225, 29, 29}, " -  Votre appel admin a été envoyé pour \"" .. reasonResults.."\".")
+                TriggerEvent('chatMessage', "Appel Staff", {225, 29, 29}, " -  Your admin appeal was sent for \"" .. reasonResults.."\".")
                 TriggerServerEvent('h4ci_report:ajoutreport', typereport, sonid, playerName, nameResults, reasonResults)
                 end
             end
 		end)
 			
-			RageUI.Button("Faire un report", nil, {RightLabel = "📋"}, true, function(Hovered, Active, Selected)
+			RageUI.Button("Make a report", nil, {RightLabel = "📋"}, true, function(Hovered, Active, Selected)
 				if (Selected) then
                     for _, i in ipairs(GetActivePlayers()) do
-                    local nameResults = KeyboardInput("Nom du Joueur:", "", 20)
-                	local reasonResults = KeyboardInput("Raison du Report: ", "", 70)
+                    local nameResults = KeyboardInput("Player name:", "", 20)
+                	local reasonResults = KeyboardInput("Report reason: ", "", 70)
                     local playerName = GetPlayerName(PlayerId())
                     local typereport = "Report"
                     local sonid = GetPlayerServerId(i)
 
                 if nameResults == nil or nameResults == "" then
-                    TriggerEvent('chatMessage', "Erreur Report", {255, 0, 0}, "Vous n'avez pas saisi de nom")
+                    TriggerEvent('chatMessage', "Erreur Report", {255, 0, 0}, "You did not enter a name")
                 else
-                    TriggerEvent('chatMessage', "Report Staff", {225, 29, 29}, " -  Votre report a été envoyé contre \"".. nameResults .. "\" pour \"" .. reasonResults.."\".")
+                    TriggerEvent('chatMessage', "Report Staff", {225, 29, 29}, " -  Your report has been sent against \"".. nameResults .. "\" by \"" .. reasonResults.."\".")
                     TriggerServerEvent('h4ci_report:ajoutreport', typereport, sonid, playerName, nameResults, reasonResults)
                     end
                 end

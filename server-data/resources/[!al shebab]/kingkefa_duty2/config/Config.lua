@@ -10,11 +10,11 @@ Config.AmbulanceH = 65.0 -- H Coordinate for NPC.
 
 Config.NPCHash = -1176698112
 
-Config.OffDutyMessage = "Du bist dem Dienst ausgetreten." -- Message for Off-Duty.
-Config.OnDutyMessage = "Du bist dem Dienst beigetreten." -- Message for On-Duty.
+Config.OffDutyMessage = "You've signed off." -- Message for Off-Duty.
+Config.OnDutyMessage = "You've signed on." -- Message for On-Duty.
 
-Config.AlreadyOffDuty = "Du bist bereits außer Dienst."
-Config.AlreadyOnDuty = "Du bist bereits im Dienst."
+Config.AlreadyOffDuty = "You are already out of service."
+Config.AlreadyOnDuty = "You are already on duty."
 
 
 
