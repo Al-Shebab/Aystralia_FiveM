@@ -80,7 +80,7 @@ Citizen.CreateThread(function()
 
 		local pumpObject, pumpDistance = FindNearestFuelPump()
 
-		if pumpDistance < 4.5 then
+		if pumpDistance < 2.5 then
 			isNearPump = pumpObject
 
 			if Config.UseESX then
@@ -388,12 +388,7 @@ if Config.EnableHUD then
 
 			if IsPedInAnyVehicle(ped) and not (Config.RemoveHUDForBlacklistedVehicle and inBlacklisted) then
 				local vehicle = GetVehiclePedIsIn(ped)
-				local speed = GetEntitySpeed(vehicle)
-
-				mph = tostring(math.ceil(speed * 2.236936))
-				kmh = tostring(math.ceil(speed * 3.6))
 				fuel = tostring(math.ceil(GetVehicleFuelLevel(vehicle)))
-
 				displayHud = true
 			else
 				displayHud = false
@@ -408,10 +403,8 @@ if Config.EnableHUD then
 	Citizen.CreateThread(function()
 		while true do
 			if displayHud then
-				DrawAdvancedText(0.130 - x, 0.77 - y, 0.005, 0.0028, 0.6, mph, 255, 255, 255, 255, 6, 1)
-				DrawAdvancedText(0.174 - x, 0.77 - y, 0.005, 0.0028, 0.6, kmh, 255, 255, 255, 255, 6, 1)
-				DrawAdvancedText(0.2195 - x, 0.77 - y, 0.005, 0.0028, 0.6, fuel, 255, 255, 255, 255, 6, 1)
-				DrawAdvancedText(0.148 - x, 0.7765 - y, 0.005, 0.0028, 0.4, "mp/h              km/h              Fuel", 255, 255, 255, 255, 6, 1)
+				DrawAdvancedText(1.075 - x, 0.95 - y, 0.005, 0.0028, 0.4, fuel, 255, 255, 255, 255, 2, 1)
+				DrawAdvancedText(1.055 - x, 0.95 - y, 0.005, 0.0028, 0.4, "Fuel", 255, 255, 255, 255, 2, 1)
 			else
 				Citizen.Wait(750)
 			end
