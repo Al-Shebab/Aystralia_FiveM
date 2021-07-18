@@ -76,7 +76,7 @@ RegisterNUICallback('register', function(data, cb)
 	end
 	
 	if reason == "" then
-		TriggerEvent('mpcreator:OpenMenu')
+		TriggerEvent('myCreator:openMenu')
 		TriggerServerEvent('esx_identity:setIdentity', data, myIdentifiers)
 		EnableGui(false)
 		Citizen.Wait(500)
