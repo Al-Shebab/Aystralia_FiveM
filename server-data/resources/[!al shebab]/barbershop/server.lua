@@ -1,52 +1,21 @@
-ESX = nil
-position = {}
+if Config.useESX then
+    ESX = nil
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+end
 
-TriggerEvent('esx:getSharedObject', function(obj)ESX = obj end)
+RegisterServerEvent('lils_barber:buyHair')
+AddEventHandler('lils_barber:buyHair', function()
 
-
-
-RegisterServerEvent("barbershop:pay")
-AddEventHandler("barbershop:pay", function(source, price)
-    local src = source
-    local xPlayer = ESX.GetPlayerFromId(src)
-    if (price > 0) then
-        xPlayer.removeMoney(price)
-        xPlayer.showNotification(_U('paid', price))
-    end
-end)
+    local xPlayer = ESX.GetPlayerFromId(source)
 
 
-ESX.RegisterServerCallback('barbershop:checkposition', function(source, cb)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local identifier = xPlayer.identifier
-    if #position > 0 then
-        cb(false)
+    if xPlayer.getMoney() >= Config.Price then
+
+        TriggerClientEvent('lils_barber:confirmHair', source, true)
+        xPlayer.removeMoney(Config.Price)
+
     else
-        table.insert(position, identifier)
-        cb(true)
+        TriggerClientEvent('lils_barber:confirmHair', source, false)
     end
-end)
 
-AddEventHandler('esx:playerDropped', function(source)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local identifier = xPlayer.identifier
-    if #position > 0 then
-        if identifier == position[1] then
-            table.remove(position, 1)
-        end
-    end
-end)
-
-RegisterServerEvent('barbershop:removeposition')
-AddEventHandler('barbershop:removeposition', function()
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local identifier = xPlayer.identifier
-    if #position > 0 then
-        if identifier == position[1] then
-            table.remove(position, 1)
-        end
-    end
 end)

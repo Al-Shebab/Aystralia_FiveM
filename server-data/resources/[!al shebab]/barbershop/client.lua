@@ -1,337 +1,754 @@
 ESX = nil
-local started = false
-local disableUI = false
-local viewangle = false
-local cost = 0
-local cam = nil
+local PlayerData = {}
+local cam            = nil
+local isCameraActive = false
+local zoomOffset     = 0.0
+local camOffset      = 0.0
+local heading        = 90.0
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj)ESX = obj end)
-        Citizen.Wait(0)
-    end
-    barber = GetHashKey("s_f_m_fembarber")
-    if not HasModelLoaded(barber) then
-        RequestModel(barber)
-        Citizen.Wait(200)
-    end
-end)
+local LastSkin = nil
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(19)
-        local coords = GetEntityCoords(GetPlayerPed(-1))
-        if (GetDistanceBetweenCoords(coords, 133.55, -1708.86, 29.29, true) < 0.5) then
-            AddTextEntry(GetCurrentResourceName(), _U('started'))
-            DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
-            if (IsControlJustReleased(0, 38)) then
-                ESX.TriggerServerCallback('barbershop:checkposition', function(result)
-                    if result then
-                        readyCutHair()-- 剪頭髮
-                        createBarber()-- 召喚理髮師
-                    else
-                        TriggerEvent('esx:showNotification', _U('alreadyHair'), GetPlayerServerId(PlayerId()))
-                    end
-                end)
-            end
-        end
-    end
-end)
+local isNearShop = false
+local isInShop = false
+local isPedLoaded = false
+local npc = nil
+local hasBought = false
+local wasInMenu = false
+
+local bannerstyle = 'shopui_title_barber'
+
+if Config.useESX then
+	Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+	
+	PlayerData = ESX.GetPlayerData()
+	
+	end)
+end
+_menuPool = NativeUI.CreatePool()
 
 
 Citizen.CreateThread(function()
-    local blip = AddBlipForCoord(vector3(136.8, -1708.4, 28.3))
-    SetBlipSprite(blip, 71)
-    SetBlipColour(blip, 51)
-    SetBlipAsShortRange(blip, true)
-    BeginTextCommandSetBlipName('STRING')
-    AddTextComponentSubstringPlayerName(_U('bilpName'))
-    EndTextCommandSetBlipName(blip)
+	while true do
+		Citizen.Wait(300)
+
+		local playerPed = PlayerPedId()
+        local playerloc = GetEntityCoords(playerPed, 0)
+
+		isNearShop = false
+		isInShop = false
+
+		for k, loc in pairs(Config.Shops) do
+			local distance = Vdist(playerloc, loc.x, loc.y, loc.z)
+
+			if distance < 30 then
+				isNearShop = true
+				if not isPedLoaded then
+				
+					RequestModel(GetHashKey("s_f_m_fembarber"))
+					while not HasModelLoaded(GetHashKey("s_f_m_fembarber")) do
+						Wait(1)
+					end
+					npc = CreatePed(4, GetHashKey("s_f_m_fembarber"), loc.x, loc.y, loc.z - 1.0, loc.rot, false, true)
+					FreezeEntityPosition(npc, true)	
+					SetEntityHeading(npc, loc.rot)
+					SetEntityInvincible(npc, true)
+					SetBlockingOfNonTemporaryEvents(npc, true)                    
+					isPedLoaded = true
+					
+					TriggerEvent('skinchanger:getSkin', function(skin)
+						LastSkin = skin
+					end)
+				end
+			end
+
+			if distance < 2.0 then
+				isInShop = true
+				bannerstyle = loc.type
+			end
+
+		end
+
+		if (isPedLoaded and not isNearShop) then
+            DeleteEntity(npc)
+			SetModelAsNoLongerNeeded(GetHashKey("s_f_m_fembarber"))
+			isPedLoaded = false
+		end
+		
+		if (wasInMenu and not isInShop) then
+			if not hasBought then
+				TriggerEvent('skinchanger:loadSkin', LastSkin)
+			end
+			wasInMenu = false
+		end
+
+
+	end
+
 end)
 
+Citizen.CreateThread(function()
 
-function readyCutHair()
-    disableUI = true
-    TriggerEvent('barbershop:disableUI')
-    TaskPedSlideToCoord(PlayerPedId(), 137.12, -1709.45, 29.3, 205.75, 1.0)
-    DoScreenFadeOut(1000)
-    while not IsScreenFadedOut() do
-        Citizen.Wait(0)
-    end
-    SetEntityCoords(PlayerPedId(), 137.72, -1710.64, 28.60)
-    SetEntityHeading(PlayerPedId(), 237.22)
-    ClearPedTasks(GetPlayerPed(-1))
-    BehindPlayer = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0 - 0.5, -0.5);
-    TaskStartScenarioAtPosition(GetPlayerPed(-1), "PROP_HUMAN_SEAT_CHAIR_MP_PLAYER", BehindPlayer['x'], BehindPlayer['y'], BehindPlayer['z'], GetEntityHeading(PlayerPedId()), 0, 1, false)
-    Citizen.Wait(1300)
-    DoScreenFadeIn(5000)
+
+	while true do
+		Citizen.Wait(1)
+
+		if isInShop then
+			_menuPool:ProcessMenus()
+			showInfobar('Press ~g~E~s~, to change your haircut')
+			if IsControlJustReleased(1, 38) then
+				hasBought = false
+				wasInMenu = true
+				generateMenu(mainMenu)
+				
+			end
+		end
+
+		if isCameraActive then
+			if IsControlJustReleased(1, 202) then
+				DeleteSkinCam()
+			end
+		end
+	
+	end
+
+
+end)
+
+Citizen.CreateThread(function()
+	
+	for i=1, #Config.Shops, 1 do
+		
+		local blip = AddBlipForCoord(Config.Shops[i].x, Config.Shops[i].y, Config.Shops[i].z)
+
+		SetBlipSprite (blip, 71)
+		SetBlipDisplay(blip, 4)
+		SetBlipScale  (blip, 1.0)
+		SetBlipColour (blip, 4)
+		SetBlipAsShortRange(blip, true)
+
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString(Config.BlipName)
+		EndTextCommandSetBlipName(blip)
+	end
+
+end)
+
+function ShowNotification(text)
+	SetNotificationTextEntry('STRING')
+    AddTextComponentString(text)
+	DrawNotification(false, true)
 end
 
 
-function createBarber()
-    Ped = CreatePed(1, barber, 141.48, -1705.59, 29.29 - 0.95, 0.0, true, true)-- 生成NPC
-    SetEntityHeading(Ped, 123.37)
-    SetEntityInvincible(Ped, true)
-    SetBlockingOfNonTemporaryEvents(Ped, true)
-    TaskPedSlideToCoord(Ped, 137.15, -1710.50, 29.3, 205.75, 1.0)-- 讓npc移動到指定位置
-    Citizen.Wait(10000)
-    FreezeEntityPosition(GetPlayerPed(-1), true)
-    started = true
-    TriggerEvent('barbershop:start')
+
+function generateMenu()
+
+	if mainMenu ~= nil and mainMenu:Visible() then
+		mainMenu:Visible(false)
+		--_menuPool:CloseAllMenus()
+	end
+
+	_menuPool:Remove()
+	collectgarbage()
+
+	mainMenu = NativeUI.CreateMenu(nil, nil, nil)
+	local background = Sprite.New(bannerstyle, bannerstyle, 0, 0, 431, 38)
+	mainMenu:SetBannerSprite(background, true)
+	_menuPool:Add(mainMenu)
+	
+	-- Haare1
+	local hair1 = GetNumberOfPedDrawableVariations(PlayerPedId(-1), 2)
+	-- Haarfarbe
+	local hairColorsAmount = GetNumHairColors()-1
+	
+	local beard1 = GetNumHeadOverlayValues(1)-1
+	local beardColorsAmount = GetNumHairColors()-1
+
+	local eyebrows1 = GetNumHeadOverlayValues(2)-1
+	local eyebrowColorsAmount = GetNumHairColors()-1
+
+	local makeup1 = GetNumHeadOverlayValues(4)-1
+	local makeupColorsAmount = GetNumHairColors()-1
+
+	local lipstick1 = GetNumHeadOverlayValues(8)-1
+	local lipstickColorAmount = GetNumHairColors()-1
+	--Menus
+	local hairs = _menuPool:AddSubMenu(mainMenu, 'Hair')
+	mainMenu.Items[1]:RightLabel(LastSkin['hair_1']-1 .. ' / ' .. hair1)
+	local hairColor = _menuPool:AddSubMenu(mainMenu, 'Hair colour')
+	mainMenu.Items[2]:RightLabel(LastSkin['hair_color_1']-1 .. ' / ' .. hairColorsAmount)
+	local beard = _menuPool:AddSubMenu(mainMenu, 'Beard type and thickness')
+	mainMenu.Items[3]:RightLabel(LastSkin['beard_1']-1 .. ' / ' .. beard1)
+	local beardColor = _menuPool:AddSubMenu(mainMenu, 'Beard colour')
+	mainMenu.Items[4]:RightLabel(LastSkin['beard_3']-1 .. ' / ' .. beardColorsAmount)
+
+	local cosmetic = _menuPool:AddSubMenu(mainMenu, 'Cosmetic')
+	mainMenu.Items[5]:RightLabel('~y~→→→')
+	local eyebrows = _menuPool:AddSubMenu(cosmetic, 'Eyebrows')
+	cosmetic.Items[1]:RightLabel(LastSkin['eyebrows_1']-1 .. ' / ' .. eyebrows1)
+	local eyebrowsColor = _menuPool:AddSubMenu(cosmetic, 'Eyebrows colour')
+	cosmetic.Items[2]:RightLabel(LastSkin['eyebrows_3']-1 .. ' / ' .. eyebrowColorsAmount)
+	local makeup = _menuPool:AddSubMenu(cosmetic, 'Make-Up')
+	cosmetic.Items[3]:RightLabel(LastSkin['makeup_1']-1 .. ' / ' .. makeup1)
+	local makeupColor = _menuPool:AddSubMenu(cosmetic, 'Make-Up colour')
+	cosmetic.Items[4]:RightLabel(LastSkin['makeup_3']-1 .. ' / ' .. makeupColorsAmount)
+	local lipstick = _menuPool:AddSubMenu(cosmetic, 'Lipstick')
+	cosmetic.Items[5]:RightLabel(LastSkin['lipstick_1']-1 .. ' / ' .. lipstick1)
+	local lipstickColor = _menuPool:AddSubMenu(cosmetic, 'Lipstick colour')
+	cosmetic.Items[6]:RightLabel(LastSkin['lipstick_3']-1 .. ' / ' .. lipstickColorAmount)
+
+	cosmetic:SetBannerSprite(background, true)
+	hairs:SetBannerSprite(background, true)
+	hairColor:SetBannerSprite(background, true)
+	beard:SetBannerSprite(background, true)
+	beardColor:SetBannerSprite(background, true)
+	eyebrows:SetBannerSprite(background, true)
+	eyebrowsColor:SetBannerSprite(background, true)
+	makeup:SetBannerSprite(background, true)
+	makeupColor:SetBannerSprite(background, true)
+	lipstick:SetBannerSprite(background, true)
+	lipstickColor:SetBannerSprite(background, true)
+	--beard1 beard2 = Bart + Bartdichte
+
+
+
+	local spacer = NativeUI.CreateItem('~b~', '~b~')
+	local confirm = NativeUI.CreateItem('~g~Confirm', 'Get your hair cut by the barber.')
+	if Config.useESX then
+		confirm:RightLabel('~g~' .. Config.Price .. '$')
+	end
+
+	mainMenu:AddItem(spacer)
+	mainMenu:AddItem(confirm)
+
+	--Haare1
+
+	for i=0, hair1-1, 1 do
+		
+		local values = {}
+		local amountOfVariations = GetNumberOfPedTextureVariations(PlayerPedId(-1), 2, i)
+		if amountOfVariations > 1 then
+			for i=0, amountOfVariations-1, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['hair_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Hair cut (#' .. i .. ')', values, LastSkin['hair_2'])
+				hairs:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Hair cut (#' .. i .. ')', values, 1)
+				hairs:AddItem(variation)
+			end
+
+			hairs.OnListChange = function(sender, item, index)
+
+				--SetPedComponentVariation(PlayerPedId(-1), 2, selectedHair1, index, 2)
+				TriggerEvent('skinchanger:change', 'hair_2', index-1)
+				
+			end
+		else
+			if LastSkin['hair_1']-1 == i then
+				local variation = NativeUI.CreateItem('~y~Hair cut (#' .. i .. ')', '~b~')
+				hairs:AddItem(variation)
+			else
+				local variation = NativeUI.CreateItem('Hair cut (#' .. i .. ')', '~b~')
+				hairs:AddItem(variation)
+			end
+		end
+	end
+		
+	hairs.OnIndexChange = function(sender, index)
+		--SetPedComponentVariation(PlayerPedId(-1), 2, index, 1, 1)
+		
+		TriggerEvent('skinchanger:change', 'hair_2', 0)
+		TriggerEvent('skinchanger:change', 'hair_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.6
+		camOffset = 0.65
+		--selectedHair1 = index
+	end
+
+
+	for i=0, hairColorsAmount, 1 do
+		
+		local values = {}
+		local amountOfVariations = hairColorsAmount
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			if LastSkin['hair_color_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Hair colour (#' .. i .. ')', values, LastSkin['hair_color_2'])
+				hairColor:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Hair colour (#' .. i .. ')', values, 1)
+				hairColor:AddItem(variation)
+			end
+
+			hairColor.OnListChange = function(sender, item, index)
+
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'hair_color_2', index-1)
+
+			end
+		end
+	end
+		
+	hairColor.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'hair_color_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.6
+		camOffset = 0.65
+	end
+	
+
+	for i=0, beard1, 1 do
+		
+		local values = {}
+		local amountOfVariations = 10
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			if LastSkin['beard_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Beard (#' .. i .. ')', values, LastSkin['beard_2'])
+				beard:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Beard (#' .. i .. ')', values, 1)
+				beard:AddItem(variation)
+			end
+
+			beard.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'beard_2', index-1)
+
+			end
+		end
+	end
+		
+	beard.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'beard_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, beardColorsAmount, 1 do
+		
+		local values = {}
+		local amountOfVariations = GetNumHairColors()-1
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['beard_3']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Beard colour (#' .. i .. ')', values, LastSkin['beard_4'])
+				beardColor:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Beard colour (#' .. i .. ')', values, 1)
+				beardColor:AddItem(variation)
+			end
+			
+			beardColor.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'beard_4', index-1)
+
+			end
+		end
+	end
+		
+	beardColor.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'beard_3', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, eyebrows1, 1 do
+		
+		local values = {}
+		local amountOfVariations = 10
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['eyebrows_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Eyebrows (#' .. i .. ')', values, LastSkin['eyebrows_2'])
+				eyebrows:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Eyebrows (#' .. i .. ')', values, 1)
+				eyebrows:AddItem(variation)
+			end
+
+			eyebrows.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'eyebrows_2', index-1)
+
+			end
+		end
+	end
+		
+	eyebrows.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'eyebrows_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, eyebrowColorsAmount, 1 do
+		
+		local values = {}
+		local amountOfVariations = GetNumHairColors()-1
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['eyebrows_3']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Eyebrows colour (#' .. i .. ')', values, LastSkin['eyebrows_4'])
+				eyebrowsColor:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Eyebrows colour (#' .. i .. ')', values, 1)
+				eyebrowsColor:AddItem(variation)
+			end
+
+
+			eyebrowsColor.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'eyebrows_4', index-1)
+
+
+			end
+		end
+	end
+		
+	eyebrowsColor.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'eyebrows_3', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, makeup1, 1 do
+		
+		local values = {}
+		local amountOfVariations = 10
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['makeup_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Make-Up (#' .. i .. ')', values, LastSkin['makeup_2'])
+				makeup:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Make-Up (#' .. i .. ')', values, 1)
+				makeup:AddItem(variation)
+			end
+
+
+			makeup.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'makeup_2', index-1)
+
+
+			end
+		end
+	end
+		
+	makeup.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'makeup_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, makeupColorsAmount, 1 do
+		
+		local values = {}
+		local amountOfVariations = GetNumHairColors()-1
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['makeup_3']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Make-Up colour (#' .. i .. ')', values, LastSkin['makeup_4'])
+				makeupColor:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Make-Up colour (#' .. i .. ')', values, 1)
+				makeupColor:AddItem(variation)
+			end
+
+
+			makeupColor.OnListChange = function(sender, item, index)
+
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'makeup_4', index-1)
+
+
+			end
+		end
+	end
+		
+	makeupColor.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'makeup_3', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, lipstick1, 1 do
+		
+		local values = {}
+		local amountOfVariations = 10
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+
+			if LastSkin['lipstick_1']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Lipstick (#' .. i .. ')', values, LastSkin['lipstick_2'])
+				lipstick:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Lipstick (#' .. i .. ')', values, 1)
+				lipstick:AddItem(variation)
+			end
+
+
+			lipstick.OnListChange = function(sender, item, index)
+
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'lipstick_2', index-1)
+
+
+			end
+		end
+	end
+		
+	lipstick.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'lipstick_1', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	for i=0, lipstickColorAmount, 1 do
+		
+		local values = {}
+		local amountOfVariations = GetNumHairColors()-1
+		if amountOfVariations > 0 then
+			for i=1, amountOfVariations, 1 do
+				table.insert(values, i)
+			end
+			
+			if LastSkin['lipstick_3']-1 == i then
+				local variation = NativeUI.CreateListItem('~y~Lipstick colour (#' .. i .. ')', values, LastSkin['lipstick_4'])
+				lipstickColor:AddItem(variation)
+			else
+				local variation = NativeUI.CreateListItem('Lipstick colour (#' .. i .. ')', values, 1)
+				lipstickColor:AddItem(variation)
+			end
+
+			lipstickColor.OnListChange = function(sender, item, index)
+				
+				--SetPedHairColor(PlayerPedId(), selectedHairColor, index)
+				TriggerEvent('skinchanger:change', 'lipstick_4', index-1)
+
+
+			end
+		end
+	end
+		
+	lipstickColor.OnIndexChange = function(sender, index)
+		--SetPedHairColor(PlayerPedId(), index, 1)
+		--selectedHairColor = index
+		
+		TriggerEvent('skinchanger:change', 'lipstick_3', index)
+		CreateSkinCam()
+		zoomOffset = 0.4
+		camOffset = 0.65
+	end
+
+	mainMenu.OnItemSelect = function(sender, item, index)
+
+		if item == confirm then
+			if Config.useESX then
+				TriggerServerEvent('lils_barber:buyHair')
+			else
+				TriggerEvent('lils_barber:confirmHair', true)
+			end
+			DeleteSkinCam()
+		end
+
+	end
+
+	mainMenu:Visible(true)
+	_menuPool:MouseControlsEnabled (false)
+	_menuPool:MouseEdgeEnabled (false)
+	_menuPool:ControlDisablingEnabled(false)
+	
+
 end
 
 
-RegisterNetEvent('barbershop:start')
-AddEventHandler('barbershop:start', function()
-    Citizen.CreateThread(function()
-        while started do
-            Citizen.Wait(0)
-            AddTextEntry(GetCurrentResourceName(), _U('buttom_Help', Config.hairCost, Config.eyebrowCost, Config.beardCost, cost))
-            DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
-            if (IsControlJustPressed(0, 215)) then
-                FreezeEntityPosition(GetPlayerPed(-1), false)
-                viewangle = false
-                started = false
-                disableUI = false
-                destorycam()
-                SetEntityCoords(PlayerPedId(), 133.55, -1708.86, 28.29)
-                SetEntityHeading(PlayerPedId(), 237.22)
-                ClearPedTasks(GetPlayerPed(-1))
-                TriggerServerEvent('barbershop:pay', GetPlayerServerId(PlayerId()), cost)
-                Citizen.Wait(500)
-                TaskPedSlideToCoord(Ped, 141.48, -1705.59, 29.29 - 0.95, 123.37, 1.0)
-                Citizen.Wait(2000)
-                DeletePed(Ped)
-                cost = 0
-            elseif (IsControlJustPressed(0, 166) or IsControlJustPressed(0, 167) or IsControlJustPressed(0, 168)) then
-                started = false
-                viewangle = true
-                if IsControlJustPressed(0, 166) then
-                    barberMenu('hairstyle')
-                elseif IsControlJustPressed(0, 167) then
-                    barberMenu('beardstyle')
-                elseif IsControlJustPressed(0, 168) then
-                    barberMenu('eyebrowstyle')
-                end
-                createcam(true)
-                TriggerEvent('barbershop:viewangle')
-            end
-        end
-    end)
+RegisterNetEvent('lils_barber:confirmHair')
+AddEventHandler('lils_barber:confirmHair', function(enoughMoney)
+
+	_menuPool:CloseAllMenus()
+
+	if enoughMoney then
+		TriggerEvent('skinchanger:getSkin', function(skin)
+			TriggerServerEvent('esx_skin:save', skin)
+			LastSkin = skin
+		end)
+
+		hasBought = true
+
+	else
+		ShowNotification('~r~Du hast nicht genügend Geld.')
+		TriggerEvent('skinchanger:loadSkin', LastSkin)
+
+	end
+
 end)
 
-RegisterNetEvent('barbershop:viewangle')
-AddEventHandler('barbershop:viewangle', function()
-    Citizen.CreateThread(function()
-        while viewangle do
-            Citizen.Wait(0)
-            AddTextEntry(GetCurrentResourceName(), _U('angle'))
-            DisplayHelpTextThisFrame(GetCurrentResourceName(), false)
-            if (IsControlJustPressed(0, 89)) then
-                createcam(true)
-            elseif (IsControlJustPressed(0, 90)) then
-                createcam(false)
-            end
-        end
-    end)
-end)
 
-function createcam(default)
-    RenderScriptCams(false, false, 0, 1, 0)
-    DestroyCam(cam, false)
-    if (not DoesCamExist(cam)) then
-        if default then
-            cam = CreateCamWithParams('DEFAULT_SCRIPTED_CAMERA', 138.45, -1711.05, 29.70, 0.0, 0.0, 45.00, 65.0, false, 0)
-        else
-            cam = CreateCamWithParams('DEFAULT_SCRIPTED_CAMERA', 137.72, -1709.87, 29.90, 0.0, 0.0, 135.00, 85.0, false, 0)
-        end
-        SetCamActive(cam, true)
-        RenderScriptCams(true, false, 0, true, false)
-    end
+function CreateSkinCam()
+	local playerPed = GetPlayerPed(-1)
+
+	if not isCameraActive then
+		if not DoesCamExist(cam) then
+			cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
+		end
+		SetCamActive(cam, true)
+		RenderScriptCams(true, true, 500, true, true)
+		isCameraActive = true
+		SetCamRot(cam, 0.0, 0.0, 270.0, true)
+		SetEntityHeading(playerPed, 90.0)
+	end
 end
-
-function destorycam()
-    RenderScriptCams(false, false, 0, 1, 0)
-    DestroyCam(cam, false)
-    TriggerServerEvent('barbershop:removeposition')
+	
+function DeleteSkinCam()
+	isCameraActive = false
+	SetCamActive(cam, false)
+	RenderScriptCams(false, true, 500, true, true)
+	cam = nil
 end
-
-RegisterNetEvent('barbershop:disableUI')
-AddEventHandler('barbershop:disableUI', function()
-    Citizen.CreateThread(function()
-        while disableUI do
-            Citizen.Wait(0)
-            HideHudComponentThisFrame(19)
-            DisableControlAction(2, 37, true)
-            DisablePlayerFiring(GetPlayerPed(-1), true)
-            DisableControlAction(0, 106, true)
-            if IsDisabledControlJustPressed(2, 37) or IsDisabledControlJustPressed(0, 106) then
-                SetCurrentPedWeapon(player, GetHashKey("WEAPON_UNARMED"), true)
-            end
-        end
-    end)
+	
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+		if isCameraActive then
+		DisableControlAction(2, 30, true)
+		DisableControlAction(2, 31, true)
+		DisableControlAction(2, 32, true)
+		DisableControlAction(2, 33, true)
+		DisableControlAction(2, 34, true)
+		DisableControlAction(2, 35, true)
+	
+		DisableControlAction(0, 25,   true) -- Input Aim
+			DisableControlAction(0, 24,   true) -- Input Attack
+	
+		local playerPed = GetPlayerPed(-1)
+		local coords    = GetEntityCoords(playerPed)
+	
+		local angle = heading * math.pi / 180.0
+		local theta = {
+			x = math.cos(angle),
+			y = math.sin(angle)
+		}
+		local pos = {
+			x = coords.x + (zoomOffset * theta.x),
+			y = coords.y + (zoomOffset * theta.y),
+		}
+	
+		local angleToLook = heading - 140.0
+		if angleToLook > 360 then
+			angleToLook = angleToLook - 360
+		elseif angleToLook < 0 then
+			angleToLook = angleToLook + 360
+		end
+		angleToLook = angleToLook * math.pi / 180.0
+		local thetaToLook = {
+			x = math.cos(angleToLook),
+			y = math.sin(angleToLook)
+		}
+		local posToLook = {
+			x = coords.x + (zoomOffset * thetaToLook.x),
+			y = coords.y + (zoomOffset * thetaToLook.y),
+		}
+	
+		SetCamCoord(cam, pos.x, pos.y, coords.z + camOffset)
+		PointCamAtCoord(cam, posToLook.x, posToLook.y, coords.z + camOffset)
+	
+		--SetTextComponentFormat("STRING")
+		--AddTextComponentString(_U('use_rotate_view'))
+		--DisplayHelpTextFromStringLabel(0, 0, 0, -1)
+		end
+	end
+end)
+	
+Citizen.CreateThread(function()
+	local angle = 90
+	while true do
+		Citizen.Wait(0)
+		if isCameraActive then
+		if IsControlPressed(0, 108) then
+			angle = angle - 1
+		elseif IsControlPressed(0, 109) then
+			angle = angle + 1
+		end
+		if angle > 360 then
+			angle = angle - 360
+		elseif angle < 0 then
+			angle = angle + 360
+		end
+		heading = angle + 0.0
+		end
+	end
 end)
 
-barberMenu = function(style)
-    TriggerEvent('skinchanger:getSkin', function(skin)
-        lastSkin = skin
-    end)
-    
-    local elements = {}
-    local _components = {}
-    TriggerEvent('skinchanger:getData', function(components, maxVals)
-            -- Restrict menu
-            if restrict == nil then
-                for i = 1, #components, 1 do
-                    _components[i] = components[i]
-                end
-            else
-                for i = 1, #components, 1 do
-                    local found = false
-                    for j = 1, #restrict, 1 do
-                        if components[i].name == restrict[j] then
-                            found = true
-                        end
-                    end
-                    
-                    if found then
-                        table.insert(_components, components[i])
-                    end
-                end
-            end
-            
-            -- Insert elements
-            for i = 1, #_components, 1 do
-                local compname = _components[i].name
-                local value = _components[i].value
-                local componentId = _components[i].componentId
-                if componentId == 0 then
-                    value = GetPedPropIndex(playerPed, _components[i].componentId)
-                end
-                if style == 'hairstyle' then
-                    if compname == 'hair_1' or compname == 'hair_2' or compname == 'hair_color_1' or compname == 'hair_color_2' then
-                        local data = {
-                            label = _components[i].label,
-                            name = _components[i].name,
-                            value = value,
-                            min = _components[i].min,
-                            textureof = _components[i].textureof,
-                            type = 'slider'
-                        }
-                        
-                        for k, v in pairs(maxVals) do
-                            if k == _components[i].name then
-                                data.max = v
-                                break
-                            end
-                        end
-                        table.insert(elements, data)
-                    end
-                elseif style == 'beardstyle' then
-                    if compname == 'beard_1' or compname == 'beard_2' or compname == 'beard_3' or compname == 'beard_4' then
-                        local data = {
-                            label = _components[i].label,
-                            name = _components[i].name,
-                            value = value,
-                            min = _components[i].min,
-                            textureof = _components[i].textureof,
-                            type = 'slider'
-                        }
-                        
-                        for k, v in pairs(maxVals) do
-                            if k == _components[i].name then
-                                data.max = v
-                                break
-                            end
-                        end
-                        table.insert(elements, data)
-                    end
-                elseif style == 'eyebrowstyle' then
-                    if compname == 'eyebrows_1' or compname == 'eyebrows_2' or compname == 'eyebrows_3' or compname == 'eyebrows_4' then
-                        local data = {
-                            label = _components[i].label,
-                            name = _components[i].name,
-                            value = value,
-                            min = _components[i].min,
-                            textureof = _components[i].textureof,
-                            type = 'slider'
-                        }
-                        
-                        for k, v in pairs(maxVals) do
-                            if k == _components[i].name then
-                                data.max = v
-                                break
-                            end
-                        end
-                        table.insert(elements, data)
-                    end
-                end
-            end
-    end)
-    ESX.UI.Menu.CloseAll()
-    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'skin', {
-        title = _U('menu_title'),
-        align = 'top-right',
-        elements = elements
-    }, function(data, menu)
-        menu.close()
-        createcam(true)
-        viewangle = false
-        RequestAnimDict("misshair_shop@barbers")
-        while not HasAnimDictLoaded("misshair_shop@barbers") do
-            Citizen.Wait(0)
-        end
-        TriggerEvent('skinchanger:getSkin', function(skin)
-            TriggerServerEvent('esx_skin:save', skin)
-        end)
-        TaskPlayAnim(Ped, "misshair_shop@barbers", "keeper_idle_b", 8.0, 8.0, 15000, 0, 0, -1, -1, -1)
-        TriggerEvent('skinchanger:getSkin', function(getSkin)
-            skin = getSkin
-        end)
-        Citizen.Wait(11500)
-        if style == 'beardstyle' then
-            cost = cost + Config.beardCost
-        elseif style == 'eyebrowstyle' then
-            cost = cost + Config.eyebrowCost
-        else
-            cost = cost + Config.hairCost
-        end
-        ESX.UI.Menu.CloseAll()
-        started = true
-        TriggerEvent('barbershop:start')
-    end, function(data, menu)
-        menu.close()
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
-            TriggerEvent('skinchanger:loadSkin', skin)
-        end)
-        started = true
-        viewangle = false
-        TriggerEvent('barbershop:start')
-    end, function(data, menu)
-        local skin, components, maxVals
-        TriggerEvent('skinchanger:getSkin', function(getSkin)
-            skin = getSkin
-        end)
-        if skin[data.current.name] ~= data.current.value then
-            TriggerEvent('skinchanger:change', data.current.name, data.current.value)
-            TriggerEvent('skinchanger:getData', function(comp, max)
-                components, maxVals = comp, max
-            end)
-            
-            local newData = {}
-            
-            for i = 1, #elements, 1 do
-                newData = {}
-                newData.max = maxVals[elements[i].name]
-                
-                if elements[i].textureof ~= nil and data.current.name == elements[i].textureof then
-                    newData.value = 0
-                end
-                
-                menu.update({name = elements[i].name}, newData)
-            end
-            menu.refresh()
-        end
-    end, function(data, menu)
-    end)
+function showInfobar(msg)
+
+	CurrentActionMsg  = msg
+	SetTextComponentFormat('STRING')
+	AddTextComponentString(CurrentActionMsg)
+	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+
 end
