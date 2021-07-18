@@ -1,42 +1,37 @@
+resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+
 description 'ESX Skin'
 
-version '1.0.1'
-
-ui_pages {
-  'ui/index.html'
-}
+version '1.1.0'
 
 server_scripts {
-  '@es_extended/locale.lua',
-  'config.lua',
-  'locales/de.lua',
-  'locales/br.lua',
-  'locales/en.lua',
-  'locales/fr.lua',
-  'locales/pl.lua',
-  '@mysql-async/lib/MySQL.lua',
-  'server/main.lua',
+	'@mysql-async/lib/MySQL.lua',
+	'@es_extended/locale.lua',
+	'locales/de.lua',
+	'locales/br.lua',
+	'locales/en.lua',
+	'locales/fi.lua',
+	'locales/fr.lua',
+	'locales/sv.lua',
+	'locales/pl.lua',
+	'config.lua',
+	'server/main.lua'
 }
 
 client_scripts {
-  '@es_extended/locale.lua',
-  'config.lua',
-  'locales/de.lua',
-  'locales/br.lua',
-  'locales/en.lua',
-  'locales/fr.lua',
-  'locales/pl.lua',
-  'client/main.lua',
+	'@es_extended/locale.lua',
+	'locales/de.lua',
+	'locales/br.lua',
+	'locales/en.lua',
+	'locales/fi.lua',
+	'locales/fr.lua',
+	'locales/sv.lua',
+	'locales/pl.lua',
+	'config.lua',
+	'client/main.lua'
 }
 
-files {
-	'ui/index.html',
-	'ui/style.css',
-	'ui/style1.css',
-	'ui/articules/art.txt',
-	'ui/script.js',
-	'ui/index.js',
-	'ui/temp.json',
+dependencies {
+	'es_extended',
+	'skinchanger'
 }
-
-client_script "godzilla-ac_nbdvM.lua"
