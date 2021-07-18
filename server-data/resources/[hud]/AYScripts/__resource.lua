@@ -21,6 +21,7 @@ client_scripts{
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
+  "stamina.lua",
   "GiveID-client.lua",
   "onscreenid.lua",
   -- "mapfix.lua",
