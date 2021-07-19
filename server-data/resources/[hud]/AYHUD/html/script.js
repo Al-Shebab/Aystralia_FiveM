@@ -80,7 +80,7 @@ function setAnzahl(anzahl) {
 
 }
 function setAnzahle(anzahl) {
-	if (anzahl < -1) {
+	if (anzahl < -10000000000) {
 		$('.schwarzmoney').show();
 		$('#Ebene_3').show();
 		return;
