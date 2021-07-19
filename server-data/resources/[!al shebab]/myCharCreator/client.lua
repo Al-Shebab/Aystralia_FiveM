@@ -137,9 +137,6 @@ function showCreator()
 
         zoomOffset = 0.6
         camOffset = 0.7
-
-        print('selectedFather: ' .. selectedFather)
-        print('selectedMother: ' .. selectedMother)
         heritageWindow:Index(selectedMother, selectedFather)
         --SetPedHeadBlendData	(GetPlayerPed(-1), selectedMother, selectedFather, nil, selectedMother, selectedFather, nil, selectedSimilarity, selectedComplexion, nil, true)
         TriggerEvent('skinchanger:change', 'mom', selectedMother)
@@ -171,7 +168,6 @@ function showCreator()
     for i=1, 10, 1 do
         table.insert(intensityValues, i)
     end
-    print('add new menu')
     local advancedFaceSubmenu = _menuPool:AddSubMenu(creatorMenu, Translation[Cfg.Locale]['advanced_face'])
     creatorMenu.Items[3]:RightLabel('~b~→→→')
 
@@ -441,9 +437,7 @@ function generateClothesMenu(skin_result)
                               --print('type: ' .. v2.data.type)
                               TriggerEvent('skinchanger:change', v2.data.name2, 0)
                             end
-                            TriggerEvent('skinchanger:change', v2.data.name, componentValues[v2.data.name][selectedIndex])
-                            print(componentValues[v2.data.name][selectedIndex])
-    
+                            TriggerEvent('skinchanger:change', v2.data.name, componentValues[v2.data.name][selectedIndex])    
                             CreateSkinCam()
                             zoomOffset = v2.data.zoomOffset
                             camOffset = v2.data.camOffset

@@ -89,11 +89,7 @@ function OpenMenu(submitCb, cancelCb, restrict)
 			table.insert(elements, data)
 		end
 
-		CreateSkinCam()
-		zoomOffset = _components[1].zoomOffset
-		camOffset = _components[1].camOffset
-
-		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'skin', {
+		ESX.UI.Menu.Open('no', GetCurrentResourceName(), 'no', {
 			title    = _U('skin_menu'),
 			align    = 'top-left',
 			elements = elements

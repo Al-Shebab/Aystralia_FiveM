@@ -5,7 +5,7 @@ Config.DrawDistance               = 20.0
 Config.Marker                     = {type = 22, x = 0.5, y = 0.5, z = 0.5, r = 255, g = 0, b = 0, a = 100, false, rotate = true, false, true, true, true, true}
 
 Config.ReviveReward               = 400
-Config.AntiCombatLog              = true -- Enable anti-combat logging? (Removes Items when a player logs back after intentionally logging out while dead.)
+Config.AntiCombatLog              = false -- Enable anti-combat logging? (Removes Items when a player logs back after intentionally logging out while dead.)
 
 Config.Locale                     = 'fr'
 

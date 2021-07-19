@@ -39,7 +39,8 @@ function getCharacters(source, callback)
 	MySQL.Async.fetchAll("SELECT * FROM 'users' WHERE `identifier` = @identifier",
 	{
 		['@identifier'] = identifier
-	},	function(result)
+	},	
+	function(result)
 		if result[1] and result[2] and result[3] then
 			local data = {
 				identifier		= result[1].identifier,
@@ -234,16 +235,6 @@ AddEventHandler('onResourceStart', function(resource)
 		end
 	end
 end)
-
-TriggerEvent('es:addCommand', 'register', function(source, args, user)
-	getCharacters(source, function(data)
-		if data.firstname3 ~= '' then
-			TriggerClientEvent('chat:addMessage', source, { args = { '^[IDENTITY]', 'You can only have 3 registered characters. Use the ^3/chardel^0  command in order to delete existing characters.' } })
-		else
-			TriggerClientEvent('esx_identity:showRegisterIdentity', source, {})
-		end
-	end)
-end, {help = "Register a new character"})
 
 TriggerEvent('es:addGroupCommand', 'char', 'user', function(source, args, user)
 	getIdentity(source, function(data)

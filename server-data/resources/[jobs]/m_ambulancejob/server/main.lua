@@ -287,32 +287,6 @@ ESX.RegisterUsableItem('bandage', function(source)
 	end
 end)
 
-ESX.RegisterServerCallback('esx_ambulancejob:getDeathStatus', function(source, cb)
-	local xPlayer = ESX.GetPlayerFromId(source)
-
-	MySQL.Async.fetchScalar('SELECT is_dead FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(isDead)
-				
-		if isDead then
-		end
-
-		cb(isDead)
-	end)
-end)
-
-RegisterNetEvent('esx_ambulancejob:setDeathStatus')
-AddEventHandler('esx_ambulancejob:setDeathStatus', function(isDead)
-	local xPlayer = ESX.GetPlayerFromId(source)
-
-	if type(isDead) == 'boolean' then
-		MySQL.Sync.execute('UPDATE users SET is_dead = @isDead WHERE identifier = @identifier', {
-			['@identifier'] = xPlayer.identifier,
-			['@isDead'] = isDead
-		})
-	end
-end)
-
 RegisterServerEvent('EMS:Ouvert')
 AddEventHandler('EMS:Ouvert', function()
     local _source = source
