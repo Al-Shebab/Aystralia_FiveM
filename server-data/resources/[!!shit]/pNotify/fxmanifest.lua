@@ -1,4 +1,6 @@
-description "Simple Notification Script using https://notifyjs.com/"
+fx_version 'cerulean'
+games { 'gta5' }
+author 'author'
 
 ui_page "html/index.html"
 
