@@ -60,11 +60,11 @@ $(function() {
 				speedText = '<span class="int1">' + tmpSpeed.substr(0, 1) + '</span><span class="int2">' + tmpSpeed.substr(1, 1) + '</span><span class="int3">' + tmpSpeed.substr(2, 1) + '</span>';
 			} else if(CalcSpeed > 10 && CalcSpeed < 100) {
 				var tmpSpeed = Math.floor(CalcSpeed) + '';
-				speedText = '<span class="gray int1">0</span><span class="int2">' + tmpSpeed.substr(0, 1) + '</span><span class="int3">' + tmpSpeed.substr(1, 1) + '</span>';
+				speedText = '<span class="gray int1"></span><span class="int2">' + tmpSpeed.substr(0, 1) + '</span><span class="int3">' + tmpSpeed.substr(1, 1) + '</span>';
 			} else if(CalcSpeed > 0 && CalcSpeed < 10) {
-				speedText = '<span class="gray int1">0</span><span class="gray int2">0</span><span class="int3">' + Math.floor(CalcSpeed) + '</span>';
+				speedText = '<span class="gray int1"></span><span class="gray int2"></span><span class="int3">' + Math.floor(CalcSpeed) + '</span>';
 			} else {
-				speedText = '<span class="gray int1">0</span><span class="gray int2">0</span><span class="gray int3">0</span>';
+				speedText = '<span class="gray int1"></span><span class="gray int2"></span><span class="gray int3"></span>';
 			}
 			
 			// Handbrake
