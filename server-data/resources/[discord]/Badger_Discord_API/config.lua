@@ -1,6 +1,6 @@
 Config = {
 	Guild_ID = '775399964204990495',
-	Bot_Token = '461eb545a3e183503e1eeaeb7b848c028cee7d85e5fe1bcb10f8ea58dc78249c',
+	Bot_Token = 'NzU1NzkyOTI3ODkxOTE0ODEy.X2IdAw.JLC-ZnOw3VIA6r2Wr7Z0enN3zYg',
 	RoleList = {"Owner", "Beta Tester", "Developer"},
 }
 

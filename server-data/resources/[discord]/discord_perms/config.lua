@@ -1,5 +1,5 @@
 Config = {
-	DiscordToken = "461eb545a3e183503e1eeaeb7b848c028cee7d85e5fe1bcb10f8ea58dc78249c",
+	DiscordToken = "NzU1NzkyOTI3ODkxOTE0ODEy.X2IdAw.JLC-ZnOw3VIA6r2Wr7Z0enN3zYg",
 	GuildId = "775399964204990495",
 
 	Roles = {		
