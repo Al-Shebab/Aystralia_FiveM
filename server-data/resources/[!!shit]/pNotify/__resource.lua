@@ -1,6 +1,4 @@
-fx_version 'cerulean'
-games { 'gta5' }
-author 'author'
+description "Simple Notification Script using https://notifyjs.com/"
 
 ui_page "html/index.html"
 
