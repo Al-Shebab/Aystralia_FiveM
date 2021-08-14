@@ -1,0 +1,16 @@
+Locales['en'] = {
+	['GPS_info'] = 'GPS INFO',
+	['cancel_mission'] = 'Cancel Mission',
+	['pickup'] = 'Press ~INPUT_CONTEXT~ to pickup',
+	['end_service'] = 'Finish service',
+	['take_service'] = 'Start Service',
+	['end_service_notif'] = 'Finished service',
+	['take_service_notif'] = 'Started Service',
+	['start_job'] = 'Press ~b~DEL~w~ to START',
+	['Vehicle_Menu_Title'] = 'VEHICLES',
+	['in_vehicle'] = '~r~Leave the vehicle',
+	['vehicle_broken'] = '~r~Vehicle broke',
+	['bad_vehicle'] = 'Not a job vehicle',
+	['not_good_veh'] = '~r~You need the work truck',
+	['stop_npc'] = 'Cant hold anymore',
+}

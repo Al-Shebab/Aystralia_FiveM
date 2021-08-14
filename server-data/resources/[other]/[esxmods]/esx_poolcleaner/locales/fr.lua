@@ -1,0 +1,16 @@
+Locales['fr'] = {
+	['GPS_info'] = 'Bazen pridan do ~y~GPS',
+	['cancel_mission'] = 'Mise byla ~r~zrusena',
+	['pickup'] = 'Stiskni ~INPUT_CONTEXT~ pro vycisteni bazenu',
+	['end_service'] = 'Ukoncete sluzbu',
+	['take_service'] = 'Vezmete s tuto sluzbu',
+	['end_service_notif'] = 'Dokoncit ~r~Sluzbu',
+	['take_service_notif'] = 'Vzit ~g~Sluzbu',
+	['start_job'] = 'Stiskni ~b~DEL ~w~pro start ~b~prace',
+	['Vehicle_Menu_Title'] = 'Sluzebni auto',
+	['in_vehicle'] = '~r~Vystupte z vozidla !',
+	['vehicle_broken'] = '~r~Opravime auto !',
+	['bad_vehicle'] = 'Muzete si objednat pouze ~b~sluzebni vozidlo',
+	['not_good_veh'] = '~r~Musie byt ve sluzebnim vozidle',
+	['stop_npc'] = 'Akce ~r~nemozna~s~ : Vratte se',
+}
