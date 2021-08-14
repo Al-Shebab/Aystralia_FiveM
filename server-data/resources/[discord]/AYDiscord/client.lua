@@ -5,6 +5,8 @@ Citizen.CreateThread(function()
         SetDiscordRichPresenceAssetText('Aystralia RP')
         SetDiscordRichPresenceAssetSmall('logo_name')
         SetDiscordRichPresenceAssetSmallText('Aystralia RP')
+        SetDiscordRichPresenceAction(0, "Connect to Server", "fivem://connect/localhost:30120")
+        SetDiscordRichPresenceAction(1, "Join our Discord!", "ChromeHTML://https://discord.gg/SBPwsnXz42")
 		Citizen.Wait(3000)
 	end
 end)

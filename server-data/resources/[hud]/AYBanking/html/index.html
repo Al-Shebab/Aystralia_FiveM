@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>BANQUE</title>
+        <link href="./css/style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<div class="AYBanking-container noselect">
+			<div class="AYBanking-rightbar">
+				<div class="AYBanking-rightbar-header">
+					<img class="AYBanking-rightbar-misdibanklogo" src="img/misdibank.PNG">
+					<span class="AYBanking-rightbar-misdibanktext">Bank of Aystralia</span>
+				</div>
+				<div class="AYBanking-rightbar-options">
+					<div class="AYBanking-rightbar-options-buttons" id="inicio">
+						<i class="fal fa-home casica"></i>
+						<span class="AYBanking-rightbar-text">Account</span>
+					</div>
+					<div class="AYBanking-rightbar-options-buttons" id="mycards">
+						<i class="fal fa-credit-card creditcard"></i>
+						<span class="AYBanking-rightbar-text">Cards</span>
+					</div>
+					<div class="AYBanking-rightbar-options-buttons" id="depositar">
+						<i class="fal fa-money-check-alt creditcard"></i>
+						<span class="AYBanking-rightbar-text">Deposit</span>
+					</div>
+					<div class="AYBanking-rightbar-options-buttons" id="transfer">
+						<i class="fal fa-exchange-alt creditcard"></i>
+						<span class="AYBanking-rightbar-text">Transfer</span>
+					</div>
+					<div class="AYBanking-rightbar-options-buttons" id="myaccount">
+						<i class="fal fa-user creditcard"></i>
+						<span class="AYBanking-rightbar-text">Account Information</span>
+					</div>
+					<div class="AYBanking-rightbar-options-buttons" id="closebanking">
+						<i class="fal fa-sign-out-alt creditcard"></i>
+						<span class="AYBanking-rightbar-text">Exit</span>
+					</div>
+				</div>
+			</div>
+			<div class="AYBanking-container-inicio">
+				<div class="AYBanking-inicio-bigcontainer">
+					<div class="AYBanking-inicio-bigcontainer-adcontainer">
+						<span class="adcontainer-title">Diamond Club Card</span>
+						<span class="adcontainer-descripcion">Spend more than $25,000,000 a month and earn 5% cashback on all purchases.</span>
+					</div>
+					<div class="AYBanking-inicio-bigcontainer-balancecontainer">
+						<div class="AYBanking-balancecontainer-creditcard">
+							<div class="AYBanking-balancecontainer-creditcard-background"></div>
+							<img class="AYBanking-creditcard-visalogo" src="img/visa.png">
+							<img class="AYBanking-creditcard-chip" src="img/chip.png">
+							<span class="AYBanking-creditcard-number">5127 &nbsp;&nbsp; 2952 &nbsp;&nbsp; 9387 &nbsp;&nbsp; 7182</span>
+							<span class="AYBanking-creditcard-cardholdertext">Name</span>
+							<span class="AYBanking-creditcard-validtext">Expiry</span>
+							<span class="AYBanking-creditcard-cardholder">Loading...</span>
+							<span class="AYBanking-creditcard-valid">12/09</span>
+						</div>
+						<div class="AYBanking-balancecontainer-balancediv">
+							<span class="vb-balance-balancetext">Account balance</span>
+							<span class="vb-balance-balance">$0</span>
+							<div class="vb-balance-buttonadd" id="meterpastica">
+								<i class="fal fa-plus meterpasta"></i>
+							</div>
+							<span class="vb-balance-creditstext">Bank of Aystralia</span>
+						</div>
+					</div>
+					<div class="AYBanking-inicio-bigcontainer-withdrawandallofthatstuff">
+						<span class="vb-withdrawandallofthatstuff-withdrawtext">Withdraw</span>
+						<div class="vb-withdrawandallofthatstuff-accountdiv">
+							<img class="AYBanking-accountdiv-misdibanklogo" src="img/misdibank.PNG">
+							<span class="AYBanking-accountdiv-accountnumber">****&nbsp; 7182</span>
+							<i class="fal fa-chevron-down simbolicocambiarcuenta"></i>
+						</div>
+						<div class="vb-withdrawandallofthatstuff-amounetcdiv">
+							<span class="vb-withdrawandallofthatstuff-amounttext">Withdraw</span>
+							<span class="vb-withdrawandallofthatstuff-dollarsymbol">$</span>
+							<input type="number" class="vb-withdrawandallofthatstuff-inputamount select" id="withdrawnumber" placeholder="69">>
+						</div>
+						<button class="vb-withdrawandallofthatstuff-withdrawbutton" id="withdraw">Withdraw</button>
+					</div>
+				</div>
+			</div>
+			<div class="AYBanking-bigcontainertarjetas">
+				<div class="AYBanking-tarjetas-container">
+					<span class="AYBanking-tarjetas-mycardcontainer-mycardstext">Debit Card</span>
+					<div class="AYBanking-tarjetas-mycardcontainer">
+						<div class="AYBanking-tarjetas-card">
+							<img class="AYBanking-tarjetas-card-misdibanklogo" src="img/misdibank.PNG">
+							<span class="AYBanking-tarjetas-card-misdibanktext">Bank of Aystralia</span>
+						</div>
+						<span class="AYBanking-tarjetas-mycardcontainer-balance" id="AYBanking-tarjetas-mycardcontainer-balance">$0</span>
+						<span class="AYBanking-tarjetas-mycardcontainer-totalbalancetext">Account overview</span>
+						<div class="AYBanking-tarjetas-mycardcontainer-buttonadd" id="meterpastica">
+							<i class="fal fa-plus meterpasta2"></i>
+						</div>
+						<div class="AYBanking-tarjetas-mycardcontainer-historycontainer">
+							<span class="AYBanking-tarjetas-historytext">Recent transactions</span>
+							<div class="AYBanking-tarjetas-historytransactions">
+								<div class="AYBanking-historytransactions-transaction">
+									<div class="vb-transaction-logotransaction">
+										<i class="fab fa-spotify logomarca"></i>
+									</div>
+									<span class="vb-transaction-textmarca">Spotify</span>
+									<span class="vb-transaction-textdescripcion">Music Platform</span>
+									<span class="vb-transaction-textprice">- $24.00</span>
+								</div>
+								<div class="AYBanking-historytransactions-transaction">
+									<div class="vb-transaction-logotransaction2">
+										<i class="fab fa-apple logomarca2"></i>
+									</div>
+									<span class="vb-transaction-textmarca">Apple</span>
+									<span class="vb-transaction-textdescripcion">Phone</span>
+									<span class="vb-transaction-textprice2">- $1200.00</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="AYBanking-tarjetas-rightbar">
+						<div class="AYBanking-tarjetas-rigthbar-balancecontainer">
+							<span class="AYBanking-tarjetas-rigthbar-balance" id="AYBanking-tarjetas-rigthbar-balance">$0</span>
+							<span class="AYBanking-tarjetas-rigthbar-currentbalance">Current balance</span>
+						</div>
+						<span class="AYBanking-history">History</span>
+						<div class="AYBanking-rightbar-historycontainer">
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction">
+									<i class="fab fa-spotify vb-rightbar-transaction-logomarca"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Spotify</span>
+								<span class="vb-rightbar-transaction-textdescription">Music Platform</span>
+								<span class="vb-rightbar-transaction-textprice">-$24</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction2">
+									<i class="fab fa-apple vb-rightbar-transaction-logomarca2"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Apple</span>
+								<span class="vb-rightbar-transaction-textdescription">Phones</span>
+								<span class="vb-rightbar-transaction-textprice">-$1200</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction3">
+									<i class="fab fa-discord vb-rightbar-transaction-logomarca3"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Discord Nitro</span>
+								<span class="vb-rightbar-transaction-textdescription">Social</span>
+								<span class="vb-rightbar-transaction-textprice">-$5</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction4">
+									<i class="fab fa-amazon vb-rightbar-transaction-logomarca4"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Amazon</span>
+								<span class="vb-rightbar-transaction-textdescription">Shopping</span>
+								<span class="vb-rightbar-transaction-textprice">-$182</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction5">
+									<i class="fab fa-bitcoin vb-rightbar-transaction-logomarca5"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Binance</span>
+								<span class="vb-rightbar-transaction-textdescription">Bitcoin purchase</span>
+								<span class="vb-rightbar-transaction-textprice">-$540</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction6">
+									<i class="fab fa-playstation vb-rightbar-transaction-logomarca6"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">PlayStation</span>
+								<span class="vb-rightbar-transaction-textdescription">Games</span>
+								<span class="vb-rightbar-transaction-textprice">-$50</span>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="AYBanking-bigcontainerdepositar">
+				<div class="AYBanking-depositar-container">
+					<div class="AYBanking-depositcontainer">
+						<div class="AYBanking-depositcontainer-creditcard">
+							<div class="AYBanking-depositcontainer-creditcard-background"></div>
+							<img class="AYBanking-creditcard-visalogo" src="img/visa.png">
+							<img class="AYBanking-creditcard-chip" src="img/chip.png">
+							<span class="AYBanking-creditcard-number">5127 &nbsp;&nbsp; 2952 &nbsp;&nbsp; 9387 &nbsp;&nbsp; 7182</span>
+							<span class="AYBanking-creditcard-cardholdertext">Cardholder</span>
+							<span class="AYBanking-creditcard-validtext">Expiry</span>
+							<span class="AYBanking-creditcard-cardholder">Loading...</span>
+							<span class="AYBanking-creditcard-valid">12/09</span>
+						</div>
+						<span class="AYBanking-depositcontainer-title">Deposit account</span>
+						<div class="AYBanking-depositcontainer-buttoncontainer">
+							<button class="AYBanking-buttoncontainer-button">Deposit</button>
+							<button class="AYBanking-buttoncontainer-button button2" id="transfer">Transfer</button>
+						</div>
+						<div class="AYBanking-depositcontainer-depositmoneydiv">
+							<span class="vb-withdrawandallofthatstuff-amounttext">Amount</span>
+							<span class="vb-withdrawandallofthatstuff-dollarsymbol">$</span>
+							<input type="number" class="vb-withdrawandallofthatstuff-inputamount select" id="cantidaddepositar" placeholder="69">
+						</div>
+						<button class="AYBanking-depositcontainer-completarbutton" id="depositarpasta"><i class="far fa-money-bill-wave-alt"></i>&nbsp;&nbsp;Deposit</button>
+					</div>
+					<div class="AYBanking-tarjetas-rightbar">
+						<div class="AYBanking-tarjetas-rigthbar-balancecontainer">
+							<span class="AYBanking-tarjetas-rigthbar-balance" id="AYBanking-depositcontainer-balance">$0</span>
+							<span class="AYBanking-tarjetas-rigthbar-currentbalance">Current balance</span>
+						</div>
+						<span class="AYBanking-history">History</span>
+						<div class="AYBanking-rightbar-historycontainer">
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction">
+									<i class="fab fa-spotify vb-rightbar-transaction-logomarca"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Spotify</span>
+								<span class="vb-rightbar-transaction-textdescription">Music Platform</span>
+								<span class="vb-rightbar-transaction-textprice">-$24</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction2">
+									<i class="fab fa-apple vb-rightbar-transaction-logomarca2"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Apple</span>
+								<span class="vb-rightbar-transaction-textdescription">Phones</span>
+								<span class="vb-rightbar-transaction-textprice">-$1200</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction3">
+									<i class="fab fa-discord vb-rightbar-transaction-logomarca3"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Discord Nitro</span>
+								<span class="vb-rightbar-transaction-textdescription">Social</span>
+								<span class="vb-rightbar-transaction-textprice">-$5</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction4">
+									<i class="fab fa-amazon vb-rightbar-transaction-logomarca4"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Amazon</span>
+								<span class="vb-rightbar-transaction-textdescription">Shopping</span>
+								<span class="vb-rightbar-transaction-textprice">-$182</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction5">
+									<i class="fab fa-bitcoin vb-rightbar-transaction-logomarca5"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Binance</span>
+								<span class="vb-rightbar-transaction-textdescription">Bitcoin purchase</span>
+								<span class="vb-rightbar-transaction-textprice">-$540</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction6">
+									<i class="fab fa-playstation vb-rightbar-transaction-logomarca6"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">PlayStation</span>
+								<span class="vb-rightbar-transaction-textdescription">Games</span>
+								<span class="vb-rightbar-transaction-textprice">-$50</span>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="AYBanking-bigcontainertransfer">
+				<div class="AYBanking-transferir-container">
+					<div class="AYBanking-transferircontainer">
+						<div class="AYBanking-depositcontainer-creditcard">
+							<div class="AYBanking-depositcontainer-creditcard-background"></div>
+							<img class="AYBanking-creditcard-visalogo" src="img/visa.png">
+							<img class="AYBanking-creditcard-chip" src="img/chip.png">
+							<span class="AYBanking-creditcard-number">5127 &nbsp;&nbsp; 2952 &nbsp;&nbsp; 9387 &nbsp;&nbsp; 7182</span>
+							<span class="AYBanking-creditcard-cardholdertext">Cardholder</span>
+							<span class="AYBanking-creditcard-validtext">Expiry</span>
+							<span class="AYBanking-creditcard-cardholder">Loading...</span>
+							<span class="AYBanking-creditcard-valid">12/09</span>
+						</div>
+						<span class="AYBanking-depositcontainer-title">Transfers account</span>
+						<div class="AYBanking-depositcontainer-buttoncontainer">
+							<button class="AYBanking-buttoncontainer-button">Transfer</button>
+							<button class="AYBanking-buttoncontainer-button button2" id="depositar">Deposit</button>
+						</div>
+						<div class="AYBanking-transferircontainer-transferstuff">
+							<span class="AYBanking-transferircontainer-payto">Account number</span>
+							<input type="number" class="AYBanking-tranferircontainer-iduser" id="iddestinatario" placeholder="Enter account ID">
+							<span class="AYBanking-transferircontainer-quantitytext">Amount</span>
+							<input type="number" class="AYBanking-tranferircontainer-quantity" id="cantidadtransfer" placeholder="Enter amount">
+							<span class="AYBanking-transferircontainer-reasontext">Reason</span>
+							<input type="text" class="AYBanking-tranferircontainer-reason" placeholder="Enter reason">
+							<button class="AYBanking-transferir-completar" id="transferirpasta"><i class="fal fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;Transfer</button>
+						</div>
+					</div>
+					<div class="AYBanking-tarjetas-rightbar">
+						<div class="AYBanking-tarjetas-rigthbar-balancecontainer">
+							<span class="AYBanking-tarjetas-rigthbar-balance" id="AYBanking-transferir-container-balance">$0</span>
+							<span class="AYBanking-tarjetas-rigthbar-currentbalance">Current balance</span>
+						</div>
+						<span class="AYBanking-history">History</span>
+						<div class="AYBanking-rightbar-historycontainer">
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction">
+									<i class="fab fa-spotify vb-rightbar-transaction-logomarca"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Spotify</span>
+								<span class="vb-rightbar-transaction-textdescription">Music Platform</span>
+								<span class="vb-rightbar-transaction-textprice">-$24</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction2">
+									<i class="fab fa-apple vb-rightbar-transaction-logomarca2"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Apple</span>
+								<span class="vb-rightbar-transaction-textdescription">Phones</span>
+								<span class="vb-rightbar-transaction-textprice">-$1200</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction3">
+									<i class="fab fa-discord vb-rightbar-transaction-logomarca3"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Discord Nitro</span>
+								<span class="vb-rightbar-transaction-textdescription">Social</span>
+								<span class="vb-rightbar-transaction-textprice">-$5</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction4">
+									<i class="fab fa-amazon vb-rightbar-transaction-logomarca4"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Amazon</span>
+								<span class="vb-rightbar-transaction-textdescription">Shopping</span>
+								<span class="vb-rightbar-transaction-textprice">-$182</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction5">
+									<i class="fab fa-bitcoin vb-rightbar-transaction-logomarca5"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Binance</span>
+								<span class="vb-rightbar-transaction-textdescription">Bitcoin purchase</span>
+								<span class="vb-rightbar-transaction-textprice">-$540</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction6">
+									<i class="fab fa-playstation vb-rightbar-transaction-logomarca6"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">PlayStation</span>
+								<span class="vb-rightbar-transaction-textdescription">Games</span>
+								<span class="vb-rightbar-transaction-textprice">-$50</span>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="AYBanking-bigcontainermyaccount">
+				<div class="AYBanking-myaccount-container">
+					<div class="AYBanking-myaccount-balance">
+						<div class="AYBanking-myaccount-balance-background"></div>
+						<span class="AYBanking-myaccount-balance-text">Balance</span>
+						<span class="AYBanking-myaccount-balance-balance">$0</span>
+					</div>
+					<div class="AYBanking-myaccount-info">
+						<span class="AYBanking-myaccount-balance-text">Information</span>
+						<span class="AYBanking-myaccount-info-location"><i class="fal fa-city">&nbsp;&nbsp;&nbsp;</i>Country:&nbsp;&nbsp;Australia</span>
+						<span class="AYBanking-myaccount-info-address"><i class="fal fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;</i>Address:&nbsp;&nbsp;Loading...</span>
+						<span class="AYBanking-myaccount-info-walletid"><i class="fal fa-wallet"></i>&nbsp;&nbsp;&nbsp;</i>Wallet ID:&nbsp;&nbsp;Loading...</span>
+					</div>
+					<div class="AYBanking-myaccount-security">
+						<span class="AYBanking-myaccount-balance-text">Security</span>
+						<div class="AYBanking-security-2fa-checkmark">
+							<i class="fal fa-shield-check"></i>
+						</div>
+						<span class="AYBanking-security-2fatext">2FA Enabled</span>
+						<i class="fas fa-toggle-on AYBanking-security-2fatext-enabledswitch"></i>
+					</div>
+					<div class="AYBanking-tarjetas-rightbar">
+						<div class="AYBanking-tarjetas-rigthbar-balancecontainer">
+							<span class="AYBanking-tarjetas-rigthbar-balance" id="AYBanking-transferir-myaccount-balance">$0</span>
+							<span class="AYBanking-tarjetas-rigthbar-currentbalance">Current balance</span>
+						</div>
+						<span class="AYBanking-history">History</span>
+						<div class="AYBanking-rightbar-historycontainer">
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction">
+									<i class="fab fa-spotify vb-rightbar-transaction-logomarca"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Spotify</span>
+								<span class="vb-rightbar-transaction-textdescription">Music Platform</span>
+								<span class="vb-rightbar-transaction-textprice">-$24</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction2">
+									<i class="fab fa-apple vb-rightbar-transaction-logomarca2"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Apple</span>
+								<span class="vb-rightbar-transaction-textdescription">Phones</span>
+								<span class="vb-rightbar-transaction-textprice">-$1200</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction3">
+									<i class="fab fa-discord vb-rightbar-transaction-logomarca3"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Discord Nitro</span>
+								<span class="vb-rightbar-transaction-textdescription">Social</span>
+								<span class="vb-rightbar-transaction-textprice">-$5</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction4">
+									<i class="fab fa-amazon vb-rightbar-transaction-logomarca4"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Amazon</span>
+								<span class="vb-rightbar-transaction-textdescription">Shopping</span>
+								<span class="vb-rightbar-transaction-textprice">-$182</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction5">
+									<i class="fab fa-bitcoin vb-rightbar-transaction-logomarca5"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">Binance</span>
+								<span class="vb-rightbar-transaction-textdescription">Bitcoin purchase</span>
+								<span class="vb-rightbar-transaction-textprice">-$540</span>
+							</div>
+							<div class="vb-rightbar-historytransactions-transaction">
+								<div class="vb-rightbar-transaction-logotransaction6">
+									<i class="fab fa-playstation vb-rightbar-transaction-logomarca6"></i>
+								</div>
+								<span class="vb-rightbar-transaction-textmarca">PlayStation</span>
+								<span class="vb-rightbar-transaction-textdescription">Games</span>
+								<span class="vb-rightbar-transaction-textprice">-$50</span>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<script src="js/bank.js"></script>
+	<script src="js/fontawesome.js"></script>
+</body>
+</html>

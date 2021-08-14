@@ -1,0 +1,8 @@
+RegisterServerEvent("pc:StartTimer")
+AddEventHandler("pc:StartTimer", function()
+	TriggerClientEvent('pc:startTimer', -1)
+end)
+RegisterServerEvent("pc:StopTimer")
+AddEventHandler("pc:StopTimer", function()
+	TriggerClientEvent('pc:stopTimer', -1)
+end)

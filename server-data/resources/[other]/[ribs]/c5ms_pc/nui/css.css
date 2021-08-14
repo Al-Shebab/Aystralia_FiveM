@@ -1,0 +1,30 @@
+html {
+	color: #34495e;
+	font-family: 'Segoe UI';
+}
+#alertNotifuck {
+	width: 150px;
+	height: 72px;
+	position: absolute;
+	left: 0.1%;
+    top: 50%;
+	transform: translate(0, -50%);
+	background: url("alert.png");
+	border-bottom-right-radius: 25px;
+	border-top-right-radius: 5px;
+}
+.timerAlert {
+	font-family: 'Segoe UI';
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	color: yellow;
+	height: 25px;
+	width: 61px;
+	background-color: rgb(56, 56, 56);
+	border-bottom-right-radius: 15px;
+	position: absolute;
+	justify-content: center;
+	right: 15px;
+	bottom: 5px;
+}

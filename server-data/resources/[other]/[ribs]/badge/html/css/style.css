@@ -1,0 +1,15 @@
+#icemallow-badge {
+  position: relative;
+  
+  display: none;
+  
+  float: right;
+  
+  width: 800px;
+  
+  height: 800px;
+  
+  padding: 54px 17px 10px 144px;
+  
+  background: url(""); /*LEAVE HERE EMPTY, JS DOES EVERYTHING*/
+}
