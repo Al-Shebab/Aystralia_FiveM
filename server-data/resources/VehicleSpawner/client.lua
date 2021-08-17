@@ -4,129 +4,124 @@
 
 
 local menuPool = NativeUI.CreatePool()
-local mainMenu = NativeUI.CreateMenu('Vehicle Spawner', "", 1420, 0) --  Enter Server Name/ Menu Name Here
-local policeVehiclesMenu = menuPool:AddSubMenu(mainMenu, 'Police Vehicles',"", 1420, 0)
-local sheriffVehiclesMenu = menuPool:AddSubMenu(mainMenu, 'Sheriff Vehicles', "", 1420, 0)
+local mainMenu = NativeUI.CreateMenu('Vehicle Spawner', "", 1420, 0)
+local HondaMenu = menuPool:AddSubMenu(mainMenu, 'Honda', "", 1420, 0)
+local FerrariMenu = menuPool:AddSubMenu(mainMenu, 'Ferrari', "", 1420, 0)
+local FordMenu = menuPool:AddSubMenu(mainMenu, 'Ford', "", 1420, 0)
+local NissanMenu = menuPool:AddSubMenu(mainMenu, 'Nissan', "", 1420, 0)
+local PontiacMenu = menuPool:AddSubMenu(mainMenu, 'Pontiac', "", 1420, 0)
+local TeslaMenu = menuPool:AddSubMenu(mainMenu, 'Tesla', "", 1420, 0)
 
-local soVehiceMenus = {}
-soVehiceMenus.Tesla_Roadster = NativeUI.CreateItem('2011 CVPI', 'Press [ENTER] to spawn')
-soVehiceMenus.so13 = NativeUI.CreateItem('2014 Charger', 'Press [ENTER] to spawn')
-soVehiceMenus.so1 = NativeUI.CreateItem('2018 Explorer', 'Press [ENTER] to spawn')
-soVehiceMenus.so6 = NativeUI.CreateItem('2017 Taurus', 'Press [ENTER] to spawn')
-soVehiceMenus.so8 = NativeUI.CreateItem('2013 Tahoe', 'Press [ENTER] to spawn')
-soVehiceMenus.so3 = NativeUI.CreateItem('2009 Charger', 'Press [ENTER] to spawn')
-soVehiceMenus.so7 = NativeUI.CreateItem('2015 Tahoe', 'Press [ENTER] to spawn')
-soVehiceMenus.so11 = NativeUI.CreateItem('2016 Explorer', 'Press [ENTER] to spawn') 
-soVehiceMenus.so9 = NativeUI.CreateItem('2013 F-350', 'Press [ENTER] to spawn') 
-soVehiceMenus.so5 = NativeUI.CreateItem('2018 Charger', 'Press [ENTER] to spawn') 
-soVehiceMenus.so15 = NativeUI.CreateItem('2016 Explorer', 'Press [ENTER] to spawn') 
-soVehiceMenus.so4 = NativeUI.CreateItem('2014 Charger', 'Press [ENTER] to spawn') 
-soVehiceMenus.so10 = NativeUI.CreateItem('2013 Tahoe', 'Press [ENTER] to spawn') 
+-- Honda --
+local Honda = {}
+Honda.civicek9rb = NativeUI.CreateItem('Honda Civic - Stanced', 'Press [ENTER] to spawn')
+Honda.km86civic = NativeUI.CreateItem('Honda Civic 86', 'Press [ENTER] to spawn')
+Honda.fk2 = NativeUI.CreateItem('Honda Type R', 'Press [ENTER] to spawn')
 
-sheriffVehiclesMenu:AddItem(soVehiceMenus.Tesla_Roadster)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so13)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so1)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so6)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so8)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so3)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so7)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so11)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so9)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so5)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so15)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so4)
-sheriffVehiclesMenu:AddItem(soVehiceMenus.so10)
+HondaMenu:AddItem(Honda.civicek9rb)
+HondaMenu:AddItem(Honda.km86civic)
+HondaMenu:AddItem(Honda.fk2)
 
-local pdVehiceMenus = {}
-pdVehiceMenus.pd1 = NativeUI.CreateItem('2011 CVPI', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd7 = NativeUI.CreateItem('2014 Taurus', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd17 = NativeUI.CreateItem('2015 Caprice', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd11 = NativeUI.CreateItem('2011 ST CVPI', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd15 = NativeUI.CreateItem('2018 Explorer', 'Press [ENTER] to spawn')
-pdVehiceMenus.pdhoe = NativeUI.CreateItem('2013 Tahoe', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd12 = NativeUI.CreateItem('2014 ST Charger', 'Press [ENTER] to spawn')
-pdVehiceMenus.pd9 = NativeUI.CreateItem('2009 Charger', 'Press [ENTER] to spawn')
-
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd1)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd7)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd17)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd11)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd15)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pdhoe)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd12)
-policeVehiclesMenu:AddItem(pdVehiceMenus.pd9)
-
-sheriffVehiclesMenu.OnItemSelect = function(sender, item, index)
-    if item == soVehiceMenus.Tesla_Roadster then
+HondaMenu.OnItemSelect = function(sender, item, index)
+    if item == Honda.civicek9rb then
         deleteVeh()
-        spawnVehicle('Tesla_Roadster', '2011 CVPI')
-    elseif item == soVehiceMenus.so13 then
+        spawnVehicle('civicek9rb', 'Honda Civic - Stanced')
+    elseif item == Honda.km86civic then
         deleteVeh()
-        spawnVehicle('so13', '2014 Charger')
-    elseif item == soVehiceMenus.so1 then
+        spawnVehicle('km86civic', 'Honda Civic 86')
+    elseif item == Honda.fk2 then
         deleteVeh()
-        spawnVehicle('so1', '2018 Explorer')
-    elseif item == soVehiceMenus.so6 then
-        deleteVeh()
-        spawnVehicle('so6', '2017 Taurus')
-    elseif item == soVehiceMenus.so8 then
-        deleteVeh()
-        spawnVehicle('so8', '2013 Tahoe')
-    elseif item == soVehiceMenus.so3 then
-        deleteVeh()
-        spawnVehicle('so3', '2009 Charger')
-    elseif item == soVehiceMenus.so7 then
-        deleteVeh()
-        spawnVehicle('so7', '2015 Tahoe')
-    elseif item == soVehiceMenus.so11 then
-        deleteVeh()
-        spawnVehicle('so11', '2016 Explorer')
-    elseif item == soVehiceMenus.so9 then
-        deleteVeh()
-        spawnVehicle('so9', '2013 F-350')
-    elseif item == soVehiceMenus.so5 then
-        deleteVeh()
-        spawnVehicle('so5', '2018 Charger')
-    elseif item == soVehiceMenus.so15 then
-        deleteVeh()
-        spawnVehicle('so15', '2016 Explorer')
-    elseif item == soVehiceMenus.so4 then
-        deleteVeh()
-        spawnVehicle('so4', '2014 Charger')
-    elseif item == soVehiceMenus.so10 then
-        deleteVeh()
-        spawnVehicle('so10', '2013 Tahoe')
+        spawnVehicle('fk2', 'Honda Type R')
     end
 end
 
-policeVehiclesMenu.OnItemSelect = function(sender, item, index)
-    if item == pdVehiceMenus.pd1 then
+-- Ferrari --
+local Ferrari = {}
+Ferrari.bb512 = NativeUI.CreateItem('Ferrari 512', 'Press [ENTER] to spawn')
+
+FerrariMenu:AddItem(Ferrari.bb512)
+
+FerrariMenu.OnItemSelect = function(sender, item, index)
+    if item == Ferrari.bb512 then
         deleteVeh()
-		spawnVehicle ('pd1', '2011 CVPI')
-    elseif item == pdVehiceMenus.pd7 then
-        deleteVeh()
-		spawnVehicle ('pd7', '2014 Taurus')
-    elseif item == pdVehiceMenus.pd17 then
-        deleteVeh()
-		spawnVehicle ('pd17', '2015 Caprice')
-    elseif item == pdVehiceMenus.pd11 then
-        deleteVeh()
-		spawnVehicle ('pd11', '2011 ST CVPI')
-    elseif item == pdVehiceMenus.pd15 then
-        deleteVeh()
-		spawnVehicle ('pd15', '2018 Explorer')
-    elseif item == pdVehiceMenus.pdhoe then
-        deleteVeh()
-		spawnVehicle ('pdhoe', '2013 Tahoe')
-    elseif item == pdVehiceMenus.pd12 then
-        deleteVeh()
-		spawnVehicle ('pd12', '2014 ST Charger')
-    elseif item == pdVehiceMenus.pd9 then
-        deleteVeh()
-		spawnVehicle ('pd9', '2009 Charger')
-	end
+        spawnVehicle('bb512', 'Ferrari 512')
+    end
 end
+
+-- Ford --
+local Ford = {}
+Ford.xbgt = NativeUI.CreateItem('Ford Falcon', 'Press [ENTER] to spawn')
+
+FordMenu:AddItem(Ford.xbgt)
+
+FordMenu.OnItemSelect = function(sender, item, index)
+    if item == Ford.xbgt then
+        deleteVeh()
+        spawnVehicle('xbgt', 'Ford Falcon')
+    end
+end
+
+-- Nissan --
+local Nissan = {}
+Nissan.er34 = NativeUI.CreateItem('Nissan R34', 'Press [ENTER] to spawn')
+
+NissanMenu:AddItem(Nissan.er34)
+
+NissanMenu.OnItemSelect = function(sender, item, index)
+    if item == Nissan.er34 then
+        deleteVeh()
+        spawnVehicle('er34', 'Nissan R34')
+    end
+end
+
+-- Pontiac --
+local Pontiac = {}
+Pontiac.outlaw = NativeUI.CreateItem('Pontiac Outlaw', 'Press [ENTER] to spawn')
+Pontiac.sjpontiac = NativeUI.CreateItem('Pontiac SJ', 'Press [ENTER] to spawn')
+
+PontiacMenu:AddItem(Pontiac.outlaw)
+PontiacMenu:AddItem(Pontiac.sjpontiac)
+
+PontiacMenu.OnItemSelect = function(sender, item, index)
+    if item == Pontiac.outlaw then
+        deleteVeh()
+        spawnVehicle('outlaw', 'Pontiac Outlaw')
+    elseif item == Pontiac.sjpontiac then
+        deleteVeh()
+        spawnVehicle('sjpontiac', 'Pontiac SJ')
+    end
+end
+
+-- Tesla --
+local Tesla = {}
+Tesla.teslax = NativeUI.CreateItem('Tesla Model X', 'Press [ENTER] to spawn')
+
+TeslaMenu:AddItem(Tesla.teslax)
+
+TeslaMenu.OnItemSelect = function(sender, item, index)
+    if item == Tesla.teslax then
+        deleteVeh()
+        spawnVehicle('teslax', 'Tesla Model X')
+    end
+end
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------------------
+
+--PontiacMenu.OnItemSelect = function(sender, item, index)
+--    if item == Pontiac.Tesla_Roadster then
+--       deleteVeh()
+--        spawnVehicle('Tesla_Roadster', '2011 CVPI')
+--    elseif item == Pontiac.so13 then
+--        deleteVeh()
+--        spawnVehicle('so13', '2014 Charger')
+--    end
+--end
+
+
 --[[                           EXAMPLE
 local audi = menuPool:AddSubMenu(vehiclesMenu, 'Audi', "", 1420, 0)
 

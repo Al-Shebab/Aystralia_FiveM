@@ -18,6 +18,7 @@ client_scripts{
   "AYStaff-client.lua",
   "vs_client.lua",
   "blips.lua",
+  "nodriveby.lua",
   -- "cfg/config.lua",
   -- "main.lua",
   "hud.lua",
