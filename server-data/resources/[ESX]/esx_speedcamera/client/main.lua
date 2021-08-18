@@ -39,25 +39,25 @@ end
 
 -- BLIP FOR SPEEDCAMERAS
 local blips = {
-	{title="Speedcamera [80 kph]", colour=1, id=744, x = 446.94,y = -517.51,z = 29.5},
-	{title="Speedcamera [80 kph]", colour=1, id=744, x = 127.79,y = -983.37,z = 29.53},
-	{title="Speedcamera [80 kph]", colour=1, id=744, x = 205.42,y = -1024.07,z = 29.53},
-	{title="Speedcamera [80 kph]", colour=1, id=744, x = 265.17,y = -876.98,z = 29.53},
-	{title="Speedcamera [80 kph]", colour=1, id=744, x = 191.39,y = -840.54,z = 30.92},
-	{title="Speedcamera [110 kph]", colour=1, id=744, x = 1114.28,y = 407.45,z = 84.45},
-	{title="Speedcamera [110 kph]", colour=1, id=744, x = 2255.16,y = 5911.59,z = 49.44},
-	{title="Speedcamera [110 kph]", colour=1, id=744, x = -2570.80,y = 3348.04,z = 12.83},
-	{title="Speedcamera [110 kph]", colour=1, id=744, x = -2604.98,y = 3001.32,z = 15.93},
+	{title="Speedcamera [80 kph]", id=744, x = 446.94,y = -517.51,z = 29.5},
+	{title="Speedcamera [80 kph]", id=744, x = 127.79,y = -983.37,z = 29.53},
+	{title="Speedcamera [80 kph]", id=744, x = 205.42,y = -1024.07,z = 29.53},
+	{title="Speedcamera [80 kph]", id=744, x = 265.17,y = -876.98,z = 29.53},
+	{title="Speedcamera [80 kph]", id=744, x = 191.39,y = -840.54,z = 30.92},
+	{title="Speedcamera [110 kph]", id=744, x = 1114.28,y = 407.45,z = 84.45},
+	{title="Speedcamera [110 kph]", id=744, x = 2255.16,y = 5911.59,z = 49.44},
+	{title="Speedcamera [110 kph]", id=744, x = -2570.80,y = 3348.04,z = 12.83},
+	{title="Speedcamera [110 kph]", id=744, x = -2604.98,y = 3001.32,z = 15.93},
 }
 
 Citizen.CreateThread(function()
 	for _, info in pairs(blips) do
 		if useBlips == true then
 			info.blip = AddBlipForCoord(info.x, info.y, info.z)
-			SetBlipSprite(info.blip, info.id)
+			SetBlipSprite(info.blip, 184)
 			SetBlipDisplay(info.blip, 4)
 			SetBlipScale(info.blip, 0.5)
-			SetBlipColour(info.blip, info.colour)
+			SetBlipColour(info.blip, 29)
 			SetBlipAsShortRange(info.blip, true)
 			BeginTextCommandSetBlipName("STRING")
 			AddTextComponentString(info.title)
@@ -201,7 +201,7 @@ Citizen.CreateThread(function()
 									end
 										
 									hasBeenCaught = true
-									Citizen.Wait(5000) -- This is here to make sure the player won't get fined over and over again by the same camera!
+									Citizen.Wait(2000) -- This is here to make sure the player won't get fined over and over again by the same camera!
 								end
 							end
 						end

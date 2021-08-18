@@ -1,7 +1,7 @@
 
 Config = {}
 
-Config.position = {x=988,y=-30}
+Config.position = {x=990,y=-30}
 Config.maxLines = 5
 Config.HideGameBase_WantedLevel = true 
 Config.HideGameBase_WeaponIcon = true 

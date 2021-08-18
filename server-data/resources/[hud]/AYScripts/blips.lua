@@ -7,6 +7,11 @@
    {title="Maters Garage", colour=29, id=590, x = -442.52, y = -2178.19, z = 38.29},
    {title="Cocaine Processing", colour=29, id=590, x = 1138.12, y = -990.97, z = 51},
    {title="Uncle Choppers", colour=29, id=590, x = 1224.28, y = 2733.53, z = 38.29},
+   {title="Hospital", colour=2, id=80, x = 1831.46, y = 3677.86, z = 38.29},
+   {title="Hospital", colour=2, id=80, x = -252.33, y = 6321.8, z = 38.29},
+   {title="Hospital", colour=2, id=80, x = -473.3, y = -338.45, z = 38.29},
+   {title="Hospital", colour=2, id=80, x = 292.67, y = -582.52, z = 43.28},
+   {title="Chop Shop", colour=29, id=544, x = 602.55, y = -436.67, z = 38.29},
  }
      
 Citizen.CreateThread(function()
@@ -14,7 +19,7 @@ Citizen.CreateThread(function()
      info.blip = AddBlipForCoord(info.x, info.y, info.z)
      SetBlipSprite(info.blip, info.id)
      SetBlipDisplay(info.blip, 4)
-     SetBlipScale(info.blip, 0.9)
+     SetBlipScale(info.blip, 0.7)
      SetBlipColour(info.blip, info.colour)
      SetBlipAsShortRange(info.blip, true)
      BeginTextCommandSetBlipName("STRING")

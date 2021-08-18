@@ -141,7 +141,7 @@ AddEventHandler('nbk_cstyle_killfeed:SetHudDisplay',function(e)
     if e then 
         
         deadmessage = function(attackertxt,weaponHash,victimtxt,bonehash,_distance,AisMe,VisMe)
-            if _distance <= 0 then _distance = false end
+            if _distance <= 100000 then _distance = false end
             local distance = _distance~=false and math.floor(_distance) or false
              
             Scaleforms.CallScaleformMovie("nbk_cstyle_killfeed",function(run,send,stop,handle)

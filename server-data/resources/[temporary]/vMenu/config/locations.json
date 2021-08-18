@@ -54,6 +54,61 @@
         "IsZero": false
       },
       "heading": 342.910461
+    },
+    {
+      "name": "weed spot",
+      "coordinates": {
+        "X": 1309.46545,
+        "Y": 1866.15942,
+        "Z": 89.0449753,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 94.8527
+    },
+    {
+      "name": "Meth spot",
+      "coordinates": {
+        "X": 816.827148,
+        "Y": -3189.9397,
+        "Z": 5.900817,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 8.381391
+    },
+    {
+      "name": "Coke spot",
+      "coordinates": {
+        "X": 17.36376,
+        "Y": 6877.27441,
+        "Z": 12.6775351,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 106.885918
+    },
+    {
+      "name": "meth process",
+      "coordinates": {
+        "X": 1003.99139,
+        "Y": -3198.87964,
+        "Z": -38.9931641,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 347.800934
+    },
+    {
+      "name": "coke lab",
+      "coordinates": {
+        "X": 463.8743,
+        "Y": -1895.15747,
+        "Z": 25.6166534,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 155.282974
     }
   ],
   "blips": [
