@@ -10,18 +10,18 @@ local Keys = {
   ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local tenue = {x=1975.44,y=2805.62,z=50.17}
-local gamestart = {x=1975.17,y=2794.46,z=51.20}
-local millieu = {x=2014.41,y=2786.58,z=50.30}
-local equipebleu = {x=2015.58,y=2704.49,z=55.88}
-local equiperouge = {x=2030.69,y=2858.54,z=55.88}
-local spawnbleu = {x=2015.58,y=2704.49,z=50.88}
-local spawnrouge = {x=2030.69,y=2858.54,z=50.88}
-local miseazero = {x=1978.27,y=2800.89,z=51.20}
+local tenue = {x=3079.19,y=-4646.23,z=6.07} -- Team Selector
+local gamestart = {x=3077.78,y=-4641.86,z=7.07} -- Start Game Marker
+local millieu = {x=3077.78,y=-4641.86,z=7.07} -- Start Game
+local equipebleu = {x=3039.99,y=-4688.84,z=11.07} -- Blue Triangle
+local equiperouge = {x=3079.11,y=-4806.96,z=12.08} -- Red Triangle
+local spawnbleu = {x=3039.99,y=-4688.84,z=6.07} -- Blue Spawnpoint
+local spawnrouge = {x=3079.11,y=-4806.96,z=7.08} -- Red Spawnpoint
+local miseazero = {x=3080.58,y=-4650.93,z=7.07} -- Score Reset
 
-local home = {x=12.93,y=-1098.56,z=29.8}
-local homeblip = {x=12.93,y=-1098.56,z=29.8}
-local activity = {x=1973.78,y=2801.08,z=50.18}
+local home = {x=12.93,y=-1098.56,z=29.8} -- Game Start
+local homeblip = {x=12.93,y=-1098.56,z=29.8} -- Blip
+local activity = {x=3069.5,y=-4648.44,z=6.08} -- Exit
 
 ESX                           = nil
 local CurrentAction           = nil
@@ -81,32 +81,33 @@ Citizen.CreateThread(function()
 		
 		
 		
-		DrawMarker(1,tenue.x,tenue.y,tenue.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0) -- Vestiaire du paintball
+		DrawMarker(1,tenue.x,tenue.y,tenue.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0) -- Vestiaire du paintballw
 		DrawMarker(5,gamestart.x,gamestart.y,gamestart.z-1,0,0,0,0,0,0,2.001,2.0001,1.7001,0,155,255,200,0,1,0,0) -- gamestart
 		DrawMarker(0,equipebleu.x,equipebleu.y,equipebleu.z-1,0,0,0,0,0,0,2.001,2.0001,5.5001,0,155,255,200,0,0,0,0) -- gamestart
 		DrawMarker(0,equiperouge.x,equiperouge.y,equiperouge.z-1,0,0,0,0,0,0,2.001,2.0001,5.5001,255,0,0,200,0,0,0,0) -- gamestart
 		DrawMarker(24,miseazero.x,miseazero.y,miseazero.z-1,0,0,0,0,0,0,1.001,1.0001,1.5001,255,0,0,200,0,1,0,0) -- gamestart
 		
-		DrawMarker(1,1848.30,2586.02,45.67-1,0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0) -- gamestart
-		DrawMarker(1,1973.78,2801.08,50.18-1,0,0,0,0,0,0,2.001,2.0001,0.5001,255,0,0,200,0,0,0,0) -- gamestart
+		DrawMarker(1,home.x,home.y,home.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,0,155,255,200,0,0,0,0) -- gamestart
+		DrawMarker(1,homeblip.x,home.y,home.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,255,0,0,200,0,0,0,0) -- gamestart
+		DrawMarker(1,activity.x,activity.y,activity.z-1,0,0,0,0,0,0,2.001,2.0001,0.5001,255,255,255,200,0,0,0,0) -- Reset Marker
 		
 		
 		if(isNear(tenue)) then
-				Info("Appuyez sur ~g~E~w~ pour vous changer.")
+				Info("Press ~INPUT_PICKUP~ to select a team")
 				if(IsControlJustPressed(1, 38)) then
 					OuvrirVestiaire()
 				end
 		end
 		
 		if(isNear(gamestart)) then
-				Info("Appuyez sur ~g~E~w~ pour commencer la partie.")
+				Info("Press ~INPUT_PICKUP~ to start the match")
 				if(IsControlJustPressed(1, 38)) then
 					debutpartie()
 				end
 		end
 		
 		if(isNear(miseazero)) then
-				Info("Appuyez sur ~g~E~w~ pour remettre le score a zéro.")
+				Info("Press ~INPUT_PICKUP~ to reset the score")
 				if(IsControlJustPressed(1, 38)) then
 					remettrezero()
 				end
@@ -114,14 +115,14 @@ Citizen.CreateThread(function()
 		
 	
 		if (Vdist(pos.x, pos.y, pos.z, home.x, home.y, home.z) < 2.0) then
-				Info("Appuyez sur ~g~E~w~ pour aller jouer au paintball.")
+				Info("Press ~INPUT_PICKUP~ to play Paintball")
 				if(IsControlJustPressed(1, 38)) then
 					allerjouer()
 				end
 		end
 		
 		if (Vdist(pos.x, pos.y, pos.z, activity.x, activity.y, activity.z) < 2.0) then
-				Info("Appuyez sur ~g~E~w~ pour sortir du paintball.")
+				Info("Press ~INPUT_PICKUP~ to return to the city")
 				if(IsControlJustPressed(1, 38)) then
 					quitterpaintball()
 				end
@@ -137,12 +138,12 @@ end)
 function OuvrirVestiaire()
 
   local elements = {
-    { label = ('tenue Civile'), value = 'citizen_wear' }
+    { label = ('Return to Civilian Clothing'), value = 'citizen_wear' }
   }
 
 
-    table.insert(elements, {label = "tenue Equipe 1", value = 'tenue_equipe'})
-	table.insert(elements, {label = "tenue Equipe 2", value = 'tenue_equipedeux'})
+    table.insert(elements, {label = "Ballas", value = 'tenue_equipe'})
+	table.insert(elements, {label = "Families", value = 'tenue_equipedeux'})
 
 
 ESX.UI.Menu.CloseAll()
@@ -150,7 +151,7 @@ ESX.UI.Menu.CloseAll()
   ESX.UI.Menu.Open(
     'default', GetCurrentResourceName(), 'vestiaire',
     {
-      title    = ('Vestiaire'),
+      title    = ('Team Selector'),
       align    = 'top-left',
       elements = elements,
     },
@@ -160,7 +161,6 @@ ESX.UI.Menu.CloseAll()
       if data.current.value == 'citizen_wear' then
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
           local model = nil
-
           if skin.sex == 0 then
             model = GetHashKey("mp_m_freemode_01")
           else
@@ -186,12 +186,12 @@ ESX.UI.Menu.CloseAll()
         end)
       end
 	  
-	        if data.current.value == 'tenue_equipe' then
+	    if data.current.value == 'tenue_equipe' then
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
         if skin.sex == 0 then
 
-          local model = GetHashKey("a_m_m_afriamer_01")
+          local model = GetHashKey("g_m_y_ballaorig_01")
 			
           RequestModel(model)
           while not HasModelLoaded(model) do
@@ -201,41 +201,23 @@ ESX.UI.Menu.CloseAll()
 
           SetPlayerModel(PlayerId(), model)
           SetModelAsNoLongerNeeded(model)
-		  local playerPed  = GetPlayerPed(-1)
-		  local weaponHash = GetHashKey("WEAPON_PISTOL50")
-		  GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
-		  modele = 2
-		  autorevive()
-	
-		  
-
-      else
-          local model = GetHashKey("a_m_m_afriamer_01")
-
-          RequestModel(model)
-          while not HasModelLoaded(model) do
-            RequestModel(model)
-            Citizen.Wait(0)
-          end
-
-          SetPlayerModel(PlayerId(), model)
-          SetModelAsNoLongerNeeded(model)
-			 local playerPed  = GetPlayerPed(-1)
-			 local weaponHash = GetHashKey("WEAPON_PISTOL50")
-			 GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
-			  modele = 2
-			  autorevive()
+		    local playerPed  = GetPlayerPed(-1)
+		    local weaponHash = GetHashKey("WEAPON_PISTOL50")
+		    GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
+		    modele = 2
+        team = 1
+		    autorevive()
           end
 
         end)
       end
 	  
-	  	        if data.current.value == 'tenue_equipedeux' then
+	  	if data.current.value == 'tenue_equipedeux' then
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
         if skin.sex == 0 then
 
-          local model = GetHashKey("a_f_m_fatbla_01")
+          local model = GetHashKey("g_m_y_famca_01")
 			
           RequestModel(model)
           while not HasModelLoaded(model) do
@@ -245,29 +227,13 @@ ESX.UI.Menu.CloseAll()
 
           SetPlayerModel(PlayerId(), model)
           SetModelAsNoLongerNeeded(model)
-		  local playerPed  = GetPlayerPed(-1)
-		  local weaponHash = GetHashKey("WEAPON_PISTOL50")
-		  GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
-		  modele = 3
+		    local playerPed  = GetPlayerPed(-1)
+		    local weaponHash = GetHashKey("WEAPON_PISTOL50")
+		    GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
+		    modele = 3
+        team = 2
 		  
-		  autorevive()
-      else
-          local model = GetHashKey("a_f_m_fatbla_01")
-
-          RequestModel(model)
-          while not HasModelLoaded(model) do
-            RequestModel(model)
-            Citizen.Wait(0)
-          end
-
-          SetPlayerModel(PlayerId(), model)
-          SetModelAsNoLongerNeeded(model)
-			local playerPed  = GetPlayerPed(-1)
-		  local weaponHash = GetHashKey("WEAPON_PISTOL50")
-		  GiveWeaponToPed(playerPed, weaponHash, 250, false, false)
-		  modele = 3
-		  
-		  autorevive()
+		    autorevive()
           end
 
         end)
@@ -352,35 +318,60 @@ function autorevive()
 		local myPed = GetPlayerPed(-1)
 		local vie = GetEntityHealth(myPed)
 		local weaponHash = GetHashKey("WEAPON_PISTOL50")
-			if modele == 2 then
-			SetFollowPedCamViewMode(4)
-				if vie == 0 then
+    local model1 = GetHashKey("g_m_y_ballaorig_01")
+    local model2 = GetHashKey("g_m_y_famca_01")
+			if team == 1 then
+				if vie <= 2 then
+          SetPlayerModel(PlayerId(), model)
+          ESX.ShowNotification('Respawning in 5')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 4')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 3')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 2')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 1')
+          Citizen.Wait(1000)
 					revive()
-					Citizen.Wait(1500)
-					SetEntityCoords(GetPlayerPed(-1),spawnrouge.x,spawnrouge.y,spawnrouge.z+1)
-					GiveWeaponToPed(myPed, weaponHash, 250, false, false)
-					notif(modele)
+          RequestModel("g_m_y_ballaorig_01")
+          SetPlayerModel(PlayerId(), "g_m_y_ballaorig_01")
+          Citizen.Wait(500)
+          SetPlayerModel(PlayerId(), "g_m_y_ballaorig_01")
+          GiveWeaponToPed(GetPlayerPed(-1), GetHashKey("WEAPON_PISTOL50"), 250, false, false)
+          Citizen.Wait(1000)
+					SetEntityCoords(GetPlayerPed(-1),3079.11,-4806.96,7.08)
 				end
-			elseif modele == 3 then	
-				SetFollowPedCamViewMode(4)
-				if vie == 0 then
+			elseif team == 2 then
+				if vie <= 2 then
+          ESX.ShowNotification('Respawning in 5')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 4')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 3')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 2')
+          Citizen.Wait(1000)
+          ESX.ShowNotification('Respawning in 1')
+          Citizen.Wait(1000)
 					revive()
-					Citizen.Wait(1500)
-					SetEntityCoords(GetPlayerPed(-1),spawnbleu.x,spawnbleu.y,spawnbleu.z+1)
-					GiveWeaponToPed(myPed, weaponHash, 250, false, false)
-					notif(modele)
-					
+          RequestModel("g_m_y_famca_01")
+          SetPlayerModel(PlayerId(), "g_m_y_famca_01")
+          Citizen.Wait(500)
+          SetPlayerModel(PlayerId(), "g_m_y_famca_01")
+          GiveWeaponToPed(GetPlayerPed(-1), GetHashKey("WEAPON_PISTOL50"), 250, false, false)
+          Citizen.Wait(1000)
+					SetEntityCoords(GetPlayerPed(-1),3039.99,-4688.84,6.07)
 				end
-			else
-				break
 			end
-	end
+  end
 end
 
 function revive()
 local localPlayerId = PlayerId()
 local serverId = GetPlayerServerId(localPlayerId)
 TriggerServerEvent('esx_ambulancejob:revive', serverId)
+TriggerServerEvent('esx_ambulancejob:paintballrevive', serverId)
 end
 
 
@@ -396,15 +387,25 @@ end
 
 
 function debutpartie()
-
+  local myPed = GetPlayerPed(-1)
+  local vie = GetEntityHealth(myPed)
+  local model1 = GetHashKey("g_m_y_ballaorig_01")
+  local model2 = GetHashKey("g_m_y_famca_01")
 	if(distancenotification(millieu)) then
-		ESX.ShowNotification('~p~La partie débute dans ~r~~h~3')
+		ESX.ShowNotification('Match starting in 3')
 		Citizen.Wait(1000)
-		ESX.ShowNotification('~p~La partie débute dans ~r~~h~2')
+		ESX.ShowNotification('Match starting in 2')
 		Citizen.Wait(1000)
-		ESX.ShowNotification('~p~La partie débute dans ~r~~h~1')
+		ESX.ShowNotification('Match starting in 1')
 		Citizen.Wait(1000)
-		ESX.ShowNotification('~p~La partie ~r~~h~débute !')
+		ESX.ShowNotification('GO!')
+     if team == 1 then
+      SetEntityCoords(GetPlayerPed(-1),3079.11,-4806.96,7.08)
+      GiveWeaponToPed(myPed, weaponHash, 250, false, false)
+    elseif team == 2 then	
+      SetEntityCoords(GetPlayerPed(-1),3039.99,-4688.84,6.07)
+      GiveWeaponToPed(myPed, weaponHash, 250, false, false)
+    end
 	end
 end
 
@@ -474,6 +475,18 @@ function remettrezero()
 TriggerServerEvent('esx_paintball:remmetrezero')
 ESX.ShowNotification('~p~Le score est maintenant à zéro')
 end
+
+RegisterCommand("quit", function()
+  local model1 = GetHashKey("g_m_y_ballaorig_01")
+  local model2 = GetHashKey("g_m_y_famca_01")
+  if model1 then
+    allerjouer()
+  elseif model2 then
+    allerjouer()
+  else
+    ESX.ShowNotification("You can not quit a game you are not in...", true)
+  end
+end)
 
 
 

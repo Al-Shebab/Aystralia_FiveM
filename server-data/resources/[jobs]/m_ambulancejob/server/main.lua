@@ -29,6 +29,16 @@ AddEventHandler('esx_ambulancejob:revive', function(target)
 	TriggerClientEvent('esx_ambulancejob:revive', target)
 end)
 
+
+RegisterServerEvent('esx_ambulancejob:paintballrevive')
+AddEventHandler('esx_ambulancejob:paintballrevive', function(target)
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	
+	xPlayer.removeMoney(Config.ReviveReward)
+	TriggerClientEvent('esx_ambulancejob:paintballrevive', target)
+end)
+
 RegisterNetEvent('esx:onPlayerDeath')
 AddEventHandler('esx:onPlayerDeath', function(data)
 	deadPlayers[source] = 'dead'

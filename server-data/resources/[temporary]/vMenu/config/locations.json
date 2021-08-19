@@ -109,6 +109,28 @@
         "IsZero": false
       },
       "heading": 155.282974
+    },
+    {
+      "name": "prison",
+      "coordinates": {
+        "X": 1877.45642,
+        "Y": 2684.938,
+        "Z": 45.6718559,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 305.4679
+    },
+    {
+      "name": "carrier",
+      "coordinates": {
+        "X": 3039.96045,
+        "Y": -4688.849,
+        "Z": 6.077288,
+        "IsNormalized": false,
+        "IsZero": false
+      },
+      "heading": 287.390656
     }
   ],
   "blips": [

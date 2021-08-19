@@ -25,19 +25,36 @@ if modele == 3 then
 	pointagebleu = 0
     pointagerouge = 0
 	end
+elseif team == 2 then
+	if pointagerouge ~= 9 then
+	pointagerouge = pointagerouge + 1
+	TriggerClientEvent('showNotify', -1, "~g~Score ~r~Rouge : " .. pointagerouge .. "~b~ Bleu : " .. pointagebleu)
+	else
+	TriggerClientEvent('showNotify', -1, "~r~L\'équipe 1 à ~g~gagné~r~ le match de paintball !")
+	pointagebleu = 0
+    pointagerouge = 0
+	end
 end
 
 if modele == 2 then
-if pointagebleu ~= 9 then
-pointagebleu = pointagebleu + 1
-TriggerClientEvent('showNotify', -1, "~g~Score ~r~ Rouge : " .. pointagerouge .. " ~b~Bleu : " .. pointagebleu)
-else
-TriggerClientEvent('showNotify', -1, "~b~L\'équipe 2 à ~g~gagné~w~~b~ le match de paintball !")
-pointagebleu = 0
-pointagerouge = 0
+	if pointagebleu ~= 9 then
+	pointagebleu = pointagebleu + 1
+	TriggerClientEvent('showNotify', -1, "~g~Score ~r~ Rouge : " .. pointagerouge .. " ~b~Bleu : " .. pointagebleu)
+	else
+	TriggerClientEvent('showNotify', -1, "~b~L\'équipe 2 à ~g~gagné~w~~b~ le match de paintball !")
+	pointagebleu = 0
+	pointagerouge = 0
+	end
+elseif team == 1 then
+	if pointagebleu ~= 9 then
+	pointagebleu = pointagebleu + 1
+	TriggerClientEvent('showNotify', -1, "~g~Score ~r~ Rouge : " .. pointagerouge .. " ~b~Bleu : " .. pointagebleu)
+	else
+	TriggerClientEvent('showNotify', -1, "~b~L\'équipe 2 à ~g~gagné~w~~b~ le match de paintball !")
+	pointagebleu = 0
+	pointagerouge = 0
+	end
 end
-end
-
 end)
 
 
