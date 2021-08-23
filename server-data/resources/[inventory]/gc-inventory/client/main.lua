@@ -1,7 +1,7 @@
 local Keys = {
     ["ESC"] = 322,
     ["F1"] = 288,
-    ["F2"] = 289,
+    ["F2"] = 288,
     ["F3"] = 170,
     ["F5"] = 166,
     ["F6"] = 167,
@@ -175,9 +175,7 @@ local fastWeapons = {
     [5] = nil
 }
 local canPlayAnim = true
-local fastItemsHotbar = {}
 local itemslist ={}
-local isHotbar = false
 
 
 Citizen.CreateThread(
@@ -196,17 +194,6 @@ Citizen.CreateThread(
             toghud = true
     end
 )
--- HIDE WEAPON WHEEL
-Citizen.CreateThread(function ()
-        Citizen.Wait(2000)
-        while true do
-                Citizen.Wait(0)
-                HideHudComponentThisFrame(19)
-                HideHudComponentThisFrame(20)
-                BlockWeaponWheelThisFrame()
-                DisableControlAction(0, 37,true)
-        end
-end)
 
 RegisterNetEvent('randPickupAnim')
 AddEventHandler('randPickupAnim', function()
@@ -222,8 +209,8 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(7)
         if not IsPlayerDead(PlayerId()) then
-            --DisableControlAction(0, 289, true)
-            if IsControlJustReleased(0, 289) and GetLastInputMethod(0) then
+            --DisableControlAction(0, 288, true)
+            if IsControlJustReleased(0, 288) and GetLastInputMethod(0) then
                 if IsInputDisabled(0) then
                     TriggerScreenblurFadeIn(0)
                     TriggerEvent('randPickupAnim')
@@ -262,7 +249,6 @@ Citizen.CreateThread(function()
             elseif IsDisabledControlJustReleased(1, Keys ["TAB"]) then
                 loadPlayerInventory()
                 Citizen.Wait(20)
-                showHotbar()
                 loadPlayerInventory()
 
             end
@@ -533,7 +519,6 @@ function loadItems()
                                                         end
                     end
                 end
-            fastItemsHotbar =  fastItems
             SendNUIMessage(
                 {
                     action = "setItems",
@@ -615,22 +600,6 @@ function loadPlayerInventory()
     loadItems()
     while not ItemsLoaded or not StatusLoaded or not WeightLoaded do
         Citizen.Wait(100)
-    end
-end
-
-function showHotbar()
-    if not isHotbar then
-        isHotbar = true
-        EnableAllControlActions(0)
-        SendNUIMessage({
-            action = "showhotbar",
-            fastItems = fastItemsHotbar,
-            itemList = itemslist
-        })
-
-        Citizen.Wait(0)
-        isHotbar = false
-        loadPlayerInventory()
     end
 end
 

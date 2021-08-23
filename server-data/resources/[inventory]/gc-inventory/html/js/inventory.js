@@ -125,43 +125,8 @@ window.addEventListener("message", function (event) {
             }));
     }else if (event.data.action =="notification"){
         sendNotification(event.data.itemname, event.data.itemlabel , event.data.itemcount , event.data.itemremove)
-    }else if (event.data.action == "showhotbar"){
-        showHotbar(event.data.itemList, event.data.fastItems, event.data)
     };
 });
-
-function showHotbar(items, fastItems, data) {
-    $("#playerInventoryHotbar").html("");
-    $.each(items, function (index, item) {
-        count = setCount(item);
-        $("#playerInventory").append('<div class="slot"><div id="item-' + index + '" class="item" style = "background-image: url(\'img/items/' + item.name + '.png\')">' +
-            '<div class="item-count">' + count + '</div> <div class="item-name">' + item.label + '</div> </div ><div class="item-name-bg"></div></div>');
-        $('#item-' + index).data('item', item);
-        $('#item-' + index).data('inventory', "main");
-    });
-
-    $("#playerInventoryHotbar").fadeIn();
-    setTimeout(function(){
-        $("#playerInventoryHotbar").fadeOut();
-    }, 6000);
-    setTimeout(function(){
-        $("#playerInventoryHotbar").html("");
-    }, 8000);
-
-    var i;
-    for (i = 1; i < 6; i++) {
-        $("#playerInventoryHotbar").append('<div class="slotFast"><div id="itemFast-' + i + '" class="item" >' +
-            '<div class="keybind">' + i + '</div><div class="item-count"></div> <div class="item-name"></div> </div ><div class="item-name-bg"></div></div>');
-    }
-
-    $.each(fastItems, function (index, item) {
-        count = setCount(item);
-        $('#itemFast-' + item.slot).css("background-image", 'url(\'img/items/' + item.name + '.png\')');
-        $('#itemFast-' + item.slot).html('<div class="keybind">' + item.slot + '</div><div class="item-count">' + count + '</div> <div class="item-name">' + item.label + '</div> <div class="item-name-bg"></div>');
-        $('#itemFast-' + item.slot).data('item', item);
-        $('#itemFast-' + item.slot).data('inventory', "fast");
-    });
-}
 
 function sendNotification(item, itemlabel, count, remove){
     $("#notificacao").html("");

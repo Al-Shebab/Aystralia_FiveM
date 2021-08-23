@@ -763,9 +763,7 @@ function OpenPoliceActionsMenu()
 				elements = {
 					{label = _U('cone'), model = 'prop_roadcone02a'},
 					{label = _U('barrier'), model = 'prop_barrier_work05'},
-					{label = _U('spikestrips'), model = 'p_ld_stinger_s'},
-					{label = _U('box'), model = 'prop_boxpile_07d'},
-					{label = _U('cash'), model = 'hei_prop_cash_crate_half_full'}
+					{label = _U('cbarrier'), model = 'prop_barier_conc_05a'}
 			}}, function(data2, menu2)
 				local playerPed = PlayerPedId()
 				local coords    = GetEntityCoords(playerPed)
@@ -1805,9 +1803,7 @@ Citizen.CreateThread(function()
 	local trackedEntities = {
 		'prop_roadcone02a',
 		'prop_barrier_work05',
-		'p_ld_stinger_s',
-		'prop_boxpile_07d',
-		'hei_prop_cash_crate_half_full'
+		'prop_barier_conc_05a'
 	}
 
 	while true do

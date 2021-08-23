@@ -97,11 +97,9 @@ Locales['en'] = {
   ['search_database_found'] = 'the vehicle is ~y~registered~s~ to ~b~%s~s~',
   -- Traffic interaction
   ['traffic_interaction'] = 'interaction Traffic',
-  ['cone'] = 'cone',
-  ['barrier'] = 'barrier',
-  ['spikestrips'] = 'spikestrips',
-  ['box'] = 'box',
-  ['cash'] = 'box of cash',
+  ['cone'] = 'Cone',
+  ['barrier'] = 'Barrier',
+  ['cbarrier'] = 'Concrete Barrier',
   -- ID Card Menu
   ['name'] = 'name: %s',
   ['job'] = 'job: %s',
