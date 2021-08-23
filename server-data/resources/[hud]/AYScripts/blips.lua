@@ -12,6 +12,8 @@
    {title="Hospital", colour=2, id=80, x = -473.3, y = -338.45, z = 38.29},
    {title="Hospital", colour=2, id=80, x = 292.67, y = -582.52, z = 43.28},
    {title="Chop Shop", colour=29, id=544, x = 602.55, y = -436.67, z = 38.29},
+   {title="Trucker Job Pickup", colour=29, id=544, x = 614.67, y = -2662.1, z = 16.36},
+   {title="Trucker Spawner", colour=29, id=544, x = 661.96, y = -2644.29, z = 7.41},
  }
      
 Citizen.CreateThread(function()
