@@ -51,7 +51,7 @@ function OpenMobileMecanoActionsMenu()
     'default', GetCurrentResourceName(), 'mobile_mecano_actions',
     {
       title    = _U('mechanic'),
-      align    = 'right',
+      align    = 'top-right',
       elements = {
         {label = _U('billing'), value = 'billing'},
         {label = _U('hijack'),     value = 'hijack_vehicle'},
@@ -68,7 +68,7 @@ function OpenMobileMecanoActionsMenu()
           'dialog', GetCurrentResourceName(), 'billing',
           {
             title = _U('invoice_amount'),
-            align    = 'right',
+            align    = 'top-right',
           },
           function(data, menu)
             local amount = tonumber(data.value)
@@ -312,7 +312,7 @@ function OpenMobileMecanoActionsMenu()
           'default', GetCurrentResourceName(), 'mobile_mecano_actions_spawn',
           {
             title    = _U('objects'),
-            align    = 'right',
+            align    = 'top-right',
             elements = {
               {label = _U('roadcone'),     value = 'prop_roadcone02a'},
               {label = _U('toolbox'), value = 'prop_toolchest_01'},
@@ -411,7 +411,7 @@ function OpenGetStocksMenu()
       'default', GetCurrentResourceName(), 'stocks_menu',
       {
         title    = _U('mechanic_stock'),
-        align    = 'right',
+        align    = 'top-right',
         elements = elements
       },
       function(data, menu)
@@ -473,7 +473,7 @@ function OpenPutStocksMenu()
       'default', GetCurrentResourceName(), 'stocks_menu',
       {
         title    = _U('inventory'),
-        align    = 'right',
+        align    = 'top-right',
         elements = elements
       },
       function(data, menu)
@@ -913,7 +913,7 @@ function OpenMecanoActionsMenu()
     'default', GetCurrentResourceName(), 'mecano_actions',
     {
       title    = _U('mechanic'),
-      align    = 'right',
+      align    = 'top-right',
       elements = elements
     },
     function(data, menu)
@@ -933,7 +933,7 @@ function OpenMecanoActionsMenu()
                 'default', GetCurrentResourceName(), 'vehicle_spawner',
                 {
                   title    = _U('service_vehicle'),
-                  align    = 'right',
+                  align    = 'top-right',
                   elements = elements,
                 },
                 function(data, menu)
@@ -988,7 +988,7 @@ function OpenMecanoActionsMenu()
               'default', GetCurrentResourceName(), 'spawn_vehicle',
               {
                 title    = _U('service_vehicle'),
-                align    = 'right',
+                align    = 'top-right',
                 elements = elements
               },
               function(data, menu)
@@ -1160,7 +1160,7 @@ function OpenMecanoHarvestMenu()
       'default', GetCurrentResourceName(), 'mecano_harvest',
       {
         title    = _U('harvest'),
-        align    = 'right',
+        align    = 'top-right',
         elements = elements
       },
       function(data, menu)
@@ -1207,23 +1207,23 @@ function OpenMecanoCraftMenu()
       'default', GetCurrentResourceName(), 'mecano_craft',
       {
         title    = _U('craft'),
-        align    = 'right',
+        align    = 'top-right',
         elements = elements
       },
       function(data, menu)
         if data.current.value == 'blow_pipe' then
-          menu.close()
-          TriggerServerEvent('esx_mecanojob:startCraft')
+          TriggerServerEvent('esx_mecanojob:giveblowpipe')
+          ESX.ShowNotification("~g~+1 Blowtorch")
         end
 
         if data.current.value == 'fix_kit' then
-          menu.close()
-          TriggerServerEvent('esx_mecanojob:startCraft2')
+          TriggerServerEvent('esx_mecanojob:givefixkit')
+          ESX.ShowNotification("~g~+1 Repair Kit")
         end
 
         if data.current.value == 'caro_kit' then
-          menu.close()
-          TriggerServerEvent('esx_mecanojob:startCraft3')
+          TriggerServerEvent('esx_mecanojob:givecarokit')
+          ESX.ShowNotification("~g~+1 Body kit")
         end
 
       end,
