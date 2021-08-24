@@ -1,16 +1,24 @@
+-- compatibility wrapper
 fx_version 'adamant'
-
 game 'gta5'
 
-author 'mojito'
-
-description 'chopshop script for fivem'
-
-client_scripts {
-   'client/client.lua',
-}
+description 'Lenzh Chop Shop'
+author 'Lenzh'
+version 'v2'
 
 server_scripts {
-   'server/server.lua',
-   '@mysql-async/lib/MySQL.lua',
+	'@es_extended/locale.lua',
+	'@mysql-async/lib/MySQL.lua',
+	'locales/*',
+
+	'config.lua',
+	'server/*',
+}
+
+client_scripts {
+	'@es_extended/locale.lua',
+	'locales/*',
+
+	'config.lua',
+	'client/*',
 }
